@@ -1,0 +1,21 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.zshrc:
+    ~/.gitconfig:
+    ~/.zshenv:
+    ~/.zsh-extensions:
+
+#- create:
+#    - ~/downloads
+#    - ~/.vim/undo-history
+
+- shell:
+    - ./setup_homebrew.zsh
+    - ./setup_zsh.zsh
+    - ./setup_node.zsh
+    - ./setup_macos.zsh
