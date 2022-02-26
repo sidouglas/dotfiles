@@ -8,7 +8,7 @@
     ~/.zshrc:
     ~/.gitconfig:
     ~/.zshenv:
-    ~/.zsh-extensions:
+    ~/.zsh_custom:
 
 #- create:
 #    - ~/downloads

@@ -6,14 +6,26 @@ tap "homebrew/core"
 brew "bat"
 # Modern replacement for 'ls'
 brew "exa"
+# Improved top (interactive process viewer)
+brew "htop"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
 # Mac App Store command-line interface
 brew "mas"
 # Manage multiple Node.js versions
 brew "nvm"
+# Internet file retriever
+brew "wget"
+# Web browser focusing on privacy
+cask "brave-browser"
+# Web browser
+cask "firefox"
 # Client for the Google Drive storage service
 cask "google-drive"
 # Vector graphics editor
 cask "inkscape"
+# HTTP and GraphQL Client
+cask "insomnia"
 # Java IDE by JetBrains
 cask "intellij-idea"
 # Automation software
