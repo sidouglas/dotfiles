@@ -22,6 +22,8 @@ brew "nvm"
 brew "wget"
 # Allows connection to a computer remotely
 cask "anydesk"
+# Open-source KVM software
+cask "barrier"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Voice and text chat software
