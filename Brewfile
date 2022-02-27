@@ -24,6 +24,8 @@ brew "wget"
 cask "anydesk"
 # Web browser focusing on privacy
 cask "brave-browser"
+# Voice and text chat software
+cask "discord"
 # Web browser
 cask "firefox"
 # Client for the Google Drive storage service
@@ -42,6 +44,8 @@ cask "keyboard-maestro"
 cask "raycast"
 # Music streaming service
 cask "spotify"
+# Desktop client for Telegram messenger
+cask "telegram-desktop"
 # Multimedia player
 cask "vlc"
 mas "Base64Anywhere", id: 640841706

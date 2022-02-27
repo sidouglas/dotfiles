@@ -68,3 +68,4 @@
 
 [core]
 	mergeoptions = --no-edit
+	editor = nano
