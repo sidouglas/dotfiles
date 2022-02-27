@@ -1,3 +1,70 @@
 [user]
 	name = Simon Douglas
 	email = 1107946+sidouglas@users.noreply.github.com
+
+[alias]
+    # taken from https://gist.github.com/mwhite/6887990
+    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    wip = !git add --all && git commit -m 'wip' --no-verify
+    fix = !git wip && git squash 2
+    nuke = !sh -c 'git checkout dev && git branch -d $1 && git checkout -b $1' -
+    a = add
+    gp = git push -u origin HEAD
+    gpf = git push -u origin HEAD -f
+    ap = add -p
+    c = commit --verbose
+    ca = commit -a --verbose
+    cm = commit -m
+    cam = commit -a -m
+    m = commit --amend --verbose
+    d = diff
+    ds = diff --stat
+    dc = diff --cached
+
+    s = status -s
+    co = checkout
+    cob = checkout -b
+    # list branches sorted by last modified
+    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
+    # list aliases
+    la = "!git config -l | grep alias | cut -c 7-"
+
+    # https://gist.github.com/hlecuanda/c9a5091938cd6a7b585d
+    squash = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+    tidy = "!git remote prune origin && git branch --merged > /tmp/merged-branches && sed -E '/(dev|master)/d' /tmp/merged-branches > /tmp/clean-branches && nano /tmp/clean-branches && xargs git branch -d </tmp/clean-branches"
+    #This is a useful one for me, it allows me to rebase with the tracking branch even if I have uncommitted changes. Credit goes to @cmsolomon.
+    rb = "!f() { \
+            echo fetching...; \
+            git fetch; \
+            if [ $? -eq 0 ]; then \
+                last_status=$(git status --untracked-files=no --porcelain); \
+                if [ \"$last_status\" != \"\" ]; then \
+                    echo stashing local changes...; \
+                    git stash; \
+                else \
+                    echo nothing to stash...; \
+                fi;\
+                if [ $? -eq 0 ]; then \
+                    echo rebasing...;\
+                    git rebase;\
+                    if [ $? -eq 0 ]; then \
+                        if [ \"$last_status\" != \"\" ]; then\
+                            echo applying stashed changes...;\
+                            git stash pop;\
+                            if [ $? -ne 0 ]; then \
+                                echo STASH POP FAIL - you will need to resolve merge conflicts with git mergetool; \
+                            fi; \
+                        fi; \
+                    else \
+                        echo REBASE FAILED - you will need to manually run stash pop; \
+                    fi;\
+                fi;\
+            fi; \
+            if [ $? -ne 0 ]; then \
+                echo ERROR: Operation failed; \
+            fi; \
+        }; f"
+
+[core]
+	mergeoptions = --no-edit

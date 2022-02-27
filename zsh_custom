@@ -19,16 +19,49 @@ setopt incAppendHistoryTime
 
 
 # Create Aliases
-alias ls='exa'
-alias exa='exa -laFh --git'
-alias trail='<<<${(F)path}'
-alias ftrail='<<<${(F)fpath}'
-alias rm=trash
-alias man=batman
+alias ..='cd ../'                           # Go back 1 directory level
+alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
+alias ...='cd ../../'                       # Go back 2 directory levels
+alias .3='cd ../../../'                     # Go back 3 directory levels
+alias .4='cd ../../../../'                  # Go back 4 directory levels
+alias .5='cd ../../../../../'               # Go back 5 directory levels
+alias .6='cd ../../../../../../'            # Go back 6 directory levels
+
 alias brewdump="cd ~/.dotfiles && brew bundle dump --force --describe && bat Brewfile"
+alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
+alias cp='cp -iv'                           # Preferred 'cp' implementation
+alias d='cd ~/Documents/'
+alias dockerkill="docker kill $(docker ps -q)"
+alias exa='exa -laFh --git'
+alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
+alias ftrail='<<<${(F)fpath}'
+alias hosts="sudo nano /etc/hosts"
+alias less='less -FSRXc'                    # Preferred 'less' implementation
+alias ls='exa'
+alias man=batman
+alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
+alias mv='mv -iv'                           # Preferred 'mv' implementation
+alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
+alias reload="source ~/.zshrc"              # reload:       Reload the shell (i.e. itself)
+alias rm=trash                              # rm:           Trash (move to trash)
+alias show_options='shopt'                  # Show_options: display bash options settings
+alias ~="cd ~"                              # ~:            Go Home
+cd() { builtin cd "$@"; ls; }               # Always list directory contents upon 'cd'
 
 # Load history into shell (shareHistory alternative)
 alias lh='fc -RI; echo "loaded and showing..."; history;'
 
 # Write Handy Functions
 function mkcd() { mkdir -p "$@" && cd "$_"; }
+function trash () { command mv "$@" ~/.Trash ; }
+
+function killname() {
+  if [ "$1" = "" ]; then
+     echo "Nothing to do"
+  else
+    ps -ej | grep "$1"
+    ps -ej | grep "$1" | awk '{print $2}' | xargs kill -s SIGINT
+  fi
+}
+
+function kp (){ kill -9 $(lsof -i:"$1" -t); }
