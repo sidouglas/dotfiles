@@ -4,6 +4,10 @@ tap "homebrew/cask"
 tap "homebrew/core"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# Isolated development environments using Docker
+brew "docker-compose"
 # Modern replacement for 'ls'
 brew "exa"
 # Improved top (interactive process viewer)
@@ -16,6 +20,8 @@ brew "mas"
 brew "nvm"
 # Internet file retriever
 brew "wget"
+# Allows connection to a computer remotely
+cask "anydesk"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Web browser

@@ -19,3 +19,4 @@
     - ./setup_zsh.zsh
     - ./setup_node.zsh
     - ./setup_macos.zsh
+    - ./setup_disable_spotlight.zsh

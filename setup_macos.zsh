@@ -7,6 +7,9 @@ osascript -e 'tell application "System Preferences" to quit'
 # Finder > View > Show Path Bar
 defaults write com.apple.finder ShowPathbar -bool true
 
+# We need to see all files
+defaults write com.apple.Finder AppleShowAllFiles true
+
 # Finder > Preferences > General > New Finder windows show:
 defaults write com.apple.finder NewWindowTarget -string 'PfLo'
 defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/.dotfiles"
