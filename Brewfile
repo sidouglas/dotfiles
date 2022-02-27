@@ -34,6 +34,8 @@ cask "inkscape"
 cask "insomnia"
 # Java IDE by JetBrains
 cask "intellij-idea"
+# JetBrains tools manager
+cask "jetbrains-toolbox"
 # Automation software
 cask "keyboard-maestro"
 # Control your tools with a few keystrokes

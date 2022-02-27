@@ -27,11 +27,11 @@ alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
 
-alias brewdump="cd ~/.dotfiles && brew bundle dump --force --describe && bat Brewfile"
-alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
-alias cp='cp -iv'                           # Preferred 'cp' implementation
+alias brewdump='cd ~/.dotfiles && brew bundle dump --force --describe && bat Brewfile'
+alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
+alias cp='cp -iv'                           # Preferred cp implementation
 alias d='cd ~/Documents/'
-alias dockerkill="docker kill $(docker ps -q)"
+# alias dockerkill="docker kill $(docker ps -q)"
 alias exa='exa -laFh --git'
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
 alias ftrail='<<<${(F)fpath}'
