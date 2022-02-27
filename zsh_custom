@@ -1,0 +1,34 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Set Variables
+export NULLCMD=bat
+export DOTFILES="$HOME/.dotfiles"
+export HOMEBREW_BUNDLE_FILE="$DOTFILES/Brewfile"
+
+# Adjust History Variables & Options
+
+[[ -z $HISTFILE ]] && HISTFILE="$HOME/.zsh_history"
+HISTSIZE=5000 # Session Memory Limit
+SAVEHIST=4000 # File Memory Limit
+RPROMPT='%*'
+setopt histNoStore
+setopt extendedHistory
+setopt histIgnoreAllDups
+unsetopt appendHistory # explicit and unnecessary
+setopt incAppendHistoryTime
+
+
+# Create Aliases
+alias ls='exa'
+alias exa='exa -laFh --git'
+alias trail='<<<${(F)path}'
+alias ftrail='<<<${(F)fpath}'
+alias rm=trash
+alias man=batman
+alias brewdump="cd ~/.dotfiles && brew bundle dump --force --describe && bat Brewfile"
+
+# Load history into shell (shareHistory alternative)
+alias lh='fc -RI; echo "loaded and showing..."; history;'
+
+# Write Handy Functions
+function mkcd() { mkdir -p "$@" && cd "$_"; }

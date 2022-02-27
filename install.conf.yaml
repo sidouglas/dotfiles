@@ -14,7 +14,7 @@
 #    - ~/downloads
 #    - ~/.vim/undo-history
 
-- shell:
+#- shell:
     - ./setup_homebrew.zsh
     - ./setup_zsh.zsh
     - ./setup_node.zsh
