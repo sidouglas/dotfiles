@@ -32,6 +32,8 @@ cask "discord"
 cask "firefox"
 # Client for the Google Drive storage service
 cask "google-drive"
+# Tool to optimize images to a smaller size
+cask "imageoptim"
 # Vector graphics editor
 cask "inkscape"
 # HTTP and GraphQL Client
