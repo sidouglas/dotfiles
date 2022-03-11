@@ -40,12 +40,16 @@ cask "inkscape"
 cask "insomnia"
 # Java IDE by JetBrains
 cask "intellij-idea"
-# JetBrains tools manager
-cask "jetbrains-toolbox"
 # Automation software
 cask "keyboard-maestro"
+# Audio tagger focusing on efficiency
+cask "kid3"
+# Screen and video recording software
+cask "loom"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Screen capture tool with mark up and sharing features
+cask "skitch"
 # Music streaming service
 cask "spotify"
 # Desktop client for Telegram messenger
@@ -60,5 +64,4 @@ mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Snappy", id: 512617038
 mas "The Unarchiver", id: 425424353
