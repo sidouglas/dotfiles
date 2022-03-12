@@ -70,7 +70,10 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+git
+zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -101,7 +104,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.zsh_custom
-ZSH_SHARED="~/Google Drive/My Drive/shared/.zsh_shared"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+ZSH_SHARED=~/Google\ Drive/My\ Drive/shared/.zsh_shared
 if [ -f $ZSH_SHARED ];
 then
   source $ZSH_SHARED

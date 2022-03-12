@@ -5,10 +5,11 @@
 - clean: ['~']
 
 - link:
-    ~/.zshrc:
+    ~/.fzf:
     ~/.gitconfig:
-    ~/.zshenv:
     ~/.zsh_custom:
+    ~/.zshenv:
+    ~/.zshrc:
 
 #- create:
 #    - ~/downloads
