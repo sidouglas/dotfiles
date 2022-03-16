@@ -2,6 +2,8 @@ tap "getantibody/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+# Official Amazon AWS command-line interface
+brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Pack, ship and run any application as a lightweight container
@@ -32,6 +34,8 @@ cask "brave-browser"
 cask "discord"
 # Web browser
 cask "firefox"
+# Free and open-source image editor
+cask "gimp"
 # Client for the Google Drive storage service
 cask "google-drive"
 # Tool to optimize images to a smaller size
