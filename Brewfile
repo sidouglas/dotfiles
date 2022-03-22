@@ -20,6 +20,8 @@ brew "htop"
 brew "jq"
 # Mac App Store command-line interface
 brew "mas"
+# UNIX movie player
+brew "mplayer"
 # Manage multiple Node.js versions
 brew "nvm"
 # Internet file retriever
@@ -30,6 +32,8 @@ cask "anydesk"
 cask "barrier"
 # Web browser focusing on privacy
 cask "brave-browser"
+# Utility that prevents the system from going to sleep
+cask "caffeine"
 # Voice and text chat software
 cask "discord"
 # Web browser
