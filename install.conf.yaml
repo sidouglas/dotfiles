@@ -5,6 +5,7 @@
 - clean: ['~']
 
 - link:
+    ~/.nanorc:
     ~/.fzf:
     ~/.gitconfig:
     ~/.zsh_custom:
@@ -16,8 +17,8 @@
 #    - ~/.vim/undo-history
 
 ##- shell:
-    - ./setup_homebrew.zsh
-    - ./setup_zsh.zsh
-    - ./setup_node.zsh
-    - ./setup_macos.zsh
-    - ./setup_disable_spotlight.zsh
+#    - ./setup_homebrew.zsh
+#    - ./setup_zsh.zsh
+#    - ./setup_node.zsh
+#    - ./setup_macos.zsh
+#    - ./setup_disable_spotlight.zsh

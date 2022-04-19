@@ -22,7 +22,7 @@
     ds = diff --stat
     dc = diff --cached
 
-    s = status -s
+    s = status
     co = checkout
     cob = checkout -b
     # list branches sorted by last modified
