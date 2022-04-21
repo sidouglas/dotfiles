@@ -88,7 +88,6 @@ cask "skitch"
 cask "spotify"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
-cask "transmission-remote-gui"
 # Multimedia player
 cask "vlc"
 mas "Base64Anywhere", id: 640841706
@@ -101,3 +100,4 @@ mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
+mas "UTM", id: 1538878817
