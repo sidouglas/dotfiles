@@ -56,6 +56,8 @@ cask "deskreen"
 cask "discord"
 # Web browser
 cask "firefox"
+# Tool to turn a website into a desktop app
+cask "fluid"
 # Free and open-source image editor
 cask "gimp"
 # Client for the Google Drive storage service
@@ -76,6 +78,8 @@ cask "kid3"
 cask "loom"
 # Visual diff and merge tool
 cask "meld"
+# Access the menu from anywhere
+cask "menuwhere"
 # Client-side GUI application for modern database development and operations
 cask "nosql-workbench"
 # VPN client
