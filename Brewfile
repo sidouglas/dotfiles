@@ -1,13 +1,32 @@
 tap "aws/tap"
+tap "bbcrd/audiowaveform"
 tap "getantibody/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 tap "shivammathur/php"
+# Companion library to apr, the Apache Portable Runtime library
+brew "apr-util"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Core application library for C
+brew "glib"
+# OpenType text shaping engine
+brew "harfbuzz"
+# High quality MPEG Audio Layer III (MP3) encoder
+brew "lame"
+# Core component of the AcoustID project (Audio fingerprinting)
+brew "chromaprint"
+# Enables you to reproduce the CircleCI environment locally
+brew "circleci"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Modern replacement for 'ls'
 brew "exa"
 # Play, record, convert, and stream audio and video
@@ -20,10 +39,14 @@ brew "fzf"
 brew "libavif"
 # Graphics library to dynamically manipulate images
 brew "gd"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
 # Improved top (interactive process viewer)
 brew "htop"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# YAML Parser
+brew "libyaml"
 # Mac App Store command-line interface
 brew "mas"
 # UNIX movie player
@@ -32,10 +55,22 @@ brew "mplayer"
 brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
+# Object-relational database system
+brew "postgresql"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.8"
+# SOund eXchange: universal sound sample translator
+brew "sox"
 # Internet file retriever
 brew "wget"
+# Download YouTube videos from the command-line
+brew "youtube-dl"
+# General-purpose lossless data-compression library
+brew "zlib"
 # AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
 brew "aws/tap/aws-sam-cli"
+# C++ program to generate waveform data and render waveform images from audio files
+brew "bbcrd/audiowaveform/audiowaveform"
 # General-purpose scripting language
 brew "shivammathur/php/php"
 # Password manager that keeps all passwords secure behind one password
@@ -82,6 +117,8 @@ cask "meld"
 cask "menuwhere"
 # Client-side GUI application for modern database development and operations
 cask "nosql-workbench"
+# App to write, plan, collaborate, and get organized
+cask "notion"
 # VPN client
 cask "private-internet-access"
 # Control your tools with a few keystrokes
@@ -90,13 +127,19 @@ cask "raycast"
 cask "skitch"
 # Music streaming service
 cask "spotify"
+# System monitor for the menu bar
+cask "stats"
+# Backup, recovery and cloning software
+cask "superduper"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
+# Open-source code editor
+cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
 mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
-mas "Color Picker", id: 641027709
+mas "ColorSlurp", id: 1287239339
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
 mas "Invisor", id: 442947586
