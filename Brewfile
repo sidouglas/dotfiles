@@ -129,8 +129,6 @@ cask "skitch"
 cask "spotify"
 # System monitor for the menu bar
 cask "stats"
-# Backup, recovery and cloning software
-cask "superduper"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
 # Open-source code editor
