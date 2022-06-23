@@ -115,6 +115,8 @@ cask "loom"
 cask "meld"
 # Access the menu from anywhere
 cask "menuwhere"
+# Reverse proxy, secure introspectable tunnels to localhost
+cask "ngrok"
 # Client-side GUI application for modern database development and operations
 cask "nosql-workbench"
 # App to write, plan, collaborate, and get organized
@@ -123,6 +125,8 @@ cask "notion"
 cask "private-internet-access"
 # Control your tools with a few keystrokes
 cask "raycast"
+# MySQL/MariaDB database management
+cask "sequel-ace"
 # Screen capture tool with mark up and sharing features
 cask "skitch"
 # Music streaming service
@@ -131,6 +135,8 @@ cask "spotify"
 cask "stats"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
+# Utility to change the default backup interval of Time Machine
+cask "timemachineeditor"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
