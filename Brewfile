@@ -15,6 +15,8 @@ brew "python@3.9"
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Get/set bluetooth power and discoverable state
+brew "blueutil"
 # Core application library for C
 brew "glib"
 # OpenType text shaping engine
@@ -77,14 +79,20 @@ brew "shivammathur/php/php"
 cask "1password"
 # Allows connection to a computer remotely
 cask "anydesk"
+# Application uninstaller
+cask "appcleaner"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Open-source KVM software
 cask "barrier"
+# Virtual Audio Driver
+cask "blackhole-2ch"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Utility that prevents the system from going to sleep
 cask "caffeine"
+# Web debugging Proxy application
+cask "charles"
 # Turns any device with a web browser into a secondary screen
 cask "deskreen"
 # Voice and text chat software
