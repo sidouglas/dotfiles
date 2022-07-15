@@ -105,10 +105,20 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.zsh_custom
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-ZSH_SHARED=~/Google\ Drive/My\ Drive/shared/.zsh_shared
+ZSH_SHARED="$HOME/Google Drive/My Drive/shared/.zsh_shared"
 if [ -f $ZSH_SHARED ];
 then
+  GOOGLE_DRIVE_SHARED="$HOME/Google Drive/My Drive/shared"
   source $ZSH_SHARED
+else
+  ZSH_SHARED="$HOME/Google Drive/shared/.zsh_shared"
+  if [ -f $ZSH_SHARED ];
+  then
+    GOOGLE_DRIVE_SHARED="$HOME/Google Drive/shared"
+    source $ZSH_SHARED
+  else
+   echo 'Could not find zsh_shared!'  
+  fi
 fi
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

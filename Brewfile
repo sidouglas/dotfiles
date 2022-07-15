@@ -1,9 +1,16 @@
+tap "aljohri/-"
 tap "aws/tap"
 tap "bbcrd/audiowaveform"
+tap "dotenv-linter/tap"
+tap "eugenmayer/dockersync"
+tap "federico-terzi/espanso"
 tap "getantibody/tap"
+tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "homebrew/services"
 tap "shivammathur/php"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
@@ -23,6 +30,8 @@ brew "glib"
 brew "harfbuzz"
 # High quality MPEG Audio Layer III (MP3) encoder
 brew "lame"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # Core component of the AcoustID project (Audio fingerprinting)
 brew "chromaprint"
 # Enables you to reproduce the CircleCI environment locally
@@ -31,26 +40,28 @@ brew "circleci"
 brew "coreutils"
 # Modern replacement for 'ls'
 brew "exa"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
 # Libraries to talk to Microsoft SQL Server and Sybase databases
 brew "freetds"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Library for encoding and decoding .avif files
-brew "libavif"
 # Graphics library to dynamically manipulate images
 brew "gd"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Multimedia framework for research and academic purposes
+brew "gpac"
 # Improved top (interactive process viewer)
 brew "htop"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Library for encoding and decoding .avif files
+brew "libavif"
 # YAML Parser
 brew "libyaml"
 # Mac App Store command-line interface
 brew "mas"
+# Read, create, and modify MP4 files
+brew "mp4v2"
 # UNIX movie player
 brew "mplayer"
 # Platform built on V8 to build network applications
@@ -71,10 +82,8 @@ brew "youtube-dl"
 brew "zlib"
 # AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
 brew "aws/tap/aws-sam-cli"
-# C++ program to generate waveform data and render waveform images from audio files
-brew "bbcrd/audiowaveform/audiowaveform"
 # General-purpose scripting language
-brew "shivammathur/php/php"
+brew "shivammathur/php/php", link: false
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Allows connection to a computer remotely
@@ -99,20 +108,20 @@ cask "deskreen"
 cask "discord"
 # Web browser
 cask "firefox"
-# Tool to turn a website into a desktop app
-cask "fluid"
 # Free and open-source image editor
 cask "gimp"
 # Client for the Google Drive storage service
 cask "google-drive"
+# Open-source video transcoder
+cask "handbrake"
 # Tool to optimize images to a smaller size
 cask "imageoptim"
 # Vector graphics editor
 cask "inkscape"
 # HTTP and GraphQL Client
 cask "insomnia"
-# Java IDE by JetBrains
-cask "intellij-idea"
+# JetBrains tools manager
+cask "jetbrains-toolbox"
 # Automation software
 cask "keyboard-maestro"
 # Audio tagger focusing on efficiency
@@ -152,11 +161,16 @@ cask "vlc"
 mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
 mas "ColorSlurp", id: 1287239339
+mas "FileBot", id: 905384638
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
 mas "Invisor", id: 442947586
 mas "Keynote", id: 409183694
+mas "mChapters", id: 563131976
+mas "Minify", id: 747633105
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Slack", id: 803453959
 mas "The Unarchiver", id: 425424353
 mas "UTM", id: 1538878817
+mas "Xcode", id: 497799835
