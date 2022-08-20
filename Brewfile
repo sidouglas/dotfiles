@@ -21,16 +21,32 @@ brew "blueutil"
 brew "python@3.9"
 # Core application library for C
 brew "glib"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
+# GNU Ubiquitous Intelligent Language for Extensions
+brew "guile"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
 # OpenType text shaping engine
 brew "harfbuzz"
 # High quality MPEG Audio Layer III (MP3) encoder
 brew "lame"
+# Subtitle renderer for the ASS/SSA subtitle format
+brew "libass"
+# Secure Reliable Transport
+brew "srt"
 # Core component of the AcoustID project (Audio fingerprinting)
 brew "chromaprint"
 # Enables you to reproduce the CircleCI environment locally
 brew "circleci"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Open source suite of directory software
+brew "openldap"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
 # Modern replacement for 'ls'
 brew "exa"
 # Play, record, convert, and stream audio and video
@@ -45,10 +61,18 @@ brew "libavif"
 brew "gd"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
+# Multimedia framework for research and academic purposes
+brew "gpac"
 # Improved top (interactive process viewer)
 brew "htop"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Network authentication protocol
+brew "krb5"
+# Postgres C API library
+brew "libpq"
 # YAML Parser
 brew "libyaml"
 # Mac App Store command-line interface
@@ -59,14 +83,18 @@ brew "node"
 brew "nvm"
 # Object-relational database system
 brew "postgresql"
+# Tool Command Language
+brew "tcl-tk"
 # Interpreted, interactive, object-oriented programming language
-brew "python@3.8"
+brew "python@3.8", link: false
 # SOund eXchange: universal sound sample translator
 brew "sox"
 # Internet file retriever
 brew "wget"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
+# Fork of youtube-dl with additional features and fixes
+brew "yt-dlp"
 # General-purpose lossless data-compression library
 brew "zlib"
 # AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
@@ -97,6 +125,8 @@ cask "charles"
 cask "deskreen"
 # Voice and text chat software
 cask "discord"
+# Client for the Dropbox cloud storage service
+cask "dropbox"
 # Web browser
 cask "firefox"
 # Tool to turn a website into a desktop app
@@ -155,8 +185,7 @@ cask "visual-studio-code"
 cask "vlc"
 mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
-mas "ColorSlurp", id: 1287239339
-mas "GarageBand", id: 682658836
+mas "FileBot", id: 905384638
 mas "iMovie", id: 408981434
 mas "Invisor", id: 442947586
 mas "Keynote", id: 409183694
@@ -165,3 +194,4 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
 mas "UTM", id: 1538878817
+mas "Xcode", id: 497799835
