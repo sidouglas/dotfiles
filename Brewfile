@@ -1,12 +1,17 @@
+tap "aljohri/-"
 tap "aws/tap"
 tap "bbcrd/audiowaveform"
+tap "dotenv-linter/tap"
+tap "eugenmayer/dockersync"
+tap "federico-terzi/espanso"
 tap "getantibody/tap"
+tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "homebrew/services"
 tap "shivammathur/php"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
 # Tool for generating GNU Standards-compliant Makefiles
@@ -17,8 +22,6 @@ brew "awscli"
 brew "bat"
 # Get/set bluetooth power and discoverable state
 brew "blueutil"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Core application library for C
 brew "glib"
 # Interpreted, interactive, object-oriented programming language
@@ -77,6 +80,10 @@ brew "libpq"
 brew "libyaml"
 # Mac App Store command-line interface
 brew "mas"
+# Read, create, and modify MP4 files
+brew "mp4v2"
+# UNIX movie player
+brew "mplayer"
 # Platform built on V8 to build network applications
 brew "node"
 # Manage multiple Node.js versions
@@ -91,16 +98,12 @@ brew "python@3.8", link: false
 brew "sox"
 # Internet file retriever
 brew "wget"
-# Download YouTube videos from the command-line
-brew "youtube-dl"
 # Fork of youtube-dl with additional features and fixes
 brew "yt-dlp"
 # General-purpose lossless data-compression library
 brew "zlib"
 # AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
 brew "aws/tap/aws-sam-cli"
-# C++ program to generate waveform data and render waveform images from audio files
-brew "bbcrd/audiowaveform/audiowaveform"
 # General-purpose scripting language
 brew "shivammathur/php/php"
 # Password manager that keeps all passwords secure behind one password
@@ -111,8 +114,6 @@ cask "anydesk"
 cask "appcleaner"
 # Multi-track audio editor and recorder
 cask "audacity"
-# Open-source KVM software
-cask "barrier"
 # Virtual Audio Driver
 cask "blackhole-2ch"
 # Web browser focusing on privacy
@@ -121,42 +122,36 @@ cask "brave-browser"
 cask "caffeine"
 # Web debugging Proxy application
 cask "charles"
-# Turns any device with a web browser into a secondary screen
-cask "deskreen"
 # Voice and text chat software
 cask "discord"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Web browser
 cask "firefox"
-# Tool to turn a website into a desktop app
-cask "fluid"
 # Free and open-source image editor
 cask "gimp"
-# Set of tools to manage resources and applications hosted on Google Cloud
-cask "google-cloud-sdk"
 # Client for the Google Drive storage service
 cask "google-drive"
+# Open-source video transcoder
+cask "handbrake"
 # Tool to optimize images to a smaller size
 cask "imageoptim"
 # Vector graphics editor
 cask "inkscape"
 # HTTP and GraphQL Client
 cask "insomnia"
-# Java IDE by JetBrains
-cask "intellij-idea"
+# JetBrains tools manager
+cask "jetbrains-toolbox"
 # Automation software
 cask "keyboard-maestro"
-# Audio tagger focusing on efficiency
-cask "kid3"
 # Screen and video recording software
 cask "loom"
 # Trims video and audio files losslessly
 cask "losslesscut"
 # Visual diff and merge tool
 cask "meld"
-# Access the menu from anywhere
-cask "menuwhere"
+# Create mock APIs in seconds
+cask "mockoon"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
 # Client-side GUI application for modern database development and operations
@@ -186,6 +181,7 @@ cask "vlc"
 mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
 mas "FileBot", id: 905384638
+mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
 mas "Invisor", id: 442947586
 mas "Keynote", id: 409183694

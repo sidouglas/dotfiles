@@ -68,12 +68,9 @@ Deactivate licenses:
     ```
 
 
-### Manual Steps
+### Resources
 
-#### Snappy App
-
-1. `System Preferences > Keyboard > Shortcuts > Screenshots > Save picture of selected area as a file (cmd+shift+4)` uncheck.
-2. `Snappy Preferences > General > Take snap` change from `cmd+shift+5` (which conflicts with ScreenFlow) to `cmd+shift+4`.
+* https://gist.github.com/ChristopherA/a579274536aab36ea9966f301ff14f3f
 
 
 
