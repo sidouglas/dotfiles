@@ -6,9 +6,11 @@ fi
 
 
 # Set Variables
+HOSTNAME=$(hostname)
 export NULLCMD=bat
 export DOTFILES="$HOME/.dotfiles"
-export HOMEBREW_BUNDLE_FILE="$DOTFILES/Brewfile"
+export HOMEBREW_DIR="$DOTFILES/$HOSTNAME"
+export HOMEBREW_BUNDLE_FILE="$HOMEBREW_DIR/Brewfile"
 
 # Adjust History Variables & Options
 
@@ -32,7 +34,7 @@ alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
 
-alias brewdump='cd ~/.dotfiles && brew bundle dump --force --describe && bat Brewfile'
+alias brewdump="mkdir -p $HOMEBREW_DIR && cd $HOMEBREW_DIR && brew bundle dump --force --describe && bat Brewfile"
 alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
 alias cp='cp -iv'                           # Preferred cp implementation
 alias d='cd ~/Documents/'
@@ -53,7 +55,7 @@ alias rm=trash                              # rm:           Trash (move to trash
 alias show_options='shopt'                  # Show_options: display bash options settings
 alias yt='yt-dlp'
 alias ytmp3='yt-dlp -x --audio-format mp3'  # Download from youtube, as mp3
-alias yt='yt-dlp -F'                        # Will show all possible downloads 
+alias yt='yt-dlp -F'                        # Will show all possible downloads
 alias ~="cd ~"                              # ~:            Go Home
 cd() { builtin cd "$@"; ls; }               # Always list directory contents upon 'cd'
 
