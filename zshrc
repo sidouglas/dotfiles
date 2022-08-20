@@ -117,7 +117,7 @@ else
     GOOGLE_DRIVE_SHARED="$HOME/Google Drive/shared"
     source $ZSH_SHARED
   else
-   echo 'Could not find zsh_shared!'  
+   echo 'Could not find zsh_shared!'
   fi
 fi
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.

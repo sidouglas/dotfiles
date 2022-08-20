@@ -47,6 +47,7 @@ alias man=batman
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
+alias python='/opt/homebrew/bin/python3'
 alias reload="source ~/.zshrc"              # reload:       Reload the shell (i.e. itself)
 alias rm=trash                              # rm:           Trash (move to trash)
 alias show_options='shopt'                  # Show_options: display bash options settings
