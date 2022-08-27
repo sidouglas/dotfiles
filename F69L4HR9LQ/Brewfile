@@ -71,6 +71,8 @@ brew "youtube-dl"
 brew "yt-dlp"
 # General-purpose lossless data-compression library
 brew "zlib"
+# UNIX shell (command interpreter)
+brew "zsh"
 # AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
 brew "aws/tap/aws-sam-cli"
 # C++ program to generate waveform data and render waveform images from audio files
@@ -135,6 +137,8 @@ cask "ngrok"
 cask "nosql-workbench"
 # App to write, plan, collaborate, and get organized
 cask "notion"
+# GUI client for PostgreSQL databases
+cask "postico"
 # VPN client
 cask "private-internet-access"
 # Control your tools with a few keystrokes
@@ -155,14 +159,3 @@ cask "timemachineeditor"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
-mas "Base64Anywhere", id: 640841706
-mas "Bitwarden", id: 1352778147
-mas "GarageBand", id: 682658836
-mas "iMovie", id: 408981434
-mas "Invisor", id: 442947586
-mas "Keynote", id: 409183694
-mas "mChapters", id: 563131976
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "The Unarchiver", id: 425424353
-mas "UTM", id: 1538878817
