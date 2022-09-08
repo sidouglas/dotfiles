@@ -9,10 +9,13 @@
 [alias]
     # taken from https://gist.github.com/mwhite/6887990
     l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-    wip = !git add --all && git commit -m 'wip' --no-verify
-    fix = !git wip && git squash 2 --no-verify
-    nuke = !sh -c 'git checkout dev && git branch -d $1 && git checkout -b $1' -
+    wip = !HUSKY_SKIP_HOOKS=1 git add --all && git commit -m 'wip' --no-verify
+    fix = !HUSKY_SKIP_HOOKS=1 git wip && git squash 2 --no-verify
+    nuke = !sh -c 'git checkout dev && git branch -df $1 && git checkout -b $1' -
+    # nukeall = "git branch -vv | grep ': gone]' | grep -v '\*' | awk '{ print $1; }' | xargs -r git branch -d"
     a = add
+    p = pull
+    h = push
     gp = git push -u origin HEAD
     gpf = git push -u origin HEAD -f
     ap = add -p
