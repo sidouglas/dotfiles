@@ -89,7 +89,7 @@ brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
 # Object-relational database system
-brew "postgresql"
+brew "postgresql@14"
 # Tool Command Language
 brew "tcl-tk"
 # Interpreted, interactive, object-oriented programming language
