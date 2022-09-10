@@ -1,17 +1,12 @@
-tap "aljohri/-"
 tap "aws/tap"
 tap "bbcrd/audiowaveform"
-tap "dotenv-linter/tap"
-tap "eugenmayer/dockersync"
-tap "federico-terzi/espanso"
 tap "getantibody/tap"
-tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-fonts"
 tap "homebrew/core"
-tap "homebrew/services"
 tap "shivammathur/php"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
 # Tool for generating GNU Standards-compliant Makefiles
@@ -26,32 +21,20 @@ brew "blueutil"
 brew "glib"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.9"
-# GNU Ubiquitous Intelligent Language for Extensions
-brew "guile"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
-# GNU Transport Layer Security (TLS) Library
-brew "gnutls"
 # OpenType text shaping engine
 brew "harfbuzz"
 # High quality MPEG Audio Layer III (MP3) encoder
 brew "lame"
-# Subtitle renderer for the ASS/SSA subtitle format
-brew "libass"
-# Secure Reliable Transport
-brew "srt"
 # Core component of the AcoustID project (Audio fingerprinting)
 brew "chromaprint"
 # Enables you to reproduce the CircleCI environment locally
 brew "circleci"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Open source suite of directory software
-brew "openldap"
-# Get a file from an HTTP, HTTPS or FTP server
-brew "curl"
 # Modern replacement for 'ls'
 brew "exa"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Libraries to talk to Microsoft SQL Server and Sybase databases
@@ -64,46 +47,38 @@ brew "libavif"
 brew "gd"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Generate introspection data for GObject libraries
-brew "gobject-introspection"
-# Multimedia framework for research and academic purposes
-brew "gpac"
 # Improved top (interactive process viewer)
 brew "htop"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Network authentication protocol
-brew "krb5"
-# Postgres C API library
-brew "libpq"
 # YAML Parser
 brew "libyaml"
 # Mac App Store command-line interface
 brew "mas"
-# Read, create, and modify MP4 files
-brew "mp4v2"
-# UNIX movie player
-brew "mplayer"
 # Platform built on V8 to build network applications
 brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
 # Object-relational database system
-brew "postgresql"
-# Tool Command Language
-brew "tcl-tk"
+brew "postgresql@14"
 # Interpreted, interactive, object-oriented programming language
-brew "python@3.8", link: false
+brew "python@3.8"
 # SOund eXchange: universal sound sample translator
 brew "sox"
 # Internet file retriever
 brew "wget"
+# Download YouTube videos from the command-line
+brew "youtube-dl"
 # Fork of youtube-dl with additional features and fixes
 brew "yt-dlp"
 # General-purpose lossless data-compression library
 brew "zlib"
+# UNIX shell (command interpreter)
+brew "zsh"
 # AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
 brew "aws/tap/aws-sam-cli"
+# C++ program to generate waveform data and render waveform images from audio files
+brew "bbcrd/audiowaveform/audiowaveform"
 # General-purpose scripting language
 brew "shivammathur/php/php"
 # Password manager that keeps all passwords secure behind one password
@@ -114,6 +89,8 @@ cask "anydesk"
 cask "appcleaner"
 # Multi-track audio editor and recorder
 cask "audacity"
+# Open-source KVM software
+cask "barrier"
 # Virtual Audio Driver
 cask "blackhole-2ch"
 # Web browser focusing on privacy
@@ -122,26 +99,28 @@ cask "brave-browser"
 cask "caffeine"
 # Web debugging Proxy application
 cask "charles"
+# Turns any device with a web browser into a secondary screen
+cask "deskreen"
 # Voice and text chat software
 cask "discord"
-# Client for the Dropbox cloud storage service
-cask "dropbox"
 # Web browser
 cask "firefox"
+# Tool to turn a website into a desktop app
+cask "fluid"
 # Free and open-source image editor
 cask "gimp"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "google-cloud-sdk"
 # Client for the Google Drive storage service
 cask "google-drive"
-# Open-source video transcoder
-cask "handbrake"
 # Tool to optimize images to a smaller size
 cask "imageoptim"
 # Vector graphics editor
 cask "inkscape"
 # HTTP and GraphQL Client
 cask "insomnia"
-# JetBrains tools manager
-cask "jetbrains-toolbox"
+# Java IDE by JetBrains
+cask "intellij-idea"
 # Automation software
 cask "keyboard-maestro"
 # Screen and video recording software
@@ -150,6 +129,8 @@ cask "loom"
 cask "losslesscut"
 # Visual diff and merge tool
 cask "meld"
+# Access the menu from anywhere
+cask "menuwhere"
 # Create mock APIs in seconds
 cask "mockoon"
 # Reverse proxy, secure introspectable tunnels to localhost
@@ -158,6 +139,8 @@ cask "ngrok"
 cask "nosql-workbench"
 # App to write, plan, collaborate, and get organized
 cask "notion"
+# GUI client for PostgreSQL databases
+cask "postico"
 # VPN client
 cask "private-internet-access"
 # Control your tools with a few keystrokes
@@ -166,8 +149,6 @@ cask "raycast"
 cask "sequel-ace"
 # Screen capture tool with mark up and sharing features
 cask "skitch"
-# Team communication and collaboration software
-cask "slack"
 # Music streaming service
 cask "spotify"
 # System monitor for the menu bar
@@ -180,16 +161,3 @@ cask "timemachineeditor"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
-mas "Base64Anywhere", id: 640841706
-mas "Bitwarden", id: 1352778147
-mas "FileBot", id: 905384638
-mas "GarageBand", id: 682658836
-mas "iMovie", id: 408981434
-mas "Invisor", id: 442947586
-mas "Keynote", id: 409183694
-mas "mChapters", id: 563131976
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "The Unarchiver", id: 425424353
-mas "UTM", id: 1538878817
-mas "Xcode", id: 497799835

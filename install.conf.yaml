@@ -5,12 +5,16 @@
 - clean: ['~']
 
 - link:
-    ~/.nanorc:
+    ~/.bash_profile:
+    ~/.bashrc:
     ~/.fzf:
     ~/.gitconfig:
+    ~/.nanorc:
+    ~/.profile:
     ~/.zsh_custom:
     ~/.zshenv:
     ~/.zshrc:
+    ~/.zlogin:
 
 - create:
     - ~/downloads
