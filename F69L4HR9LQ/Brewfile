@@ -11,12 +11,18 @@ brew "openssl@1.1"
 brew "apr-util"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
+# Command-line interface for SQLite
+brew "sqlite"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Get/set bluetooth power and discoverable state
 brew "blueutil"
+# Collection of portable C++ source libraries
+brew "boost"
 # Core application library for C
 brew "glib"
 # Interpreted, interactive, object-oriented programming language
@@ -31,6 +37,8 @@ brew "chromaprint"
 brew "circleci"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# C library implementing the SSH2 protocol
+brew "libssh2"
 # Modern replacement for 'ls'
 brew "exa"
 # Simple, fast and user-friendly alternative to find
@@ -139,6 +147,8 @@ cask "ngrok"
 cask "nosql-workbench"
 # App to write, plan, collaborate, and get organized
 cask "notion"
+# PDF compression tool
+cask "pdf-squeezer"
 # GUI client for PostgreSQL databases
 cask "postico"
 # VPN client
@@ -161,3 +171,17 @@ cask "timemachineeditor"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
+mas "Base64Anywhere", id: 640841706
+mas "Bitwarden", id: 1352778147
+mas "ColorSlurp", id: 1287239339
+mas "com.jbapps.MangoMacos", id: 1549961729
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Invisor", id: 442947586
+mas "Keynote", id: 409183694
+mas "mChapters", id: 563131976
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "The Unarchiver", id: 425424353
+mas "UTM", id: 1538878817
+mas "Xcode", id: 497799835

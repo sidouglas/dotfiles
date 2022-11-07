@@ -38,7 +38,7 @@ alias brewdump="mkdir -p $HOMEBREW_DIR && cd $HOMEBREW_DIR && brew bundle dump -
 alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
 alias cp='cp -iv'                           # Preferred cp implementation
 alias d='cd ~/Documents/'
-alias dockerkill="docker kill $(docker ps -q)"
+alias dockerkill='docker kill $(docker ps -q)'
 alias exa='exa -laFh --git'
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
 alias ftrail='<<<${(F)fpath}'
@@ -55,9 +55,11 @@ alias rm=trash                              # rm:           Trash (move to trash
 alias show_options='shopt'                  # Show_options: display bash options settings
 alias yt='yt-dlp'
 alias ytmp3='yt-dlp -x --audio-format mp3'  # Download from youtube, as mp3
-alias yt='yt-dlp -F'                        # Will show all possible downloads
+# alias yt='yt-dlp -F'                        # Will show all possible downloads
 alias ~="cd ~"                              # ~:            Go Home
 cd() { builtin cd "$@"; ls; }               # Always list directory contents upon 'cd'
+
+alias openb='open -na "Brave Browser" --args "$1"'
 
 # Load history into shell (shareHistory alternative)
 alias lh='fc -RI; echo "loaded and showing..."; history;'
