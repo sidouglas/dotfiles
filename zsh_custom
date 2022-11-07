@@ -53,9 +53,10 @@ alias python='/opt/homebrew/bin/python3'
 alias reload="source ~/.zshrc"              # reload:       Reload the shell (i.e. itself)
 alias rm=trash                              # rm:           Trash (move to trash)
 alias show_options='shopt'                  # Show_options: display bash options settings
-alias yt='yt-dlp'
 alias ytmp3='yt-dlp -x --audio-format mp3'  # Download from youtube, as mp3
-alias yt='yt-dlp -F'                        # Will show all possible downloads
+alias yt='echo "******USE ytdl id url OR ytbest url*******" && yt-dlp -F'                        # Will show all possible downloads
+alias ytdl="yt-dlp -f $1 $2"
+alias ytbest="yt-dlp -f 'bv*+ba' $1"
 alias ~="cd ~"                              # ~:            Go Home
 cd() { builtin cd "$@"; ls; }               # Always list directory contents upon 'cd'
 
