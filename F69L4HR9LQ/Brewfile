@@ -4,6 +4,7 @@ tap "getantibody/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+tap "iina/mpv-iina"
 tap "shivammathur/php"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@1.1"
@@ -13,8 +14,6 @@ brew "apr-util"
 brew "automake"
 # Command-line interface for SQLite
 brew "sqlite"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -31,6 +30,8 @@ brew "python@3.9"
 brew "harfbuzz"
 # High quality MPEG Audio Layer III (MP3) encoder
 brew "lame"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg@4"
 # Core component of the AcoustID project (Audio fingerprinting)
 brew "chromaprint"
 # Enables you to reproduce the CircleCI environment locally
@@ -53,8 +54,12 @@ brew "fzf"
 brew "libavif"
 # Graphics library to dynamically manipulate images
 brew "gd"
+# GitHub command-line tool
+brew "gh"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # Improved top (interactive process viewer)
 brew "htop"
 # Lightweight and flexible command-line JSON processor
@@ -109,8 +114,6 @@ cask "brave-browser"
 cask "caffeine"
 # Web debugging Proxy application
 cask "charles"
-# Turns any device with a web browser into a secondary screen
-cask "deskreen"
 # Voice and text chat software
 cask "discord"
 # Web browser
@@ -119,10 +122,14 @@ cask "firefox"
 cask "fluid"
 # Free and open-source image editor
 cask "gimp"
+# Web browser
+cask "google-chrome"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "google-cloud-sdk"
 # Client for the Google Drive storage service
 cask "google-drive"
+# Convert your caps lock key or any of your modifier keys to the hyper key
+cask "hyperkey"
 # Tool to optimize images to a smaller size
 cask "imageoptim"
 # Vector graphics editor
@@ -159,6 +166,8 @@ cask "private-internet-access"
 cask "raycast"
 # MySQL/MariaDB database management
 cask "sequel-ace"
+# Screenshot measurement and annotation tool
+cask "shottr"
 # Screen capture tool with mark up and sharing features
 cask "skitch"
 # Music streaming service
@@ -178,6 +187,8 @@ mas "Bitwarden", id: 1352778147
 mas "ColorSlurp", id: 1287239339
 mas "com.jbapps.MangoMacos", id: 1549961729
 mas "GarageBand", id: 682658836
+mas "GIPHY CAPTURE", id: 668208984
+mas "ImageDiff", id: 1602522152
 mas "iMovie", id: 408981434
 mas "Invisor", id: 442947586
 mas "Keynote", id: 409183694
