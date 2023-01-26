@@ -2,6 +2,7 @@ tap "aljohri/-"
 tap "aws/tap"
 tap "bbcrd/audiowaveform"
 tap "dotenv-linter/tap"
+tap "dwarvesf/tap"
 tap "eugenmayer/dockersync"
 tap "federico-terzi/espanso"
 tap "getantibody/tap"
@@ -16,8 +17,6 @@ tap "shivammathur/php"
 brew "apr-util"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -94,6 +93,8 @@ brew "mplayer"
 brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # Tool Command Language
 brew "tcl-tk"
 # Interpreted, interactive, object-oriented programming language
@@ -138,6 +139,8 @@ cask "gimp"
 cask "google-drive"
 # Open-source video transcoder
 cask "handbrake"
+# Convert your caps lock key or any of your modifier keys to the hyper key
+cask "hyperkey"
 # Tool to optimize images to a smaller size
 cask "imageoptim"
 # Vector graphics editor
@@ -154,6 +157,8 @@ cask "loom"
 cask "losslesscut"
 # File system integration
 cask "macfuse"
+# Extensible two-pane file manager
+cask "marta"
 # Visual diff and merge tool
 cask "meld"
 # Create mock APIs in seconds
@@ -186,3 +191,14 @@ cask "timemachineeditor"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
+mas "Base64Anywhere", id: 640841706
+mas "Bitwarden", id: 1352778147
+mas "FileBot", id: 905384638
+mas "Invisor", id: 442947586
+mas "Keynote", id: 409183694
+mas "mChapters", id: 563131976
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "The Unarchiver", id: 425424353
+mas "UTM", id: 1538878817
+mas "Xcode", id: 497799835
