@@ -69,6 +69,10 @@ alias lh='fc -RI; echo "loaded and showing..."; history;'
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 function trash () { command mv "$@" ~/.Trash ; }
 
+# MOV files
+function ffmov () { ffmpeg -i "$1" -vcodec h264 -acodec aac "${2:-output.mp4}" }
+function ffmov_no_audio () { ffmpeg -i "$1" -vcodec h264 -an "${2:-output-no-audio.mp4}"} 
+
 function killname() {
   if [ "$1" = "" ]; then
      echo "Nothing to do"

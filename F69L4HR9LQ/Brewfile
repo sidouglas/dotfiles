@@ -76,8 +76,12 @@ brew "nvm"
 brew "postgresql@14"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.8"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # SOund eXchange: universal sound sample translator
 brew "sox"
+# Very fast implementation of tldr in Rust
+brew "tealdeer"
 # Internet file retriever
 brew "wget"
 # Download YouTube videos from the command-line
@@ -96,6 +100,8 @@ brew "bbcrd/audiowaveform/audiowaveform"
 brew "shivammathur/php/php"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Memory training application
+cask "anki"
 # Allows connection to a computer remotely
 cask "anydesk"
 # Application uninstaller
@@ -106,6 +112,8 @@ cask "audacity"
 cask "balenaetcher"
 # Open-source KVM software
 cask "barrier"
+# Menu bar icon organizer
+cask "bartender"
 # Virtual Audio Driver
 cask "blackhole-2ch"
 # Web browser focusing on privacy
@@ -130,6 +138,8 @@ cask "google-cloud-sdk"
 cask "google-drive"
 # Convert your caps lock key or any of your modifier keys to the hyper key
 cask "hyperkey"
+# Free and open-source media player
+cask "iina"
 # Tool to optimize images to a smaller size
 cask "imageoptim"
 # Vector graphics editor
@@ -166,6 +176,8 @@ cask "private-internet-access"
 cask "raycast"
 # MySQL/MariaDB database management
 cask "sequel-ace"
+# App that enables mouse-free UI interaction
+cask "shortcat"
 # Screenshot measurement and annotation tool
 cask "shottr"
 # Screen capture tool with mark up and sharing features
@@ -180,14 +192,11 @@ cask "telegram-desktop"
 cask "timemachineeditor"
 # Open-source code editor
 cask "visual-studio-code"
-# Multimedia player
-cask "vlc"
 mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
 mas "ColorSlurp", id: 1287239339
 mas "com.jbapps.MangoMacos", id: 1549961729
 mas "GarageBand", id: 682658836
-mas "GIPHY CAPTURE", id: 668208984
 mas "ImageDiff", id: 1602522152
 mas "iMovie", id: 408981434
 mas "Invisor", id: 442947586
