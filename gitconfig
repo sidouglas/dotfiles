@@ -1,6 +1,6 @@
-[user]
- name = Simon Douglas
- email = 1107946+sidouglas@users.noreply.github.com
+# [user]
+# name = Simon Douglas
+# email = 1107946+sidouglas@users.noreply.github.com
 
 [user]
   name = Simon Douglas
@@ -11,13 +11,14 @@
     l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
     wip = !HUSKY=0 git add --all && HUSKY=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
     fix = !HUSKY=0 git wip && HUSKY=0 git squash 2 --no-verify --no-gpg-sign
-    nuke = !sh -c 'git checkout dev && git branch -df $1 && git checkout -b $1' -
-    # nukeall = "git branch -vv | grep ': gone]' | grep -v '\*' | awk '{ print $1; }' | xargs -r git branch -d"
+    #nuke = !sh -c 'git checkout dev && git branch -df $1 && git checkout -b $1'
+    #nukeall = "git branch -vv | grep ': gone]' | grep -v '\*' | awk '{ print $1; }' | xargs -r git branch -d"
     a = add
     p = pull
     h = push
     gp = git push -u origin HEAD
     gpf = git push -u origin HEAD -f
+    grs = "!git fetch --all && git rebase origin/staging"
     ap = add -p
     c = commit --verbose
     t = "!git describe --abbrev=0"
