@@ -111,6 +111,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh_custom
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 ZSH_SHARED="$HOME/Google Drive/My Drive/shared/.zsh_shared"
+
 if [ -f $ZSH_SHARED ];
 then
   GOOGLE_DRIVE_SHARED="$HOME/Google Drive/My Drive/shared"
@@ -126,8 +127,15 @@ else
   fi
 fi
 
+
+#SPOTIFY CONFIGS
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+
 #FZF
 export FZF_DEFAULT_OPS="--extended"
 export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export PATH="/usr/local/opt/curl/bin:$PATH" #see https://stackoverflow.com/a/68864725
+
+#FFMPEG
+export PATH="/opt/homebrew/opt/ffmpeg@4/bin:$PATH"

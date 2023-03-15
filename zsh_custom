@@ -40,13 +40,15 @@ alias cp='cp -iv'                           # Preferred cp implementation
 alias d='cd ~/Documents/'
 alias dockerkill='docker kill $(docker ps -q)'
 alias dockerstop='docker ps -aq | xargs docker stop'
+alias edit='open -na "IntelliJ IDEA.app" --args "$@"'
 alias exa='exa -laFh --git'
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
 alias ftrail='<<<${(F)fpath}'
+alias gr="git recentco"
 alias hosts="sudo nano /etc/hosts"
+alias ip="curl ifconfig.me"
 alias less='less -FSRXc'                    # Preferred 'less' implementation
 alias ls='exa'
-alias ip="curl ifconfig.me"
 alias man=batman
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
@@ -55,10 +57,10 @@ alias python='/opt/homebrew/bin/python3'
 alias reload="source ~/.zshrc"              # reload:       Reload the shell (i.e. itself)
 alias rm=trash                              # rm:           Trash (move to trash)
 alias show_options='shopt'                  # Show_options: display bash options settings
-alias ytmp3='yt-dlp -x --audio-format mp3'  # Download from youtube, as mp3
 alias yt='echo "******USE ytdl id url OR ytbest url*******" && yt-dlp -F'                        # Will show all possible downloads
-alias ytdl="yt-dlp -f $1 $2"
 alias ytbest="yt-dlp -f 'bv*+ba' $1"
+alias ytdl="yt-dlp -f $1 $2"
+alias ytmp3='yt-dlp -x --audio-format mp3'  # Download from youtube, as mp3
 alias ~="cd ~"                              # ~:            Go Home
 cd() { builtin cd "$@"; ls; }               # Always list directory contents upon 'cd'
 
@@ -73,10 +75,10 @@ function trash () { command mv "$@" ~/.Trash ; }
 
 # MOV files
 function ffmov () { ffmpeg -i "$1" -vcodec h264 -acodec aac "${2:-output.mp4}" }
-function ffmov_no_audio () { ffmpeg -i "$1" -vcodec h264 -an "${2:-output-no-audio.mp4}"} 
+function ffmov_no_audio () { ffmpeg -i "$1" -vcodec h264 -an "${2:-output-no-audio.mp4}"}
+function ffwebm () { ffmpeg -i "$1" -movflags faststart -profile:v high -level 4.2 "${2:-output.mp4}" }
 
-function killname() {
-  if [ "$1" = "" ]; then
+function killname() {  if [ "$1" = "" ]; then
      echo "Nothing to do"
   else
     ps -ej | grep "$1"

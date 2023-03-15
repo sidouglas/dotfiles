@@ -18,7 +18,7 @@
     h = push
     gp = git push -u origin HEAD
     gpf = git push -u origin HEAD -f
-    grs = "!git fetch --all && git rebase origin/staging"
+    rbs = "!git fetch --all && git rebase origin/staging"
     ap = add -p
     c = commit --verbose
     t = "!git describe --abbrev=0"
@@ -31,6 +31,7 @@
     dc = diff --cached
 
     s = status
+    ss = "!git fetch --all && git branch -r --sort=-committerdate --format=\"%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)\" --color=always"
     cob = checkout -b
     # list branches sorted by last modified
     b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
@@ -42,7 +43,7 @@
 
     # https://gist.github.com/hlecuanda/c9a5091938cd6a7b585d
     squash = "!f(){ HUSKY=0 git reset --soft HEAD~${1} && HUSKY=0 git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
-    tidy = "!git branch | grep -v staging | xargs git branch -D"
+    tidy="!git remote prune origin && git branch --merged > /tmp/merged-branches && sed -E '/(staging|master)/d' /tmp/merged-branches > /tmp/clean-branches && nano /tmp/clean-branches && xargs git branch -d </tmp/clean-branches"
     # purge = "!git branch --no-merged | sed -E '/(^\*|master|dev|uat)/' | xargs git branch -df"
     #This is a useful one for me, it allows me to rebase with the tracking branch even if I have uncommitted changes. Credit goes to @cmsolomon.
     rb = "!f() { \
@@ -84,3 +85,6 @@
 	ff = true
 [push]
 	autoSetupRemote = true
+
+[branch]
+    sort = -committerdate     # Descending
