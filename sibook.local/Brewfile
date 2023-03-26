@@ -27,8 +27,6 @@ brew "blueutil"
 brew "glib"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.9"
-# GNU Ubiquitous Intelligent Language for Extensions
-brew "guile"
 # Validating, recursive, caching DNS resolver
 brew "unbound"
 # GNU Transport Layer Security (TLS) Library
@@ -41,6 +39,8 @@ brew "lame"
 brew "libass"
 # Secure Reliable Transport
 brew "srt"
+# GNU Ubiquitous Intelligent Language for Extensions
+brew "guile"
 # Core component of the AcoustID project (Audio fingerprinting)
 brew "chromaprint"
 # Enables you to reproduce the CircleCI environment locally
@@ -193,6 +193,7 @@ cask "visual-studio-code"
 cask "vlc"
 mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
+mas "com.jbapps.MangoMacos", id: 1549961729
 mas "FileBot", id: 905384638
 mas "Invisor", id: 442947586
 mas "Keynote", id: 409183694
