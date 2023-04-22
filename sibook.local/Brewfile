@@ -119,6 +119,8 @@ cask "anydesk"
 cask "appcleaner"
 # Multi-track audio editor and recorder
 cask "audacity"
+# Menu bar icon organizer
+cask "bartender"
 # Virtual Audio Driver
 cask "blackhole-2ch"
 # Web browser focusing on privacy
@@ -141,6 +143,8 @@ cask "google-drive"
 cask "handbrake"
 # Convert your caps lock key or any of your modifier keys to the hyper key
 cask "hyperkey"
+# Free and open-source media player
+cask "iina"
 # Tool to optimize images to a smaller size
 cask "imageoptim"
 # Vector graphics editor
@@ -151,14 +155,10 @@ cask "insomnia"
 cask "jetbrains-toolbox"
 # Automation software
 cask "keyboard-maestro"
-# Screen and video recording software
-cask "loom"
 # Trims video and audio files losslessly
 cask "losslesscut"
 # File system integration
 cask "macfuse"
-# Extensible two-pane file manager
-cask "marta"
 # Visual diff and merge tool
 cask "meld"
 # Create mock APIs in seconds
@@ -169,6 +169,8 @@ cask "ngrok"
 cask "nosql-workbench"
 # App to write, plan, collaborate, and get organized
 cask "notion"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
 # VPN client
 cask "private-internet-access"
 # Control your tools with a few keystrokes
@@ -189,8 +191,6 @@ cask "telegram-desktop"
 cask "timemachineeditor"
 # Open-source code editor
 cask "visual-studio-code"
-# Multimedia player
-cask "vlc"
 mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
 mas "com.jbapps.MangoMacos", id: 1549961729
@@ -201,5 +201,4 @@ mas "mChapters", id: 563131976
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
-mas "UTM", id: 1538878817
 mas "Xcode", id: 497799835
