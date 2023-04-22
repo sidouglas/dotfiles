@@ -4,6 +4,7 @@ tap "getantibody/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+tap "homebrew/services"
 tap "iina/mpv-iina"
 tap "shivammathur/php"
 tap "spotify/sptaps", "git@ghe.spotify.net:shared/homebrew-spotify.git"
@@ -59,8 +60,6 @@ brew "gd"
 brew "gh"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
 # Like cURL, but for gRPC
 brew "grpcurl"
 # Improved top (interactive process viewer)
@@ -76,7 +75,9 @@ brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
 # Object-relational database system
-brew "postgresql@14"
+brew "postgresql@14", restart_service: true
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.8"
 # Search tool like grep and The Silver Searcher
@@ -87,6 +88,8 @@ brew "sox"
 brew "tealdeer"
 # Internet file retriever
 brew "wget"
+# Library to create, extract, and modify Windows Imaging files
+brew "wimlib"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
 # Fork of youtube-dl with additional features and fixes
@@ -123,8 +126,6 @@ cask "blackhole-2ch"
 cask "brave-browser"
 # Utility that prevents the system from going to sleep
 cask "caffeine"
-# Web debugging Proxy application
-cask "charles"
 # Voice and text chat software
 cask "discord"
 # Web browser
@@ -165,6 +166,8 @@ cask "ngrok"
 cask "nosql-workbench"
 # App to write, plan, collaborate, and get organized
 cask "notion"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
 # PDF compression tool
 cask "pdf-squeezer"
 # GUI client for PostgreSQL databases

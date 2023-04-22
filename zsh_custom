@@ -35,6 +35,8 @@ alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
 
 alias brewdump="mkdir -p $HOMEBREW_DIR && cd $HOMEBREW_DIR && brew bundle dump --force --describe && bat Brewfile"
+# updates all software installed via brew cask ( apps )
+alias brewupcask="brew outdated --cask --greedy --verbose | grep -v '(latest)' | awk '{print $1}' | xargs brew reinstall --cask"
 alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
 alias cp='cp -iv'                           # Preferred cp implementation
 alias d='cd ~/Documents/'
@@ -52,6 +54,7 @@ alias ls='exa'
 alias man=batman
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
+alias openb='open -na "Brave Browser" --args "$1"'
 alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
 alias python='/opt/homebrew/bin/python3'
 alias reload="source ~/.zshrc"              # reload:       Reload the shell (i.e. itself)
@@ -62,9 +65,8 @@ alias ytbest="yt-dlp -f 'bv*+ba' $1"
 alias ytdl="yt-dlp -f $1 $2"
 alias ytmp3='yt-dlp -x --audio-format mp3'  # Download from youtube, as mp3
 alias ~="cd ~"                              # ~:            Go Home
-cd() { builtin cd "$@"; ls; }               # Always list directory contents upon 'cd'
 
-alias openb='open -na "Brave Browser" --args "$1"'
+cd() { builtin cd "$@"; ls; }               # Always list directory contents upon 'cd'
 
 # Load history into shell (shareHistory alternative)
 alias lh='fc -RI; echo "loaded and showing..."; history;'
