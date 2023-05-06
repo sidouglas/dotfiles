@@ -36,7 +36,7 @@ alias .6='cd ../../../../../../'            # Go back 6 directory levels
 
 alias brewdump="mkdir -p $HOMEBREW_DIR && cd $HOMEBREW_DIR && brew bundle dump --force --describe && bat Brewfile"
 # updates all software installed via brew cask ( apps )
-alias brewupcask="brew outdated --cask --greedy --verbose | grep -v '(latest)' | awk '{print $1}' | xargs brew reinstall --cask"
+alias brewupcask="brew upgrade --cask --greedy"
 alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
 alias cp='cp -iv'                           # Preferred cp implementation
 alias d='cd ~/Documents/'

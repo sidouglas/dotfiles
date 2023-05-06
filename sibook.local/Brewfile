@@ -107,6 +107,8 @@ brew "wget"
 brew "yt-dlp"
 # General-purpose lossless data-compression library
 brew "zlib"
+# UNIX shell (command interpreter)
+brew "zsh"
 # AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
 brew "aws/tap/aws-sam-cli"
 # General-purpose scripting language
