@@ -137,6 +137,8 @@ cask "discord"
 cask "dropbox"
 # Web browser
 cask "firefox"
+# Screenshot software
+cask "flameshot"
 # Free and open-source image editor
 cask "gimp"
 # Client for the Google Drive storage service
@@ -147,8 +149,6 @@ cask "handbrake"
 cask "hyperkey"
 # Free and open-source media player
 cask "iina"
-# Tool to optimize images to a smaller size
-cask "imageoptim"
 # Vector graphics editor
 cask "inkscape"
 # HTTP and GraphQL Client
@@ -179,8 +179,8 @@ cask "private-internet-access"
 cask "raycast"
 # MySQL/MariaDB database management
 cask "sequel-ace"
-# Screen capture tool with mark up and sharing features
-cask "skitch"
+# App that enables mouse-free UI interaction
+cask "shortcat"
 # Team communication and collaboration software
 cask "slack"
 # Music streaming service
