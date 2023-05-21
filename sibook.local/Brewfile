@@ -113,8 +113,6 @@ brew "zsh"
 brew "aws/tap/aws-sam-cli"
 # General-purpose scripting language
 brew "shivammathur/php/php"
-# Password manager that keeps all passwords secure behind one password
-cask "1password"
 # Allows connection to a computer remotely
 cask "anydesk"
 # Application uninstaller
@@ -131,12 +129,12 @@ cask "brave-browser"
 cask "caffeine"
 # Web debugging Proxy application
 cask "charles"
-# Voice and text chat software
-cask "discord"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Web browser
 cask "firefox"
+# Screenshot software
+cask "flameshot"
 # Free and open-source image editor
 cask "gimp"
 # Client for the Google Drive storage service
@@ -147,8 +145,6 @@ cask "handbrake"
 cask "hyperkey"
 # Free and open-source media player
 cask "iina"
-# Tool to optimize images to a smaller size
-cask "imageoptim"
 # Vector graphics editor
 cask "inkscape"
 # HTTP and GraphQL Client
@@ -179,16 +175,14 @@ cask "private-internet-access"
 cask "raycast"
 # MySQL/MariaDB database management
 cask "sequel-ace"
-# Screen capture tool with mark up and sharing features
-cask "skitch"
+# App that enables mouse-free UI interaction
+cask "shortcat"
 # Team communication and collaboration software
 cask "slack"
 # Music streaming service
 cask "spotify"
 # System monitor for the menu bar
 cask "stats"
-# Desktop client for Telegram messenger
-cask "telegram-desktop"
 # Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
 # Open-source code editor
