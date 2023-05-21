@@ -80,6 +80,7 @@ function trash () { command mv "$@" ~/.Trash ; }
 function ffmov () { ffmpeg -i "$1" -vcodec h264 -acodec aac "${2:-output.mp4}" }
 function ffmov_no_audio () { ffmpeg -i "$1" -vcodec h264 -an "${2:-output-no-audio.mp4}"}
 function ffwebm () { ffmpeg -i "$1" -movflags faststart -profile:v high -level 4.2 "${2:-output.mp4}" }
+function m4amp3 () { ffmpeg -i "$1" -codec:v copy -codec:a libmp3lame -q:a 2 ${2:-output.mp3}" }
 
 function killname() {  if [ "$1" = "" ]; then
      echo "Nothing to do"
