@@ -113,8 +113,6 @@ brew "zsh"
 brew "aws/tap/aws-sam-cli"
 # General-purpose scripting language
 brew "shivammathur/php/php"
-# Password manager that keeps all passwords secure behind one password
-cask "1password"
 # Allows connection to a computer remotely
 cask "anydesk"
 # Application uninstaller
@@ -131,8 +129,6 @@ cask "brave-browser"
 cask "caffeine"
 # Web debugging Proxy application
 cask "charles"
-# Voice and text chat software
-cask "discord"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Web browser
@@ -187,8 +183,6 @@ cask "slack"
 cask "spotify"
 # System monitor for the menu bar
 cask "stats"
-# Desktop client for Telegram messenger
-cask "telegram-desktop"
 # Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
 # Open-source code editor
