@@ -132,6 +132,8 @@ cask "caffeine"
 cask "ferdium"
 # Web browser
 cask "firefox"
+# Screenshot software
+cask "flameshot"
 # Web browser
 cask "google-chrome"
 # Set of tools to manage resources and applications hosted on Google Cloud
@@ -150,6 +152,8 @@ cask "insomnia"
 cask "intellij-idea"
 # Automation software
 cask "keyboard-maestro"
+# Support for Logitech G gear
+cask "logitech-g-hub"
 # Screen and video recording software
 cask "loom"
 # Trims video and audio files losslessly
@@ -182,8 +186,6 @@ cask "sequel-ace"
 cask "shortcat"
 # Screenshot measurement and annotation tool
 cask "shottr"
-# Screen capture tool with mark up and sharing features
-cask "skitch"
 # Music streaming service
 cask "spotify"
 # System monitor for the menu bar
