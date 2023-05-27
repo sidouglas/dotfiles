@@ -149,8 +149,6 @@ cask "iina"
 cask "inkscape"
 # HTTP and GraphQL Client
 cask "insomnia"
-# JetBrains tools manager
-cask "jetbrains-toolbox"
 # Automation software
 cask "keyboard-maestro"
 # Trims video and audio files losslessly
@@ -169,6 +167,8 @@ cask "nosql-workbench"
 cask "notion"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# PDF compression tool
+cask "pdf-squeezer"
 # VPN client
 cask "private-internet-access"
 # Control your tools with a few keystrokes
