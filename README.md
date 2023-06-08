@@ -31,7 +31,7 @@ Deactivate licenses:
 2. `git clone https://github.com/sidouglas/dotfiles.git ~/.dotfiles`. We'll start with `https` but switch to `ssh` after everything is installed.
 3. `cd ~/.dotfiles`
 4. If necessary, `git checkout <another_branch>`.
-5. Do one last Software Audit by editing [Brewfile](Brewfile) directly.
+5. Do one last Software Audit by editing your Brewfile directly.
 6. [`./install`](install)
 7. Restart computer.
 8. Setup up Dropbox (use multifactor authentication!) and allow files to sync before setting up dependent applications. Alfred settings are stored here. Mackup depends on this as well (and thus so do Terminal and VS Code).

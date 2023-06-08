@@ -1,25 +1,37 @@
 #!/usr/bin/env zsh
-echo "Enter superuser password to edit /etc/shells"
-echo $HOMEBREW_PREFIX/bin/zsh | sudo tee -a '/etc/shells'
+echo "\n<<< Starting ZSH Setup >>>\n"
 
-# see https://apple.stackexchange.com/a/442468 is this does not work.
-echo "Enter user password to change login shell"
-chsh -s $HOMEBREW_PREFIX/bin/zsh
+# Installation unnecessary; it's in the Brewfile.
+
+# https://stackoverflow.com/a/4749368/1341838
+if grep -Fxq '/usr/local/bin/zsh' '/etc/shells'; then
+  echo '/usr/local/bin/zsh already exists in /etc/shells'
+else
+  echo "Enter superuser (sudo) password to edit /etc/shells"
+  echo '/usr/local/bin/zsh' | sudo tee -a '/etc/shells' >/dev/null
+fi
+
+
+if [ "$SHELL" = '/usr/local/bin/zsh' ]; then
+  echo '$SHELL is already /usr/local/bin/zsh'
+else
+  echo "Enter user password to change login shell"
+  chsh -s '/usr/local/bin/zsh'
+fi
+
+
+if sh --version | grep -q zsh; then
+  echo '/private/var/select/sh already linked to /bin/zsh'
+else
+  echo "Enter superuser (sudo) password to symlink sh to zsh"
+  # Looked cute, might delete later, idk
+  sudo ln -sfv /bin/zsh /private/var/select/sh
+
+  # I'd like for this to work instead.
+  # sudo ln -sfv /usr/local/bin/zsh /private/var/select/sh
+fi
 
 # https://ohmyz.sh/#install
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-sed -i '' 's/(git)/(\
-git\
-nvm\
-zsh-autosuggestions\
-)/g' ~/.dotfiles/zshrc
-
-# Vendor specific or private
-echo 'ZSH_SHARED=~/Google\ Drive/My\ Drive/shared/.zsh_shared' >> ~/.zshrc
-echo 'if [ -f $ZSH_SHARED ];' >> ~/.zshrc
-echo 'then' >> ~/.zshrc
-echo '  source $ZSH_SHARED' >> ~/.zshrc
-echo 'fi' >> ~/.zshrc
