@@ -144,3 +144,7 @@ export PATH="/usr/local/opt/curl/bin:$PATH" #see https://stackoverflow.com/a/688
 
 #FFMPEG
 export PATH="/opt/homebrew/opt/ffmpeg@4/bin:$PATH"
+
+#PHP sibook
+export PATH="/usr/local/opt/php@7.4/bin:$PATH"
+export PATH="/usr/local/opt/php@7.4/sbin:$PATH"

@@ -49,10 +49,6 @@ brew "circleci"
 brew "coreutils"
 # Open source suite of directory software
 brew "openldap"
-# Get a file from an HTTP, HTTPS or FTP server
-brew "curl"
-# Pack, ship and run any application as a lightweight container
-brew "docker"
 # Modern replacement for 'ls'
 brew "exa"
 # Simple, fast and user-friendly alternative to find
@@ -112,7 +108,7 @@ brew "zsh"
 # AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
 brew "aws/tap/aws-sam-cli"
 # General-purpose scripting language
-brew "shivammathur/php/php"
+brew "shivammathur/php/php@7.4"
 # Allows connection to a computer remotely
 cask "anydesk"
 # Application uninstaller
@@ -129,6 +125,8 @@ cask "brave-browser"
 cask "caffeine"
 # Web debugging Proxy application
 cask "charles"
+# App to build and share containerized applications and microservices
+cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Web browser
@@ -149,6 +147,8 @@ cask "iina"
 cask "inkscape"
 # HTTP and GraphQL Client
 cask "insomnia"
+# JetBrains tools manager
+cask "jetbrains-toolbox"
 # Automation software
 cask "keyboard-maestro"
 # Trims video and audio files losslessly
