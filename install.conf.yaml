@@ -1,4 +1,6 @@
 - defaults:
+    stdout: true
+    stderr: true
     link:
       relink: true
 
