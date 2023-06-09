@@ -1,31 +1,29 @@
+---
 - defaults:
-    stdout: true
-    stderr: true
-    link:
-      relink: true
-
-- clean: ['~']
-
+      stdout: true
+      stderr: true
+      link:
+          relink: true
+- clean:
+      - "~"
 - link:
-    ~/.bash_profile:
-    ~/.bashrc:
-    ~/.boto:
-    ~/.fzf:
-    ~/.gitconfig:
-    ~/.nanorc:
-    ~/.profile:
-    ~/.zlogin:
-    ~/.zsh_custom:
-    ~/.zshenv:
-    ~/.zshrc:
-
+      ~/.bash_profile: null
+      ~/.bashrc: null
+      ~/.boto: null
+      ~/.fzf: null
+      ~/.gitconfig: null
+      ~/.nanorc: null
+      ~/.profile: null
+      ~/.zlogin: null
+      ~/.zsh_custom: null
+      ~/.zshenv: null
+      ~/.zshrc: null
 - create:
-    - ~/downloads
-    - ~/.vim/undo-history
-
+      - ~/downloads
+      - ~/.vim/undo-history
 - shell:
-    - ./setup_homebrew.zsh
-    - ./setup_zsh.zsh
-    - ./setup_node.zsh
-    - ./setup_macos.zsh
-    - ./setup_disable_spotlight.zsh
+      - ./setup_homebrew.zsh
+      - ./setup_zsh.zsh
+      - ./setup_node.zsh
+      - ./setup_macos.zsh
+      - ./setup_disable_spotlight.zsh
