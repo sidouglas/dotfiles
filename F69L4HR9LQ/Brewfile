@@ -8,6 +8,12 @@ tap "homebrew/services"
 tap "iina/mpv-iina"
 tap "shivammathur/php"
 tap "spotify/sptaps", "git@ghe.spotify.net:shared/homebrew-spotify.git"
+# TIFF library and utilities
+brew "libtiff"
+# New file format for still image compression
+brew "jpeg-xl"
+# Codec library for encoding and decoding AV1 video streams
+brew "aom"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@1.1"
 # Companion library to apr, the Apache Portable Runtime library
@@ -66,6 +72,8 @@ brew "gnupg"
 brew "grpcurl"
 # Improved top (interactive process viewer)
 brew "htop"
+# Image loading and rendering library
+brew "imlib2"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # YAML Parser
@@ -211,3 +219,6 @@ mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
 mas "UTM", id: 1538878817
 mas "Xcode", id: 497799835
+vscode "chintans98.markdown-jira"
+vscode "shd101wyy.markdown-preview-enhanced"
+vscode "yzhang.markdown-all-in-one"
