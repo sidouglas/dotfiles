@@ -110,8 +110,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-echo ".zsh_custom loaded";
+
 source ~/.zsh_custom
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 ZSH_SHARED="$HOME/Google Drive/My Drive/shared/.zsh_shared"
 
