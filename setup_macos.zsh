@@ -24,6 +24,8 @@ defaults write com.apple.dock largesize -int 60
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-time-modifier -float 0.25
 defaults write com.apple.dock autohide-delay -float 0.1
+defaults write com.apple.dock orientation -string "left";
+
 
 # System Preferences > Accessibility > Pointer Control > Mouse & Trackpad > Trackpad Options > Enable Dragging > Three Finger Drag (NOTE: The GUI doesn't update)
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
