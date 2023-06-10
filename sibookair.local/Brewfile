@@ -1,0 +1,201 @@
+tap "aljohri/-"
+tap "aws/tap"
+tap "bbcrd/audiowaveform"
+tap "dotenv-linter/tap"
+tap "dwarvesf/tap"
+tap "eugenmayer/dockersync"
+tap "federico-terzi/espanso"
+tap "getantibody/tap"
+tap "heroku/brew"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "shivammathur/php"
+# Companion library to apr, the Apache Portable Runtime library
+brew "apr-util"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
+# Official Amazon AWS command-line interface
+brew "awscli"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Get/set bluetooth power and discoverable state
+brew "blueutil"
+# Core application library for C
+brew "glib"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
+# OpenType text shaping engine
+brew "harfbuzz"
+# High quality MPEG Audio Layer III (MP3) encoder
+brew "lame"
+# Subtitle renderer for the ASS/SSA subtitle format
+brew "libass"
+# Secure Reliable Transport
+brew "srt"
+# Core component of the AcoustID project (Audio fingerprinting)
+brew "chromaprint"
+# Enables you to reproduce the CircleCI environment locally
+brew "circleci"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Open source suite of directory software
+brew "openldap"
+# Modern replacement for 'ls'
+brew "exa"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# Libraries to talk to Microsoft SQL Server and Sybase databases
+brew "freetds"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Library for encoding and decoding .avif files
+brew "libavif"
+# Graphics library to dynamically manipulate images
+brew "gd"
+# Git-powered FTP client
+brew "git-ftp"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
+# Multimedia framework for research and academic purposes
+brew "gpac"
+# GNU Ubiquitous Intelligent Language for Extensions
+brew "guile"
+# Improved top (interactive process viewer)
+brew "htop"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Network authentication protocol
+brew "krb5"
+# YAML Parser
+brew "libyaml"
+# Mac App Store command-line interface
+brew "mas"
+# Read, create, and modify MP4 files
+brew "mp4v2"
+# UNIX movie player
+brew "mplayer"
+# Platform built on V8 to build network applications
+brew "node"
+# Manage multiple Node.js versions
+brew "nvm"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
+# Tool Command Language
+brew "tcl-tk"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.8"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
+# SOund eXchange: universal sound sample translator
+brew "sox"
+# Internet file retriever
+brew "wget"
+# Fork of youtube-dl with additional features and fixes
+brew "yt-dlp"
+# General-purpose lossless data-compression library
+brew "zlib"
+# UNIX shell (command interpreter)
+brew "zsh"
+# AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
+brew "aws/tap/aws-sam-cli"
+# General-purpose scripting language
+brew "shivammathur/php/php@7.4"
+# Allows connection to a computer remotely
+cask "anydesk"
+# Application uninstaller
+cask "appcleaner"
+# Multi-track audio editor and recorder
+cask "audacity"
+# Menu bar icon organizer
+cask "bartender"
+# Virtual Audio Driver
+cask "blackhole-2ch"
+# Web browser focusing on privacy
+cask "brave-browser"
+# Utility that prevents the system from going to sleep
+cask "caffeine"
+# Web debugging Proxy application
+cask "charles"
+# App to build and share containerized applications and microservices
+cask "docker"
+# Client for the Dropbox cloud storage service
+cask "dropbox"
+# Multi-platform multi-messaging app
+cask "ferdium"
+# Web browser
+cask "firefox"
+# Screenshot software
+cask "flameshot"
+# Free and open-source image editor
+cask "gimp"
+# Client for the Google Drive storage service
+cask "google-drive"
+# Open-source video transcoder
+cask "handbrake"
+# Convert your caps lock key or any of your modifier keys to the hyper key
+cask "hyperkey"
+# Free and open-source media player
+cask "iina"
+# Vector graphics editor
+cask "inkscape"
+# HTTP and GraphQL Client
+cask "insomnia"
+# JetBrains tools manager
+cask "jetbrains-toolbox"
+# Automation software
+cask "keyboard-maestro"
+# Trims video and audio files losslessly
+cask "losslesscut"
+# File system integration
+cask "macfuse"
+# Visual diff and merge tool
+cask "meld"
+# Create mock APIs in seconds
+cask "mockoon"
+# Reverse proxy, secure introspectable tunnels to localhost
+cask "ngrok"
+# Client-side GUI application for modern database development and operations
+cask "nosql-workbench"
+# App to write, plan, collaborate, and get organized
+cask "notion"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# PDF compression tool
+cask "pdf-squeezer"
+# Control your tools with a few keystrokes
+cask "raycast"
+# MySQL/MariaDB database management
+cask "sequel-ace"
+# App that enables mouse-free UI interaction
+cask "shortcat"
+# Team communication and collaboration software
+cask "slack"
+# Music streaming service
+cask "spotify"
+# System monitor for the menu bar
+cask "stats"
+# Utility to change the default backup interval of Time Machine
+cask "timemachineeditor"
+# Open-source code editor
+cask "visual-studio-code"
+mas "Bitwarden", id: 1352778147
+mas "com.jbapps.MangoMacos", id: 1549961729
+mas "FileBot", id: 905384638
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Invisor", id: 442947586
+mas "Keynote", id: 409183694
+mas "mChapters", id: 563131976
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "The Unarchiver", id: 425424353
+mas "Xcode", id: 497799835
