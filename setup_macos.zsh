@@ -29,6 +29,7 @@ defaults write com.apple.dock orientation -string "left";
 
 # System Preferences > Accessibility > Pointer Control > Mouse & Trackpad > Trackpad Options > Enable Dragging > Three Finger Drag (NOTE: The GUI doesn't update)
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 
 # Third-Party Software
 
