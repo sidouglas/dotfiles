@@ -4,7 +4,6 @@ tap "bbcrd/audiowaveform"
 tap "dotenv-linter/tap"
 tap "dwarvesf/tap"
 tap "eugenmayer/dockersync"
-tap "federico-terzi/espanso"
 tap "getantibody/tap"
 tap "heroku/brew"
 tap "homebrew/bundle"
@@ -12,7 +11,6 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "shivammathur/php"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
 # Tool for generating GNU Standards-compliant Makefiles
@@ -107,8 +105,8 @@ brew "zlib"
 brew "zsh"
 # AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
 brew "aws/tap/aws-sam-cli"
-# General-purpose scripting language
-brew "shivammathur/php/php@7.4"
+# Memory training application
+cask "anki"
 # Allows connection to a computer remotely
 cask "anydesk"
 # Application uninstaller
@@ -129,6 +127,8 @@ cask "charles"
 cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
+# Desktop wallet for cryptocurrency assets
+cask "exodus"
 # Multi-platform multi-messaging app
 cask "ferdium"
 # Web browser
@@ -155,8 +155,6 @@ cask "jetbrains-toolbox"
 cask "keyboard-maestro"
 # Trims video and audio files losslessly
 cask "losslesscut"
-# File system integration
-cask "macfuse"
 # Visual diff and merge tool
 cask "meld"
 # Create mock APIs in seconds
@@ -167,8 +165,6 @@ cask "ngrok"
 cask "nosql-workbench"
 # App to write, plan, collaborate, and get organized
 cask "notion"
-# Knowledge base that works on top of a local folder of plain text Markdown files
-cask "obsidian"
 # PDF compression tool
 cask "pdf-squeezer"
 # Control your tools with a few keystrokes
