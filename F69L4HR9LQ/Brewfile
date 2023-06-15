@@ -80,8 +80,6 @@ brew "jq"
 brew "libyaml"
 # Mac App Store command-line interface
 brew "mas"
-# Platform built on V8 to build network applications
-brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
 # Object-relational database system
@@ -116,8 +114,6 @@ brew "bbcrd/audiowaveform/audiowaveform"
 brew "shivammathur/php/php"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
-# Enable Windows-like alt-tab
-cask "alt-tab"
 # Memory training application
 cask "anki"
 # Allows connection to a computer remotely
