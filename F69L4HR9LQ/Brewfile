@@ -136,8 +136,6 @@ cask "caffeine"
 cask "ferdium"
 # Web browser
 cask "firefox"
-# Screenshot software
-cask "flameshot"
 # Web browser
 cask "google-chrome"
 # Set of tools to manage resources and applications hosted on Google Cloud
@@ -172,8 +170,6 @@ cask "ngrok"
 cask "nosql-workbench"
 # App to write, plan, collaborate, and get organized
 cask "notion"
-# Knowledge base that works on top of a local folder of plain text Markdown files
-cask "obsidian"
 # PDF compression tool
 cask "pdf-squeezer"
 # GUI client for PostgreSQL databases
@@ -203,7 +199,6 @@ cask "visual-studio-code"
 mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
 mas "ColorSlurp", id: 1287239339
-mas "com.jbapps.MangoMacos", id: 1549961729
 mas "GarageBand", id: 682658836
 mas "ImageDiff", id: 1602522152
 mas "iMovie", id: 408981434
