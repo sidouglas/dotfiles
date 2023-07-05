@@ -15,6 +15,7 @@
       ~/.nanorc: null
       ~/.profile: null
       ~/.zlogin: null
+      ~/.zprofile: null
       ~/.zsh_custom: null
       ~/.zshenv: null
       ~/.zshrc: null
@@ -22,4 +23,8 @@
       - ~/downloads
       - ~/.vim/undo-history
 - shell:
-      - ./setup_homebrew.zsh
+      #- ./setup_homebrew.zsh
+      #- ./setup_zsh.zsh
+      #- ./setup_node.zsh
+      #- ./setup_macos.zsh
+      #- ./setup_disable_spotlight.zsh

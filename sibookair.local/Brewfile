@@ -4,7 +4,6 @@ tap "bbcrd/audiowaveform"
 tap "dotenv-linter/tap"
 tap "dwarvesf/tap"
 tap "eugenmayer/dockersync"
-tap "federico-terzi/espanso"
 tap "getantibody/tap"
 tap "heroku/brew"
 tap "homebrew/bundle"
@@ -12,7 +11,6 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "shivammathur/php"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
 # Tool for generating GNU Standards-compliant Makefiles
@@ -107,8 +105,8 @@ brew "zlib"
 brew "zsh"
 # AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
 brew "aws/tap/aws-sam-cli"
-# General-purpose scripting language
-brew "shivammathur/php/php@7.4"
+# Memory training application
+cask "anki"
 # Allows connection to a computer remotely
 cask "anydesk"
 # Application uninstaller
@@ -117,24 +115,28 @@ cask "appcleaner"
 cask "audacity"
 # Menu bar icon organizer
 cask "bartender"
-# Virtual Audio Driver
-cask "blackhole-2ch"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Utility that prevents the system from going to sleep
 cask "caffeine"
 # Web debugging Proxy application
 cask "charles"
+# Tool to list all active shortcuts of the current application
+cask "cheatsheet"
+# Calendar for professionals and teams
+cask "cron"
+# Server and cloud storage browser
+cask "cyberduck"
 # App to build and share containerized applications and microservices
 cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
+# Desktop wallet for cryptocurrency assets
+cask "exodus"
 # Multi-platform multi-messaging app
 cask "ferdium"
 # Web browser
 cask "firefox"
-# Screenshot software
-cask "flameshot"
 # Free and open-source image editor
 cask "gimp"
 # Client for the Google Drive storage service
@@ -153,10 +155,10 @@ cask "insomnia"
 cask "jetbrains-toolbox"
 # Automation software
 cask "keyboard-maestro"
+# Office suite
+cask "libreoffice"
 # Trims video and audio files losslessly
 cask "losslesscut"
-# File system integration
-cask "macfuse"
 # Visual diff and merge tool
 cask "meld"
 # Create mock APIs in seconds
@@ -167,16 +169,18 @@ cask "ngrok"
 cask "nosql-workbench"
 # App to write, plan, collaborate, and get organized
 cask "notion"
-# Knowledge base that works on top of a local folder of plain text Markdown files
-cask "obsidian"
 # PDF compression tool
 cask "pdf-squeezer"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Screen recording and video editing software
+cask "screenflow"
 # MySQL/MariaDB database management
 cask "sequel-ace"
 # App that enables mouse-free UI interaction
 cask "shortcat"
+# Screenshot measurement and annotation tool
+cask "shottr"
 # Team communication and collaboration software
 cask "slack"
 # Music streaming service
@@ -188,7 +192,6 @@ cask "timemachineeditor"
 # Open-source code editor
 cask "visual-studio-code"
 mas "Bitwarden", id: 1352778147
-mas "com.jbapps.MangoMacos", id: 1549961729
 mas "FileBot", id: 905384638
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434

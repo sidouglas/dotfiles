@@ -41,6 +41,7 @@ alias cp='cp -iv'                           # Preferred cp implementation
 alias d='cd ~/Documents/'
 alias dockerkill='docker kill $(docker ps -q)'
 alias dockerstop='docker ps -aq | xargs docker stop'
+alias docx2pdf='/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf --outdir . "$1"'
 alias edit='open -na "IntelliJ IDEA.app" --args "$@"'
 alias exa='exa -laFh --git'
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
@@ -91,6 +92,6 @@ function killname() {  if [ "$1" = "" ]; then
 function kp (){ kill -9 $(lsof -i:"$1" -t); }
 
 # Brew
-alias brew_upgrade_casks="for cask in \$(brew outdated --cask --greedy); do brew upgrade --cask \"\$cask\"; done"
+alias brew_upgrade_casks='for cask in $(brew outdated --cask --greedy); do brew upgrade --cask "$cask"; done'
 alias brew_outdated="brew outdated --cask --greedy"
 alias brewdump="mkdir -p $HOMEBREW_DIR && cd $HOMEBREW_DIR && brew bundle dump --force --describe && bat Brewfile"
