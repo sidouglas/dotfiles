@@ -114,6 +114,8 @@ brew "bbcrd/audiowaveform/audiowaveform"
 brew "shivammathur/php/php"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Enable Windows-like alt-tab
+cask "alt-tab"
 # Memory training application
 cask "anki"
 # Allows connection to a computer remotely
@@ -132,6 +134,10 @@ cask "blackhole-2ch"
 cask "brave-browser"
 # Utility that prevents the system from going to sleep
 cask "caffeine"
+# Tool to list all active shortcuts of the current application
+cask "cheatsheet"
+# Calendar for professionals and teams
+cask "cron"
 # Multi-platform multi-messaging app
 cask "ferdium"
 # Web browser
@@ -146,6 +152,8 @@ cask "google-drive"
 cask "hyperkey"
 # Free and open-source media player
 cask "iina"
+# Tool to optimize images to a smaller size
+cask "imageoptim"
 # Vector graphics editor
 cask "inkscape"
 # HTTP and GraphQL Client
@@ -154,6 +162,8 @@ cask "insomnia"
 cask "intellij-idea"
 # Automation software
 cask "keyboard-maestro"
+# Office suite
+cask "libreoffice"
 # Support for Logitech G gear
 cask "logitech-g-hub"
 # Screen and video recording software
@@ -188,14 +198,14 @@ cask "shortcat"
 cask "shottr"
 # Music streaming service
 cask "spotify"
-# System monitor for the menu bar
-cask "stats"
 # Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
 # TinyPNG client
 cask "tinypng4mac"
 # Open-source code editor
 cask "visual-studio-code"
+# Video communication and virtual meeting platform
+cask "zoom"
 mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
 mas "ColorSlurp", id: 1287239339
