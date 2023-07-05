@@ -92,6 +92,6 @@ function killname() {  if [ "$1" = "" ]; then
 function kp (){ kill -9 $(lsof -i:"$1" -t); }
 
 # Brew
-alias brew_upgrade_casks="for cask in \$(brew outdated --cask --greedy); do sudo brew upgrade --cask \"\$cask\"; done"
+alias brew_upgrade_casks='for cask in $(brew outdated --cask --greedy); do brew upgrade --cask "$cask"; done'
 alias brew_outdated="brew outdated --cask --greedy"
 alias brewdump="mkdir -p $HOMEBREW_DIR && cd $HOMEBREW_DIR && brew bundle dump --force --describe && bat Brewfile"
