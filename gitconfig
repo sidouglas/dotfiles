@@ -14,25 +14,26 @@
     #nuke = !sh -c 'git checkout dev && git branch -df $1 && git checkout -b $1'
     #nukeall = "git branch -vv | grep ': gone]' | grep -v '\*' | awk '{ print $1; }' | xargs -r git branch -d"
     a = add
-    p = pull
-    h = push
-    gp = git push -u origin HEAD
-    gpf = git push -u origin HEAD -f
-    rbs = "!git fetch --all && git rebase origin/staging"
     ap = add -p
     c = commit --verbose
-    t = "!git describe --abbrev=0"
     ca = commit -a --verbose
-    cm = commit -m
     cam = commit -a -m
-    m = commit --amend --verbose
-    d = diff
-    ds = diff --stat
-    dc = diff --cached
-
-    s = status
-    ss = "!git fetch --all && git branch -r --sort=-committerdate --format=\"%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)\" --color=always"
+    cm = commit -m
     cob = checkout -b
+    d = diff
+    dc = diff --cached
+    ds = diff --stat
+    gp = git push -u origin HEAD
+    gpf = git push -u origin HEAD -f
+    h = push
+    m = commit --amend --verbose
+    p = pull
+    rbs = "!git fetch --all && git rebase origin/staging"
+    s = status
+    search = "!f() { git log -p -S \"$1\" -- \"${2:-.}\"; }; f"
+    ss = "!git fetch --all && git branch -r --sort=-committerdate --format=\"%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)\" --color=always"
+    t = "!git describe --abbrev=0"
+
     # list branches sorted by last modified
     b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
 
