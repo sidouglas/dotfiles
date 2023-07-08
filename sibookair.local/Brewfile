@@ -81,8 +81,6 @@ brew "mas"
 brew "mp4v2"
 # UNIX movie player
 brew "mplayer"
-# Platform built on V8 to build network applications
-brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
 # Interpreted, interactive, object-oriented programming language
@@ -105,6 +103,8 @@ brew "zlib"
 brew "zsh"
 # AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
 brew "aws/tap/aws-sam-cli"
+# Enable Windows-like alt-tab
+cask "alt-tab"
 # Memory training application
 cask "anki"
 # Allows connection to a computer remotely
@@ -139,6 +139,8 @@ cask "ferdium"
 cask "firefox"
 # Free and open-source image editor
 cask "gimp"
+# Web browser
+cask "google-chrome"
 # Client for the Google Drive storage service
 cask "google-drive"
 # Open-source video transcoder
@@ -171,6 +173,8 @@ cask "nosql-workbench"
 cask "notion"
 # PDF compression tool
 cask "pdf-squeezer"
+# PDF editing software
+cask "pdfpen"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Screen recording and video editing software
