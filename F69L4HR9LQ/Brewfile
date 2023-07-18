@@ -200,8 +200,6 @@ cask "shottr"
 cask "spotify"
 # Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
-# TinyPNG client
-cask "tinypng4mac"
 # Open-source code editor
 cask "visual-studio-code"
 # Video communication and virtual meeting platform
