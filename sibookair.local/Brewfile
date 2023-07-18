@@ -43,6 +43,8 @@ brew "circleci"
 brew "coreutils"
 # Open source suite of directory software
 brew "openldap"
+# Pack, ship and run any application as a lightweight container
+brew "docker", link: false
 # Modern replacement for 'ls'
 brew "exa"
 # Simple, fast and user-friendly alternative to find
@@ -115,6 +117,8 @@ cask "appcleaner"
 cask "audacity"
 # Menu bar icon organizer
 cask "bartender"
+# Desktop password and login vault
+cask "bitwarden"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Utility that prevents the system from going to sleep
@@ -135,6 +139,8 @@ cask "dropbox"
 cask "exodus"
 # Multi-platform multi-messaging app
 cask "ferdium"
+# Tool for organizing and renaming movies, TV shows, anime or music
+cask "filebot"
 # Web browser
 cask "firefox"
 # Free and open-source image editor
@@ -191,18 +197,16 @@ cask "slack"
 cask "spotify"
 # System monitor for the menu bar
 cask "stats"
+# Unpacks archive files
+cask "the-unarchiver"
 # Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
 # Open-source code editor
 cask "visual-studio-code"
-mas "Bitwarden", id: 1352778147
-mas "FileBot", id: 905384638
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
-mas "Invisor", id: 442947586
 mas "Keynote", id: 409183694
 mas "mChapters", id: 563131976
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "The Unarchiver", id: 425424353
 mas "Xcode", id: 497799835
