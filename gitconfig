@@ -11,8 +11,8 @@
     l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
     wip = !HUSKY=0 git add --all && HUSKY=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
     fix = !HUSKY=0 git wip && HUSKY=0 git squash 2 --no-verify --no-gpg-sign
-    #nuke = !sh -c 'git checkout dev && git branch -df $1 && git checkout -b $1'
-    #nukeall = "git branch -vv | grep ': gone]' | grep -v '\*' | awk '{ print $1; }' | xargs -r git branch -d"
+    nuke = !sh -c 'git checkout staging && git branch -df $1 && git checkout -b $1'
+    nukeall ="!git branch | grep -v "staging" | xargs git branch -d"
     a = add
     ap = add -p
     c = commit --verbose
@@ -28,7 +28,7 @@
     h = push
     m = commit --amend --verbose
     p = pull
-    rbs = "!git fetch --all && git rebase origin/staging"
+    rbs = "!git fetch origin staging && git rebase origin/staging"
     s = status
     search = "!f() { git log -p -S \"$1\" -- \"${2:-.}\"; }; f"
     ss = "!git fetch --all && git branch -r --sort=-committerdate --format=\"%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)\" --color=always"
@@ -40,7 +40,7 @@
     # list aliases
     la = "!git config -l | grep alias | cut -c 7-"
     co = "!git checkout $(git branch | fzf | tr -d '[:space:]')"
-    
+
 
     # https://gist.github.com/hlecuanda/c9a5091938cd6a7b585d
     squash = "!f(){ HUSKY=0 git reset --soft HEAD~${1} && HUSKY=0 git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"

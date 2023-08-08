@@ -2,8 +2,6 @@ tap "aws/tap"
 tap "bbcrd/audiowaveform"
 tap "getantibody/tap"
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
 tap "homebrew/services"
 tap "iina/mpv-iina"
 tap "shivammathur/php"
@@ -14,12 +12,12 @@ brew "libtiff"
 brew "jpeg-xl"
 # Codec library for encoding and decoding AV1 video streams
 brew "aom"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
 # Command-line interface for SQLite
 brew "sqlite"
 # Official Amazon AWS command-line interface
@@ -110,8 +108,6 @@ brew "zsh"
 brew "aws/tap/aws-sam-cli"
 # C++ program to generate waveform data and render waveform images from audio files
 brew "bbcrd/audiowaveform/audiowaveform"
-# General-purpose scripting language
-brew "shivammathur/php/php"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Enable Windows-like alt-tab
@@ -128,14 +124,10 @@ cask "audacity"
 cask "balenaetcher"
 # Menu bar icon organizer
 cask "bartender"
-# Virtual Audio Driver
-cask "blackhole-2ch"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Utility that prevents the system from going to sleep
 cask "caffeine"
-# Tool to list all active shortcuts of the current application
-cask "cheatsheet"
 # Calendar for professionals and teams
 cask "cron"
 # Multi-platform multi-messaging app
@@ -162,7 +154,7 @@ cask "insomnia"
 cask "intellij-idea"
 # Automation software
 cask "keyboard-maestro"
-# Office suite
+# Free cross-platform office suite, fresh version
 cask "libreoffice"
 # Support for Logitech G gear
 cask "logitech-g-hub"
@@ -170,8 +162,14 @@ cask "logitech-g-hub"
 cask "loom"
 # Trims video and audio files losslessly
 cask "losslesscut"
+# Open-source firewall to block unknown outgoing connections
+cask "lulu"
 # Visual diff and merge tool
 cask "meld"
+# Provides updates to various Microsoft products
+cask "microsoft-auto-update"
+# Presentation software
+cask "microsoft-powerpoint"
 # Create mock APIs in seconds
 cask "mockoon"
 # Reverse proxy, secure introspectable tunnels to localhost
@@ -217,7 +215,6 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
 mas "UTM", id: 1538878817
-mas "Xcode", id: 497799835
 vscode "chintans98.markdown-jira"
 vscode "shd101wyy.markdown-preview-enhanced"
 vscode "yzhang.markdown-all-in-one"
