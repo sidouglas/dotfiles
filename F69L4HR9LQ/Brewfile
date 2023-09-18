@@ -20,6 +20,10 @@ brew "automake"
 brew "openssl@1.1"
 # Command-line interface for SQLite
 brew "sqlite"
+# YAML Parser
+brew "libyaml"
+# CLI tool to build, test, debug, and deploy Serverless applications using AWS SAM
+brew "aws-sam-cli"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -74,8 +78,6 @@ brew "htop"
 brew "imlib2"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# YAML Parser
-brew "libyaml"
 # Mac App Store command-line interface
 brew "mas"
 # Manage multiple Node.js versions
@@ -98,19 +100,19 @@ brew "wget"
 brew "wimlib"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
 # Fork of youtube-dl with additional features and fixes
 brew "yt-dlp"
 # General-purpose lossless data-compression library
 brew "zlib"
 # UNIX shell (command interpreter)
 brew "zsh"
-# AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
-brew "aws/tap/aws-sam-cli"
-# C++ program to generate waveform data and render waveform images from audio files
+# Generate waveform data and render waveform images from audio files
 brew "bbcrd/audiowaveform/audiowaveform"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
-# Command-line helper for the 1Password password manager
+# Command-line interface for 1Password
 cask "1password-cli"
 # Enable Windows-like alt-tab
 cask "alt-tab"
@@ -132,6 +134,8 @@ cask "brave-browser"
 cask "caffeine"
 # Calendar for professionals and teams
 cask "cron"
+# App to build and share containerized applications and microservices
+cask "docker"
 # Multi-platform multi-messaging app
 cask "ferdium"
 # Web browser
@@ -174,8 +178,6 @@ cask "microsoft-auto-update"
 cask "microsoft-powerpoint"
 # Create mock APIs in seconds
 cask "mockoon"
-# Reverse proxy, secure introspectable tunnels to localhost
-cask "ngrok"
 # Client-side GUI application for modern database development and operations
 cask "nosql-workbench"
 # App to write, plan, collaborate, and get organized
@@ -196,12 +198,8 @@ cask "sequel-ace"
 cask "shortcat"
 # Screenshot measurement and annotation tool
 cask "shottr"
-# Music streaming service
-cask "spotify"
 # Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
-# Open-source code editor
-cask "visual-studio-code"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "Base64Anywhere", id: 640841706
@@ -217,6 +215,3 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
 mas "UTM", id: 1538878817
-vscode "chintans98.markdown-jira"
-vscode "shd101wyy.markdown-preview-enhanced"
-vscode "yzhang.markdown-all-in-one"
