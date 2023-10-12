@@ -1,5 +1,6 @@
 tap "aws/tap"
 tap "bbcrd/audiowaveform"
+tap "dahlia/jetbrains-eap"
 tap "getantibody/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
@@ -26,6 +27,8 @@ brew "libyaml"
 brew "aws-sam-cli"
 # Official Amazon AWS command-line interface
 brew "awscli"
+# C library implementing the SSH2 protocol
+brew "libssh2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Get/set bluetooth power and discoverable state
@@ -34,8 +37,6 @@ brew "blueutil"
 brew "boost"
 # Core application library for C
 brew "glib"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # OpenType text shaping engine
 brew "harfbuzz"
 # High quality MPEG Audio Layer III (MP3) encoder
@@ -44,12 +45,8 @@ brew "lame"
 brew "ffmpeg@4"
 # Core component of the AcoustID project (Audio fingerprinting)
 brew "chromaprint"
-# Enables you to reproduce the CircleCI environment locally
-brew "circleci"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# C library implementing the SSH2 protocol
-brew "libssh2"
 # Modern replacement for 'ls'
 brew "exa"
 # Simple, fast and user-friendly alternative to find
@@ -88,6 +85,8 @@ brew "postgresql@14", restart_service: true
 brew "python@3.10"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.8"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # SOund eXchange: universal sound sample translator
@@ -110,6 +109,7 @@ brew "zlib"
 brew "zsh"
 # Generate waveform data and render waveform images from audio files
 brew "bbcrd/audiowaveform/audiowaveform"
+brew "spotify/sptaps/kubectl-site"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
@@ -124,8 +124,6 @@ cask "anydesk"
 cask "appcleaner"
 # Multi-track audio editor and recorder
 cask "audacity"
-# Tool to flash OS images to SD cards & USB drives
-cask "balenaetcher"
 # Menu bar icon organizer
 cask "bartender"
 # Web browser focusing on privacy
@@ -178,16 +176,12 @@ cask "microsoft-auto-update"
 cask "microsoft-powerpoint"
 # Create mock APIs in seconds
 cask "mockoon"
-# Client-side GUI application for modern database development and operations
-cask "nosql-workbench"
 # App to write, plan, collaborate, and get organized
 cask "notion"
 # PDF compression tool
 cask "pdf-squeezer"
 # GUI client for PostgreSQL databases
 cask "postico"
-# VPN client
-cask "private-internet-access"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Screen recording and video editing software
@@ -213,5 +207,6 @@ mas "Keynote", id: 409183694
 mas "mChapters", id: 563131976
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Peek", id: 1554235898
 mas "The Unarchiver", id: 425424353
 mas "UTM", id: 1538878817
