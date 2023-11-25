@@ -15,8 +15,6 @@ tap "homebrew/services"
 brew "apr-util"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
-# Official Amazon AWS command-line interface
-brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Get/set bluetooth power and discoverable state
@@ -85,16 +83,10 @@ brew "mp4v2"
 brew "mplayer"
 # Manage multiple Node.js versions
 brew "nvm"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
-# Tool Command Language
-brew "tcl-tk"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.8"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # SOund eXchange: universal sound sample translator
 brew "sox"
+# Tool Command Language
+brew "tcl-tk"
 # Internet file retriever
 brew "wget"
 # Fork of youtube-dl with additional features and fixes
@@ -103,8 +95,6 @@ brew "yt-dlp"
 brew "zlib"
 # UNIX shell (command interpreter)
 brew "zsh"
-# AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
-brew "aws/tap/aws-sam-cli"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Memory training application
@@ -159,22 +149,20 @@ cask "iina"
 cask "inkscape"
 # HTTP and GraphQL Client
 cask "insomnia"
-# JetBrains tools manager
-cask "jetbrains-toolbox"
 # Automation software
 cask "keyboard-maestro"
-# Office suite
+# Free cross-platform office suite, fresh version
 cask "libreoffice"
 # Trims video and audio files losslessly
 cask "losslesscut"
+# Open-source firewall to block unknown outgoing connections
+cask "lulu"
 # Visual diff and merge tool
 cask "meld"
 # Create mock APIs in seconds
 cask "mockoon"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
-# Client-side GUI application for modern database development and operations
-cask "nosql-workbench"
 # App to write, plan, collaborate, and get organized
 cask "notion"
 # PDF compression tool
@@ -197,6 +185,8 @@ cask "slack"
 cask "spotify"
 # System monitor for the menu bar
 cask "stats"
+# Open-source media center
+cask "stremio"
 # Unpacks archive files
 cask "the-unarchiver"
 # Utility to change the default backup interval of Time Machine
@@ -209,4 +199,5 @@ mas "Keynote", id: 409183694
 mas "mChapters", id: 563131976
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Peek", id: 1554235898
 mas "Xcode", id: 497799835
