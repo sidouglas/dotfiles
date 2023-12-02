@@ -17,16 +17,6 @@ brew "aom"
 brew "apr-util"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
-# Command-line interface for SQLite
-brew "sqlite"
-# YAML Parser
-brew "libyaml"
-# CLI tool to build, test, debug, and deploy Serverless applications using AWS SAM
-brew "aws-sam-cli"
-# Official Amazon AWS command-line interface
-brew "awscli"
 # C library implementing the SSH2 protocol
 brew "libssh2"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -41,6 +31,8 @@ brew "glib"
 brew "harfbuzz"
 # High quality MPEG Audio Layer III (MP3) encoder
 brew "lame"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg@4"
 # Core component of the AcoustID project (Audio fingerprinting)
@@ -67,6 +59,8 @@ brew "gh"
 brew "git"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Command-line interface for SQLite
+brew "sqlite"
 # Like cURL, but for gRPC
 brew "grpcurl"
 # Improved top (interactive process viewer)
@@ -75,6 +69,8 @@ brew "htop"
 brew "imlib2"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# YAML Parser
+brew "libyaml"
 # Mac App Store command-line interface
 brew "mas"
 # Manage multiple Node.js versions
@@ -152,8 +148,6 @@ cask "iina"
 cask "imageoptim"
 # Vector graphics editor
 cask "inkscape"
-# HTTP and GraphQL Client
-cask "insomnia"
 # Java IDE by JetBrains
 cask "intellij-idea"
 # Automation software
@@ -162,8 +156,6 @@ cask "keyboard-maestro"
 cask "libreoffice"
 # Support for Logitech G gear
 cask "logitech-g-hub"
-# Screen and video recording software
-cask "loom"
 # Trims video and audio files losslessly
 cask "losslesscut"
 # Open-source firewall to block unknown outgoing connections
@@ -194,6 +186,8 @@ cask "shortcat"
 cask "shottr"
 # Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
+# Open-source code editor
+cask "visual-studio-code"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "Base64Anywhere", id: 640841706
@@ -210,3 +204,6 @@ mas "Pages", id: 409201541
 mas "Peek", id: 1554235898
 mas "The Unarchiver", id: 425424353
 mas "UTM", id: 1538878817
+vscode "chintans98.markdown-jira"
+vscode "shd101wyy.markdown-preview-enhanced"
+vscode "yzhang.markdown-all-in-one"
