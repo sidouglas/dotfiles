@@ -62,6 +62,12 @@ alias ytbest="yt-dlp -f 'bv*+ba' $1"
 alias ytdl="yt-dlp -f $1 $2"
 alias ytmp3='yt-dlp -x --audio-format mp3'  # Download from youtube, as mp3
 alias ~="cd ~"                              # ~:            Go Home
+# Laravel
+alias sail="./vendor/bin/sail"
+alias sart="sail artisan"
+alias sartc="sail artisan cache:clear"
+alias samfs="sail artisan migrate:fresh --seed"
+alias sailrebuild="sail build --no-cache"
 
 cd() { builtin cd "$@"; ls; }               # Always list directory contents upon 'cd'
 
