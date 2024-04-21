@@ -5,12 +5,16 @@ tap "dotenv-linter/tap"
 tap "dwarvesf/tap"
 tap "eugenmayer/dockersync"
 tap "getantibody/tap"
+tap "grishka/grishka"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "krtirtho/apps"
+tap "supabase/tap"
+tap "tabbyml/tabby"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
 # Tool for generating GNU Standards-compliant Makefiles
@@ -21,8 +25,10 @@ brew "bat"
 brew "blueutil"
 # Switch Apache / Valet / CLI configs between PHP versions
 brew "brew-php-switcher"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Core application library for C
-brew "glib"
+brew "glib", link: false
 # Validating, recursive, caching DNS resolver
 brew "unbound"
 # GNU Transport Layer Security (TLS) Library
@@ -63,8 +69,6 @@ brew "gd"
 brew "git-ftp"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Generate introspection data for GObject libraries
 brew "gobject-introspection"
 # Multimedia framework for research and academic purposes
@@ -83,28 +87,38 @@ brew "krb5"
 brew "libyaml"
 # Mac App Store command-line interface
 brew "mas"
+# Simple tool to make locally trusted development certificates
+brew "mkcert"
 # Read, create, and modify MP4 files
 brew "mp4v2"
 # UNIX movie player
 brew "mplayer"
+# Libraries for security-enabled client and server applications
+brew "nss"
 # Manage multiple Node.js versions
 brew "nvm"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
 # General-purpose scripting language
 brew "php@8.2", restart_service: true, link: true
 # Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
+brew "python@3.11"
 # SOund eXchange: universal sound sample translator
 brew "sox"
 # Tool Command Language
 brew "tcl-tk"
 # Internet file retriever
 brew "wget"
-# Fork of youtube-dl with additional features and fixes
+# Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # General-purpose lossless data-compression library
 brew "zlib"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Supabase CLI
+brew "supabase/tap/supabase"
+# Tabby: AI Coding Assitatnt
+brew "tabbyml/tabby/tabby"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Memory training application
@@ -115,7 +129,7 @@ cask "anydesk"
 cask "appcleaner"
 # Multi-track audio editor and recorder
 cask "audacity"
-# Menu bar icon organizer
+# Menu bar icon organiser
 cask "bartender"
 # Desktop password and login vault
 cask "bitwarden"
@@ -125,24 +139,20 @@ cask "brave-browser"
 cask "caffeine"
 # Web debugging Proxy application
 cask "charles"
-# Tool to list all active shortcuts of the current application
-cask "cheatsheet"
 # Server and cloud storage browser
 cask "cyberduck"
-# App to build and share containerized applications and microservices
+# App to build and share containerised applications and microservices
 cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Desktop wallet for cryptocurrency assets
 cask "exodus"
+# VPN client for secure internet access and private browsing
+cask "expressvpn"
 # Multi-platform multi-messaging app
 cask "ferdium"
-# Tool for organizing and renaming movies, TV shows, anime or music
-cask "filebot"
 # Web browser
 cask "firefox"
-# Free and open-source image editor
-cask "gimp"
 # Web browser
 cask "google-chrome"
 # Client for the Google Drive storage service
@@ -153,7 +163,7 @@ cask "handbrake"
 cask "hyperkey"
 # Free and open-source media player
 cask "iina"
-# Tool to optimize images to a smaller size
+# Tool to optimise images to a smaller size
 cask "imageoptim"
 # Vector graphics editor
 cask "inkscape"
@@ -161,6 +171,8 @@ cask "inkscape"
 cask "insomnia"
 # Automation software
 cask "keyboard-maestro"
+# Find shortcuts for any installed application
+cask "keyclu"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
 # Trims video and audio files losslessly
@@ -169,11 +181,15 @@ cask "losslesscut"
 cask "lulu"
 # Countdown timer for the menu bar
 cask "menubar-countdown"
+# Provides updates to various Microsoft products
+cask "microsoft-auto-update"
 # Create mock APIs in seconds
 cask "mockoon"
+# Unofficial Google Nearby Share app
+cask "neardrop"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
-# App to write, plan, collaborate, and get organized
+# App to write, plan, collaborate, and get organised
 cask "notion"
 # Calendar for professionals and teams
 cask "notion-calendar"
@@ -181,8 +197,6 @@ cask "notion-calendar"
 cask "pdf-squeezer"
 # PDF editing software
 cask "pdfpen"
-# VPN client
-cask "private-internet-access"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Screen recording and video editing software
@@ -197,8 +211,8 @@ cask "shortcat"
 cask "shottr"
 # Team communication and collaboration software
 cask "slack"
-# Music streaming service
-cask "spotify"
+# 🎧 Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!
+cask "spotube"
 # System monitor for the menu bar
 cask "stats"
 # Open-source media center
@@ -209,44 +223,62 @@ cask "synology-drive"
 cask "the-unarchiver"
 # Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
+# Media management tool
+cask "tinymediamanager"
+# Get and save colour codes
+cask "toinane-colorpicker"
 # Open-source code editor
 cask "visual-studio-code"
 # Remote desktop application focusing on security
 cask "vnc-viewer"
+# Binary releases of VS Code without MS branding/telemetry/licensing
+cask "vscodium"
+mas "AnyExif | Photo Exif Editor", id: 1621435983
+mas "Cityscapes", id: 1631153096
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "mChapters", id: 563131976
-mas "Mini Motorways", id: 1456188526
+mas "Mosaic", id: 1475100873
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Peek", id: 1554235898
+mas "Qi FM", id: 1479696191
 mas "Xcode", id: 497799835
-vscode "alefragnani.Bookmarks"
+vscode "alefragnani.bookmarks"
 vscode "artizon.artizon-vscode-surround"
 vscode "bmewburn.vscode-intelephense-client"
 vscode "bradlc.vscode-tailwindcss"
 vscode "christian-kohler.path-intellisense"
 vscode "dbaeumer.vscode-eslint"
-vscode "DEVSENSE.composer-php-vscode"
-vscode "DEVSENSE.intelli-php-vscode"
-vscode "DEVSENSE.phptools-vscode"
-vscode "DEVSENSE.profiler-php-vscode"
+vscode "devsense.composer-php-vscode"
+vscode "devsense.intelli-php-vscode"
+vscode "devsense.phptools-vscode"
+vscode "devsense.profiler-php-vscode"
 vscode "donjayamanne.githistory"
 vscode "eamodio.gitlens"
-vscode "EditorConfig.EditorConfig"
+vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"
+vscode "firsttris.vscode-jest-runner"
 vscode "formulahendry.auto-rename-tag"
-vscode "junstyle.php-cs-fixer"
-vscode "MehediDracula.php-namespace-resolver"
-vscode "mrmlnc.vscode-duplicate"
+vscode "github.copilot"
+vscode "github.copilot-chat"
+vscode "joao-mbn.react-extract"
+vscode "mehedidracula.php-namespace-resolver"
+vscode "mhutchie.git-graph"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-vscode-remote.remote-containers"
+vscode "nicholashsiang.vscode-react-snippet"
+vscode "nicoespeon.abracadabra"
+vscode "orsenkucher.vscode-graphql"
 vscode "patbenatar.advanced-new-file"
-vscode "SharashchandraDesai.simple-scratch"
+vscode "percygrunwald.vscode-intellij-recent-files"
+vscode "prisma.prisma"
+vscode "sharashchandradesai.simple-scratch"
 vscode "sibiraj-s.vscode-scss-formatter"
 vscode "streetsidesoftware.code-spell-checker"
+vscode "suhelmakkad.shadcn-ui"
 vscode "vscodevim.vim"
-vscode "WallabyJs.quokka-vscode"
+vscode "wallabyjs.quokka-vscode"
 vscode "wix.vscode-import-cost"
 vscode "xyz.local-history"
