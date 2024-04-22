@@ -107,6 +107,8 @@ brew "python@3.11"
 brew "sox"
 # Tool Command Language
 brew "tcl-tk"
+# Programmatically correct mistyped console commands
+brew "thefuck"
 # Internet file retriever
 brew "wget"
 # Feature-rich command-line audio/video downloader

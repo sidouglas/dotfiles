@@ -1,4 +1,5 @@
 echo 'zsh_custom loaded';
+eval $(thefuck --alias)
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Set Variables
@@ -22,6 +23,7 @@ setopt incAppendHistoryTime
 
 
 # Create Aliases
+alias ~="cd ~"                              # ~:            Go Home
 alias ..='cd ../'                           # Go back 1 directory level
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ...='cd ../../'                       # Go back 2 directory levels
@@ -56,12 +58,13 @@ alias python='/opt/homebrew/bin/python3'
 alias reload="source ~/.zshrc"              # reload:       Reload the shell (i.e. itself)
 alias rm=trash                              # rm:           Trash (move to trash)
 alias show_options='shopt'                  # Show_options: display bash options settings
+alias wtf=fuck
 alias yt='echo "******USE ytdl id url OR ytbest url*******" && yt-dlp -F'                        # Will show all possible downloads
-alias ytlist="yt-dlp --list-formats $1"
 alias ytbest="yt-dlp -f 'bv*+ba' $1"
 alias ytdl="yt-dlp -f $1 $2"
+alias ytlist="yt-dlp --list-formats $1"
 alias ytmp3='yt-dlp -x --audio-format mp3'  # Download from youtube, as mp3
-alias ~="cd ~"                              # ~:            Go Home
+
 # Laravel
 alias sail="./vendor/bin/sail"
 alias sart="sail artisan"
