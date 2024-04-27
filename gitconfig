@@ -1,5 +1,5 @@
 [user]
-  name = Simon Douglas
+  name = sidouglas
   email = 1107946+sidouglas@users.noreply.github.com
 
 [diff]
@@ -91,10 +91,17 @@
 [core]
   mergeoptions = --no-edit
   editor = nano
+	excludesfile = /Users/simon/.gitignore_global
 [pull]
 	ff = true
 [push]
 	autoSetupRemote = true
-
 [branch]
     sort = -committerdate     # Descending
+[commit]
+	template = /Users/simon/.stCommitMsg
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

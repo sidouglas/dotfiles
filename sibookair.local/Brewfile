@@ -155,6 +155,8 @@ cask "expressvpn"
 cask "ferdium"
 # Web browser
 cask "firefox"
+# Desktop client for GitHub repositories
+cask "github"
 # Web browser
 cask "google-chrome"
 # Client for the Google Drive storage service
@@ -185,6 +187,8 @@ cask "lulu"
 cask "menubar-countdown"
 # Provides updates to various Microsoft products
 cask "microsoft-auto-update"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
 # Create mock APIs in seconds
 cask "mockoon"
 # Unofficial Google Nearby Share app
@@ -213,8 +217,8 @@ cask "shortcat"
 cask "shottr"
 # Team communication and collaboration software
 cask "slack"
-# 🎧 Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!
-cask "spotube"
+# Music streaming service
+cask "spotify"
 # System monitor for the menu bar
 cask "stats"
 # Open-source media center
@@ -246,6 +250,7 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Peek", id: 1554235898
 mas "Qi FM", id: 1479696191
+mas "UTM", id: 1538878817
 mas "Xcode", id: 497799835
 vscode "alefragnani.bookmarks"
 vscode "artizon.artizon-vscode-surround"
@@ -258,7 +263,6 @@ vscode "devsense.intelli-php-vscode"
 vscode "devsense.phptools-vscode"
 vscode "devsense.profiler-php-vscode"
 vscode "donjayamanne.githistory"
-vscode "eamodio.gitlens"
 vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"
 vscode "firsttris.vscode-jest-runner"
@@ -266,8 +270,8 @@ vscode "formulahendry.auto-rename-tag"
 vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "joao-mbn.react-extract"
+vscode "kenhowardpdx.vscode-gist"
 vscode "mehedidracula.php-namespace-resolver"
-vscode "mhutchie.git-graph"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-vscode-remote.remote-containers"
 vscode "nicholashsiang.vscode-react-snippet"
