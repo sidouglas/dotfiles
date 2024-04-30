@@ -78,11 +78,11 @@ brew
 git
 nvm
 zsh-autosuggestions
+zsh-vi-mode
 )
 
 NVM_HOMEBREW=/opt/homebrew/opt/nvm
 NVM_AUTOLOAD=1
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
