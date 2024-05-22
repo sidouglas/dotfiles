@@ -41,6 +41,8 @@ brew "lame"
 brew "libass"
 # Secure Reliable Transport
 brew "srt"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # Core component of the AcoustID project (Audio fingerprinting)
 brew "chromaprint"
 # Enables you to reproduce the CircleCI environment locally
@@ -55,8 +57,6 @@ brew "docker", link: false
 brew "exa"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
 # Libraries to talk to Microsoft SQL Server and Sybase databases
 brew "freetds"
 # Command-line fuzzy finder written in Go
@@ -141,8 +141,6 @@ cask "brave-browser"
 cask "caffeine"
 # Web debugging Proxy application
 cask "charles"
-# Server and cloud storage browser
-cask "cyberduck"
 # App to build and share containerised applications and microservices
 cask "docker"
 # Client for the Dropbox cloud storage service
@@ -153,6 +151,8 @@ cask "exodus"
 cask "expressvpn"
 # Multi-platform multi-messaging app
 cask "ferdium"
+# Tool for organising and renaming movies, TV shows, anime or music
+cask "filebot"
 # Web browser
 cask "firefox"
 # Desktop client for GitHub repositories
@@ -199,10 +199,14 @@ cask "ngrok"
 cask "notion"
 # Calendar for professionals and teams
 cask "notion-calendar"
+# Simple application that will prevent iTunes or Apple Music from launching
+cask "notunes"
 # PDF compression tool
 cask "pdf-squeezer"
 # PDF editing software
 cask "pdfpen"
+# Colour picker for colours onscreen
+cask "pika"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Screen recording and video editing software
@@ -225,6 +229,8 @@ cask "stats"
 cask "stremio"
 # Sync and backup service to Synology NAS drives
 cask "synology-drive"
+# Desktop client for Telegram messenger
+cask "telegram-desktop"
 # Unpacks archive files
 cask "the-unarchiver"
 # Utility to change the default backup interval of Time Machine
@@ -239,7 +245,7 @@ cask "visual-studio-code"
 cask "vnc-viewer"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
-mas "AnyExif | Photo Exif Editor", id: 1621435983
+mas "AnyExif", id: 1621435983
 mas "Cityscapes", id: 1631153096
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
@@ -252,8 +258,12 @@ mas "Peek", id: 1554235898
 mas "Qi FM", id: 1479696191
 mas "UTM", id: 1538878817
 mas "Xcode", id: 497799835
+vscode "ahgood.movetab"
 vscode "alefragnani.bookmarks"
+vscode "antfu.browse-lite"
+vscode "antfu.vite"
 vscode "artizon.artizon-vscode-surround"
+vscode "biati.reveal-in-forklift"
 vscode "bmewburn.vscode-intelephense-client"
 vscode "bradlc.vscode-tailwindcss"
 vscode "christian-kohler.path-intellisense"
@@ -262,7 +272,6 @@ vscode "devsense.composer-php-vscode"
 vscode "devsense.intelli-php-vscode"
 vscode "devsense.phptools-vscode"
 vscode "devsense.profiler-php-vscode"
-vscode "donjayamanne.githistory"
 vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"
 vscode "firsttris.vscode-jest-runner"
@@ -270,10 +279,10 @@ vscode "formulahendry.auto-rename-tag"
 vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "joao-mbn.react-extract"
-vscode "kenhowardpdx.vscode-gist"
 vscode "mehedidracula.php-namespace-resolver"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-vscode-remote.remote-containers"
+vscode "mxsdev.typescript-explorer"
 vscode "nicholashsiang.vscode-react-snippet"
 vscode "nicoespeon.abracadabra"
 vscode "orsenkucher.vscode-graphql"
@@ -284,7 +293,9 @@ vscode "sharashchandradesai.simple-scratch"
 vscode "sibiraj-s.vscode-scss-formatter"
 vscode "streetsidesoftware.code-spell-checker"
 vscode "suhelmakkad.shadcn-ui"
+vscode "vitest.explorer"
 vscode "vscodevim.vim"
 vscode "wallabyjs.quokka-vscode"
 vscode "wix.vscode-import-cost"
 vscode "xyz.local-history"
+vscode "yoavbls.pretty-ts-errors"
