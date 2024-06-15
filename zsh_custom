@@ -169,3 +169,6 @@ alias brew_upgrade_casks='for cask in $(brew outdated --cask --greedy); do brew 
 alias brew_outdated="brew outdated --cask --greedy"
 alias brewdump="mkdir -p $HOMEBREW_DIR && cd $HOMEBREW_DIR && brew bundle dump --force --describe && bat Brewfile"
 alias brew_permissions="sudo chown -R $(whoami) $(brew --prefix)/*"
+
+#Supabase
+alias migra="docker run djrobstep/migra migra"
