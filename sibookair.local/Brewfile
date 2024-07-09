@@ -79,6 +79,8 @@ brew "guile"
 brew "handbrake", link: false
 # Improved top (interactive process viewer)
 brew "htop"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Network authentication protocol
@@ -99,6 +101,8 @@ brew "nss"
 brew "nvm"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Search PDFs for strings matching a regular expression
+brew "pdfgrep"
 # General-purpose scripting language
 brew "php@8.2", restart_service: true, link: true
 # Object-relational database system
@@ -121,7 +125,7 @@ brew "zlib"
 brew "zsh"
 # Supabase CLI
 brew "supabase/tap/supabase"
-# Tabby: AI Coding Assitatnt
+# Tabby: AI Coding Assistant
 brew "tabbyml/tabby/tabby"
 # Memory training application
 cask "anki"
@@ -131,8 +135,6 @@ cask "anydesk"
 cask "appcleaner"
 # Multi-track audio editor and recorder
 cask "audacity"
-# Desktop password and login vault
-cask "bitwarden"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Utility that prevents the system from going to sleep
@@ -229,11 +231,10 @@ cask "the-unarchiver"
 cask "timemachineeditor"
 # Open-source code editor
 cask "visual-studio-code"
-# Remote desktop application focusing on security
-cask "vnc-viewer"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
 mas "AnyExif", id: 1621435983
+mas "Bitwarden", id: 1352778147
 mas "Cityscapes", id: 1631153096
 mas "ColorFolder", id: 1450345160
 mas "GarageBand", id: 682658836
@@ -271,6 +272,7 @@ vscode "esbenp.prettier-vscode"
 vscode "firsttris.vscode-jest-runner"
 vscode "formulahendry.auto-rename-tag"
 vscode "joao-mbn.react-extract"
+vscode "maattdd.gitless"
 vscode "mechatroner.rainbow-csv"
 vscode "mehedidracula.php-namespace-resolver"
 vscode "mnismt.cody-plus-plus"
@@ -293,6 +295,7 @@ vscode "sibiraj-s.vscode-scss-formatter"
 vscode "sourcegraph.cody-ai"
 vscode "streetsidesoftware.code-spell-checker"
 vscode "suhelmakkad.shadcn-ui"
+vscode "tamasfe.even-better-toml"
 vscode "vitest.explorer"
 vscode "vscodevim.vim"
 vscode "wallabyjs.quokka-vscode"
