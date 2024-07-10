@@ -172,3 +172,4 @@ alias brew_permissions="sudo chown -R $(whoami) $(brew --prefix)/*"
 
 #Supabase
 alias migra="docker run djrobstep/migra migra"
+
