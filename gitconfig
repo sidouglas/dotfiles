@@ -28,12 +28,12 @@
     d = diff
     dc = diff --cached
     ds = diff --stat
-    gp = git push -u origin HEAD
-    gpf = git push -u origin HEAD -f
+    ho = git push -u origin HEAD
+    hof = git push -u origin HEAD -force-with-lease #https://youtu.be/aolI_Rz0ZqY?t=1128
     h = push
     m = commit --amend --verbose
     p = pull
-    rbm = "!git fetch origin master && git rebase origin/master"
+	rbm = "!f() { if git show-ref --verify --quiet refs/heads/main; then git rebase origin/main; else git rebase origin/master; fi; }; f"
     rbs = "!git fetch origin staging && git rebase origin/staging"
     rename = "!git branch -m "
     revert = "!f() { git checkout master -- $1 && git add $1 && git commit -m \"Reverted $1 to the version in master\"; }; f"
@@ -87,21 +87,28 @@
                 echo ERROR: Operation failed; \
             fi; \
         }; f"
+	mine = checkout --ours
+	theirs = checkout --theirs
+	com = "!f() { if git show-ref --verify --quiet refs/heads/main; then git checkout main; else git checkout master; fi; }; f"
 
 [core]
   mergeoptions = --no-edit
-  editor = nano
-	excludesfile = /Users/simon/.gitignore_global
+  editor =vi 
+  excludesfile = /Users/simon/.gitignore_global
 [pull]
-	ff = true
+  ff = true
 [push]
-	autoSetupRemote = true
+  autoSetupRemote = true
 [branch]
-    sort = -committerdate     # Descending
+	sort = -committerdate
 [commit]
-	template = /Users/simon/.stCommitMsg
+  template = /Users/simon/.stCommitMsg
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[rerere]
+  enabled = true
+[column]
+	ui = auto

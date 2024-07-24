@@ -57,6 +57,8 @@ brew "docker", link: false
 brew "exa"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Create thumbnails for your video files
+brew "ffmpegthumbnailer"
 # Libraries to talk to Microsoft SQL Server and Sybase databases
 brew "freetds"
 # Command-line fuzzy finder written in Go
@@ -101,6 +103,8 @@ brew "nss"
 brew "nvm"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
 # Search PDFs for strings matching a regular expression
 brew "pdfgrep"
 # General-purpose scripting language
@@ -109,18 +113,24 @@ brew "php@8.2", restart_service: true, link: true
 brew "postgresql@14"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # SOund eXchange: universal sound sample translator
 brew "sox"
 # Tool Command Language
 brew "tcl-tk"
 # Programmatically correct mistyped console commands
 brew "thefuck"
+# Command-line unarchiving tools supporting multiple formats
+brew "unar"
 # Internet file retriever
 brew "wget"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # General-purpose lossless data-compression library
 brew "zlib"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Supabase CLI
@@ -153,6 +163,9 @@ cask "ferdium"
 cask "filebot"
 # Web browser
 cask "firefox"
+cask "font-hack-nerd-font"
+cask "font-open-sans"
+cask "font-symbols-only-nerd-font"
 # Desktop client for GitHub repositories
 cask "github"
 # Web browser
@@ -203,6 +216,8 @@ cask "pdf-squeezer"
 cask "pdfpen"
 # Administration and development platform for PostgreSQL
 cask "pgadmin4"
+# Quick Look generator for Markdown files
+cask "qlmarkdown"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Screen recording and video editing software
@@ -233,6 +248,8 @@ cask "timemachineeditor"
 cask "visual-studio-code"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
+# Multiplayer code editor
+cask "zed"
 mas "AnyExif", id: 1621435983
 mas "Bitwarden", id: 1352778147
 mas "Cityscapes", id: 1631153096
@@ -257,6 +274,7 @@ vscode "artizon.artizon-vscode-surround"
 vscode "biati.reveal-in-forklift"
 vscode "bmewburn.vscode-intelephense-client"
 vscode "bradlc.vscode-tailwindcss"
+vscode "cfcluan.project-scopes"
 vscode "chatide.chatide"
 vscode "christian-kohler.path-intellisense"
 vscode "codeium.codeium"
@@ -266,6 +284,7 @@ vscode "devsense.composer-php-vscode"
 vscode "devsense.intelli-php-vscode"
 vscode "devsense.phptools-vscode"
 vscode "devsense.profiler-php-vscode"
+vscode "donjayamanne.githistory"
 vscode "dotjoshjohnson.xml"
 vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"
@@ -301,5 +320,5 @@ vscode "vitest.explorer"
 vscode "vscodevim.vim"
 vscode "wallabyjs.quokka-vscode"
 vscode "wix.vscode-import-cost"
-vscode "xyz.local-history"
+vscode "xpo.local-history"
 vscode "yoavbls.pretty-ts-errors"

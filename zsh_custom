@@ -80,8 +80,6 @@ export KEYTIMEOUT=10
 
 ## END VI MODE
 
-
-
 setopt histNoStore
 setopt extendedHistory
 setopt histIgnoreAllDups
@@ -163,7 +161,24 @@ function killname() {  if [ "$1" = "" ]; then
 }
 
 function kp (){ kill -9 $(lsof -i:"$1" -t); }
+function hist_remove() {
+    local search_string="$1"
+    if [[ -z "$search_string" ]]; then
+        echo "Please provide a search string."
+        return 1
+    fi
 
+    # Create a temporary file
+    local temp_file=$(mktemp)
+
+    # Filter out lines containing the search string
+    grep -v "$search_string" ~/.zsh_history > "$temp_file"
+
+    # Replace the original file with the filtered content
+    mv "$temp_file" ~/.zsh_history
+
+    echo "Lines containing '$search_string' have been removed from ~/.zsh_history"
+}
 # Brew
 alias brew_upgrade_casks='for cask in $(brew outdated --cask --greedy); do brew upgrade --cask "$cask"; done'
 alias brew_outdated="brew outdated --cask --greedy"
