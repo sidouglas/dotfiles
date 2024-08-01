@@ -1,3 +1,4 @@
+echo 'fzf loaded';
 # Setup fzf
 # ---------
 if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
@@ -8,6 +9,4 @@ fi
 # ---------------
 [[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
 
-# Key bindings
-# ------------
-source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+export FZF_DEFAULT_COMMAND='rg --hidden --files -g "!.git" -g "!node_modules/*" -g "node_modules"'

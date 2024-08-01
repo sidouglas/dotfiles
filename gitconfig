@@ -16,8 +16,8 @@
     l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
     wip = !HUSKY=0 git add --all && HUSKY=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
     fix = !HUSKY=0 git wip && HUSKY=0 git squash 2 --no-verify --no-gpg-sign
-    nuke = !sh -c 'git checkout staging && git branch -df $1 && git checkout -b $1'
-    nukeall ="!git checkout staging & git branch | grep -v "staging" | xargs git branch -d"
+    nuke = !sh -c 'git checkout main && git branch -df $1 && git checkout -b $1'
+    nukeall ="!git checkout main & git branch | grep -v "main" | xargs git branch -d"
     a = add
     ap = add -p
     c = commit --verbose

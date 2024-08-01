@@ -97,6 +97,8 @@ alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
 
+bindkey "ç" fzf-cd-widget # option + c
+
 alias als='alias | grep'
 alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
 alias cp='cp -iv'                           # Preferred cp implementation
@@ -106,6 +108,7 @@ alias dockerstop='docker ps -aq | xargs docker stop'
 alias docx2pdf='/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf --outdir . "$1"'
 alias edit='open -na "IntelliJ IDEA.app" --args "$@"'
 alias exa='exa -laFh --git'
+
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
 alias flushdns="sudo killall -HUP mDNSResponder"
 alias ftrail='<<<${(F)fpath}'
@@ -129,13 +132,37 @@ alias ytbest="yt-dlp -f 'bv*+ba' $1"
 alias ytdl="yt-dlp -f $1 $2"
 alias ytlist="yt-dlp --list-formats $1"
 alias ytmp3='yt-dlp -x --audio-format mp3'  # Download from youtube, as mp3
+# FZF
 
+# choose a folder to open with vs code
+fc() {
+  fd --type f --exclude .git --exclude node_modules | fzf --preview 'bat --style=numbers --color=always {}' | xargs -o open
+}
+
+ff() {
+  folder=$(fd --type d --exclude node_modules --exclude .git | fzf)
+  if [ -n "$folder" ]; then
+    echo "Open in: (1) Finder, (2) VS Code"
+    read choice
+    case "$choice" in
+      1|"1"|"Finder"|"finder")
+        open "$folder"
+        ;;
+      2|"2"|"VS Code"|"vs code"|"vscode")
+        code "$folder"
+        ;;
+      *)
+        echo "Invalid choice. Folder not opened."
+        ;;
+    esac
+  fi
+}
 # Laravel
 alias sail="./vendor/bin/sail"
+alias sailrebuild="sail build --no-cache"
+alias samfs="sail artisan migrate:fresh --seed"
 alias sart="sail artisan"
 alias sartc="sail artisan cache:clear"
-alias samfs="sail artisan migrate:fresh --seed"
-alias sailrebuild="sail build --no-cache"
 
 cd() { builtin cd "$@"; ls; }               # Always list directory contents upon 'cd'
 
@@ -180,11 +207,10 @@ function hist_remove() {
     echo "Lines containing '$search_string' have been removed from ~/.zsh_history"
 }
 # Brew
-alias brew_upgrade_casks='for cask in $(brew outdated --cask --greedy); do brew upgrade --cask "$cask"; done'
 alias brew_outdated="brew outdated --cask --greedy"
-alias brewdump="mkdir -p $HOMEBREW_DIR && cd $HOMEBREW_DIR && brew bundle dump --force --describe && bat Brewfile"
 alias brew_permissions="sudo chown -R $(whoami) $(brew --prefix)/*"
+alias brew_upgrade_casks='for cask in $(brew outdated --cask --greedy); do brew upgrade --cask "$cask"; done'
+alias brewdump="mkdir -p $HOMEBREW_DIR && cd $HOMEBREW_DIR && brew bundle dump --force --describe && bat Brewfile"
 
 #Supabase
 alias migra="docker run djrobstep/migra migra"
-

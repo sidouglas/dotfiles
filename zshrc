@@ -113,7 +113,7 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.zsh_custom
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf ] && source ~/.fzf
 ZSH_SHARED="$HOME/Google Drive/My Drive/shared/.zsh_shared"
 
 if [ -f $ZSH_SHARED ];
