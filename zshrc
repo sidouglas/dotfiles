@@ -132,11 +132,5 @@ else
 fi
 
 
-#FZF
-export FZF_DEFAULT_OPS="--extended"
-export FZF_DEFAULT_COMMAND="fd --type f"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export PATH="/usr/local/opt/curl/bin:$PATH" #see https://stackoverflow.com/a/68864725
-
 #FFMPEG
 export PATH="/opt/homebrew/opt/ffmpeg@4/bin:$PATH"
