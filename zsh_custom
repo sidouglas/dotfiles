@@ -132,31 +132,14 @@ alias ytbest="yt-dlp -f 'bv*+ba' $1"
 alias ytdl="yt-dlp -f $1 $2"
 alias ytlist="yt-dlp --list-formats $1"
 alias ytmp3='yt-dlp -x --audio-format mp3'  # Download from youtube, as mp3
-# FZF
 
-# choose a folder to open with vs code
-zz() {
+# FZF
+alias sd="cd ~ && cd \$(find * -type d | fzf)" # search for directories
+# search for code
+sc() {
   fd --type f --exclude .git --exclude node_modules | fzf --preview 'bat --style=numbers --color=always {}' | xargs -o open
 }
 
-xx() {
-  folder=$(fd --type d --exclude node_modules --exclude .git | fzf)
-  if [ -n "$folder" ]; then
-    echo "Open in: (1) Finder, (2) VS Code"
-    read choice
-    case "$choice" in
-      1|"1"|"Finder"|"finder")
-        open "$folder"
-        ;;
-      2|"2"|"VS Code"|"vs code"|"vscode")
-        code "$folder"
-        ;;
-      *)
-        echo "Invalid choice. Folder not opened."
-        ;;
-    esac
-  fi
-}
 # Laravel
 alias sail="./vendor/bin/sail"
 alias sailrebuild="sail build --no-cache"

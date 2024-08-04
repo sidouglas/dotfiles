@@ -1,12 +1,9 @@
 echo 'fzf loaded';
-# Setup fzf
-# ---------
-if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
-fi
-
-# Auto-completion
-# ---------------
-[[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
-
-export FZF_DEFAULT_COMMAND='rg --hidden --files -g "!.git" -g "!node_modules/*" -g "node_modules"'
+source <(fzf --zsh)
+# https://github.com/junegunn/fzf/discussions/3952#discussioncomment-10234697
+export FZF_DEFAULT_OPTS='--multi --no-height --extended'
+export FZF_CTRL_R_OPTS="--bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'"
+# https://github.com/junegunn/fzf?tab=readme-ov-file#key-bindings-for-command-line
+export FZF_ALT_C_OPTS=" --walker-skip .git,node_modules,target --preview 'tree -C {}'"
+export FZF_CTRL_T_OPTS=" --walker-skip .git,node_modules,target --preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+export FZF_CTRL_R_OPTS=" --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort' --color header:italic --header 'Press CTRL-Y to copy command into clipboard'"
