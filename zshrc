@@ -74,9 +74,7 @@ ENABLE_CORRECTION="true"
 
 plugins=(
 aliases
-brew
 git
-nvm
 zsh-autosuggestions
 zsh-vi-mode
 )

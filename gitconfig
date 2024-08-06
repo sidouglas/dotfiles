@@ -13,11 +13,6 @@
 
 [alias]
     # taken from https://gist.github.com/mwhite/6887990
-    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-    wip = !HUSKY=0 git add --all && HUSKY=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
-    fix = !HUSKY=0 git wip && HUSKY=0 git squash 2 --no-verify --no-gpg-sign
-    nuke = !sh -c 'git checkout main && git branch -df $1 && git checkout -b $1'
-    nukeall ="!git checkout main & git branch | grep -v "main" | xargs git branch -d"
     a = add
     ap = add -p
     c = commit --verbose
@@ -28,12 +23,18 @@
     d = diff
     dc = diff --cached
     ds = diff --stat
+    f = fetch
+    fix = !HUSKY=0 git wip && HUSKY=0 git squash 2 --no-verify --no-gpg-sign
+    h = push
     ho = git push -u origin HEAD
     hof = git push -u origin HEAD -force-with-lease #https://youtu.be/aolI_Rz0ZqY?t=1128
-    h = push
+    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
     m = commit --amend --verbose
+    nuke = !sh -c 'git checkout main && git branch -df $1 && git checkout -b $1'
+    nukeall ="!git checkout main & git branch | grep -v "main" | xargs git branch -d"
     p = pull
-	rbm = "!f() { if git show-ref --verify --quiet refs/heads/main; then git rebase origin/main; else git rebase origin/master; fi; }; f"
+    wip = !HUSKY=0 git add --all && HUSKY=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
+  	rbm = "!f() { if git show-ref --verify --quiet refs/heads/main; then git rebase origin/main; else git rebase origin/master; fi; }; f"
     rbs = "!git fetch origin staging && git rebase origin/staging"
     rename = "!git branch -m "
     revert = "!f() { git checkout master -- $1 && git add $1 && git commit -m \"Reverted $1 to the version in master\"; }; f"
@@ -42,15 +43,11 @@
     search = "!f() { git log -p -S \"$1\" -- \"${2:-.}\"; }; f"
     ss = "!git fetch --all && git branch -r --sort=-committerdate --format=\"%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)\" --color=always"
     t = "!git describe --abbrev=0"
-
     # list branches sorted by last modified
     b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
-
     # list aliases
     la = "!git config -l | grep alias | cut -c 7-"
     co = "!git branch | fzf | xargs git checkout"
-
-
     # https://gist.github.com/hlecuanda/c9a5091938cd6a7b585d
     squash = "!f(){ HUSKY=0 git reset --soft HEAD~${1} && HUSKY=0 git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
     tidy="!git remote prune origin && git branch --merged > /tmp/merged-branches && sed -E '/(staging|master)/d' /tmp/merged-branches > /tmp/clean-branches && nano /tmp/clean-branches && xargs git branch -d </tmp/clean-branches"
@@ -93,7 +90,7 @@
 
 [core]
   mergeoptions = --no-edit
-  editor =vi 
+  editor =vi
   excludesfile = /Users/simon/.gitignore_global
 [pull]
   ff = true

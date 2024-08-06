@@ -108,7 +108,6 @@ alias dockerstop='docker ps -aq | xargs docker stop'
 alias docx2pdf='/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf --outdir . "$1"'
 alias edit='open -na "IntelliJ IDEA.app" --args "$@"'
 alias exa='exa -laFh --git'
-
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
 alias flushdns="sudo killall -HUP mDNSResponder"
 alias ftrail='<<<${(F)fpath}'
@@ -132,9 +131,9 @@ alias ytbest="yt-dlp -f 'bv*+ba' $1"
 alias ytdl="yt-dlp -f $1 $2"
 alias ytlist="yt-dlp --list-formats $1"
 alias ytmp3='yt-dlp -x --audio-format mp3'  # Download from youtube, as mp3
-
+alias zshrc="code ~/.dotfiles/zshrc"
 # FZF
-alias sd="cd ~ && cd \$(find * -type d | fzf)" # search for directories
+alias sd="cd ~/ && cd \$(fd --type d --exclude Applications --exclude Library --exclude Movies | fzf)" # search for directories
 # search for code
 sc() {
   fd --type f --exclude .git --exclude node_modules | fzf --preview 'bat --style=numbers --color=always {}' | xargs -o open
@@ -148,6 +147,15 @@ alias sart="sail artisan"
 alias sartc="sail artisan cache:clear"
 
 cd() { builtin cd "$@"; ls; }               # Always list directory contents upon 'cd'
+# Define the function
+
+function oo() {
+  if [ -z "$1" ]; then
+    open .
+  else
+    open "$1"
+  fi
+}
 
 # Load history into shell (shareHistory alternative)
 alias lh='fc -RI; echo "loaded and showing..."; history;'
