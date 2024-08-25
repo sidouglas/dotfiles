@@ -26,6 +26,7 @@
     f = fetch
     fix = !HUSKY=0 git wip && HUSKY=0 git squash 2 --no-verify --no-gpg-sign
     h = push
+    o = checkout
     ho = git push -u origin HEAD
     hof = git push -u origin HEAD -force-with-lease #https://youtu.be/aolI_Rz0ZqY?t=1128
     l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
