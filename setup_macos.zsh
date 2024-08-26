@@ -4,7 +4,7 @@ echo "\n<<< Starting macOS Setup >>>\n"
 
 osascript -e 'tell application "System Preferences" to quit'
 
-# Make everything tabable in Finder 
+# Make everything tabable in Finder
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Finder > View > Show Path Bar
@@ -48,10 +48,16 @@ defaults write net.ankiweb.dtop NSAppSleepDisabled -bool true
 defaults write net.ichi2.anki NSAppSleepDisabled -bool true
 defaults write org.qt-project.Qt.QtWebEngineCore NSAppSleepDisabled -bool true
 
+# Disable press-and-hold for keys in favor of key repeat
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false              # For VS Code
+defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false      # For VS Code Insider
+defaults write com.vscodium ApplePressAndHoldEnabled -bool false                      # For VS Codium
+defaults write com.microsoft.VSCodeExploration ApplePressAndHoldEnabled -bool false   # For VS Codium Exploration users
+defaults delete -g ApplePressAndHoldEnabled                                           # If necessary, reset global default
+
 
 # Finish macOS Setup
 killall Finder
 killall Dock
 echo "\n<<< macOS Setup Complete.
     A logout or restart might be necessary. >>>\n"
-

@@ -29,6 +29,7 @@ Deactivate licenses:
 
 ## Restore Instructions
 
+0. Take note of the hostname - `sudo scutil --set HostName somehost.local`
 1. `xcode-select --install` (Command Line Tools are required for Git and Homebrew)
 2. `git clone https://github.com/sidouglas/dotfiles.git ~/.dotfiles`. We'll start with `https` but switch to `ssh` after everything is installed.
 3. `cd ~/.dotfiles`
