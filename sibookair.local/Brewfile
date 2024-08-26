@@ -45,16 +45,12 @@ brew "srt"
 brew "ffmpeg"
 # Core component of the AcoustID project (Audio fingerprinting)
 brew "chromaprint"
-# Enables you to reproduce the CircleCI environment locally
-brew "circleci"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Pack, ship and run any application as a lightweight container
 brew "docker", link: false
-# Modern replacement for 'ls'
-brew "exa"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Create thumbnails for your video files
@@ -95,6 +91,8 @@ brew "jq"
 brew "libpq"
 # YAML Parser
 brew "libyaml"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
 # Mac App Store command-line interface
 brew "mas"
 # Simple tool to make locally trusted development certificates
@@ -228,8 +226,6 @@ cask "notunes"
 cask "pdf-squeezer"
 # PDF editing software
 cask "pdfpen"
-# Administration and development platform for PostgreSQL
-cask "pgadmin4"
 # Browser for ambitious developers
 cask "polypane"
 # Quick Look generator for Markdown files
@@ -270,7 +266,6 @@ cask "vscodium"
 cask "zed"
 mas "AnyExif", id: 1621435983
 mas "Bitwarden", id: 1352778147
-mas "Cityscapes", id: 1631153096
 mas "ColorFolder", id: 1450345160
 mas "GarageBand", id: 682658836
 mas "Human Japanese Lite", id: 910679636
