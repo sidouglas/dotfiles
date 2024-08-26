@@ -20,6 +20,7 @@
     ~/.zsh_custom: null
     ~/.zshenv: null
     ~/.zshrc: null
+    ~/.vimrc: null
 - create:
     - ~/downloads
     - ~/.vim/undo-history
