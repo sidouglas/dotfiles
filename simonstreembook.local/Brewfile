@@ -1,6 +1,7 @@
 tap "aljohri/-"
 tap "aws/tap"
 tap "bbcrd/audiowaveform"
+tap "dopplerhq/cli"
 tap "dotenv-linter/tap"
 tap "dwarvesf/tap"
 tap "eugenmayer/dockersync"
@@ -8,9 +9,6 @@ tap "getantibody/tap"
 tap "grishka/grishka"
 tap "heroku/brew"
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-tap "homebrew/core"
 tap "homebrew/services"
 tap "krtirtho/apps"
 tap "supabase/tap"
@@ -29,6 +27,10 @@ brew "brew-php-switcher"
 brew "python@3.12"
 # Core application library for C
 brew "glib"
+# Low-level library for pixel manipulation
+brew "pixman"
+# Vector graphics library with cross-device output support
+brew "cairo"
 # Validating, recursive, caching DNS resolver
 brew "unbound"
 # GNU Transport Layer Security (TLS) Library
@@ -39,6 +41,8 @@ brew "harfbuzz"
 brew "lame"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
+# Framework for layout and rendering of i18n text
+brew "pango"
 # Secure Reliable Transport
 brew "srt"
 # Play, record, convert, and stream audio and video
@@ -49,12 +53,14 @@ brew "chromaprint"
 brew "circleci"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Open source suite of directory software
-brew "openldap"
-# Pack, ship and run any application as a lightweight container
-brew "docker", link: false
-# Modern replacement for 'ls'
-brew "exa"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
+# YAML Parser
+brew "libyaml"
+# Enterprise friendly way of detecting and preventing secrets in code
+brew "detect-secrets"
+# Modern, maintained replacement for ls
+brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Create thumbnails for your video files
@@ -75,20 +81,22 @@ brew "gnupg"
 brew "gobject-introspection"
 # Multimedia framework for research and academic purposes
 brew "gpac"
+# Library access to GnuPG
+brew "gpgme"
 # GNU Ubiquitous Intelligent Language for Extensions
 brew "guile"
-# Open-source video transcoder available for Linux, Mac, and Windows
-brew "handbrake", link: false
 # Improved top (interactive process viewer)
 brew "htop"
+# ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
+brew "libheif"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Network authentication protocol
-brew "krb5"
-# YAML Parser
-brew "libyaml"
+# Postgres C API library
+brew "libpq"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
 # Mac App Store command-line interface
 brew "mas"
 # Simple tool to make locally trusted development certificates
@@ -97,10 +105,18 @@ brew "mkcert"
 brew "mp4v2"
 # UNIX movie player
 brew "mplayer"
+# General-purpose lossless data-compression library
+brew "zlib"
+# Open source relational database management system
+brew "mysql-client@8.4", link: true
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Libraries for security-enabled client and server applications
 brew "nss"
 # Manage multiple Node.js versions
 brew "nvm"
+# Open source suite of directory software
+brew "openldap"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # PDF rendering library (based on the xpdf-3.0 code base)
@@ -113,30 +129,40 @@ brew "php@8.2", restart_service: true, link: true
 brew "postgresql@14"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# Ruby version manager
+brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # SOund eXchange: universal sound sample translator
 brew "sox"
+# Easiest, most secure way to use WireGuard and 2FA
+brew "tailscale"
 # Tool Command Language
 brew "tcl-tk"
 # Programmatically correct mistyped console commands
 brew "thefuck"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
 # Internet file retriever
 brew "wget"
+# Linter for YAML files
+brew "yamllint"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
-# General-purpose lossless data-compression library
-brew "zlib"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# The official Doppler CLI for managing your secrets
+brew "dopplerhq/cli/doppler"
 # Supabase CLI
 brew "supabase/tap/supabase"
 # Tabby: AI Coding Assistant
 brew "tabbyml/tabby/tabby"
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
 # Memory training application
 cask "anki"
 # Allows connection to a computer remotely
@@ -145,22 +171,18 @@ cask "anydesk"
 cask "appcleaner"
 # Multi-track audio editor and recorder
 cask "audacity"
+# Desktop password and login vault
+cask "bitwarden"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Utility that prevents the system from going to sleep
 cask "caffeine"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerised applications and microservices
-cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
-# Desktop wallet for cryptocurrency assets
-cask "exodus"
 # VPN client for secure internet access and private browsing
 cask "expressvpn"
-# Multi-platform multi-messaging app
-cask "ferdium"
 # Tool for organising and renaming movies, TV shows, anime or music
 cask "filebot"
 # Web browser
@@ -168,10 +190,10 @@ cask "firefox"
 cask "font-hack-nerd-font"
 cask "font-open-sans"
 cask "font-symbols-only-nerd-font"
+# Finder replacement and FTP, SFTP, WebDAV and Amazon s3 client
+cask "forklift"
 # Desktop client for GitHub repositories
 cask "github"
-# Web browser
-cask "google-chrome"
 # Client for the Google Drive storage service
 cask "google-drive"
 # Open-source video transcoder
@@ -184,8 +206,6 @@ cask "iina"
 cask "imageoptim"
 # Vector graphics editor
 cask "inkscape"
-# HTTP and GraphQL Client
-cask "insomnia"
 # Menu bar manager
 cask "jordanbaird-ice"
 # Automation software
@@ -194,16 +214,8 @@ cask "keyboard-maestro"
 cask "keyclu"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
-# Support for Logitech G gear
-cask "logitech-g-hub"
 # Trims video and audio files losslessly
 cask "losslesscut"
-# Open-source firewall to block unknown outgoing connections
-cask "lulu"
-# Provides updates to various Microsoft products
-cask "microsoft-auto-update"
-# Meet, chat, call, and collaborate in just one place
-cask "microsoft-teams"
 # Unofficial Google Nearby Share app
 cask "neardrop"
 # Reverse proxy, secure introspectable tunnels to localhost
@@ -214,12 +226,12 @@ cask "notion"
 cask "notion-calendar"
 # Simple application that will prevent iTunes or Apple Music from launching
 cask "notunes"
+# Replacement for Docker Desktop
+cask "orbstack"
 # PDF compression tool
 cask "pdf-squeezer"
 # PDF editing software
 cask "pdfpen"
-# Administration and development platform for PostgreSQL
-cask "pgadmin4"
 # Browser for ambitious developers
 cask "polypane"
 # Quick Look generator for Markdown files
@@ -234,38 +246,31 @@ cask "sequel-ace"
 cask "shortcat"
 # Screenshot measurement and annotation tool
 cask "shottr"
-# Team communication and collaboration software
-cask "slack"
 # Music streaming service
 cask "spotify"
 # System monitor for the menu bar
 cask "stats"
-# Open-source media center
-cask "stremio"
-# Sync and backup service to Synology NAS drives
-cask "synology-drive"
+# Native GUI tool for relational databases
+cask "tableplus"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
 # Unpacks archive files
 cask "the-unarchiver"
 # Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
+# Remote pair programming app
+cask "tuple"
 # Open-source code editor
 cask "visual-studio-code"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
-# Multiplayer code editor
-cask "zed"
 mas "AnyExif", id: 1621435983
-mas "Bitwarden", id: 1352778147
-mas "Cityscapes", id: 1631153096
 mas "ColorFolder", id: 1450345160
+mas "Display Maid", id: 450063525
 mas "GarageBand", id: 682658836
-mas "Human Japanese Lite", id: 910679636
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "mChapters", id: 563131976
-mas "Mosaic", id: 1475100873
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Peek", id: 1554235898
@@ -274,61 +279,56 @@ mas "UTM", id: 1538878817
 mas "Xcode", id: 497799835
 vscode "ahgood.movetab"
 vscode "alefragnani.bookmarks"
-vscode "antfu.browse-lite"
 vscode "antfu.vite"
 vscode "artizon.artizon-vscode-surround"
+vscode "astro-build.astro-vscode"
 vscode "bennycode.sort-everything"
-vscode "biati.reveal-in-forklift"
 vscode "bmewburn.vscode-intelephense-client"
 vscode "bradlc.vscode-tailwindcss"
 vscode "cfcluan.project-scopes"
-vscode "chatide.chatide"
-vscode "christian-kohler.path-intellisense"
-vscode "codeium.codeium"
 vscode "dbaeumer.vscode-eslint"
-vscode "denoland.vscode-deno"
-vscode "devsense.composer-php-vscode"
 vscode "devsense.intelli-php-vscode"
 vscode "devsense.phptools-vscode"
-vscode "devsense.profiler-php-vscode"
 vscode "donjayamanne.githistory"
 vscode "dotjoshjohnson.xml"
+vscode "eamodio.gitlens"
 vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"
 vscode "fabiospampinato.vscode-open-in-github"
-vscode "firsttris.vscode-jest-runner"
 vscode "formulahendry.auto-rename-tag"
+vscode "gruntfuggly.auto-snippet"
 vscode "joao-mbn.react-extract"
 vscode "letmaik.git-tree-compare"
+vscode "lokalise.i18n-ally"
 vscode "maattdd.gitless"
-vscode "mechatroner.rainbow-csv"
 vscode "mehedidracula.php-namespace-resolver"
 vscode "mnismt.cody-plus-plus"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
-vscode "ms-vscode-remote.remote-containers"
-vscode "mxsdev.typescript-explorer"
 vscode "nicholashsiang.vscode-react-snippet"
 vscode "nicoespeon.abracadabra"
 vscode "orsenkucher.vscode-graphql"
 vscode "patbenatar.advanced-new-file"
 vscode "percygrunwald.vscode-intellij-recent-files"
 vscode "prisma.prisma"
-vscode "rebornix.toggle"
+vscode "richie5um2.vscode-sort-json"
 vscode "sharashchandradesai.simple-scratch"
+vscode "shardulm94.trailing-spaces"
 vscode "shazbot.surroundelection"
-vscode "sibiraj-s.vscode-scss-formatter"
 vscode "sourcegraph.cody-ai"
+vscode "steoates.autoimport"
 vscode "streetsidesoftware.code-spell-checker"
+vscode "stylelint.vscode-stylelint"
 vscode "suhelmakkad.shadcn-ui"
+vscode "syler.sass-indented"
 vscode "sysoev.vscode-open-in-github"
 vscode "tamasfe.even-better-toml"
+vscode "unifiedjs.vscode-mdx"
 vscode "vitest.explorer"
 vscode "vscodevim.vim"
 vscode "vue.volar"
 vscode "wallabyjs.quokka-vscode"
-vscode "wix.vscode-import-cost"
 vscode "xpo.local-history"
 vscode "yoavbls.pretty-ts-errors"

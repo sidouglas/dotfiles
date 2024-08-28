@@ -15,76 +15,69 @@ export HOMEBREW_BUNDLE_FILE="$HOMEBREW_DIR/Brewfile"
 HISTSIZE=5000 # Session Memory Limit
 SAVEHIST=4000 # File Memory Limit
 
-# Resources:
-# Using this plugin: https://github.com/jeffreytse/zsh-vi-mode
-# Adding Vi To Your Zsh: https://dougblack.io/words/zsh-vi-mode.html
-# Pure by Sindre Sørhus: https://github.com/sindresorhus/pure
-
-# Use vim editing mode in terminal [escape to enter normal mode]
-bindkey -v
-
-# Restore some keymaps removed by vim keybind mode
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-bindkey '^w' backward-kill-word
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
-
-## VI MODE FOR SHELL
-# Dependencies for the following lines
-zmodload zsh/zle
-autoload -U colors && colors
-
-# Change prompt icon + color based on insert/normal vim mode in prompt
-# Will have no effect if you don't use pure as your ZSH theme
-export PURE_PROMPT_SYMBOL="[I] ❯"
-export PURE_PROMPT_VICMD_SYMBOL="%{$fg[green]%}[N] ❮%{$reset_color%}"
-
-# By default, we have insert mode shown on right hand side
-export RPROMPT="%{$fg[blue]%}[INSERT]%{$reset_color%}"
-
-# And also a beam as the cursor
-echo -ne '\e[5 q'
-
-# Callback for vim mode change
-function zle-keymap-select () {
-    # Only supported in these terminals
-    if [ "$TERM" = "xterm-256color" ] || [ "$TERM" = "xterm-kitty" ] || [ "$TERM" = "screen-256color" ]; then
-        if [ $KEYMAP = vicmd ]; then
-            # Command mode
-            export RPROMPT="%{$fg[green]%}[NORMAL]%{$reset_color%}"
-
-            # Set block cursor
-            echo -ne '\e[1 q'
-        else
-            # Insert mode
-            export RPROMPT="%{$fg[blue]%}[INSERT]%{$reset_color%}"
-
-            # Set beam cursor
-            echo -ne '\e[5 q'
-        fi
-    fi
-
-    if typeset -f prompt_pure_update_vim_prompt_widget > /dev/null; then
-        # Refresh prompt and call Pure super function
-        prompt_pure_update_vim_prompt_widget
-    fi
-}
-
-# Bind the callback
-zle -N zle-keymap-select
-
-# Reduce latency when pressing <Esc>
-export KEYTIMEOUT=10
-
-## END VI MODE
-
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt histNoStore
 setopt extendedHistory
 setopt histIgnoreAllDups
 unsetopt appendHistory # explicit and unnecessary
 setopt incAppendHistoryTime
+# VI Mode
+bindkey -v
+export KEYTIMEOUT=1
+
+cursor_mode() {
+    # See https://ttssh2.osdn.jp/manual/4/en/usage/tips/vim.html for cursor shapes
+    cursor_block='\e[2 q '
+    cursor_beam='\e[6 q'
+
+    function zle-keymap-select {
+        if [[ ${KEYMAP} == vicmd ]] ||
+            [[ $1 = 'block' ]]; then
+            echo -ne $cursor_block
+        elif [[ ${KEYMAP} == main ]] ||
+            [[ ${KEYMAP} == viins ]] ||
+            [[ ${KEYMAP} = '' ]] ||
+            [[ $1 = 'beam' ]]; then
+            echo -ne $cursor_beam
+        fi
+    }
+
+    zle-line-init() {
+        echo -ne $cursor_beam
+    }
+
+    zle -N zle-keymap-select
+    zle -N zle-line-init
+}
+
+cursor_mode
+
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+autoload -Uz select-bracketed select-quoted
+zle -N select-quoted
+zle -N select-bracketed
+for km in viopp visual; do
+  bindkey -M $km -- '-' vi-up-line-or-history
+  for c in {a,i}${(s..)^:-\'\"\`\|,./:;=+@}; do
+    bindkey -M $km $c select-quoted
+  done
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+    bindkey -M $km $c select-bracketed
+  done
+done
+
+
+
+#End Vi mode
 
 
 # Create Aliases
@@ -199,7 +192,3 @@ function hist_remove() {
 alias brew_outdated="brew outdated --cask --greedy"
 alias brew_permissions="sudo chown -R $(whoami) $(brew --prefix)/*"
 alias brew_upgrade_casks='for cask in $(brew outdated --cask --greedy); do brew upgrade --cask "$cask"; done'
-alias brewdump="mkdir -p $HOMEBREW_DIR && cd $HOMEBREW_DIR && brew bundle dump --force --describe && bat Brewfile"
-
-#Supabase
-alias migra="docker run djrobstep/migra migra"

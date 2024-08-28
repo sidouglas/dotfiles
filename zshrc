@@ -81,7 +81,6 @@ rails
 rbenv
 ruby
 zsh-autosuggestions
-zsh-vi-mode
 )
 
 NVM_HOMEBREW=/opt/homebrew/opt/nvm
