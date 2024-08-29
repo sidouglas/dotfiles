@@ -55,6 +55,12 @@ defaults write com.vscodium ApplePressAndHoldEnabled -bool false                
 defaults write com.microsoft.VSCodeExploration ApplePressAndHoldEnabled -bool false   # For VS Codium Exploration users
 defaults delete -g ApplePressAndHoldEnabled                                           # If necessary, reset global default
 
+# Keyboard Maestro notifications
+defaults write com.stairways.keyboardmaestro.engine "Notification-Information" -bool YES
+defaults write com.stairways.keyboardmaestro.engine "Notification-MacroExecution" -bool NO
+defaults write com.stairways.keyboardmaestro.engine "Notification-MacroCancelled" -bool YES
+defaults write com.stairways.keyboardmaestro.engine "Notification-ActionFailed" -bool YES
+defaults write com.stairways.keyboardmaestro.engine "Notification-ReceivedClipboard" -bool YES
 
 # Finish macOS Setup
 killall Finder

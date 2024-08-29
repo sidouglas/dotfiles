@@ -13,256 +13,134 @@ tap "homebrew/services"
 tap "krtirtho/apps"
 tap "supabase/tap"
 tap "tabbyml/tabby"
-# Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
-# Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
-# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Get/set bluetooth power and discoverable state
 brew "blueutil"
-# Switch Apache / Valet / CLI configs between PHP versions
 brew "brew-php-switcher"
-# Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
-# Core application library for C
 brew "glib"
-# Low-level library for pixel manipulation
 brew "pixman"
-# Vector graphics library with cross-device output support
 brew "cairo"
-# Validating, recursive, caching DNS resolver
 brew "unbound"
-# GNU Transport Layer Security (TLS) Library
 brew "gnutls"
-# OpenType text shaping engine
 brew "harfbuzz"
-# High quality MPEG Audio Layer III (MP3) encoder
 brew "lame"
-# Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
-# Framework for layout and rendering of i18n text
 brew "pango"
-# Secure Reliable Transport
 brew "srt"
-# Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# Core component of the AcoustID project (Audio fingerprinting)
 brew "chromaprint"
-# Enables you to reproduce the CircleCI environment locally
 brew "circleci"
-# GNU File, Shell, and Text utilities
 brew "coreutils"
-# Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
-# YAML Parser
 brew "libyaml"
-# Enterprise friendly way of detecting and preventing secrets in code
 brew "detect-secrets"
-# Modern, maintained replacement for ls
 brew "eza"
-# Simple, fast and user-friendly alternative to find
 brew "fd"
-# Create thumbnails for your video files
 brew "ffmpegthumbnailer"
-# Libraries to talk to Microsoft SQL Server and Sybase databases
 brew "freetds"
-# Command-line fuzzy finder written in Go
 brew "fzf"
-# Library for encoding and decoding .avif files
 brew "libavif"
-# Graphics library to dynamically manipulate images
 brew "gd"
-# Git-powered FTP client
 brew "git-ftp"
-# GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Generate introspection data for GObject libraries
 brew "gobject-introspection"
-# Multimedia framework for research and academic purposes
 brew "gpac"
-# Library access to GnuPG
 brew "gpgme"
-# GNU Ubiquitous Intelligent Language for Extensions
 brew "guile"
-# Improved top (interactive process viewer)
 brew "htop"
-# ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 brew "libheif"
-# Tools and libraries to manipulate images in many formats
 brew "imagemagick"
-# Lightweight and flexible command-line JSON processor
 brew "jq"
-# Postgres C API library
 brew "libpq"
-# Clone of ls with colorful output, file type icons, and more
 brew "lsd"
-# Mac App Store command-line interface
 brew "mas"
-# Simple tool to make locally trusted development certificates
 brew "mkcert"
-# Read, create, and modify MP4 files
 brew "mp4v2"
-# UNIX movie player
 brew "mplayer"
-# General-purpose lossless data-compression library
 brew "zlib"
-# Open source relational database management system
 brew "mysql-client@8.4", link: true
-# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Libraries for security-enabled client and server applications
 brew "nss"
-# Manage multiple Node.js versions
 brew "nvm"
-# Open source suite of directory software
 brew "openldap"
-# Swiss-army knife of markup format conversion
 brew "pandoc"
-# PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
-# Search PDFs for strings matching a regular expression
 brew "pdfgrep"
-# General-purpose scripting language
 brew "php@8.2", restart_service: true, link: true
-# Object-relational database system
 brew "postgresql@14"
-# Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
-# Ruby version manager
 brew "rbenv"
-# Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# SOund eXchange: universal sound sample translator
 brew "sox"
-# Easiest, most secure way to use WireGuard and 2FA
 brew "tailscale"
-# Tool Command Language
 brew "tcl-tk"
-# Programmatically correct mistyped console commands
 brew "thefuck"
-# Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Command-line unarchiving tools supporting multiple formats
 brew "unar"
-# Internet file retriever
 brew "wget"
-# Linter for YAML files
 brew "yamllint"
-# Feature-rich command-line audio/video downloader
 brew "yt-dlp"
-# Shell extension to navigate your filesystem faster
 brew "zoxide"
-# UNIX shell (command interpreter)
 brew "zsh"
-# The official Doppler CLI for managing your secrets
 brew "dopplerhq/cli/doppler"
-# Supabase CLI
 brew "supabase/tap/supabase"
-# Tabby: AI Coding Assistant
 brew "tabbyml/tabby/tabby"
-# Password manager that keeps all passwords secure behind one password
 cask "1password"
-# Memory training application
 cask "anki"
-# Allows connection to a computer remotely
 cask "anydesk"
-# Application uninstaller
 cask "appcleaner"
-# Multi-track audio editor and recorder
+cask "asana"
 cask "audacity"
-# Desktop password and login vault
 cask "bitwarden"
-# Web browser focusing on privacy
 cask "brave-browser"
-# Utility that prevents the system from going to sleep
 cask "caffeine"
-# Voice and text chat software
-cask "discord"
-# Client for the Dropbox cloud storage service
+cask "clop"
+cask "displaylink"
 cask "dropbox"
-# VPN client for secure internet access and private browsing
 cask "expressvpn"
-# Tool for organising and renaming movies, TV shows, anime or music
 cask "filebot"
-# Web browser
 cask "firefox"
 cask "font-hack-nerd-font"
 cask "font-open-sans"
 cask "font-symbols-only-nerd-font"
-# Finder replacement and FTP, SFTP, WebDAV and Amazon s3 client
 cask "forklift"
-# Desktop client for GitHub repositories
 cask "github"
-# Client for the Google Drive storage service
 cask "google-drive"
-# Open-source video transcoder
 cask "handbrake"
-# Convert your caps lock key or any of your modifier keys to the hyper key
 cask "hyperkey"
-# Free and open-source media player
 cask "iina"
-# Tool to optimise images to a smaller size
-cask "imageoptim"
-# Vector graphics editor
 cask "inkscape"
-# Menu bar manager
 cask "jordanbaird-ice"
-# Automation software
 cask "keyboard-maestro"
-# Find shortcuts for any installed application
 cask "keyclu"
-# Free cross-platform office suite, fresh version
 cask "libreoffice"
-# Trims video and audio files losslessly
 cask "losslesscut"
-# Unofficial Google Nearby Share app
 cask "neardrop"
-# Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
-# App to write, plan, collaborate, and get organised
 cask "notion"
-# Calendar for professionals and teams
 cask "notion-calendar"
-# Simple application that will prevent iTunes or Apple Music from launching
 cask "notunes"
-# Replacement for Docker Desktop
 cask "orbstack"
-# PDF compression tool
 cask "pdf-squeezer"
-# PDF editing software
 cask "pdfpen"
-# Browser for ambitious developers
 cask "polypane"
-# Quick Look generator for Markdown files
 cask "qlmarkdown"
-# Control your tools with a few keystrokes
 cask "raycast"
-# Screen recording and video editing software
 cask "screenflow"
-# MySQL/MariaDB database management
 cask "sequel-ace"
-# App that enables mouse-free UI interaction
 cask "shortcat"
-# Screenshot measurement and annotation tool
 cask "shottr"
-# Music streaming service
+cask "slack-cli"
 cask "spotify"
-# System monitor for the menu bar
 cask "stats"
-# Native GUI tool for relational databases
 cask "tableplus"
-# Desktop client for Telegram messenger
 cask "telegram-desktop"
-# Unpacks archive files
 cask "the-unarchiver"
-# Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
-# Remote pair programming app
 cask "tuple"
-# Open-source code editor
 cask "visual-studio-code"
-# Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
 mas "AnyExif", id: 1621435983
 mas "ColorFolder", id: 1450345160
@@ -317,6 +195,7 @@ vscode "richie5um2.vscode-sort-json"
 vscode "sharashchandradesai.simple-scratch"
 vscode "shardulm94.trailing-spaces"
 vscode "shazbot.surroundelection"
+vscode "shopify.ruby-lsp"
 vscode "sourcegraph.cody-ai"
 vscode "steoates.autoimport"
 vscode "streetsidesoftware.code-spell-checker"

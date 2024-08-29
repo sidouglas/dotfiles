@@ -88,6 +88,7 @@
 	mine = checkout --ours
 	theirs = checkout --theirs
 	com = "!f() { if git show-ref --verify --quiet refs/heads/main; then git checkout main; else git checkout master; fi; }; f"
+	oops = reset --soft HEAD~1
 
 [core]
   mergeoptions = --no-edit
