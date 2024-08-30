@@ -35,7 +35,7 @@
     nukeall ="!git checkout main & git branch | grep -v "main" | xargs git branch -d"
     p = pull
     wip = !HUSKY=0 git add --all && HUSKY=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
-  	rbm = "!f() { if git show-ref --verify --quiet refs/heads/main; then git rebase origin/main; else git rebase origin/master; fi; }; f"
+  	rbm = "!f() { git fetch origin; if git show-ref --verify --quiet refs/heads/main; then git rebase origin/main; else git rebase origin/master; fi; }; f"
     rbs = "!git fetch origin staging && git rebase origin/staging"
     rename = "!git branch -m "
     revert = "!f() { git checkout master -- $1 && git add $1 && git commit -m \"Reverted $1 to the version in master\"; }; f"
