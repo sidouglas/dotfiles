@@ -32,7 +32,18 @@
     l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
     m = commit --amend --verbose
     nuke = !sh -c 'git checkout main && git branch -df $1 && git checkout -b $1'
-    nukeall ="!git checkout main & git branch | grep -v "main" | xargs git branch -d"
+    nukeall = "!f() { \
+      if git rev-parse --verify main >/dev/null 2>&1; then \
+        primary='main'; \
+      elif git rev-parse --verify master >/dev/null 2>&1; then \
+        primary='master'; \
+      else \
+        echo 'Neither main nor master branch found'; \
+        return 1; \
+      fi; \
+      git checkout $primary && \
+      git branch | grep -v \"$primary\" | xargs git branch -D; \
+    }; f"
     p = pull
     wip = !HUSKY=0 git add --all && HUSKY=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
   	rbm = "!f() { git fetch origin; if git show-ref --verify --quiet refs/heads/main; then git rebase origin/main; else git rebase origin/master; fi; }; f"
