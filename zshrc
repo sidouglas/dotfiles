@@ -78,8 +78,7 @@ bundler
 git
 macos
 rails
-rbenv
-ruby
+zsh-rbenv
 zsh-autosuggestions
 )
 
@@ -132,10 +131,6 @@ else
    echo 'Could not find zsh_shared!'
   fi
 fi
-
-
-#FFMPEG
-export PATH="/opt/homebrew/opt/ffmpeg@4/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/simon.douglas/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/simon.douglas/google-cloud-sdk/path.zsh.inc'; fi
