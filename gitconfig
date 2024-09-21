@@ -24,7 +24,7 @@
     dc = diff --cached
     ds = diff --stat
     f = fetch
-    fix = !HUSKY=0 git wip && HUSKY=0 git squash 2 --no-verify --no-gpg-sign
+    fix = !HUSKY=0  LEFTHOOK=0 git wip && HUSKY=0 LEFTHOOK=0 git squash 2 --no-verify --no-gpg-sign
     h = push
     o = checkout
     ho = git push -u origin HEAD
@@ -45,7 +45,7 @@
       git branch | grep -v \"$primary\" | xargs git branch -D; \
     }; f"
     p = pull
-    wip = !HUSKY=0 git add --all && HUSKY=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
+    wip = !HUSKY=0 LEFTHOOK=0 git add --all && HUSKY=0 LEFTHOOK=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
   	rbm = "!f() { git fetch origin; if git show-ref --verify --quiet refs/heads/main; then git rebase origin/main; else git rebase origin/master; fi; }; f"
     rbs = "!git fetch origin staging && git rebase origin/staging"
     rename = "!git branch -m "
@@ -61,7 +61,7 @@
     la = "!git config -l | grep alias | cut -c 7-"
     co = "!git branch | fzf | xargs git checkout"
     # https://gist.github.com/hlecuanda/c9a5091938cd6a7b585d
-    squash = "!f(){ HUSKY=0 git reset --soft HEAD~${1} && HUSKY=0 git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+    squash = "!f(){ LEFTHOOK=0 HUSKY=0 git reset --soft HEAD~${1} && HUSKY=0 git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
     tidy="!git remote prune origin && git branch --merged > /tmp/merged-branches && sed -E '/(staging|master)/d' /tmp/merged-branches > /tmp/clean-branches && nano /tmp/clean-branches && xargs git branch -d </tmp/clean-branches"
     # purge = "!git branch --no-merged | sed -E '/(^\*|master|dev|uat)/' | xargs git branch -df"
     #This is a useful one for me, it allows me to rebase with the tracking branch even if I have uncommitted changes. Credit goes to @cmsolomon.
