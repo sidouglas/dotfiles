@@ -14,4 +14,3 @@ fi
 autoload zmv #filename manipulation tool.
 
 export PATH="$PATH:$HOME/.dotfiles/bin"
-export PATH="$HOME/.rbenv/bin:$PATH"
