@@ -21,6 +21,7 @@
     ~/.zshenv: null
     ~/.zshrc: null
     ~/.vimrc: null
+    ~/.ideavimrc: null
 - create:
     - ~/downloads
     - ~/.vim/undo-history
