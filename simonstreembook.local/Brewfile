@@ -179,6 +179,8 @@ cask "bruno"
 cask "caffeine"
 # Image, video and clipboard optimiser
 cask "clop"
+# Voice and text chat software
+cask "discord"
 # Drivers for DisplayLink docks, adapters and monitors
 cask "displaylink"
 # Web browser

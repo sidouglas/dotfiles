@@ -137,3 +137,13 @@ if [ -f '/Users/simon.douglas/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/simon.douglas/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/simon.douglas/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/simon.douglas/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
