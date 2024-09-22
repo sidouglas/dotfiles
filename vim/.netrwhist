@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/simon/Downloads/temp.screenflow'
+let g:netrw_dirhist_5='/Users/simon/Music'
+let g:netrw_dirhist_4='/Users/simon/github/nfc-stock/hooks'
+let g:netrw_dirhist_3='/Users/simon/.config/yazi'
+let g:netrw_dirhist_2='/Users/simon/Google Drive'
+let g:netrw_dirhist_1='/Users/simon/Downloads'
