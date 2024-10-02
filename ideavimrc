@@ -29,7 +29,6 @@ set ideamarks
 set idearefactormode=normal
 set ideastatusicon=gray
 
-
 "" ========================================================
 "" Plugin Settings
 "" ========================================================
@@ -99,14 +98,12 @@ nmap <C-S-m> <Action>(ToolWindowsGroup)
 " Clear Search Highlighitng
 nnoremap <C-[> :noh<return>
 
-
 "" ========================================================
 "" Leader Commands
 "" ========================================================
 
 " EasyMotion
 let g:WhichKeyDesc_easymotion = "<leader><leader> EasyMotion"
-
 
 " Information commands
 nmap <leader>ie <action>(ShowErrorDescription)
@@ -129,7 +126,6 @@ let g:WhichKeyDesc_info_call_hierarchy = "<leader>ih Call Hierarchy"
 let g:WhichKeyDesc_info_show_usages = "<leader>iu Usages"
 let g:WhichKeyDesc_info_method_hierarchy = "<leader>im Method Hierarchy"
 
-
 " Window splits
 nmap <leader>wv <action>(SplitVertically)
 nmap <leader>wh <action>(SplitHorizontally)
@@ -144,7 +140,6 @@ let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
 let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
 let g:WhichKeyDesc_window_split_back = "<leader>wb Back split"
 let g:WhichKeyDesc_window_split_forward = "<leader>wf Forward split"
-
 
 " Tab Navigation and Management
 nmap <leader>tP <Action>(PinActiveEditorTab)
@@ -164,21 +159,19 @@ nmap <leader>ta <Action>(CloseAllUnpinnedEditors)
 let g:WhichKeyDesc_tabs = "<leader>t Tabs"
 let g:WhichKeyDesc_tabs_pin = "<leader>tP Pin Active Tab"
 let g:WhichKeyDesc_tabs_go_to = "<leader>tg Go to Tab"
-let g:WhichKeyDesc_tabs_go_to_1 = "<leader>tg1 Go to Tab 1"
-let g:WhichKeyDesc_tabs_go_to_2 = "<leader>tg2 Go to Tab 2"
-let g:WhichKeyDesc_tabs_go_to_3 = "<leader>tg3 Go to Tab 3"
-let g:WhichKeyDesc_tabs_go_to_4 = "<leader>tg4 Go to Tab 4"
-let g:WhichKeyDesc_tabs_go_to_5 = "<leader>tg5 Go to Tab 5"
-let g:WhichKeyDesc_tabs_go_to_6 = "<leader>tg6 Go to Tab 6"
-let g:WhichKeyDesc_tabs_go_to_7 = "<leader>tg7 Go to Tab 7"
-let g:WhichKeyDesc_tabs_go_to_8 = "<leader>tg8 Go to Tab 8"
-let g:WhichKeyDesc_tabs_go_to_9 = "<leader>tg9 Go to Tab 9"
+let g:WhichKeyDesc_tabs_go_to_1 = "<leader>t1 Go to Tab 1"
+let g:WhichKeyDesc_tabs_go_to_2 = "<leader>t2 Go to Tab 2"
+let g:WhichKeyDesc_tabs_go_to_3 = "<leader>t3 Go to Tab 3"
+let g:WhichKeyDesc_tabs_go_to_4 = "<leader>t4 Go to Tab 4"
+let g:WhichKeyDesc_tabs_go_to_5 = "<leader>t5 Go to Tab 5"
+let g:WhichKeyDesc_tabs_go_to_6 = "<leader>t6 Go to Tab 6"
+let g:WhichKeyDesc_tabs_go_to_7 = "<leader>t7 Go to Tab 7"
+let g:WhichKeyDesc_tabs_go_to_8 = "<leader>t8 Go to Tab 8"
+let g:WhichKeyDesc_tabs_go_to_9 = "<leader>t9 Go to Tab 9"
 let g:WhichKeyDesc_tabs_close = "<leader>tx Close Current Tab"
 let g:WhichKeyDesc_tabs_close_all = "<leader>tX Close All Tabs"
 let g:WhichKeyDesc_tabs_close_all_but_active = "<leader>to Close All Tabs But Active"
 let g:WhichKeyDesc_tabs_close_all_unpinned = "<leader>ta Close All Unpinned Tabs"
-
-
 
 " Display options
 map <leader>Dd <action>(ToggleDistractionFreeMode)
@@ -188,7 +181,6 @@ let g:WhichKeyDesc_display = "<leader>D Display options"
 let g:WhichKeyDesc_zen_mode = "<leader>Dz Toggle Zen mode"
 let g:WhichKeyDesc_df_mode = "<leader>Dd Toggle Distraction-Free mode"
 let g:WhichKeyDesc_fullscreen = "<leader>Df Toggle full screen"
-
 
 " File navigation
 nmap <leader>fg <Action>(GotoFile)
@@ -238,7 +230,6 @@ let g:WhichKeyDesc_run_failed = "<leader>rf Rerun Failed Tests"
 let g:WhichKeyDesc_run_stop = "<leader>rs Stop"
 let g:WhichKeyDesc_run_choose_configuration = "<leader>rC Choose Run Configuration"
 
-
 " Debugging commands
 nmap <leader>dx <Action>(Debug)
 nmap <leader>dc <Action>(ContextDebug)
@@ -265,7 +256,6 @@ let g:WhichKeyDesc_debug_step_over = "<leader>do Step Over"
 let g:WhichKeyDesc_debug_resume = "<leader>dr Resume Debugging"
 let g:WhichKeyDesc_debug_evaluate_expression = "<leader>dR Evaluate Expression"
 let g:WhichKeyDesc_debug_activate_tool_window = "<leader>dt Activate Debug Tool Window"
-
 
 " Language Actions
 nmap <leader>ll <Action>(Refactorings.QuickListPopupAction)
@@ -299,7 +289,6 @@ let g:WhichKeyDesc_language_reformat_code = "<leader>lR Reformat Code"
 let g:WhichKeyDesc_language_inspect_code = "<leader>lI Inspect Code"
 let g:WhichKeyDesc_language_generate = "<leader>lG Generate"
 
-
 """ Bookmarks
 nmap <leader>bm <Action>(Bookmarks)
 nmap <leader>bs <Action>(ShowBookmarks)
@@ -317,7 +306,6 @@ let g:WhichKeyDesc_bookmarks_edit = "<leader>be Edit Bookmark"
 let g:WhichKeyDesc_bookmarks_prev = "<leader>bp Previous Bookmark"
 let g:WhichKeyDesc_bookmarks_next = "<leader>bn Next Bookmark"
 
-
 " Go To
 nmap <leader>gd <Action>(GotoDeclaration)
 nmap <leader>go <Action>(GotoSuperMethod)
@@ -330,7 +318,6 @@ let g:WhichKeyDesc_goto_super_method = "<leader>go Go To Super Method"
 let g:WhichKeyDesc_goto_type_declaration = "<leader>gD Go To Type Declaration"
 let g:WhichKeyDesc_goto_implementation = "<leader>gi Go To Implementation"
 let g:WhichKeyDesc_goto_test = "<leader>gT Go To Test"
-
 
 " Search
 nmap <leader>sS <action>(SearchEverywhere)
@@ -350,7 +337,6 @@ let g:WhichKeyDesc_search_class = "<leader>sc Search Class"
 let g:WhichKeyDesc_search_file = "<leader>sf Search File"
 let g:WhichKeyDesc_search_symbol = "<leader>ss Search Symbol"
 let g:WhichKeyDesc_search_text = "<leader>st Search Text"
-
 
 " Case Conversion
 vmap <leader>cm <Action>(me.laria.code.idea_caseconv.convert_case_menu)
@@ -379,7 +365,6 @@ let g:WhichKeyDesc_case_conversion_title = "<leader>ct Title Case"
 let g:WhichKeyDesc_case_conversion_dash = "<leader>c- dash-case"
 let g:WhichKeyDesc_case_conversion_sentence = "<leader>cd Sentence case"
 
-
 " Git
 nmap <leader>Gc <Action>(Vcs.Show.Local.Changes)
 nmap <leader>Gb <Action>(Git.Branches)
@@ -393,6 +378,7 @@ nmap <leader>Ga <Action>(Annotate)
 nmap <leader>Gt <Action>(ActivateVersionControlToolWindow)
 nmap <leader>Gr <Action>(Vcs.RollbackChangedLines)
 nmap <leader>Gu <Action>(Vcs.UpdateProject)
+
 let g:WhichKeyDesc_git = "<leader>G Git"
 let g:WhichKeyDesc_git_checkin = "<leader>Gg Checkin"
 let g:WhichKeyDesc_git_branches = "<leader>Gb Branches"

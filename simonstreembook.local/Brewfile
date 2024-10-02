@@ -73,6 +73,8 @@ brew "fzf"
 brew "libavif"
 # Graphics library to dynamically manipulate images
 brew "gd"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
 # Git-powered FTP client
 brew "git-ftp"
 # GNU Pretty Good Privacy (PGP) package
@@ -127,6 +129,8 @@ brew "poppler"
 brew "pdfgrep"
 # General-purpose scripting language
 brew "php@8.2", restart_service: true, link: true
+# Fast, disk space efficient package manager
+brew "pnpm"
 # Object-relational database system
 brew "postgresql@14"
 # Interpreted, interactive, object-oriented programming language
@@ -143,6 +147,8 @@ brew "tailscale"
 brew "tcl-tk"
 # Programmatically correct mistyped console commands
 brew "thefuck"
+# Upgrade all the things
+brew "topgrade"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Command-line unarchiving tools supporting multiple formats
@@ -305,6 +311,7 @@ vscode "percygrunwald.vscode-intellij-recent-files"
 vscode "prisma.prisma"
 vscode "richie5um2.vscode-sort-json"
 vscode "rlivings39.fzf-quick-open"
+vscode "rluvaton.vscode-vitest"
 vscode "sharashchandradesai.simple-scratch"
 vscode "shardulm94.trailing-spaces"
 vscode "shazbot.surroundelection"

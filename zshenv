@@ -1,4 +1,4 @@
-echo '.zshenv loaded'
+# echo '.zshenv loaded'
 function exists() { command -v $1 > /dev/null 2>$1 }
 
 export NVM_DIR="$HOME/.nvm"
