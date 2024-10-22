@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/Users/simon/.config/nvim/init.lua'
 let g:netrw_dirhist_6='/Users/simon/Downloads/temp.screenflow'
 let g:netrw_dirhist_5='/Users/simon/Music'
 let g:netrw_dirhist_4='/Users/simon/github/nfc-stock/hooks'
