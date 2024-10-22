@@ -113,7 +113,9 @@ vnoremap <c-k> :m '<-2<CR>gv=gv
 nnoremap <CR> a<CR><Esc>k$
 
 " }}}
-
+"Now Shift-h (capital H) and Shift-l (capital L) will switch you quickly between tabs
+nnoremap H gT
+nnoremap L gt
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
 
