@@ -309,7 +309,7 @@ let g:WhichKeyDesc_language_inspect_code = "<leader>lI Inspect Code"
 let g:WhichKeyDesc_language_generate = "<leader>lG Generate"
 
 
-""" Bookmarks
+" Bookmarks
 nmap <leader>bm <Action>(Bookmarks)
 nmap <leader>bs <Action>(ShowBookmarks)
 nmap <leader>bt <Action>(ActivateBookmarksToolWindow)
@@ -317,6 +317,7 @@ nmap <leader>bb <Action>(ToggleBookmark)
 nmap <leader>be <Action>(EditBookmark)
 nmap <leader>bp <Action>(GotoPreviousBookmark)
 nmap <leader>bn <Action>(GotoNextBookmark)
+
 let g:WhichKeyDesc_bookmarks = "<leader>b Bookmarks"
 let g:WhichKeyDesc_bookmarks_menu = "<leader>bm Bookmark Menu"
 let g:WhichKeyDesc_bookmarks_show = "<leader>bs Show Bookmarks"
@@ -325,6 +326,13 @@ let g:WhichKeyDesc_bookmarks_toggle_bookmark = "<leader>bb Toggle Bookmark"
 let g:WhichKeyDesc_bookmarks_edit = "<leader>be Edit Bookmark"
 let g:WhichKeyDesc_bookmarks_prev = "<leader>bp Previous Bookmark"
 let g:WhichKeyDesc_bookmarks_next = "<leader>bn Next Bookmark"
+
+"Context
+nmap <leader>cl <Action>(context.load)
+nmap <leader>cs <Action>(context.save)
+let g:WhichKeyDesc_context = "<leader>c Context"
+let g:WhichKeyDesc_context_load_context = "<leader>cl Load Context"
+let g:WhichKeyDesc_context_save_context = "<leader>cs Save Context"
 
 
 " Go To
