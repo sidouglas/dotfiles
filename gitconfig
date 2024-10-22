@@ -24,6 +24,7 @@
     dc = diff --cached
     ds = diff --stat
     f = fetch
+    fb = "!f() { git add -A && git commit -m 'PR feedback'; };"
     fix = !HUSKY=0  LEFTHOOK=0 git wip && HUSKY=0 LEFTHOOK=0 git squash 2 --no-verify --no-gpg-sign
     h = push
     o = checkout
@@ -100,6 +101,8 @@
 	theirs = checkout --theirs
 	com = "!f() { if git show-ref --verify --quiet refs/heads/main; then git checkout main; else git checkout master; fi; }; f"
 	oops = reset --soft HEAD~1
+  myfiles = "!f() { git log --diff-filter=A --author=\"1107946+sidouglas@users.noreply.github.com\" --name-only --pretty=format: | sort -u; }; f"
+  myedits = "!f() { git log --author=\"1107946+sidouglas@users.noreply.github.com\" --name-only --pretty=format: | grep -v '\\.snap$' | sort -u; }; f"
 
 [core]
   mergeoptions = --no-edit

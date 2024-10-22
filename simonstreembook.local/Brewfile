@@ -196,8 +196,6 @@ cask "font-open-sans"
 cask "font-symbols-only-nerd-font"
 # Finder replacement and FTP, SFTP, WebDAV and Amazon s3 client
 cask "forklift"
-# Desktop client for GitHub repositories
-cask "github"
 # Client for the Google Drive storage service
 cask "google-drive"
 # Convert your caps lock key or any of your modifier keys to the hyper key
@@ -303,6 +301,7 @@ vscode "ms-azuretools.vscode-docker"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
+vscode "mylesmurphy.prettify-ts"
 vscode "nicholashsiang.vscode-react-snippet"
 vscode "nicoespeon.abracadabra"
 vscode "orsenkucher.vscode-graphql"
