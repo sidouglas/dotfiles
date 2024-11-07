@@ -109,7 +109,7 @@ inoremap <c-j> <Esc>:m .+1<CR>==gi
 inoremap <c-k> <Esc>:m .-2<CR>==gi
 vnoremap <c-j> :m '>+1<CR>gv=gv
 vnoremap <c-k> :m '<-2<CR>gv=gv
-"adding a new line below the current line without moving your cursor to that new line 
+"adding a new line below the current line without moving your cursor to that new line
 nnoremap <CR> a<CR><Esc>k$
 
 " }}}
@@ -136,3 +136,7 @@ augroup END
 " Status bar code goes here.
 
 " }}}
+
+" Text expansions ------------------------------------------------------------
+inoremap ;cl console.log();<Left><Left>
+nnoremap <leader>r :source $MYVIMRC<CR>

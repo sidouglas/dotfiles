@@ -328,12 +328,11 @@ let g:WhichKeyDesc_bookmarks_prev = "<leader>bp Previous Bookmark"
 let g:WhichKeyDesc_bookmarks_next = "<leader>bn Next Bookmark"
 
 "Context
-nmap <leader>cl <Action>(context.load)
-nmap <leader>cs <Action>(context.save)
-let g:WhichKeyDesc_context = "<leader>c Context"
-let g:WhichKeyDesc_context_load_context = "<leader>cl Load Context"
-let g:WhichKeyDesc_context_save_context = "<leader>cs Save Context"
-
+nmap <leader>Cl <Action>(context.load)
+nmap <leader>Cs <Action>(context.save)
+let g:WhichKeyDesc_context = "<leader>C Context"
+let g:WhichKeyDesc_context_load_context = "<leader>Cl Load Context"
+let g:WhichKeyDesc_context_save_context = "<leader>Cs Save Context"
 
 " Go To
 nmap <leader>gd <Action>(GotoDeclaration)
