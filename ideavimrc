@@ -409,6 +409,7 @@ nmap <leader>Ga <Action>(Annotate)
 nmap <leader>Gt <Action>(ActivateVersionControlToolWindow)
 nmap <leader>Gr <Action>(Vcs.RollbackChangedLines)
 nmap <leader>Gu <Action>(Vcs.UpdateProject)
+
 let g:WhichKeyDesc_git = "<leader>G Git"
 let g:WhichKeyDesc_git_checkin = "<leader>Gg Checkin"
 let g:WhichKeyDesc_git_branches = "<leader>Gb Branches"

@@ -23,12 +23,12 @@ brew "bat"
 brew "blueutil"
 # Switch Apache / Valet / CLI configs between PHP versions
 brew "brew-php-switcher"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Core application library for C
 brew "glib"
 # Low-level library for pixel manipulation
 brew "pixman"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Vector graphics library with cross-device output support
 brew "cairo"
 # Validating, recursive, caching DNS resolver
@@ -45,6 +45,8 @@ brew "libass"
 brew "pango"
 # Secure Reliable Transport
 brew "srt"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Core component of the AcoustID project (Audio fingerprinting)
@@ -53,8 +55,6 @@ brew "chromaprint"
 brew "circleci"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Get a file from an HTTP, HTTPS or FTP server
-brew "curl"
 # YAML Parser
 brew "libyaml"
 # Enterprise friendly way of detecting and preventing secrets in code
@@ -91,12 +91,12 @@ brew "guile"
 brew "htop"
 # ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 brew "libheif"
+# Library for reading RAW files from digital photo cameras
+brew "libraw"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Postgres C API library
-brew "libpq"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Web and API based SMTP testing tool
@@ -139,6 +139,8 @@ brew "python@3.11"
 brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Display and control your Android device
+brew "scrcpy"
 # SOund eXchange: universal sound sample translator
 brew "sox"
 # Easiest, most secure way to use WireGuard and 2FA
@@ -171,6 +173,8 @@ brew "supabase/tap/supabase"
 brew "tabbyml/tabby/tabby"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Android SDK component
+cask "android-platform-tools"
 # Application uninstaller
 cask "appcleaner"
 # Manage team projects and tasks
@@ -196,8 +200,6 @@ cask "font-open-sans"
 cask "font-symbols-only-nerd-font"
 # Finder replacement and FTP, SFTP, WebDAV and Amazon s3 client
 cask "forklift"
-# Client for the Google Drive storage service
-cask "google-drive"
 # Convert your caps lock key or any of your modifier keys to the hyper key
 cask "hyperkey"
 # Free and open-source media player
@@ -206,12 +208,8 @@ cask "iina"
 cask "jordanbaird-ice"
 # Automation software
 cask "keyboard-maestro"
-# Free cross-platform office suite, fresh version
-cask "libreoffice"
 # Unofficial Google Nearby Share app
 cask "neardrop"
-# Reverse proxy, secure introspectable tunnels to localhost
-cask "ngrok"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Calendar for professionals and teams
@@ -220,12 +218,8 @@ cask "notion-calendar"
 cask "notunes"
 # Replacement for Docker Desktop
 cask "orbstack"
-# PDF compression tool
-cask "pdf-squeezer"
 # PDF editing software
 cask "pdfpen"
-# Browser for ambitious developers
-cask "polypane"
 # Quick Look generator for Markdown files
 cask "qlmarkdown"
 # Control your tools with a few keystrokes
@@ -244,8 +238,6 @@ cask "spotify"
 cask "stats"
 # Native GUI tool for relational databases
 cask "tableplus"
-# Desktop client for Telegram messenger
-cask "telegram-desktop"
 # Unpacks archive files
 cask "the-unarchiver"
 # Utility to change the default backup interval of Time Machine
@@ -256,7 +248,10 @@ cask "tuple"
 cask "visual-studio-code"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
+# JavaScript IDE
+cask "webstorm"
 mas "AnyExif", id: 1621435983
+mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
 mas "ColorFolder", id: 1450345160
 mas "Display Maid", id: 450063525
@@ -279,10 +274,12 @@ vscode "bradlc.vscode-tailwindcss"
 vscode "castwide.solargraph"
 vscode "cfcluan.project-scopes"
 vscode "dbaeumer.vscode-eslint"
+vscode "deinsoftware.vitest-snippets"
 vscode "devsense.intelli-php-vscode"
 vscode "devsense.phptools-vscode"
 vscode "donjayamanne.githistory"
 vscode "dotjoshjohnson.xml"
+vscode "duendelunarllc.vscrof"
 vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"
 vscode "fabiospampinato.vscode-open-in-github"
@@ -311,11 +308,11 @@ vscode "prisma.prisma"
 vscode "richie5um2.vscode-sort-json"
 vscode "rlivings39.fzf-quick-open"
 vscode "rluvaton.vscode-vitest"
+vscode "rvest.vs-code-prettier-eslint"
 vscode "sharashchandradesai.simple-scratch"
 vscode "shardulm94.trailing-spaces"
 vscode "shazbot.surroundelection"
 vscode "shopify.ruby-lsp"
-vscode "sourcegraph.cody-ai"
 vscode "steoates.autoimport"
 vscode "streetsidesoftware.code-spell-checker"
 vscode "stylelint.vscode-stylelint"
@@ -326,7 +323,9 @@ vscode "tamasfe.even-better-toml"
 vscode "unifiedjs.vscode-mdx"
 vscode "vitest.explorer"
 vscode "vscodevim.vim"
+vscode "vspacecode.whichkey"
 vscode "vue.volar"
 vscode "wallabyjs.quokka-vscode"
+vscode "xdebug.php-debug"
 vscode "yoavbls.pretty-ts-errors"
 vscode "zengxingxin.sort-js-object-keys"
