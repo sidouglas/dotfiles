@@ -204,6 +204,8 @@ cask "forklift"
 cask "hyperkey"
 # Free and open-source media player
 cask "iina"
+# Java IDE by JetBrains
+cask "intellij-idea"
 # Menu bar manager
 cask "jordanbaird-ice"
 # Automation software

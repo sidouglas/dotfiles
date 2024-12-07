@@ -30,7 +30,7 @@
     o = checkout
     ho = git push -u origin HEAD
     hof = git push -u origin HEAD -force-with-lease #https://youtu.be/aolI_Rz0ZqY?t=1128
-    l = log -n 10 --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    l = log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=format-local:'%Y-%m-%d %H:%M:%S AEDT'
     m = commit --amend --verbose
     nuke = !sh -c 'git checkout main && git branch -df $1 && git checkout -b $1'
     nukeall = "!f() { \
@@ -103,6 +103,8 @@
 	oops = reset --soft HEAD~1
   myfiles = "!f() { git log --diff-filter=A --author=\"1107946+sidouglas@users.noreply.github.com\" --name-only --pretty=format: | sort -u; }; f"
   myedits = "!f() { git log --author=\"1107946+sidouglas@users.noreply.github.com\" --name-only --pretty=format: | grep -v '\\.snap$' | sort -u; }; f"
+	masterlog = log origin/master --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
+
 
 [core]
   mergeoptions = --no-edit
