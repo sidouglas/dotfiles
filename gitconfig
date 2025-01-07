@@ -24,13 +24,8 @@
     dc = diff --cached
     ds = diff --stat
     f = fetch
-    fb = "!f() { git add -A && git commit -m 'PR feedback'; };"
-    co = "!f() { \
-    branches=$(git branch --all | grep -v HEAD) && \
-    branch=$(echo \"$branches\" | fzf-tmux -d $(( 2 + $(wc -l <<< \"$branches\") )) +m) && \
-    git checkout $(echo \"$branch\" | sed 's/.* //' | sed 's#remotes/[^/]*/##'); \
-    }; f"
-    fix = !HUSKY=0  LEFTHOOK=0 git wip && HUSKY=0 LEFTHOOK=0 git squash 2 --no-verify --no-gpg-sign
+    co = "!git branch | fzf | xargs git checkout"
+    fix = !HUSKY=0 LEFTHOOK=0 git wip && HUSKY=0 LEFTHOOK=0 git squash 2 --no-verify --no-gpg-sign
     h = push
     o = checkout
     ho = git push -u origin HEAD
@@ -105,9 +100,10 @@
 	theirs = checkout --theirs
 	com = "!f() { if git show-ref --verify --quiet refs/heads/main; then git checkout main; else git checkout master; fi; }; f"
 	oops = reset --soft HEAD~1
-  myfiles = "!f() { git log --diff-filter=A --author=\"1107946+sidouglas@users.noreply.github.com\" --name-only --pretty=format: | sort -u; }; f"
-  myedits = "!f() { git log --author=\"1107946+sidouglas@users.noreply.github.com\" --name-only --pretty=format: | grep -v '\\.snap$' | sort -u; }; f"
+    myfiles = "!f() { git log --diff-filter=A --author=\"1107946+sidouglas@users.noreply.github.com\" --name-only --pretty=format: | sort -u; }; f"
+    myedits = "!f() { git log --author=\"1107946+sidouglas@users.noreply.github.com\" --name-only --pretty=format: | grep -v '\\.snap$' | sort -u; }; f"
 	masterlog = log origin/master --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
+	fb = !git add -A && git commit -m \"PR feedback\"
 
 
 [core]
