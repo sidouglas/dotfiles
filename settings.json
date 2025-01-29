@@ -1,0 +1,362 @@
+{
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "prettier.documentSelectors": ["**/*.astro"],
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "editor.accessibilitySupport": "off",
+  "editor.snippetSuggestions": "top",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.find.autoFindInSelection": "multiline",
+  "editor.fontFamily": "'Hack Nerd Font', 'Fira Code', Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "editor.insertSpaces": true,
+  "editor.lineNumbers": "on", // this toggleable via `cmd + k + cmd + ;
+  "editor.linkedEditing": true,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "none",
+  "editor.tabSize": 2,
+  "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
+  "eslint.validate": ["javascript", "typescript", "astro"],
+  "explorer.autoReveal": true,
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.openEditors.visible": 1,
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1,
+    "asvetliakov.vscode-neovim": 1
+  },
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.next/**": true,
+    "**/.svn": true,
+    "**/CVS": true,
+    "**/node_modules": true,
+    "**/Thumbs.db": true,
+    ".history": true
+  },
+  "files.include": {
+    "**/*.js": true,
+    "**/*.ts": true,
+    "**/*.vue": true,
+    "packages/admin/**/*": true,
+    "packages/desktop/**/*": true,
+    "packages/mobile/**/*": true,
+    "packages/shared/**/*": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "always",
+  "gitlens.plusFeatures.enabled": false,
+  "gitlens.views.fileHistory.files.layout": "list",
+  "gitTreeCompare.diffMode": "full",
+  "intellijRecentFiles.navigate": false,
+  "javascript.suggest.paths": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "namespaceResolver.sortAlphabetically": true,
+  "openInGitHub.defaultBranch": "main",
+  "php-cs-fixer.autoFixByBracket": false,
+  "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+  "php-cs-fixer.lastDownload": 1706085949125,
+  "php-cs-fixer.onsave": true,
+  "php-cs-fixer.rules": "@PSR2",
+  "php.suggest.basic": false,
+  "phpConstructor.visibility": "public",
+  "prisma.showPrismaDataPlatformNotification": false,
+  "project-scopes.activeScope": "SocialEngage",
+  "project-scopes.enabled": false,
+  "project-scopes.globalExclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.next/**": true,
+    "**/.svn": true,
+    "**/CVS": true,
+    "**/node_modules": true,
+    "**/Thumbs.db": true,
+    ".history": true
+  },
+  "quokka.untrustedWorkspaceBehavior": "Always allow",
+  "reactExtract.functionDeclaration": "arrow",
+  "reactExtract.typeDeclaration": "type",
+  "search.exclude": {
+    ".history": true,
+    ".lh": true,
+    "**/.next/**": true,
+    "**/*.code-search": true,
+    "**/bower_components": true,
+    "**/node_modules": true
+  },
+  "search.useIgnoreFiles": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "tailwindCSS.colorDecorators": false,
+  "tailwindCSS.emmetCompletions": true,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "args": ["-i", "-l"],
+      "path": "/bin/zsh"
+    }
+  },
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "node_modules/@radix-ui"
+  ],
+  "typescript.suggest.paths": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.validate.enable": true,
+  "update.showReleaseNotes": false,
+  "vim.easymotion": false, // this was buggy as hell when I tried it 22-04-2024
+  "vim.foldfix": true, // https://github.com/VSCodeVim/Vim?tab=readme-ov-file#-faq
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "after": ["<Esc>"],
+      "before": ["j", "j"]
+    }
+  ],
+  //taken from: https://github.com/Melkeydev/vscode_bindings/blob/main/settings.json
+  "vim.leader": "<Space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<space>"],
+      "commands": ["whichkey.show"]
+    },
+    // NAVIGATION
+    // switch e/w buffers
+    {
+      "before": ["<S-h>"],
+      "commands": [":bprevious"]
+    },
+    {
+      "before": ["<S-l>"],
+      "commands": [":bnext"]
+    },
+    // splits
+    {
+      "before": ["leader", "v"],
+      "commands": [":vsplit"]
+    },
+    {
+      "before": ["leader", "b"],
+      "commands": [":split"]
+    },
+    // panes
+    {
+      "before": ["leader", "h"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["leader", "j"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": ["leader", "k"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["leader", "l"],
+      "commands": ["workbench.action.focusRightGroup"]
+    }, // NICE TO HAVE
+    {
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["leader", "p"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["leader", ","],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    {
+      "before": ["leader", "."],
+      "commands": ["workbench.action.navigateForward"]
+    },
+    {
+      "before": ["leader", "g"],
+      "commands": ["editor.action.showContextMenu"]
+    },
+    {
+      "before": ["g", "h"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
+    },
+    {
+      "after": ["d", "d"],
+      "before": ["<leader>", "d"]
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.view.explorer"]
+    },
+    {
+      "before": ["u"],
+      "commands": ["undo"]
+    },
+    {
+      "before": ["c-r"],
+      "commands": ["redo"]
+    }
+  ],
+  "vim.sneak": true,
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
+  "vim.startInInsertMode": false,
+  "vim.statusBarColorControl": true, // this slows down in large codebases.
+  "vim.statusBarColors.commandlineinprogress": "#007ACC",
+  "vim.statusBarColors.easymotioninputmode": "#3AA8C1",
+  "vim.statusBarColors.easymotionmode": "#3AA8C1",
+  "vim.statusBarColors.insert": "#F2003C",
+  "vim.statusBarColors.normal": ["#000", "#FFF"],
+  "vim.statusBarColors.replace": "#F4C2C2",
+  "vim.statusBarColors.searchinprogressmode": "#007ACC",
+  "vim.statusBarColors.surroundinputmode": "#007ACC",
+  "vim.statusBarColors.visual": "#EE82EE",
+  "vim.statusBarColors.visualblock": "#EE82EE",
+  "vim.statusBarColors.visualline": "#EE82EE",
+  "vim.useSystemClipboard": true,
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    },
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.moveLinesUpAction"]
+    },
+    {
+      "before": ["J"],
+      "commands": ["editor.action.moveLinesDownAction"]
+    },
+    {
+      "before": ["leader", "c"],
+      "commands": ["editor.action.commentLine"]
+    },
+    {
+      "before": ["leader", "s"],
+      "commands": ["extensions.surroundSelection"]
+    },
+    {
+      "before": ["p"],
+      "after": ["P"]
+    }
+  ],
+  "window.commandCenter": false,
+  "workbench.activityBar.location": "top",
+  "workbench.editor.labelFormat": "medium",
+  "workbench.layoutControl.enabled": false,
+  "workbench.settings.editor": "json",
+  "workbench.sideBar.location": "right",
+  "zenMode.hideLineNumbers": false,
+  "cody.commandCodeLenses": true,
+  "security.promptForLocalFileProtocolHandling": false,
+  "extensions.ignoreRecommendations": true,
+  "gitTreeCompare.showCheckboxes": true,
+  "gitlens.views.repositories.includeWorkingTree": true,
+  "workbench.startupEditor": "none",
+  "betterGitLineBlame.showInlineAnnotations": true,
+  "betterGitLineBlame.showStatusBarItem": false,
+  "ruby.intellisense": "rubyLocate",
+  "ruby.rubocop.configFilePath": "~/.rbenv/shims/",
+  "solargraph.commandPath": "/Users/simon.douglas/.rbenv/shims/solargraph",
+  "project-scopes.scopes": {
+    "base": {
+      "included": [],
+      "excluded": []
+    },
+    "MentionCardRefactor": {
+      "included": [
+        "packages/shared/components/MentionCard/MentionCard.vue",
+        "packages/shared/components/PrintMentionCard.vue",
+        "packages/shared/components/SyndicationsPopper.vue"
+      ],
+      "excluded": [
+        "packages/shared/components/players"
+      ]
+    },
+    "InlinePlayerRefactor": {
+      "included": [
+        "packages/shared/components/players/InlinePlayer.vue",
+        "packages/shared/components/players/InlinePlayerButtonBar.vue",
+        "packages/shared/test/vitest/__tests__/components/players/InlinePlayer.spec.ts",
+        "packages/shared/components/players/PlayerPopoutProgressBar.vue",
+        "packages/shared/components/players/PlayerPopoutButtons.vue"
+      ],
+      "excluded": []
+    },
+    "SocialEngage": {
+      "included": [
+        "packages/shared/constants/index.ts",
+        "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageCompose.spec.ts",
+        "packages/desktop/src/components/SocialEngageCompose/SocialEngageComposeForm.vue",
+        "packages/desktop/src/components/SocialEngageCompose/SocialEngageCompose.vue"
+      ],
+      "excluded": []
+    }
+  },
+  "tailwindCSS.experimental.classRegex": [
+    "tw`([^`]*)",
+    ["classnames\\(([^)]*)\\)", "'([^']*)'"]
+  ],
+  "vue.server.hybridMode": "typeScriptPluginOnly",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "quokka.automaticRestart": true,
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorCustomizations": {
+    "statusBar.debuggingBackground": "#000",
+    "statusBar.debuggingForeground": "#FFF",
+    "statusBar.noFolderBackground": "#000",
+    "tab.activeBackground": "#000",
+    "titleBar.activeBackground": "#4287f5",
+    "titleBar.activeForeground": "#ffffff",
+    "statusBar.background": "#000",
+    "statusBar.foreground": "#FFF"
+  }
+}
