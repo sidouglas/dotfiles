@@ -59,6 +59,8 @@ brew "coreutils"
 brew "libyaml"
 # Enterprise friendly way of detecting and preventing secrets in code
 brew "detect-secrets"
+# Diff that understands syntax
+brew "difftastic"
 # Modern, maintained replacement for ls
 brew "eza"
 # Simple, fast and user-friendly alternative to find
@@ -87,6 +89,8 @@ brew "gpac"
 brew "gpgme"
 # GNU Ubiquitous Intelligent Language for Extensions
 brew "guile"
+# Open-source video transcoder available for Linux, Mac, and Windows
+brew "handbrake"
 # Improved top (interactive process viewer)
 brew "htop"
 # ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
@@ -100,7 +104,7 @@ brew "jq"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Web and API based SMTP testing tool
-brew "mailhog", restart_service: true
+brew "mailhog", restart_service: :changed
 # Mac App Store command-line interface
 brew "mas"
 # Simple tool to make locally trusted development certificates
@@ -128,7 +132,7 @@ brew "poppler"
 # Search PDFs for strings matching a regular expression
 brew "pdfgrep"
 # General-purpose scripting language
-brew "php@8.2", restart_service: true, link: true
+brew "php@8.2", link: true
 # Fast, disk space efficient package manager
 brew "pnpm"
 # Object-relational database system
@@ -175,6 +179,8 @@ brew "tabbyml/tabby/tabby"
 cask "1password"
 # Android SDK component
 cask "android-platform-tools"
+# Tools for building Android applications
+cask "android-studio"
 # Application uninstaller
 cask "appcleaner"
 # Manage team projects and tasks
@@ -198,8 +204,12 @@ cask "firefox"
 cask "font-hack-nerd-font"
 cask "font-open-sans"
 cask "font-symbols-only-nerd-font"
+# Font viewer for various font formats
+cask "fontgoggles"
 # Finder replacement and FTP, SFTP, WebDAV and Amazon s3 client
 cask "forklift"
+# Open-source video transcoder
+cask "handbrake"
 # Convert your caps lock key or any of your modifier keys to the hyper key
 cask "hyperkey"
 # Free and open-source media player
@@ -220,20 +230,24 @@ cask "notion-calendar"
 cask "notunes"
 # Replacement for Docker Desktop
 cask "orbstack"
-# PDF editing software
-cask "pdfpen"
 # Quick Look generator for Markdown files
 cask "qlmarkdown"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Ruby on Rails IDE
+cask "rubymine"
 # Screen recording and video editing software
 cask "screenflow"
 # App that enables mouse-free UI interaction
 cask "shortcat"
 # Screenshot measurement and annotation tool
 cask "shottr"
+# Team communication and collaboration software
+cask "slack"
 # CLI to create, run, and deploy Slack apps
 cask "slack-cli"
+# Graphical client for Git version control
+cask "sourcetree"
 # Music streaming service
 cask "spotify"
 # System monitor for the menu bar
@@ -250,8 +264,6 @@ cask "tuple"
 cask "visual-studio-code"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
-# JavaScript IDE
-cask "webstorm"
 mas "AnyExif", id: 1621435983
 mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
@@ -282,6 +294,7 @@ vscode "devsense.phptools-vscode"
 vscode "donjayamanne.githistory"
 vscode "dotjoshjohnson.xml"
 vscode "duendelunarllc.vscrof"
+vscode "eamodio.gitlens"
 vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"
 vscode "fabiospampinato.vscode-open-in-github"
@@ -291,11 +304,9 @@ vscode "joao-mbn.react-extract"
 vscode "kimuson.ts-type-expand"
 vscode "letmaik.git-tree-compare"
 vscode "lokalise.i18n-ally"
-vscode "maattdd.gitless"
 vscode "mehedidracula.php-namespace-resolver"
 vscode "misogi.ruby-rubocop"
-vscode "mk12.better-git-line-blame"
-vscode "mnismt.cody-plus-plus"
+vscode "mondersky.tabscolor"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
@@ -308,13 +319,13 @@ vscode "patbenatar.advanced-new-file"
 vscode "percygrunwald.vscode-intellij-recent-files"
 vscode "prisma.prisma"
 vscode "richie5um2.vscode-sort-json"
-vscode "rlivings39.fzf-quick-open"
 vscode "rluvaton.vscode-vitest"
 vscode "rvest.vs-code-prettier-eslint"
 vscode "sharashchandradesai.simple-scratch"
 vscode "shardulm94.trailing-spaces"
 vscode "shazbot.surroundelection"
 vscode "shopify.ruby-lsp"
+vscode "sourcegraph.cody-ai"
 vscode "steoates.autoimport"
 vscode "streetsidesoftware.code-spell-checker"
 vscode "stylelint.vscode-stylelint"
@@ -322,6 +333,8 @@ vscode "suhelmakkad.shadcn-ui"
 vscode "syler.sass-indented"
 vscode "sysoev.vscode-open-in-github"
 vscode "tamasfe.even-better-toml"
+vscode "tomrijndorp.find-it-faster"
+vscode "travisthieman.better-search"
 vscode "unifiedjs.vscode-mdx"
 vscode "vitest.explorer"
 vscode "vscodevim.vim"
