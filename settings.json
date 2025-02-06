@@ -80,7 +80,6 @@
   "files.trimTrailingWhitespace": true,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "always",
-  "gitlens.plusFeatures.enabled": false,
   "gitlens.views.fileHistory.files.layout": "list",
   "gitTreeCompare.diffMode": "full",
   "intellijRecentFiles.navigate": false,
@@ -212,10 +211,6 @@
       "commands": ["workbench.action.navigateBack"]
     },
     {
-      "before": ["leader", "."],
-      "commands": ["workbench.action.navigateForward"]
-    },
-    {
       "before": ["leader", "g"],
       "commands": ["editor.action.showContextMenu"]
     },
@@ -288,10 +283,11 @@
   ],
   "window.commandCenter": false,
   "workbench.activityBar.location": "top",
-  "workbench.editor.labelFormat": "medium",
+  "workbench.editor.labelFormat": "short",
   "workbench.layoutControl.enabled": false,
   "workbench.settings.editor": "json",
   "workbench.sideBar.location": "right",
+  "workbench.localHistory.maxFileEntries": 500,
   "zenMode.hideLineNumbers": false,
   "cody.commandCodeLenses": true,
   "security.promptForLocalFileProtocolHandling": false,
@@ -300,7 +296,7 @@
   "gitlens.views.repositories.includeWorkingTree": true,
   "workbench.startupEditor": "none",
   "betterGitLineBlame.showInlineAnnotations": true,
-  "betterGitLineBlame.showStatusBarItem": false,
+  "betterGitLineBlame.showStatusBarItem": true,
   "ruby.intellisense": "rubyLocate",
   "ruby.rubocop.configFilePath": "~/.rbenv/shims/",
   "solargraph.commandPath": "/Users/simon.douglas/.rbenv/shims/solargraph",
@@ -315,9 +311,7 @@
         "packages/shared/components/PrintMentionCard.vue",
         "packages/shared/components/SyndicationsPopper.vue"
       ],
-      "excluded": [
-        "packages/shared/components/players"
-      ]
+      "excluded": ["packages/shared/components/players"]
     },
     "InlinePlayerRefactor": {
       "included": [
@@ -331,10 +325,11 @@
     },
     "SocialEngage": {
       "included": [
-        "packages/shared/constants/index.ts",
         "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageCompose.spec.ts",
         "packages/desktop/src/components/SocialEngageCompose/SocialEngageComposeForm.vue",
-        "packages/desktop/src/components/SocialEngageCompose/SocialEngageCompose.vue"
+        "packages/desktop/src/components/SocialEngageCompose/SocialEngageCompose.vue",
+        "packages/shared/constants/social.ts",
+        "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageExpiredIntegrationDropdown.spec.ts"
       ],
       "excluded": []
     }
@@ -354,9 +349,21 @@
     "statusBar.debuggingForeground": "#FFF",
     "statusBar.noFolderBackground": "#000",
     "tab.activeBackground": "#000",
-    "titleBar.activeBackground": "#4287f5",
+    "titleBar.activeBackground": "#000",
     "titleBar.activeForeground": "#ffffff",
     "statusBar.background": "#000",
     "statusBar.foreground": "#FFF"
-  }
+  },
+  "tabsColor.byDirectory": {
+    "SocialEngageCompose": {
+      "backgroundcolor": "#fe7e3a",
+      "fontcolor": "#ffffff"
+    }
+  },
+  "find-it-faster.general.useTerminalInEditor": true,
+  "diffEditor.experimental.showMoves": true,
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "gitlens.heatmap.ageThreshold": 60,
+  "files.autoSave": "afterDelay",
+  "gitlens.views.commitDetails.files.layout": "tree"
 }

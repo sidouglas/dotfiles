@@ -1,9 +1,7 @@
 [user]
 	name = Simon Douglas
-  email = 1107946+sidouglas@users.noreply.github.com
+	email = 1107946+sidouglas@users.noreply.github.com
 
-[diff]
-  tool = vscode
 [difftool "vscode"]
   cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
@@ -109,19 +107,20 @@
 [core]
   mergeoptions = --no-edit
   editor = vi
-  excludesfile = /Users/simon/.gitignore_global
+	excludesfile = /Users/simon.douglas/.gitignore_global
   pager = delta
 [delta]
   line-numbers = true
 [pull]
   ff = true
+	rebase = true
 [push]
   autoSetupRemote = true
   default = current
 [branch]
 	sort = -committerdate
 [commit]
-  template = /Users/simon/.stCommitMsg
+	template = /Users/simon/.stCommitMsg
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
@@ -131,3 +130,13 @@
   enabled = true
 [column]
 	ui = auto
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
+	path = -ro
+[mergetool "sourcetree"]
+	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+	trustExitCode = true
+[diff]
+	tool = difft
+[difftool "difft"]
+	cmd = difft \"$LOCAL\" \"$REMOTE\"

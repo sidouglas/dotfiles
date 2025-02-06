@@ -122,11 +122,34 @@ alias ytlist="yt-dlp --list-formats $1"
 alias ytmp3='yt-dlp -x --audio-format mp3'  # Download from youtube, as mp3
 alias zshrc="code ~/.dotfiles/zshrc"
 # FZF
-alias sd='cd ~/ && cd "$(fd --type d --exclude Applications --exclude Library --exclude Movies | fzf)"' # search for directories
+alias sd='cd "$(fd --type d --exclude Applications --exclude Library --exclude Movies | fzf)"' # search for directories
+
 # search for code
-ss() {
-  fd --type f --exclude .git --exclude node_modules | fzf --preview 'bat --style=numbers --color=always {}' | xargs -o -I {} open "{}"
+ss () {
+    RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case"
+    INITIAL_QUERY="${1:-}"
+    FILE_PATTERN="${2:-}"
+
+    if [ -n "$FILE_PATTERN" ]; then
+        RG_PREFIX="$RG_PREFIX -g '$FILE_PATTERN'"
+    fi
+
+    FZF_DEFAULT_COMMAND="$RG_PREFIX '$INITIAL_QUERY'"
+    CHOICE=$(fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+        --sort \
+        --multi \
+        --preview 'rg --pretty --context 10 --color=always {q} $(echo {} | cut -d: -f1)' \
+        --ansi --phony --query "$INITIAL_QUERY")
+
+    if [ -n "$CHOICE" ]
+    then
+        FILE=$(echo "$CHOICE" | cut -d: -f1)
+        LINE=$(echo "$CHOICE" | cut -d: -f2)
+        code -g "$FILE:$LINE"
+    fi
 }
+
+
 
 # Laravel
 alias sail="./vendor/bin/sail"
