@@ -2,6 +2,8 @@
 	name = Simon Douglas
 	email = 1107946+sidouglas@users.noreply.github.com
 
+[diff]
+  tool = vscode
 [difftool "vscode"]
   cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
@@ -104,6 +106,13 @@
 	fb = !git add -A && git commit -m \"PR feedback\"
 
 
+  # Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
+  dl = -c diff.external=difft log -p --ext-diff
+  # Show the most recent commit with difftastic.
+  ds = -c diff.external=difft show --ext-diff
+  # `git diff` with difftastic.
+  dft = -c diff.external=difft diff
+
 [core]
   mergeoptions = --no-edit
   editor = vi
@@ -136,7 +145,3 @@
 [mergetool "sourcetree"]
 	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
 	trustExitCode = true
-[diff]
-	tool = difft
-[difftool "difft"]
-	cmd = difft \"$LOCAL\" \"$REMOTE\"

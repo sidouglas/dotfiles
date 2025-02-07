@@ -329,7 +329,9 @@
         "packages/desktop/src/components/SocialEngageCompose/SocialEngageComposeForm.vue",
         "packages/desktop/src/components/SocialEngageCompose/SocialEngageCompose.vue",
         "packages/shared/constants/social.ts",
-        "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageExpiredIntegrationDropdown.spec.ts"
+        "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageExpiredIntegrationDropdown.spec.ts",
+        "packages/desktop/src/components/SocialEngagePostPerformance/SocialEngagePostPerformancePage.vue",
+        "packages/desktop/src/components/SocialEngagePostPerformance/SocialEngagePostPerformanceFilters.vue"
       ],
       "excluded": []
     }
@@ -345,13 +347,13 @@
   "quokka.automaticRestart": true,
   "workbench.colorTheme": "Default Dark+",
   "workbench.colorCustomizations": {
-    "statusBar.debuggingBackground": "#000",
+    "statusBar.debuggingBackground": "#F2003C",
     "statusBar.debuggingForeground": "#FFF",
-    "statusBar.noFolderBackground": "#000",
+    "statusBar.noFolderBackground": "#F2003C",
     "tab.activeBackground": "#000",
     "titleBar.activeBackground": "#000",
     "titleBar.activeForeground": "#ffffff",
-    "statusBar.background": "#000",
+    "statusBar.background": "#F2003C",
     "statusBar.foreground": "#FFF"
   },
   "tabsColor.byDirectory": {
