@@ -139,4 +139,6 @@ augroup END
 
 " Text expansions ------------------------------------------------------------
 inoremap ;cl console.log();<Left><Left>
+nnoremap <leader>cl oconsole.log();<Left><Left>
 nnoremap <leader>r :source $MYVIMRC<CR>
+

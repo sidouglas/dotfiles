@@ -110,7 +110,6 @@ nmap <C-S-m> <Action>(ToolWindowsGroup)
 " Clear Search Highlighting
 nnoremap <C-[> :noh<return>
 
-
 "" ========================================================
 "" Leader Commands
 "" ========================================================
@@ -340,12 +339,16 @@ nmap <leader>go <Action>(GotoSuperMethod)
 nmap <leader>gD <Action>(GotoTypeDeclaration)
 nmap <leader>gi <Action>(GotoImplementation)
 nmap <leader>gT <Action>(GotoTest)
+nmap <leader>gh <Action>(ShowHoverInfo)
+
 let g:WhichKeyDesc_goto = "<leader>g Go To"
 let g:WhichKeyDesc_goto_declaration = "<leader>gd Go To Declaration"
 let g:WhichKeyDesc_goto_super_method = "<leader>go Go To Super Method"
 let g:WhichKeyDesc_goto_type_declaration = "<leader>gD Go To Type Declaration"
 let g:WhichKeyDesc_goto_implementation = "<leader>gi Go To Implementation"
 let g:WhichKeyDesc_goto_test = "<leader>gT Go To Test"
+let g:WhichKeyDesc_goto_hover = "<leader>gh Hover"
+
 
 
 " Search
