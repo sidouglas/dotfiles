@@ -14,6 +14,10 @@
       glob: true
       create: true
       path: config/zed
+    ~/.config/television:
+      glob: true
+      create: true
+      path: config/television
     ~/.fzf: null
     ~/.gitconfig: null
     ~/.gitignore_global: null
@@ -30,9 +34,9 @@
 - create:
     - ~/downloads
     - ~/.vim/undo-history
-# - shell:
-#   - ./setup_homebrew.zsh
-#   - ./setup_zsh.zsh
-#   - ./setup_node.zsh
-#   - ./setup_macos.zsh
-#   - ./setup_disable_spotlight.zsh
+- shell:
+    - ./setup_homebrew.zsh
+    - ./setup_zsh.zsh
+    - ./setup_node.zsh
+    - ./setup_macos.zsh
+    - ./setup_disable_spotlight.zsh

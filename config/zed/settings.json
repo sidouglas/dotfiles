@@ -1,6 +1,34 @@
 {
   "base_keymap": "VSCode",
   "buffer_font_size": 16,
+  "chat_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/out",
+    "**/dist",
+    "**/.husky",
+    "**/.turbo",
+    "**/.vscode-test",
+    "**/.vscode",
+    "**/.next",
+    "**/.storybook",
+    "**/.tap",
+    "**/.nyc_output",
+    "**/report",
+    "**/node_modules"
+  ],
   "formatter": {
     "code_actions": {
       "source.fixAll.eslint": true,
@@ -18,6 +46,12 @@
         "source.fixAll.eslint": true
       }
     }
+  },
+  "notification_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "right"
   },
   "project_panel": {
     "auto_fold_dirs": true,
@@ -37,6 +71,10 @@
       "git_diff": true,
       "show": "auto"
     }
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
   },
   "theme": {
     "dark": "Andromeda",
