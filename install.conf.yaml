@@ -31,12 +31,12 @@
     ~/.zsh_custom: null
     ~/.zshenv: null
     ~/.zshrc: null
-- create:
-    - ~/downloads
-    - ~/.vim/undo-history
-- shell:
-    - ./setup_homebrew.zsh
-    - ./setup_zsh.zsh
-    - ./setup_node.zsh
-    - ./setup_macos.zsh
-    - ./setup_disable_spotlight.zsh
+      #- create:
+      #    - ~/downloads
+      #    - ~/.vim/undo-history
+      #- shell:
+      #    - ./setup_homebrew.zsh
+      #    - ./setup_zsh.zsh
+      #    - ./setup_node.zsh
+      #    - ./setup_macos.zsh
+      #    - ./setup_disable_spotlight.zsh

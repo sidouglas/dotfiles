@@ -151,6 +151,8 @@ brew "sox"
 brew "tailscale"
 # Tool Command Language
 brew "tcl-tk"
+# General purpose fuzzy finder TUI
+brew "television"
 # Programmatically correct mistyped console commands
 brew "thefuck"
 # Upgrade all the things
@@ -264,6 +266,8 @@ cask "tuple"
 cask "visual-studio-code"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
+# Multiplayer code editor
+cask "zed"
 mas "AnyExif", id: 1621435983
 mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
@@ -293,6 +297,7 @@ vscode "devsense.intelli-php-vscode"
 vscode "devsense.phptools-vscode"
 vscode "donjayamanne.githistory"
 vscode "dotjoshjohnson.xml"
+vscode "dragoscv.just-black2"
 vscode "duendelunarllc.vscrof"
 vscode "eamodio.gitlens"
 vscode "editorconfig.editorconfig"

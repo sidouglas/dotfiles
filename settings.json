@@ -348,5 +348,10 @@
   "workbench.settings.editor": "json",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
+  "workbench.sash.size": 1,
+  "workbench.sash.hoverDelay": 0,
+  "editor.cursorStyle": "line-thin",
+  "editor.cursorBlinking": "phase",
+  "editor.semanticHighlighting.enabled": false,
   "zenMode.hideLineNumbers": false
 }
