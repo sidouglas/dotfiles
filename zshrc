@@ -147,3 +147,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# https://github.com/alexpasmantier/television/wiki/Shell-Autocompletion
+eval "$(tv init zsh)"
