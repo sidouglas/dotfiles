@@ -22,10 +22,10 @@
     f = fetch
     co = "!git branch | fzf | xargs git checkout"
     fix = !HUSKY=0 LEFTHOOK=0 git wip && HUSKY=0 LEFTHOOK=0 git squash 2 --no-verify --no-gpg-sign
-    h = push
+    pwl = git push --force-with-lease
     o = checkout
     ho = git push -u origin HEAD
-    hof = git push -u origin HEAD -force-with-lease #https://youtu.be/aolI_Rz0ZqY?t=1128
+    hof = git push -u origin HEAD -force-with-lease #https:://youtu.be/aolI_Rz0ZqY?t=1128
     l = log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=format-local:'%Y-%m-%d %H:%M:%S AEDT'
     m = commit --amend --verbose
     nuke = !sh -c 'git checkout main && git branch -df $1 && git checkout -b $1'
@@ -114,6 +114,8 @@
   editor = vi
 	excludesfile = /Users/simon.douglas/.gitignore_global
   pager = delta
+[push]
+  useForceIfIncludes = true
 [delta]
   line-numbers = true
 [pull]
@@ -153,3 +155,6 @@
     # Set difftastic as the default difftool, so we don't need to specify
     # `-t difftastic` every time.
     tool = difftastic
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
+	path = -ro

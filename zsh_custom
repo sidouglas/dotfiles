@@ -218,3 +218,12 @@ alias brew_permissions="sudo chown -R $(whoami) $(brew --prefix)/*"
 alias brew_upgrade_casks='for cask in $(brew outdated --cask --greedy); do brew upgrade --cask "$cask"; done'
 alias brewdump="mkdir -p $HOMEBREW_DIR && cd $HOMEBREW_DIR && brew bundle dump --force --describe && bat Brewfile"
 alias mysql="/opt/homebrew/opt/mysql@8.4/bin/mysql"
+
+
+git() {
+  if [[ $@ == 'push -f'* || $@ == 'push --force'*  ]]; then
+    echo "No! Use --force-with-lease instead (git pwl)"
+  else
+    command git "$@"
+  fi
+}

@@ -198,7 +198,7 @@ _tv_shell_history() {
 
         # uncomment this to automatically accept the line
         # (i.e. run the command without having to press enter twice)
-        # zle accept-line
+        zle accept-line
     fi
 }
 
