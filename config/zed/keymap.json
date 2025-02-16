@@ -1,28 +1,57 @@
 [
   {
-    "context": "Workspace",
     "bindings": {
       "shift shift": "file_finder::Toggle"
-    }
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "j k": ["workspace::SendKeystrokes", "escape"]
-    }
-  },
-  {
-      "context": "VimControl",
-      "bindings": {
-        "j": ["vim::Down", { "displayLines": true }],
-        "k": ["vim::Up", { "displayLines": true }]
-      }
     },
-    {
-      "context": "VimCount",
-      "bindings": {
-        "j": ["vim::Down", { "displayLines": false }],
-        "k": ["vim::Up", { "displayLines": false }]
-      }
+    "context": "Workspace"
+  },
+  {
+    "bindings": {
+      "j k": [
+        "workspace::SendKeystrokes",
+        "escape"
+      ]
+    },
+    "context": "Editor"
+  },
+  {
+    "bindings": {
+      "j": [
+        "vim::Down",
+        {
+          "displayLines": true
+        }
+      ],
+      "k": [
+        "vim::Up",
+        {
+          "displayLines": true
+        }
+      ]
+    },
+    "context": "VimControl"
+  },
+  {
+    "bindings": {
+      "j": [
+        "vim::Down",
+        {
+          "displayLines": false
+        }
+      ],
+      "k": [
+        "vim::Up",
+        {
+          "displayLines": false
+        }
+      ]
+    },
+    "context": "VimCount"
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-s": ["vim::PushAddSurrounds", {}]
     }
+  }
 ]
