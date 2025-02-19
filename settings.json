@@ -366,5 +366,10 @@
   "editor.cursorStyle": "line-thin",
   "editor.cursorBlinking": "phase",
   "editor.semanticHighlighting.enabled": false,
-  "zenMode.hideLineNumbers": false
+  "zenMode.hideLineNumbers": false,
+  "vscode-vitest.executableOptions": {
+    "run": true,
+    "watch": true,
+    "debug": true
+  }
 }

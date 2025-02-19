@@ -121,6 +121,8 @@ alias ytdl="yt-dlp -f $1 $2"
 alias ytlist="yt-dlp --list-formats $1"
 alias ytmp3='yt-dlp -x --audio-format mp3'  # Download from youtube, as mp3
 alias zshrc="code ~/.dotfiles/zshrc"
+alias zh='vim + ~/.zsh_history' # open zsh history go straight to the bottom
+
 # FZF
 # alias sd='cd "$(fd --type d --exclude Applications --exclude Library --exclude Movies | fzf)"' # search for directories
 
