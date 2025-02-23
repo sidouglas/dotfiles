@@ -223,9 +223,9 @@ alias mysql="/opt/homebrew/opt/mysql@8.4/bin/mysql"
 
 
 git() {
-  if [[ $@ == 'push -f'* || $@ == 'push --force'*  ]]; then
-    echo "No! Use --force-with-lease instead (git pwl)"
-  else
-    command git "$@"
-  fi
+    if [[ "$*" =~ (push.*-f|push.*--force|-f.*push|--force.*push) ]]; then
+        echo "No! Use --force-with-lease instead (git pwl)"
+    else
+        command git "$@"
+    fi
 }

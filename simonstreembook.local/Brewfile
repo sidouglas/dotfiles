@@ -185,6 +185,8 @@ cask "android-studio"
 cask "appcleaner"
 # Manage team projects and tasks
 cask "asana"
+# Compare files and folders
+cask "beyond-compare"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Opensource IDE for exploring and testing api's
@@ -310,6 +312,7 @@ vscode "ms-python.vscode-pylance"
 vscode "mylesmurphy.prettify-ts"
 vscode "nicholashsiang.vscode-react-snippet"
 vscode "nicoespeon.abracadabra"
+vscode "octref.vetur"
 vscode "orsenkucher.vscode-graphql"
 vscode "patbenatar.advanced-new-file"
 vscode "percygrunwald.vscode-intellij-recent-files"

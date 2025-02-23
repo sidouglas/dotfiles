@@ -22,7 +22,7 @@
     f = fetch
     co = "!git branch | fzf | xargs git checkout"
     fix = !HUSKY=0 LEFTHOOK=0 git wip && HUSKY=0 LEFTHOOK=0 git squash 2 --no-verify --no-gpg-sign
-    pwl = git push --force-with-lease
+    pwl = push --force-with-lease
     o = checkout
     ho = git push -u origin HEAD
     hof = git push -u origin HEAD -force-with-lease #https:://youtu.be/aolI_Rz0ZqY?t=1128

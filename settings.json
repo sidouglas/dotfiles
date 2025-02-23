@@ -32,7 +32,6 @@
   },
   "cody.commandCodeLenses": true,
   "diffEditor.experimental.showMoves": true,
-  "diffEditor.hideUnchangedRegions.enabled": true,
   "editor.accessibilitySupport": "off",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
@@ -371,5 +370,6 @@
     "run": true,
     "watch": true,
     "debug": true
-  }
+  },
+  "diffEditor.hideUnchangedRegions.enabled": true
 }
