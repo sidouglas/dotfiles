@@ -104,6 +104,7 @@ alias flushdns="sudo killall -HUP mDNSResponder"
 alias ftrail='<<<${(F)fpath}'
 alias gr="git recentco"
 alias hosts="sudo vim /etc/hosts"
+alias spotifyfix='brew uninstall --cask spotify && brew cleanup && launchctl remove com.spotify.client.startuphelper && brew install --cask spotify'
 alias ls='lsd -la'
 alias less='less -FSRXc'                    # Preferred 'less' implementation
 alias man=batman
@@ -220,6 +221,50 @@ alias brew_permissions="sudo chown -R $(whoami) $(brew --prefix)/*"
 alias brew_upgrade_casks='for cask in $(brew outdated --cask --greedy); do brew upgrade --cask "$cask"; done'
 alias brewdump="mkdir -p $HOMEBREW_DIR && cd $HOMEBREW_DIR && brew bundle dump --force --describe && bat Brewfile"
 alias mysql="/opt/homebrew/opt/mysql@8.4/bin/mysql"
+
+# AnkiConnect
+alias anki_rm='function _anki_delete() { curl -X POST localhost:8765 -d "{\"action\": \"deleteNotes\", \"version\": 6, \"params\": {\"notes\": [$1]}}"; }; _anki_delete'
+
+# anki_tgfe "Your Title" "Your Back Content" "https://your-url.com"
+alias anki_tgfe='function _anki_create() {
+  front=$(echo "$1" | sed "s/\"/\\\\\"/g")
+  back=$(echo "$2" | sed "s/\"/\\\\\"/g")
+  url=$(echo "$3" | sed "s/\"/\\\\\"/g")
+
+  curl -X POST localhost:8765 -d "{\"action\": \"addNote\", \"version\": 6, \"params\": {\"note\": {\"deckName\": \"The Great Frontend\", \"modelName\": \"Basic\", \"fields\": {\"Front\": \"${front}\", \"Back\": \"${back}\", \"url\": \"${url}\"}, \"options\": {\"cardType\": \"tgfe\"}}}}"
+}; _anki_create'
+
+
+function cody_tgfe() {
+    # Extract clean URL path
+    clean_url=$(echo "$1" | sed -E 's/https:\/\/www.greatfrontend.com(.+)\?.*/\1/')
+
+    # Fetch and extract content
+    page_content=$(curl -s "$1" | pup 'article[aria-labelledby="question-title"] div.prose text{}')
+    header=$(curl -s "$1" | pup 'header text{}')
+
+    # Get title using Cody with focused content
+    title=$(cody chat -m "Analyze this content and return only the question title: $header. \n \n No introductions, no conclusions. Only the question title" | head -n 1)
+
+    # Get summary with HTML formatting
+    back_content=$(cody chat -m "Create a summary of these key technical points. Format as HTML unordered list (<ul><li>). No markdown, no introductions or conclusions. Only interpret the supplied content. This is the supplied content here in its entirety: $page_content" | tr '\n' ' ')
+
+    # Create Anki card using our improved anki_tgfe function
+    anki_tgfe "$title" "$back_content" "$clean_url"
+
+    # Show preview
+    echo "Created card:"
+    echo "Title: $title"
+    echo "Content: $back_content"
+    echo "URL: $clean_url"
+}
+
+
+
+
+
+
+
 
 
 git() {
