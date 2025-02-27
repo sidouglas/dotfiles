@@ -370,6 +370,5 @@
     "run": true,
     "watch": true,
     "debug": true
-  },
-  "diffEditor.hideUnchangedRegions.enabled": true
+  }
 }

@@ -3,7 +3,8 @@
 	email = 1107946+sidouglas@users.noreply.github.com
 
 [merge]
-  tool = vscode
+	tool = deltawalker
+#   tool = vscode
 [mergetool "vscode"]
   cmd = code --wait $MERGED
 
@@ -143,8 +144,9 @@
 	trustExitCode = true
 
 [difftool]
+	prompt = false
     # Run the difftool immediately, don't ask 'are you sure' each time.
-    prompt = false
+#     prompt = false
 
 [pager]
     # Use a pager if the difftool output is larger than one screenful,
@@ -152,9 +154,16 @@
     difftool = true
 
 [diff]
+	tool = deltawalker
     # Set difftastic as the default difftool, so we don't need to specify
     # `-t difftastic` every time.
-    tool = difftastic
+#     tool = difftastic
 [difftool "sourcetree"]
 	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
 	path = -ro
+[difftool  "deltawalker"]
+	cmd = '/Applications/DeltaWalker.app/Contents/Eclipse/Contents/Resources/git-diff' "$LOCAL" "$REMOTE"
+[mergetool]
+	keepBackup = false
+[mergetool  "deltawalker"]
+	cmd = '/Applications/DeltaWalker.app/Contents/Eclipse/Contents/Resources/git-merge' "$LOCAL" "$REMOTE" "$BASE" "$MERGED"

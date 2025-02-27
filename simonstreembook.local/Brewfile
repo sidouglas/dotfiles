@@ -197,8 +197,6 @@ cask "caffeine"
 cask "clop"
 # Tool to compare and synchronise files and folders
 cask "deltawalker"
-# Voice and text chat software
-cask "discord"
 # Drivers for DisplayLink docks, adapters and monitors
 cask "displaylink"
 # Web browser
