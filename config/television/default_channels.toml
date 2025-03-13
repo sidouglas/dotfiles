@@ -26,10 +26,10 @@ source_command = "docker image list --format \"{{.ID}}\""
 preview_command = "docker image inspect {0} | jq -C"
 
 # S3
-[[cable_channel]]
-name = "s3-buckets"
-source_command = "aws s3 ls | cut -d \" \" -f 3"
-preview_command = "aws s3 ls s3://{0}"
+# [[cable_channel]]
+# name = "s3-buckets"
+# source_command = "aws s3 ls | cut -d \" \" -f 3"
+# preview_command = "aws s3 ls s3://{0}"
 
 # Dotfiles
 [[cable_channel]]
@@ -54,3 +54,5 @@ source_command = "sed '1!G;h;$!d' $HOME/.bash_history"
 [[cable_channel]]
 name = "fish-history"
 source_command = "fish -c 'history'"
+
+

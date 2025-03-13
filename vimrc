@@ -65,6 +65,12 @@ set hlsearch
 " Set the commands to save in history default number is 20.
 set history=1000
 
+" Enable hybrid line numbers (absolute for current line, relative for others)
+set number relativenumber
+
+" Enable hybrid line numbers (absolute for current line, relative for others)
+set nu rnu
+
 " Enable auto completion menu after pressing TAB.
 set wildmenu
 
@@ -107,7 +113,8 @@ nnoremap K :m .-2<CR>==
 nnoremap J :m .+1<CR>==
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
-"adding a new line below the current line without moving your cursor to that new line
+"adding a new line below the current line without moving your cursor to that new l
+"ine
 nnoremap <CR> a<CR><Esc>k$
 
 " }}}

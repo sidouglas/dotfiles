@@ -22,7 +22,7 @@ tick_rate = 50
 # Whether to use nerd font icons in the UI
 # This option requires a font patched with Nerd Font in order to properly
 # display glyphs (see https://www.nerdfonts.com/ for more information)
-use_nerd_font_icons = false
+use_nerd_font_icons = true 
 # How much space to allocate for the UI (in percentage of the screen)
 # ┌───────────────────────────────────────┐
 # │                                       │
@@ -43,7 +43,7 @@ use_nerd_font_icons = false
 ui_scale = 100
 # Whether to show the top help bar in the UI by default
 # This option can be toggled with the (default) `ctrl-g` keybinding
-show_help_bar = false
+show_help_bar = true
 # Whether to show the preview panel in the UI by default
 # This option can be toggled with the (default) `ctrl-o` keybinding
 show_preview_panel = true
@@ -56,7 +56,7 @@ input_bar_position = "top"
 # A list of builtin themes can be found in the `themes` directory of the television
 # repository. You may also create your own theme by creating a new file in a `themes`
 # directory in your configuration directory (see the `config.toml` location above).
-theme = "dark"
+theme = "TwoDark"
 
 # Previewers settings
 # ----------------------------------------------------------------------------
@@ -65,7 +65,7 @@ theme = "dark"
 # Bulitin syntax highlighting uses the same syntax highlighting engine as bat.
 # To get a list of your currently available themes, run `bat --list-themes`
 # Note that setting the BAT_THEME environment variable will override this setting.
-theme = "nord-dark"
+theme = "TwoDark"
 
 # Keybindings
 # ----------------------------------------------------------------------------

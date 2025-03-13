@@ -42,7 +42,7 @@
   "editor.formatOnSave": true,
   "editor.inlineSuggest.suppressSuggestions": true,
   "editor.insertSpaces": true,
-  "editor.lineNumbers": "on",
+  "editor.lineNumbers": "relative",
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "none",
@@ -84,7 +84,6 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "find-it-faster.general.useTerminalInEditor": true,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "always",
   "gitTreeCompare.diffMode": "full",
@@ -97,7 +96,6 @@
   "javascript.suggest.paths": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "js/ts.implicitProjectConfig.checkJs": true,
-  "namespaceResolver.sortAlphabetically": true,
   "openInGitHub.defaultBranch": "main",
   "php-cs-fixer.autoFixByBracket": false,
   "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
@@ -370,5 +368,42 @@
     "run": true,
     "watch": true,
     "debug": true
-  }
+  },
+  "periscope.rgQueryParams": [
+    {
+      // filter the results to a folder
+      // Query: "redis -m module1"
+      // After: "rg 'redis' -g '**/*module1*/**'"
+      "regex": "^(.+) -m ([\\w-_]+)$",
+      "param": "-g '**/*$1*/**' -g '!**/node_modules/**'"
+    },
+    {
+      // filter the results to a folder and filetype
+      // Query: "redis -m module1 yaml"
+      // After: "rg 'redis' -g '**/*module1*/**/*.yaml'"
+      "regex": "^(.+) -m ([\\w-_]+) ([\\w]+)$",
+      "param": "-g '**/*$1*/**/*.$2'"
+    },
+    {
+      // filter the results that match a glob
+      // Query: "redis -g *module"
+      // After: "rg 'redis' -g '*module'"
+      "regex": "^(.+) -g (.+)$",
+      "param": "-g '$1'"
+    },
+    {
+      // filter the results to rg filetypes
+      // Query: "redis -t yaml"
+      // After: "rg 'redis' -t yaml"
+      "regex": "^(.+) -t ?(\\w+)$",
+      "param": "-t $1"
+    },
+    {
+      // filter the results that match a file extension through a glob
+      // Query: redis *.rs => rg 'redis' -g '*.rs'
+      "regex": "^(.+) \\*\\.(\\w+)$",
+      "param": "-g '*.$1'"
+    }
+  ],
+  "chat.commandCenter.enabled": false
 }
