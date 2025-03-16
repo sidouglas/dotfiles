@@ -30,7 +30,9 @@
     ~/.zprofile: null
     ~/.zsh_custom: null
     ~/.zshenv: null
-    ~/.zshrc: null
+    ~/.zshrc: null  
+    ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
+    ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
       #- create:
       #    - ~/downloads
       #    - ~/.vim/undo-history
