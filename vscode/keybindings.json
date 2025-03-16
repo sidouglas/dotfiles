@@ -704,15 +704,15 @@
   },
   {
     "key": "cmd+p",
-    "command": "-workbench.action.quickOpen"
+    "command": "workbench.action.quickOpen"
   },
   {
-    "key": "cmd+p",
+    "key": "cmd+shift+p",
     "command": "periscope.search",
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+/",
+    "key": "ctrl+v",
     "command": "periscope.openInHorizontalSplit",
     "when": "periscopeActive"
   }
