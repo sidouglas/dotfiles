@@ -72,15 +72,6 @@
     "**/node_modules": true,
     ".history": true
   },
-  "files.include": {
-    "**/*.js": true,
-    "**/*.ts": true,
-    "**/*.vue": true,
-    "packages/admin/**/*": true,
-    "packages/desktop/**/*": true,
-    "packages/mobile/**/*": true,
-    "packages/shared/**/*": true
-  },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
@@ -106,7 +97,7 @@
   "phpConstructor.visibility": "public",
   "prettier.documentSelectors": ["**/*.astro"],
   "prisma.showPrismaDataPlatformNotification": false,
-  "project-scopes.activeScope": "CentraliseSocial",
+  "project-scopes.activeScope": "Centralise",
   "project-scopes.enabled": false,
   "project-scopes.globalExclude": {
     "**/.DS_Store": true,
@@ -154,11 +145,18 @@
       ],
       "excluded": []
     },
-    "CentraliseSocial": {
+    "Centralise": {
       "included": [
-        "packages/desktop/src/components/SocialEngageSettings/SocialEngageAddFacebookOrInstagramAccount.vue",
-        "packages/shared/components/integrations/SocialIntegrationCard.vue",
-        "packages/desktop/src/components/SocialEngageSettings"
+        "packages/shared/modals/ManageSocialIntegrations.vue",
+        "packages/shared/components/integrations/SocialIntegrationRefreshIntegrations.vue",
+        "packages/shared/components/integrations/SocialIntegrationRefreshIntegrationList.vue",
+        "packages/shared/components/integrations/SocialIntegrationRow.vue",
+        "packages/shared/components/integrations/SocialEngageAccountLimitAlert.vue",
+        "packages/shared/test/vitest/__tests__/shared/components/integrations/SocialIntegration.spec.ts",
+        "packages/shared/test/vitest/__tests__/components/integrations",
+        "packages/shared/test/vitest/factories/OrganisationSocialIntegration.ts",
+        "packages/shared/components/integrations/SocialIntegrationExistingList.vue",
+        "packages/shared/components/integrations/SocialIntegrationRowActionSheet.vue"
       ],
       "excluded": []
     }
@@ -405,5 +403,6 @@
       "param": "-g '*.$1'"
     }
   ],
-  "chat.commandCenter.enabled": false
+  "chat.commandCenter.enabled": false,
+  "diffEditor.ignoreTrimWhitespace": false
 }
