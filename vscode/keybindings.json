@@ -396,7 +396,7 @@
     "command": "-workbench.action.openGlobalKeybindings"
   },
   {
-    "key": "cmd+k cmd+s",
+    "key": "cmd+k alt+s",
     "command": "project-scopes.toggle"
   },
   {
@@ -522,7 +522,7 @@
   {
     "key": "cmd+4",
     "command": "workbench.view.scm",
-    "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+    "when": "workbench.scm.active && !gitlens:disabled"
   },
   {
     "key": "ctrl+shift+g",
@@ -715,5 +715,22 @@
     "key": "ctrl+v",
     "command": "periscope.openInHorizontalSplit",
     "when": "periscopeActive"
+  },
+  {
+    "key": "cmd+k cmd+g",
+    "command": "workbench.view.extension.gitTreeCompare"
+  },
+  {
+    "key": "cmd+4 cmd+o",
+    "command": "git.openChange"
+  },
+  {
+    "key": "cmd+g alt+o",
+    "command": "gitlens.openWorkingFile"
+  },
+  {
+    "key": "cmd+k cmd+s",
+    "command": "editor.action.insertSnippet",
+    "when": "!editorReadonly"
   }
 ]

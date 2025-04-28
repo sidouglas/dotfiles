@@ -92,6 +92,7 @@ alias .6='cd ../../../../../../'            # Go back 6 directory levels
 bindkey "ç" fzf-cd-widget # option + c
 
 alias als='alias | grep'
+alias brave='/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser'
 alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
 alias cp='cp -iv'                           # Preferred cp implementation
 alias d='cd ~/Documents/'
@@ -104,9 +105,8 @@ alias flushdns="sudo killall -HUP mDNSResponder"
 alias ftrail='<<<${(F)fpath}'
 alias gr="git recentco"
 alias hosts="sudo vim /etc/hosts"
-alias spotifyfix='brew uninstall --cask spotify && brew cleanup && launchctl remove com.spotify.client.startuphelper && brew install --cask spotify'
-alias ls='lsd -la'
 alias less='less -FSRXc'                    # Preferred 'less' implementation
+alias ls='lsd -la'
 alias man=batman
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
@@ -116,13 +116,9 @@ alias python='/opt/homebrew/bin/python3'
 alias reload="source ~/.zshrc"              # reload:       Reload the shell (i.e. itself)
 alias rm=trash                              # rm:           Trash (move to trash)
 alias show_options='shopt'                  # Show_options: display bash options settings
-alias yt='echo "******USE ytdl id url OR ytbest url*******" && yt-dlp -F'                        # Will show all possible downloads
-alias ytbest="yt-dlp -f 'bv*+ba' $1"
-alias ytdl="yt-dlp -f $1 $2"
-alias ytlist="yt-dlp --list-formats $1"
-alias ytmp3='yt-dlp -x --audio-format mp3'  # Download from youtube, as mp3
-alias zshrc="code ~/.dotfiles/zshrc"
+alias spotifyfix='brew uninstall --cask spotify && brew cleanup && launchctl remove com.spotify.client.startuphelper && brew install --cask spotify'
 alias zh='vim + ~/.zsh_history' # open zsh history go straight to the bottom
+alias zshrc="code ~/.dotfiles/zshrc"
 
 # Television
 alias ss='bash -c "tv | while read -r line; do code -g \"\$line\"; done"'
@@ -228,14 +224,6 @@ function cody_tgfe() {
     echo "Content: $back_content"
     echo "URL: $clean_url"
 }
-
-
-
-
-
-
-
-
 
 git() {
     if [[ "$*" =~ (push.*-f|push.*--force|-f.*push|--force.*push) ]]; then

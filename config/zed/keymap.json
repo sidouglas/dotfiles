@@ -15,36 +15,22 @@
     "context": "Editor"
   },
   {
+    "context": "Editor",
     "bindings": {
-      "j": [
-        "vim::Down",
-        {
-          "displayLines": true
-        }
-      ],
-      "k": [
-        "vim::Up",
-        {
-          "displayLines": true
-        }
-      ]
+      "g d": "editor::GoToDefinition"
+    }
+  },
+  {
+    "bindings": {
+      "j": ["vim::Down", { "display_lines": true }],
+      "k": ["vim::Up", { "display_lines": true }]
     },
     "context": "VimControl"
   },
   {
     "bindings": {
-      "j": [
-        "vim::Down",
-        {
-          "displayLines": false
-        }
-      ],
-      "k": [
-        "vim::Up",
-        {
-          "displayLines": false
-        }
-      ]
+      "j": ["vim::Down", { "display_lines": false }],
+      "k": ["vim::Up", { "display_lines": false }]
     },
     "context": "VimCount"
   },
