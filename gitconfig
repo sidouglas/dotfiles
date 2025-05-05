@@ -114,6 +114,7 @@
 	prl = !gh pr list --limit 50 | fzf --preview \"gh pr view {1}\" --preview-window up:70% | awk \"{print \\$1}\" | xargs -I{} gh pr view {} --web
 	prme = !gh pr list --author \"@me\" --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\" | xargs -I{} gh pr view {} --web
 	prr = !gh pr list --search \"review-requested:@me\" --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\" | xargs -I{} gh pr view {} --web
+	prco = "!PR_NUMBER=$(gh pr list --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\") && if [ -n \"$PR_NUMBER\" ]; then gh pr checkout $PR_NUMBER; else echo \"No PR selected\"; fi"
 
 [core]
   mergeoptions = --no-edit
