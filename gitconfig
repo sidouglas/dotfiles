@@ -110,11 +110,15 @@
   # `git diff` with difftastic.
   dft = -c diff.external=difft diff
 	bd = !git branch | fzf | xargs git branch -d
-	pr = !gh pr view --web
+
+  # gh github aliases
+  pr = !gh pr view --web
 	prl = !gh pr list --limit 50 | fzf --preview \"gh pr view {1}\" --preview-window up:70% | awk \"{print \\$1}\" | xargs -I{} gh pr view {} --web
 	prme = !gh pr list --author \"@me\" --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\" | xargs -I{} gh pr view {} --web
 	prr = !gh pr list --search \"review-requested:@me\" --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\" | xargs -I{} gh pr view {} --web
 	prco = "!PR_NUMBER=$(gh pr list --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\") && if [ -n \"$PR_NUMBER\" ]; then gh pr checkout $PR_NUMBER; else echo \"No PR selected\"; fi"
+
+  specs = "!f() { for file in $(git log --since=\"2 month ago\" --author=\"$(git config user.name)\\|$(git config user.email)\" --name-only --pretty=format: | grep \"spec\\.ts$\" | sort | uniq); do echo \"$(git log -1 --date=short --format=\"%ad\" -- \"$file\") | $file\"; done | sort -r; }; f"
 
 [core]
   mergeoptions = --no-edit

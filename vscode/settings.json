@@ -30,12 +30,22 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
   },
+  "chat.commandCenter.enabled": false,
+  "cody.autocomplete.disableInsideComments": true,
+  "cody.autocomplete.formatOnAccept": true,
+  "cody.autocomplete.languages": {
+    "*": true
+  },
   "cody.commandCodeLenses": true,
+  "diffEditor.codeLens": true,
   "diffEditor.experimental.showMoves": true,
+  "diffEditor.ignoreTrimWhitespace": false,
   "editor.accessibilitySupport": "off",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
+  "editor.cursorBlinking": "phase",
+  "editor.cursorStyle": "line-thin",
   "editor.find.autoFindInSelection": "multiline",
   "editor.fontFamily": "'Hack Nerd Font', 'Fira Code', Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
@@ -46,6 +56,7 @@
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "none",
+  "editor.semanticHighlighting.enabled": false,
   "editor.snippetSuggestions": "top",
   "editor.tabSize": 2,
   "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
@@ -114,6 +125,8 @@
     "packages/desktop/public": true,
     "packages/desktop/quasar.config.js": true,
     "packages/desktop/quasar.config.js.temporary.compiled.1742869624901.mjs": true,
+    "packages/desktop/quasar.config.js.temporary.compiled.1747612460261.mjs": true,
+    "packages/desktop/quasar.config.js.temporary.compiled.1747612571004.mjs": true,
     "packages/desktop/quasar.extensions.json": true,
     "packages/desktop/README.md": true,
     "packages/desktop/run-tests.sh": true,
@@ -233,7 +246,6 @@
     "packages/shared/services": true,
     "packages/shared/shims-vue.d.ts": true,
     "packages/shared/stores": true,
-    "packages/shared/test": true,
     "packages/shared/tsconfig.ci.json": true,
     "packages/shared/tsconfig.json": true,
     "packages/shared/types": true,
@@ -278,8 +290,6 @@
     "packages/shared/resources/CopyrightReport.ts": true,
     "packages/shared/resources/CopyrightReportFile.ts": true,
     "packages/shared/resources/CoreVersion.ts": true,
-    "packages/shared/resources/CustomerProfile.ts": true,
-    "packages/shared/resources/CustomerProfileComponent.ts": true,
     "packages/shared/resources/DistributionList.ts": true,
     "packages/shared/resources/EmailDomain.ts": true,
     "packages/shared/resources/EmailEvent.ts": true,
@@ -457,9 +467,9 @@
     "packages/shared/resources/YoutubeChannel.ts": true,
     "packages/shared/components/integrations/GoogleAnalyticsIntegration.vue": true,
     "packages/shared/components/integrations/IntegrationIndicator.vue": true,
-    "packages/shared/components/integrations/ManageSocialConnections": true,
     "packages/shared/components/integrations/MicrosoftTeamsIntegration.vue": true,
     "packages/shared/components/integrations/SamlIntegration.vue": true,
+    "packages/shared/components/integrations/SelectAllCheckboxButton.vue": true,
     "packages/shared/components/integrations/SlackIntegration.vue": true,
     "packages/shared/components/integrations/SocialEngageAccountLimitAlert.vue": true,
     "packages/shared/components/integrations/SocialEngageIntegrationsRouterLink.vue": true,
@@ -534,7 +544,6 @@
     "packages/shared/components/OutreachRecipientDropdown.vue": true,
     "packages/shared/components/PageContainer.vue": true,
     "packages/shared/components/Pagination": true,
-    "packages/shared/components/Pagination.vue": true,
     "packages/shared/components/PdfViewer.vue": true,
     "packages/shared/components/players": true,
     "packages/shared/components/PodcastMentionCard.vue": true,
@@ -566,6 +575,7 @@
     "packages/shared/components/SocialMentionCardAttachedMedia.vue": true,
     "packages/shared/components/SocialMentionCardAttachedMediaAsset.vue": true,
     "packages/shared/components/SocialMentionCardBlogPost.vue": true,
+    "packages/shared/components/SocialMentionCardBlueskyPost.vue": true,
     "packages/shared/components/SocialMentionCardFacebookPost.vue": true,
     "packages/shared/components/SocialMentionCardFactory.js": true,
     "packages/shared/components/SocialMentionCardFollowerCount.vue": true,
@@ -597,7 +607,91 @@
     "packages/shared/components/TVSegmentMentionCard.vue": true,
     "packages/shared/components/user": true,
     "packages/shared/components/VFragment.vue": true,
-    "packages/shared/components/widgets": true
+    "packages/shared/components/widgets": true,
+    "packages/shared/modals/ManageSocialConnections/index.ts": true,
+    "packages/shared/modals/ManageSocialConnections/ManageSocialConnectionsAccounts.vue": true,
+    "packages/shared/modals/ManageSocialConnections/ManageSocialConnectionsHashtags.vue": true,
+    "packages/shared/modals/ManageSocialConnections/ManageSocialConnectionsTemplate.vue": true,
+    "packages/shared/modals/ManageSocialConnections/types.ts": true,
+    "packages/shared/test/vitest/__tests__/components/integrations/SelectAllCheckboxButton.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/components/integrations/SocialConnectionOption.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/components/integrations/SocialEngageIntegrationsRouterLink.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/components/integrations/SocialIntegration.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/components/integrations/SocialIntegrationCard.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/components/integrations/SocialIntegrationExpiredIntegrationDropdown.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/components/integrations/SocialIntegrationRefreshIntegrationList.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/components/integrations/SocialIntegrationRow.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/components/__snapshots__": true,
+    "packages/shared/test/vitest/__tests__/components/.DS_Store": true,
+    "packages/shared/test/vitest/__tests__/components/AI": true,
+    "packages/shared/test/vitest/__tests__/components/AlertDropdown.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/base": true,
+    "packages/shared/test/vitest/__tests__/components/BooleanWizard": true,
+    "packages/shared/test/vitest/__tests__/components/BroadcastAudienceWidget.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/ChartLibraryChart": true,
+    "packages/shared/test/vitest/__tests__/components/ContentEditor": true,
+    "packages/shared/test/vitest/__tests__/components/core": true,
+    "packages/shared/test/vitest/__tests__/components/DropdownBookmarkMentions.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/InstantDownloadRequestPreview.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/mediaTranscriptRequests": true,
+    "packages/shared/test/vitest/__tests__/components/MentionCard.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/MentionDetail": true,
+    "packages/shared/test/vitest/__tests__/components/MentionExcerpts.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/MentionStream.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/MentionStreamBuilder": true,
+    "packages/shared/test/vitest/__tests__/components/menu": true,
+    "packages/shared/test/vitest/__tests__/components/notifications": true,
+    "packages/shared/test/vitest/__tests__/components/Outreach": true,
+    "packages/shared/test/vitest/__tests__/components/OutreachContactListDropdown.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/OutreachRecipientDropdown.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/Pagination.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/components/players": true,
+    "packages/shared/test/vitest/__tests__/components/PrintMentionCard.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/components/RadioMentionCard.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/RelatedMentionCard.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/components/selectors": true,
+    "packages/shared/test/vitest/__tests__/components/SocialMentionCardAttachedMedia.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/SocialMentionCardAttachedMediaAsset.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/SocialMentionCardBlueskyPost.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/components/SocialMentionCardInstagramPost.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/SocialMentionEngagementItem.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/SocialMentionEngagementSentiment.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/SocialStreamMediaTypeSelector.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/sources": true,
+    "packages/shared/test/vitest/__tests__/components/streams": true,
+    "packages/shared/test/vitest/__tests__/components/Syndications.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/SyndicationsPopper.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/components/table": true,
+    "packages/shared/test/vitest/__tests__/components/TVMentionCard.spec.js": true,
+    "packages/shared/test/vitest/__tests__/components/user": true,
+    "packages/shared/test/vitest/__tests__/components/widgets": true,
+    "packages/shared/test/vitest/__tests__/.DS_Store": true,
+    "packages/shared/test/vitest/__tests__/boot": true,
+    "packages/shared/test/vitest/__tests__/composables": true,
+    "packages/shared/test/vitest/__tests__/helpers": true,
+    "packages/shared/test/vitest/__tests__/pages": true,
+    "packages/shared/test/vitest/__tests__/resources": true,
+    "packages/shared/test/vitest/__tests__/services": true,
+    "packages/shared/test/vitest/__tests__/shared": true,
+    "packages/shared/test/vitest/__tests__/store": true,
+    "packages/shared/test/vitest/__fixtures__": true,
+    "packages/shared/test/vitest/.DS_Store": true,
+    "packages/shared/test/vitest/.gitignore": true,
+    "packages/shared/test/vitest/factories": true,
+    "packages/shared/test/vitest/mocks": true,
+    "packages/shared/test/vitest/setup": true,
+    "packages/shared/test/vitest/types": true,
+    "packages/shared/test/vitest/utils": true,
+    "packages/shared/test/.DS_Store": true,
+    "packages/shared/test/.gitkeep": true,
+    "packages/shared/test/vitest/__tests__/modals/AdvancedFiltersModal.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/modals/AdvancedSourceFiltersModal.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/modals/ConfirmDialogModal.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/modals/CreateOutreachPitchModal.spec.js": true,
+    "packages/shared/test/vitest/__tests__/modals/DialogService.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/modals/ExpandableFiltersModal.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/modals/LightboxSocialPostModal.spec.ts": true,
+    "packages/shared/test/vitest/__tests__/modals/ManageSocialIntegrations.spec.ts": true
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -608,13 +702,39 @@
   "gitTreeCompare.showCheckboxes": true,
   "gitlens.heatmap.ageThreshold": 60,
   "gitlens.views.commitDetails.files.layout": "tree",
+  "gitlens.views.commits.showBranchComparison": "branch",
   "gitlens.views.fileHistory.files.layout": "list",
   "gitlens.views.repositories.includeWorkingTree": true,
+  "gitlens.views.repositories.showIncomingActivity": true,
+  "gitlens.views.repositories.showStashes": true,
   "intellijRecentFiles.navigate": false,
   "javascript.suggest.paths": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "js/ts.implicitProjectConfig.checkJs": true,
   "openInGitHub.defaultBranch": "main",
+  "periscope.alwaysShowRgMenuActions": true,
+  "periscope.rgQueryParams": [
+    {
+      "param": "-g '**/*$1*/**' -g '!**/node_modules/**'",
+      "regex": "^(.+) -m ([\\w-_]+)$"
+    },
+    {
+      "param": "-g '**/*$1*/**/*.$2'",
+      "regex": "^(.+) -m ([\\w-_]+) ([\\w]+)$"
+    },
+    {
+      "param": "-g '$1'",
+      "regex": "^(.+) -g (.+)$"
+    },
+    {
+      "param": "-t $1",
+      "regex": "^(.+) -t ?(\\w+)$"
+    },
+    {
+      "param": "-g '*.$1'",
+      "regex": "^(.+) \\*\\.(\\w+)$"
+    }
+  ],
   "php-cs-fixer.autoFixByBracket": false,
   "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
   "php-cs-fixer.lastDownload": 1706085949125,
@@ -637,41 +757,8 @@
     ".history": true
   },
   "project-scopes.scopes": {
-    "base": {
-      "included": [],
-      "excluded": []
-    },
-    "InlinePlayerRefactor": {
-      "included": [
-        "packages/shared/components/players/InlinePlayer.vue",
-        "packages/shared/components/players/InlinePlayerButtonBar.vue",
-        "packages/shared/test/vitest/__tests__/components/players/InlinePlayer.spec.ts",
-        "packages/shared/components/players/PlayerPopoutProgressBar.vue",
-        "packages/shared/components/players/PlayerPopoutButtons.vue"
-      ],
-      "excluded": []
-    },
-    "MentionCardRefactor": {
-      "included": [
-        "packages/shared/components/MentionCard/MentionCard.vue",
-        "packages/shared/components/PrintMentionCard.vue",
-        "packages/shared/components/SyndicationsPopper.vue"
-      ],
-      "excluded": ["packages/shared/components/players"]
-    },
-    "SocialEngage": {
-      "included": [
-        "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageCompose.spec.ts",
-        "packages/desktop/src/components/SocialEngageCompose/SocialEngageComposeForm.vue",
-        "packages/desktop/src/components/SocialEngageCompose/SocialEngageCompose.vue",
-        "packages/shared/constants/social.ts",
-        "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageExpiredIntegrationDropdown.spec.ts",
-        "packages/desktop/src/components/SocialEngagePostPerformance/SocialEngagePostPerformancePage.vue",
-        "packages/desktop/src/components/SocialEngagePostPerformance/SocialEngagePostPerformanceFilters.vue"
-      ],
-      "excluded": []
-    },
     "Centralise": {
+      "excluded": [],
       "included": [
         "packages/shared/modals/ManageSocialIntegrations.vue",
         "packages/shared/components/integrations/SocialIntegrationRefreshIntegrations.vue",
@@ -686,22 +773,60 @@
         "packages/shared/components/user/Integrations.vue",
         "packages/shared/composables/useSocialAuth",
         "packages/shared/test/vitest/__tests__/shared/components/integrations/SocialIntegrationRefreshIntegrationList.spec.ts"
-      ],
-      "excluded": []
+      ]
+    },
+    "InlinePlayerRefactor": {
+      "excluded": [],
+      "included": [
+        "packages/shared/components/players/InlinePlayer.vue",
+        "packages/shared/components/players/InlinePlayerButtonBar.vue",
+        "packages/shared/test/vitest/__tests__/components/players/InlinePlayer.spec.ts",
+        "packages/shared/components/players/PlayerPopoutProgressBar.vue",
+        "packages/shared/components/players/PlayerPopoutButtons.vue"
+      ]
     },
     "Instagram": {
+      "excluded": [],
       "included": [
         "packages/desktop/src/router/routes.js",
         "packages/shared/modals/ManageSocialConnections.vue",
         "packages/shared/resources/InstagramHandle.ts",
         "packages/shared/resources/InstagramHandlesOrganisationSocialIntegration.ts",
-        "packages/shared/components/integrations/SocialConnectionOption.vue"
-      ],
-      "excluded": []
+        "packages/shared/components/integrations/SocialConnectionOption.vue",
+        "packages/shared/modals/ManageSocialConnections/ManageSocialConnections.vue",
+        "packages/shared/components/integrations/ManageSocialConnections",
+        "packages/shared/test/vitest/__tests__/components/integrations/ManageSocialConnections",
+        "packages/shared/test/vitest/__tests__/modals/ManageSocialConnections"
+      ]
+    },
+    "MentionCardRefactor": {
+      "excluded": ["packages/shared/components/players"],
+      "included": [
+        "packages/shared/components/MentionCard/MentionCard.vue",
+        "packages/shared/components/PrintMentionCard.vue",
+        "packages/shared/components/SyndicationsPopper.vue"
+      ]
+    },
+    "SocialEngage": {
+      "excluded": [],
+      "included": [
+        "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageCompose.spec.ts",
+        "packages/desktop/src/components/SocialEngageCompose/SocialEngageComposeForm.vue",
+        "packages/desktop/src/components/SocialEngageCompose/SocialEngageCompose.vue",
+        "packages/shared/constants/social.ts",
+        "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageExpiredIntegrationDropdown.spec.ts",
+        "packages/desktop/src/components/SocialEngagePostPerformance/SocialEngagePostPerformancePage.vue",
+        "packages/desktop/src/components/SocialEngagePostPerformance/SocialEngagePostPerformanceFilters.vue"
+      ]
+    },
+    "base": {
+      "excluded": [],
+      "included": []
     }
   },
   "quokka.automaticRestart": true,
   "quokka.untrustedWorkspaceBehavior": "Always allow",
+  "ruby-spec-runner.changeDirectoryToWorkspaceRoot": false,
   "ruby.rubocop.configFilePath": "~/.rbenv/shims/",
   "scm.workingSets.enabled": true,
   "search.exclude": {
@@ -885,6 +1010,11 @@
       "before": ["p"]
     }
   ],
+  "vscode-vitest.executableOptions": {
+    "debug": true,
+    "run": true,
+    "watch": true
+  },
   "vue.server.hybridMode": "typeScriptPluginOnly",
   "window.commandCenter": false,
   "workbench.activityBar.location": "top",
@@ -892,61 +1022,10 @@
   "workbench.editor.labelFormat": "short",
   "workbench.layoutControl.enabled": false,
   "workbench.localHistory.maxFileEntries": 500,
+  "workbench.sash.hoverDelay": 0,
+  "workbench.sash.size": 1,
   "workbench.settings.editor": "json",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
-  "workbench.sash.size": 1,
-  "workbench.sash.hoverDelay": 0,
-  "editor.cursorStyle": "line-thin",
-  "editor.cursorBlinking": "phase",
-  "editor.semanticHighlighting.enabled": false,
-  "zenMode.hideLineNumbers": false,
-  "vscode-vitest.executableOptions": {
-    "run": true,
-    "watch": true,
-    "debug": true
-  },
-  "periscope.rgQueryParams": [
-    {
-      // filter the results to a folder
-      // Query: "redis -m module1"
-      // After: "rg 'redis' -g '**/*module1*/**'"
-      "regex": "^(.+) -m ([\\w-_]+)$",
-      "param": "-g '**/*$1*/**' -g '!**/node_modules/**'"
-    },
-    {
-      // filter the results to a folder and filetype
-      // Query: "redis -m module1 yaml"
-      // After: "rg 'redis' -g '**/*module1*/**/*.yaml'"
-      "regex": "^(.+) -m ([\\w-_]+) ([\\w]+)$",
-      "param": "-g '**/*$1*/**/*.$2'"
-    },
-    {
-      // filter the results that match a glob
-      // Query: "redis -g *module"
-      // After: "rg 'redis' -g '*module'"
-      "regex": "^(.+) -g (.+)$",
-      "param": "-g '$1'"
-    },
-    {
-      // filter the results to rg filetypes
-      // Query: "redis -t yaml"
-      // After: "rg 'redis' -t yaml"
-      "regex": "^(.+) -t ?(\\w+)$",
-      "param": "-t $1"
-    },
-    {
-      // filter the results that match a file extension through a glob
-      // Query: redis *.rs => rg 'redis' -g '*.rs'
-      "regex": "^(.+) \\*\\.(\\w+)$",
-      "param": "-g '*.$1'"
-    }
-  ],
-  "chat.commandCenter.enabled": false,
-  "diffEditor.ignoreTrimWhitespace": false,
-  "cody.autocomplete.formatOnAccept": true,
-  "cody.autocomplete.disableInsideComments": true,
-  "cody.autocomplete.languages": {
-    "*": true
-  }
+  "zenMode.hideLineNumbers": false
 }

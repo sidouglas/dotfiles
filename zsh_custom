@@ -14,7 +14,7 @@ export HOMEBREW_BUNDLE_FILE="$HOMEBREW_DIR/Brewfile"
 HISTSIZE=5000 # Session Memory Limit
 SAVEHIST=4000 # File Memory Limit
 
-setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt HIST_SAVE_NO_DUPS # Do not write a duplicate event to the history file.
 setopt histNoStore
 setopt extendedHistory
 setopt histIgnoreAllDups
@@ -119,6 +119,9 @@ alias show_options='shopt'                  # Show_options: display bash options
 alias spotifyfix='brew uninstall --cask spotify && brew cleanup && launchctl remove com.spotify.client.startuphelper && brew install --cask spotify'
 alias zh='vim + ~/.zsh_history' # open zsh history go straight to the bottom
 alias zshrc="code ~/.dotfiles/zshrc"
+
+# Ruby
+alias bundle='nocorrect bundle'
 
 # Television
 alias ss='bash -c "tv | while read -r line; do code -g \"\$line\"; done"'
