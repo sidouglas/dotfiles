@@ -14,10 +14,10 @@
       glob: true
       create: true
       path: config/zed
-    ~/.config/television:
+    ~/.config/karabiner:
       glob: true
       create: true
-      path: config/television
+      path: config/karabiner
     ~/.fzf: null
     ~/.gitconfig: null
     ~/.gitignore_global: null
@@ -30,9 +30,10 @@
     ~/.zprofile: null
     ~/.zsh_custom: null
     ~/.zshenv: null
-    ~/.zshrc: null  
+    ~/.zshrc: null
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
-    ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
+    ~/Library/Application Support/Code/User/keybindings.json:
+      vscode/keybindings.json
       #- create:
       #    - ~/downloads
       #    - ~/.vim/undo-history

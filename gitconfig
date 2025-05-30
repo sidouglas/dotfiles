@@ -48,7 +48,7 @@
     rbs = "!git fetch origin staging && git rebase origin/staging"
     rename = "!git branch -m "
     revert = "!f() { git checkout master -- $1 && git add $1 && git commit -m \"Reverted $1 to the version in master\"; }; f"
-	  soft = "!f() { git reset --soft origin/$(git rev-parse --abbrev-ref HEAD); }; f"
+    soft = "!git log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=format-local:'%Y-%m-%d %H:%M:%S AEDT' | fzf --ansi --no-sort --reverse --preview 'git show --color=always {1}' | cut -d' ' -f1 | xargs -r git reset --soft"
     s = status
     search = "!f() { git log -p -S \"$1\" -- \"${2:-.}\"; }; f"
     ss = "!git fetch --all && git branch -r --sort=-committerdate --format=\"%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)\" --color=always"

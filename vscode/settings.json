@@ -147,6 +147,7 @@
     ".gitignore": true,
     ".npmrc": true,
     ".nvmrc": true,
+    ".polling_patch_applied": true,
     ".prettierignore": true,
     ".prettierrc.json": true,
     ".semaphore": true,
@@ -242,7 +243,6 @@
     "packages/shared/mixins": true,
     "packages/shared/node_modules": true,
     "packages/shared/package.json": true,
-    "packages/shared/pages": true,
     "packages/shared/services": true,
     "packages/shared/shims-vue.d.ts": true,
     "packages/shared/stores": true,
@@ -271,6 +271,7 @@
     "packages/shared/resources/BlocklistUrlPattern.ts": true,
     "packages/shared/resources/Blog.ts": true,
     "packages/shared/resources/BlogPost.ts": true,
+    "packages/shared/resources/BlueskyProfile.ts": true,
     "packages/shared/resources/BriefSet.ts": true,
     "packages/shared/resources/BriefSetsOrganisationTeam.ts": true,
     "packages/shared/resources/BriefSetsStream.ts": true,
@@ -322,6 +323,7 @@
     "packages/shared/resources/InsightsReportChart.ts": true,
     "packages/shared/resources/InsightsReportGroup.ts": true,
     "packages/shared/resources/InsightsReportKeyInsight.ts": true,
+    "packages/shared/resources/InstagramHashtagsOrganisationSocialIntegration.ts": true,
     "packages/shared/resources/InstagramPost.ts": true,
     "packages/shared/resources/InstagramSocialIntegration.ts": true,
     "packages/shared/resources/InstantInsightsReport.ts": true,
@@ -613,6 +615,7 @@
     "packages/shared/modals/ManageSocialConnections/ManageSocialConnectionsHashtags.vue": true,
     "packages/shared/modals/ManageSocialConnections/ManageSocialConnectionsTemplate.vue": true,
     "packages/shared/modals/ManageSocialConnections/types.ts": true,
+    "packages/shared/test/vitest/__tests__/components/integrations/GoogleAnalyticsIntegration.spec.ts": true,
     "packages/shared/test/vitest/__tests__/components/integrations/SelectAllCheckboxButton.spec.ts": true,
     "packages/shared/test/vitest/__tests__/components/integrations/SocialConnectionOption.spec.ts": true,
     "packages/shared/test/vitest/__tests__/components/integrations/SocialEngageIntegrationsRouterLink.spec.ts": true,
@@ -691,7 +694,13 @@
     "packages/shared/test/vitest/__tests__/modals/DialogService.spec.ts": true,
     "packages/shared/test/vitest/__tests__/modals/ExpandableFiltersModal.spec.ts": true,
     "packages/shared/test/vitest/__tests__/modals/LightboxSocialPostModal.spec.ts": true,
-    "packages/shared/test/vitest/__tests__/modals/ManageSocialIntegrations.spec.ts": true
+    "packages/shared/test/vitest/__tests__/modals/ManageSocialIntegrations.spec.ts": true,
+    "packages/shared/pages/SocialTeamInstagramPlayground/index.ts": true,
+    "packages/shared/pages/SocialTeamInstagramPlayground/mocks.ts": true,
+    "packages/shared/pages/ExternalItemEdit.vue": true,
+    "packages/shared/pages/LoadError.vue": true,
+    "packages/shared/pages/OauthLogin.vue": true,
+    "packages/shared/pages/StreamNotificationsEdit.vue": true
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -757,8 +766,11 @@
     ".history": true
   },
   "project-scopes.scopes": {
+    "base": {
+      "included": [],
+      "excluded": []
+    },
     "Centralise": {
-      "excluded": [],
       "included": [
         "packages/shared/modals/ManageSocialIntegrations.vue",
         "packages/shared/components/integrations/SocialIntegrationRefreshIntegrations.vue",
@@ -773,20 +785,20 @@
         "packages/shared/components/user/Integrations.vue",
         "packages/shared/composables/useSocialAuth",
         "packages/shared/test/vitest/__tests__/shared/components/integrations/SocialIntegrationRefreshIntegrationList.spec.ts"
-      ]
+      ],
+      "excluded": []
     },
     "InlinePlayerRefactor": {
-      "excluded": [],
       "included": [
         "packages/shared/components/players/InlinePlayer.vue",
         "packages/shared/components/players/InlinePlayerButtonBar.vue",
         "packages/shared/test/vitest/__tests__/components/players/InlinePlayer.spec.ts",
         "packages/shared/components/players/PlayerPopoutProgressBar.vue",
         "packages/shared/components/players/PlayerPopoutButtons.vue"
-      ]
+      ],
+      "excluded": []
     },
     "Instagram": {
-      "excluded": [],
       "included": [
         "packages/desktop/src/router/routes.js",
         "packages/shared/modals/ManageSocialConnections.vue",
@@ -796,19 +808,20 @@
         "packages/shared/modals/ManageSocialConnections/ManageSocialConnections.vue",
         "packages/shared/components/integrations/ManageSocialConnections",
         "packages/shared/test/vitest/__tests__/components/integrations/ManageSocialConnections",
-        "packages/shared/test/vitest/__tests__/modals/ManageSocialConnections"
-      ]
+        "packages/shared/test/vitest/__tests__/modals/ManageSocialConnections",
+        "packages/shared/pages/SocialTeamInstagramPlayground/SocialTeamInstagramPlayground.vue"
+      ],
+      "excluded": []
     },
     "MentionCardRefactor": {
-      "excluded": ["packages/shared/components/players"],
       "included": [
         "packages/shared/components/MentionCard/MentionCard.vue",
         "packages/shared/components/PrintMentionCard.vue",
         "packages/shared/components/SyndicationsPopper.vue"
-      ]
+      ],
+      "excluded": ["packages/shared/components/players"]
     },
     "SocialEngage": {
-      "excluded": [],
       "included": [
         "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageCompose.spec.ts",
         "packages/desktop/src/components/SocialEngageCompose/SocialEngageComposeForm.vue",
@@ -817,11 +830,8 @@
         "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageExpiredIntegrationDropdown.spec.ts",
         "packages/desktop/src/components/SocialEngagePostPerformance/SocialEngagePostPerformancePage.vue",
         "packages/desktop/src/components/SocialEngagePostPerformance/SocialEngagePostPerformanceFilters.vue"
-      ]
-    },
-    "base": {
-      "excluded": [],
-      "included": []
+      ],
+      "excluded": []
     }
   },
   "quokka.automaticRestart": true,
@@ -1027,5 +1037,8 @@
   "workbench.settings.editor": "json",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
-  "zenMode.hideLineNumbers": false
+  "zenMode.hideLineNumbers": false,
+  "geminicodeassist.project": "streem-144523",
+  "gitlens.ai.model": "gitkraken",
+  "gitlens.ai.gitkraken.model": "gemini:gemini-2.0-flash"
 }

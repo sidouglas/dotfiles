@@ -117,7 +117,6 @@ alias reload="source ~/.zshrc"              # reload:       Reload the shell (i.
 alias rm=trash                              # rm:           Trash (move to trash)
 alias show_options='shopt'                  # Show_options: display bash options settings
 alias spotifyfix='brew uninstall --cask spotify && brew cleanup && launchctl remove com.spotify.client.startuphelper && brew install --cask spotify'
-alias zh='vim + ~/.zsh_history' # open zsh history go straight to the bottom
 alias zshrc="code ~/.dotfiles/zshrc"
 
 # Ruby
@@ -148,6 +147,17 @@ function oo() {
 alias lh='fc -RI; echo "loaded and showing..."; history;'
 
 # Write Handy Functions
+function zh() {
+  if [[ "$1" == "-"* && "$1" != "" ]]; then
+    pattern="${1#-}"
+    grep -v "$pattern" ~/.zsh_history > ~/.zsh_history.tmp && mv ~/.zsh_history.tmp ~/.zsh_history
+    echo "Removed entries containing '$pattern' from ~/.zsh_history"
+  else
+    command vim ~/.zsh_history
+  fi
+}
+
+
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 function trash () { command mv "$@" ~/.Trash ; }
 
