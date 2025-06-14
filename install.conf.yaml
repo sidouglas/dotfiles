@@ -32,8 +32,10 @@
     ~/.zshenv: null
     ~/.zshrc: null
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
-    ~/Library/Application Support/Code/User/keybindings.json:
-      vscode/keybindings.json
+    ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
+    ~/.vscode/cody.json:
+      vscode/cody.json
+
       #- create:
       #    - ~/downloads
       #    - ~/.vim/undo-history
