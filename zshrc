@@ -80,6 +80,7 @@ macos
 rails
 zsh-rbenv
 zsh-autosuggestions
+zsh-vim-mode
 )
 
 NVM_HOMEBREW=/opt/homebrew/opt/nvm
