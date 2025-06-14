@@ -33,11 +33,6 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 
 # Third-Party Software
 
-# iTerm2 Settings
-#defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
-#defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/.dotfiles/iterm2"
-#defaults write com.googlecode.iterm2 NoSyncNeverRemindPrefsChangesLostForFile -bool true
-
 # From https://gist.github.com/devnoname120/4767a0aa18879217170fd0c68809fc24
 defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1
@@ -61,6 +56,9 @@ defaults write com.stairways.keyboardmaestro.engine "Notification-MacroExecution
 defaults write com.stairways.keyboardmaestro.engine "Notification-MacroCancelled" -bool YES
 defaults write com.stairways.keyboardmaestro.engine "Notification-ActionFailed" -bool YES
 defaults write com.stairways.keyboardmaestro.engine "Notification-ReceivedClipboard" -bool YES
+
+# Stop terminal from going into Secure input mode
+defaults write com.apple.Terminal SecureKeyboardEntry -bool false
 
 # Finish macOS Setup
 killall Finder
