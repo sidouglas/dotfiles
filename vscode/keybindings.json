@@ -768,5 +768,15 @@
   {
     "key": "shift+cmd+;",
     "command": "workbench.view.extension.gitlensInspect"
+  },
+  {
+    "key": "alt+cmd+r",
+    "command": "revealFileInOS",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+cmd+r",
+    "command": "-revealFileInOS",
+    "when": "!editorFocus"
   }
 ]

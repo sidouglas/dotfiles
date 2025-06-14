@@ -119,11 +119,52 @@ alias show_options='shopt'                  # Show_options: display bash options
 alias spotifyfix='brew uninstall --cask spotify && brew cleanup && launchctl remove com.spotify.client.startuphelper && brew install --cask spotify'
 alias zshrc="code ~/.dotfiles/zshrc"
 
-# Ruby
-alias bundle='nocorrect bundle'
+# FZF
+alias sd='cd "$(fd --type d --exclude Applications --exclude Library --exclude Movies | fzf)"' # search for directories
 
-# Television
-alias ss='bash -c "tv | while read -r line; do code -g \"\$line\"; done"'
+# search for code
+ss() {
+    RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case"
+    INITIAL_QUERY="${1:-}"
+    FILE_PATTERN="${2:-}"
+
+    if [ -n "$FILE_PATTERN" ]; then
+        RG_PREFIX="$RG_PREFIX -g '$FILE_PATTERN'"
+    fi
+
+    FZF_DEFAULT_COMMAND="$RG_PREFIX '$INITIAL_QUERY'"
+    CHOICE=$(fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+        --sort \
+        --multi \
+        --preview 'rg --pretty --context 10 --color=always {q} $(echo {} | cut -d: -f1)' \
+        --ansi --phony --query "$INITIAL_QUERY")
+
+    if [ -n "$CHOICE" ]
+    then
+        FILE=$(echo "$CHOICE" | cut -d: -f1)
+        LINE=$(echo "$CHOICE" | cut -d: -f2)
+        code -g "$FILE:$LINE"
+    fi
+}
+
+# search for files by regex with dynamic updates
+sf() {
+    local INITIAL_PATTERN="${1:-}"
+
+    FILE=$(FZF_DEFAULT_COMMAND="fd --type f --exclude Applications --exclude Library --exclude Movies '$INITIAL_PATTERN'" \
+        fzf --bind "change:reload:fd --type f --exclude Applications --exclude Library --exclude Movies {q} || true" \
+            --query "$INITIAL_PATTERN" \
+            --preview 'bat --color=always --style=header,grid --line-range :300 {}' \
+            --phony)
+
+    if [ -n "$FILE" ]; then
+        open "$FILE"
+    fi
+}
+
+
+
+alias bundle='nocorrect bundle'
 
 # Laravel
 alias sail="./vendor/bin/sail"
