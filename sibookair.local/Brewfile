@@ -26,8 +26,6 @@ brew "blueutil"
 brew "brew-php-switcher"
 # Core application library for C
 brew "glib"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Validating, recursive, caching DNS resolver
 brew "unbound"
 # GNU Transport Layer Security (TLS) Library
@@ -36,6 +34,8 @@ brew "gnutls"
 brew "harfbuzz"
 # High quality MPEG Audio Layer III (MP3) encoder
 brew "lame"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
 # Secure Reliable Transport
@@ -58,8 +58,6 @@ brew "composer"
 brew "coreutils"
 # Diff that understands syntax
 brew "difftastic"
-# Lightweight DNS forwarder and DHCP server
-brew "dnsmasq"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 # Isolated development environments using Docker
@@ -70,6 +68,8 @@ brew "fd"
 brew "ffmpegthumbnailer"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
+brew "gh"
 # Interpreter for PostScript and PDF
 brew "ghostscript"
 # Syntax-highlighting pager for git and diff output
@@ -116,8 +116,6 @@ brew "zlib"
 brew "mysql@8.4", restart_service: :changed
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
-brew "nginx"
 # Libraries for security-enabled client and server applications
 brew "nss"
 # Manage multiple Node.js versions
@@ -128,8 +126,6 @@ brew "pandoc"
 brew "poppler"
 # Search PDFs for strings matching a regular expression
 brew "pdfgrep"
-# General-purpose scripting language
-brew "php@8.2", restart_service: :changed
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Object-relational database system
@@ -148,8 +144,6 @@ brew "scrcpy"
 brew "sox"
 # Tool Command Language
 brew "tcl-tk"
-# General purpose fuzzy finder TUI
-brew "television"
 # Programmatically correct mistyped console commands
 brew "thefuck"
 # Upgrade all the things
@@ -170,6 +164,8 @@ brew "zsh"
 brew "supabase/tap/supabase"
 # Tabby: AI Coding Assistant
 brew "tabbyml/tabby/tabby"
+# Enable Windows-like alt-tab
+cask "alt-tab"
 # Android SDK component
 cask "android-platform-tools"
 # Memory training application
@@ -186,12 +182,12 @@ cask "audacity"
 cask "bootstrap-studio"
 # Web browser focusing on privacy
 cask "brave-browser"
-# Opensource IDE for exploring and testing api's
+# Open source IDE for exploring and testing APIs
 cask "bruno"
 # Image, video and clipboard optimiser
 cask "clop"
-# Write, edit, and chat about your code with AI
-cask "cursor"
+# Server and cloud storage browser
+cask "cyberduck"
 # Voice and text chat software
 cask "discord"
 # Client for the Dropbox cloud storage service
@@ -209,6 +205,8 @@ cask "firefox"
 cask "font-hack-nerd-font"
 cask "font-open-sans"
 cask "font-symbols-only-nerd-font"
+# GIT client
+cask "fork"
 # Desktop client for GitHub repositories
 cask "github"
 # Web browser
@@ -217,14 +215,14 @@ cask "google-chrome"
 cask "google-drive"
 # Open-source video transcoder
 cask "handbrake"
-# Convert your caps lock key or any of your modifier keys to the hyper key
-cask "hyperkey"
 # Free and open-source media player
 cask "iina"
 # Vector graphics editor
 cask "inkscape"
 # Menu bar manager
 cask "jordanbaird-ice"
+# Keyboard customiser
+cask "karabiner-elements"
 # Automation software
 cask "keyboard-maestro"
 # Find shortcuts for any installed application
@@ -257,14 +255,10 @@ cask "notunes"
 cask "pdf-squeezer"
 # PDF editing software
 cask "pdfpen"
-# Browser for ambitious developers
-cask "polypane"
 # Quick Look generator for Markdown files
 cask "qlmarkdown"
 # Control your tools with a few keystrokes
 cask "raycast"
-# Screen recording and video editing software
-cask "screenflow"
 # MySQL/MariaDB database management
 cask "sequel-ace"
 # App that enables mouse-free UI interaction
@@ -273,8 +267,14 @@ cask "shortcat"
 cask "shottr"
 # Team communication and collaboration software
 cask "slack"
+# Graphical client for Git version control
+cask "sourcetree"
+# Music streaming service
+cask "spotify"
 # System monitor for the menu bar
 cask "stats"
+# Video game digital distribution service
+cask "steam"
 # Open-source media center
 cask "stremio"
 # Sync and backup service to Synology NAS drives
@@ -287,16 +287,14 @@ cask "the-unarchiver"
 cask "timemachineeditor"
 # Open-source code editor
 cask "visual-studio-code"
-# Binary releases of VS Code without MS branding/telemetry/licensing
-cask "vscodium"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
+cask "wezterm"
 # Multiplayer code editor
 cask "zed"
-# Gecko based web browser
-cask "zen-browser"
 mas "Amphetamine", id: 937984704
-mas "AnyExif", id: 1621435983
 mas "Bitwarden", id: 1352778147
 mas "ColorFolder", id: 1450345160
+mas "Exif Editor", id: 1621435983
 mas "GarageBand", id: 682658836
 mas "Human Japanese Lite", id: 910679636
 mas "iMovie", id: 408981434
@@ -311,18 +309,23 @@ mas "UTM", id: 1538878817
 mas "Xcode", id: 497799835
 vscode "ahgood.movetab"
 vscode "alefragnani.bookmarks"
+vscode "alexm.vscode-vitest-runner-x"
 vscode "alexpasmantier.television"
 vscode "antfu.vite"
 vscode "artizon.artizon-vscode-surround"
 vscode "astro-build.astro-vscode"
+vscode "betterplace.betterplace-vscode-vitest-runner"
 vscode "bmewburn.vscode-intelephense-client"
 vscode "bradlc.vscode-tailwindcss"
 vscode "castwide.solargraph"
 vscode "cfcluan.project-scopes"
 vscode "dbaeumer.vscode-eslint"
 vscode "deinsoftware.vitest-snippets"
+vscode "devsense.composer-php-vscode"
 vscode "devsense.intelli-php-vscode"
 vscode "devsense.phptools-vscode"
+vscode "devsense.profiler-php-vscode"
+vscode "docker.docker"
 vscode "donjayamanne.githistory"
 vscode "dotjoshjohnson.xml"
 vscode "dragoscv.just-black2"
@@ -330,20 +333,25 @@ vscode "duendelunarllc.vscrof"
 vscode "eamodio.gitlens"
 vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"
-vscode "fabiospampinato.vscode-open-in-github"
+vscode "fooo.ruby-spec-runner"
 vscode "formulahendry.auto-rename-tag"
+vscode "google.geminicodeassist"
 vscode "gruntfuggly.auto-snippet"
 vscode "joao-mbn.react-extract"
+vscode "joshmu.periscope"
+vscode "koichisasada.vscode-rdbg"
 vscode "lennardv.project-colors"
 vscode "letmaik.git-tree-compare"
 vscode "lokalise.i18n-ally"
 vscode "mehedidracula.php-namespace-resolver"
 vscode "misogi.ruby-rubocop"
+vscode "modifiedfileidentifier.modifiedfileidentifier"
+vscode "mondersky.installation-corrupt-remover"
 vscode "mondersky.tabscolor"
+vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
 vscode "mylesmurphy.prettify-ts"
 vscode "nicholashsiang.vscode-react-snippet"
-vscode "nicoespeon.abracadabra"
 vscode "octref.vetur"
 vscode "orsenkucher.vscode-graphql"
 vscode "patbenatar.advanced-new-file"
@@ -365,13 +373,13 @@ vscode "suhelmakkad.shadcn-ui"
 vscode "syler.sass-indented"
 vscode "sysoev.vscode-open-in-github"
 vscode "tamasfe.even-better-toml"
-vscode "travisthieman.better-search"
 vscode "unifiedjs.vscode-mdx"
 vscode "vitest.explorer"
 vscode "vscodevim.vim"
 vscode "vspacecode.whichkey"
 vscode "vue.volar"
 vscode "wallabyjs.quokka-vscode"
+vscode "webmania.vue-mess-detector"
 vscode "xdebug.php-debug"
 vscode "yoavbls.pretty-ts-errors"
 vscode "zhihaocui.ts-interface-sorter"
