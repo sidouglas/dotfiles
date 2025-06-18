@@ -49,7 +49,6 @@ alias d='cd ~/Documents/'
 alias dockerkill='docker kill $(docker ps -q)'
 alias dockerstop='docker ps -aq | xargs docker stop'
 alias docx2pdf='/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf --outdir . "$1"'
-alias edit='open -na "IntelliJ IDEA.app" --args "$@"'
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
 alias flushdns="sudo killall -HUP mDNSResponder"
 alias ftrail='<<<${(F)fpath}'
@@ -68,7 +67,8 @@ alias rm=trash                              # rm:           Trash (move to trash
 alias show_options='shopt'                  # Show_options: display bash options settings
 alias spotifyfix='brew uninstall --cask spotify && brew cleanup && launchctl remove com.spotify.client.startuphelper && brew install --cask spotify'
 alias zshrc="code ~/.dotfiles/zshrc"
-
+alias si="ioreg -l -w 0 | grep SecureInput"
+alias wez="code ~/.wezterm.lua"
 # FZF
 alias sd='cd "$(fd --type d --exclude Applications --exclude Library --exclude Movies | fzf)"' # search for directories
 
@@ -234,4 +234,5 @@ git() {
         command git "$@"
     fi
 }
+
 export EDITOR="code --wait"

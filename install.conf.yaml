@@ -9,7 +9,7 @@
 - link:
     ~/.bash_profile: null
     ~/.bashrc: null
-    ~/.wizterm.lua: null
+    ~/.wezterm.lua: null
     ~/.boto: null
     ~/.config/zed:
       glob: true

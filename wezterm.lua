@@ -9,11 +9,21 @@ config.color_scheme = 'Tokyo Night'
 
 -- Set up key bindings
 config.keys = {
-  -- Set PaneSelect to Ctrl+Shift+T
+  -- Set PaneSelect to Ctrl+Shift+J
   {
-    key = 'T',
+    key = 'H',
     mods = 'CTRL|SHIFT',
     action = wezterm.action.PaneSelect,
+  },
+  {
+    key = 'L',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.SplitHorizontal,
+  },
+  {
+    key = 'J',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.SplitVertical,
   },
 }
 

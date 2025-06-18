@@ -175,6 +175,8 @@ brew "supabase/tap/supabase"
 brew "tabbyml/tabby/tabby"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Enable Windows-like alt-tab
+cask "alt-tab"
 # Android SDK component
 cask "android-platform-tools"
 # Tools for building Android applications
@@ -262,6 +264,8 @@ cask "timemachineeditor"
 cask "tuple"
 # Open-source code editor
 cask "visual-studio-code"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
+cask "wezterm"
 # Multiplayer code editor
 cask "zed"
 mas "AnyExif", id: 1621435983
@@ -316,6 +320,7 @@ vscode "lokalise.i18n-ally"
 vscode "mehedidracula.php-namespace-resolver"
 vscode "misogi.ruby-rubocop"
 vscode "modifiedfileidentifier.modifiedfileidentifier"
+vscode "mondersky.installation-corrupt-remover"
 vscode "mondersky.tabscolor"
 vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
