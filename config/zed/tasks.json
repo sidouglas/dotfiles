@@ -1,0 +1,10 @@
+[{
+        "label": "Find bookmark",
+        "command": "zed-bookmark",
+        "use_new_terminal": true,
+        "reveal_target": "dock",
+        "reveal": "always",
+        "hide": "on_success"
+    }]
+
+    

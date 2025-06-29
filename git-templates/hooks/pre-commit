@@ -1,0 +1,7 @@
+git diff-index --name-status --cached HEAD -- | cut -c3- | while read FILE; do
+    if git diff --cached "$FILE" | grep -q "📙"; then
+        echo "$FILE contains a BOOKMARK string!"
+        echo "Please remove bookmarks before committing."
+        exit 1
+    fi
+done

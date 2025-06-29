@@ -1,0 +1,7 @@
+{
+  "bookmark": {
+    "prefix": "bm",
+    "body": "//📙: $1",
+    "description": "Add a bookmark comment"
+  }
+}

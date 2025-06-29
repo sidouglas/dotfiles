@@ -178,3 +178,5 @@
 	keepBackup = false
 [mergetool  "deltawalker"]
 	cmd = '/Applications/DeltaWalker.app/Contents/Eclipse/Contents/Resources/git-merge' "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+[init]
+	templatedir = /Users/simon/.git-templates

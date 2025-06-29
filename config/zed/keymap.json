@@ -92,6 +92,16 @@
   },
   {
     "bindings": {
+      "shift-<": "editor::Indent",
+      "shift->": "editor::Outdent",
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp",
+      "space c": "editor::ToggleComments"
+    },
+    "context": "vim_mode == visual"
+  },
+  {
+    "bindings": {
       "j": [
         "vim::Down",
         {
@@ -132,5 +142,15 @@
       ]
     },
     "context": "vim_mode == visual"
+  },
+  {
+    "bindings": {
+      "alt-b": [
+        "task::Spawn",
+        {
+          "task_name": "Find bookmark"
+        }
+      ]
+    }
   }
 ]
