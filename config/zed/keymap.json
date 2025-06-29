@@ -1,6 +1,20 @@
 [
   {
     "bindings": {
+      "cmd-g cmd-h": "pane::SplitLeft",
+      "cmd-g cmd-l": "pane::SplitRight"
+    },
+    "context": "Workspace"
+  },
+  {
+    "bindings": {
+      "space h": "workspace::ActivatePreviousPane",
+      "space l": "workspace::ActivateNextPane"
+    },
+    "context": "Workspace"
+  },
+  {
+    "bindings": {
       "shift shift": "file_finder::Toggle"
     },
     "context": "Workspace"
@@ -15,29 +29,52 @@
     "context": "Editor"
   },
   {
-    "context": "Editor",
     "bindings": {
       "g d": "editor::GoToDefinition"
-    }
+    },
+    "context": "Editor"
   },
   {
     "bindings": {
-      "j": ["vim::Down", { "display_lines": true }],
-      "k": ["vim::Up", { "display_lines": true }]
+      "j": [
+        "vim::Down",
+        {
+          "display_lines": true
+        }
+      ],
+      "k": [
+        "vim::Up",
+        {
+          "display_lines": true
+        }
+      ]
     },
     "context": "VimControl"
   },
   {
     "bindings": {
-      "j": ["vim::Down", { "display_lines": false }],
-      "k": ["vim::Up", { "display_lines": false }]
+      "j": [
+        "vim::Down",
+        {
+          "display_lines": false
+        }
+      ],
+      "k": [
+        "vim::Up",
+        {
+          "display_lines": false
+        }
+      ]
     },
     "context": "VimCount"
   },
   {
-    "context": "vim_mode == visual",
     "bindings": {
-      "shift-s": ["vim::PushAddSurrounds", {}]
-    }
+      "shift-s": [
+        "vim::PushAddSurrounds",
+        {}
+      ]
+    },
+    "context": "vim_mode == visual"
   }
 ]

@@ -45,7 +45,7 @@ alias als='alias | grep'
 alias brave='/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser'
 alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
 alias cp='cp -iv'                           # Preferred cp implementation
-alias d='cd ~/Documents/'
+alias d='cd ~/Desktop/'
 alias dockerkill='docker kill $(docker ps -q)'
 alias dockerstop='docker ps -aq | xargs docker stop'
 alias docx2pdf='/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf --outdir . "$1"'
@@ -64,11 +64,20 @@ alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable 
 alias python='/opt/homebrew/bin/python3'
 alias reload="source ~/.zshrc"              # reload:       Reload the shell (i.e. itself)
 alias rm=trash                              # rm:           Trash (move to trash)
+setdate() {
+    if [ $# -ne 2 ]; then
+        echo "Usage: setdate \"MM/DD/YYYY HH:MM:SS\" \"filename\""
+        echo "Example: setdate \"05/26/2026 00:00:00\" \"myfile.pdf\""
+        return 1
+    fi
+    SetFile -d "$1" "$2"
+}
+
 alias show_options='shopt'                  # Show_options: display bash options settings
-alias spotifyfix='brew uninstall --cask spotify && brew cleanup && launchctl remove com.spotify.client.startuphelper && brew install --cask spotify'
-alias zshrc="code ~/.dotfiles/zshrc"
 alias si="ioreg -l -w 0 | grep SecureInput"
+alias spotifyfix='brew uninstall --cask spotify && brew cleanup && launchctl remove com.spotify.client.startuphelper && brew install --cask spotify'
 alias wez="code ~/.wezterm.lua"
+alias zshrc="code ~/.dotfiles/zshrc"
 # FZF
 alias sd='cd "$(fd --type d --exclude Applications --exclude Library --exclude Movies | fzf)"' # search for directories
 
