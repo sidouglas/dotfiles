@@ -1,25 +1,6 @@
 [
   {
     "bindings": {
-      "cmd-alt-c": "workspace::CopyRelativePath"
-    },
-    "context": "Workspace"
-  },
-  {
-    "bindings": {
-      "cmd-g cmd-j": "editor::GoToHunk",
-      "cmd-g cmd-k": "editor::GoToPreviousHunk"
-    },
-    "context": "Editor"
-  },
-  {
-    "bindings": {
-      "cmd-g alt-b": "git::Blame"
-    },
-    "context": "Editor"
-  },
-  {
-    "bindings": {
       "cmd-g cmd-h": "pane::SplitLeft",
       "cmd-g cmd-l": "pane::SplitRight"
     },
@@ -33,29 +14,29 @@
     "context": "Workspace"
   },
   {
+    "context": "Workspace",
     "bindings": {
       "space e": "project_panel::ToggleFocus"
-    },
-    "context": "Workspace"
+    }
   },
   {
+    "context": "VimControl",
     "bindings": {
-      "shift-h": "pane::ActivatePreviousItem",
+      "shift-h": "pane::ActivatePrevItem",
       "shift-l": "pane::ActivateNextItem"
-    },
-    "context": "VimControl"
-  },
+    }
+  }
   {
+    "context": "Workspace",
     "bindings": {
       "cmd-`": "terminal_panel::ToggleFocus"
-    },
-    "context": "Workspace"
+    }
   },
   {
+    "context": "Workspace",
     "bindings": {
       "ctrl-e": "workspace::ToggleRightDock"
-    },
-    "context": "Workspace"
+    }
   },
   {
     "bindings": {
@@ -75,12 +56,6 @@
   {
     "bindings": {
       "g d": "editor::GoToDefinition"
-    },
-    "context": "Editor"
-  },
-  {
-    "bindings": {
-      "cmd-alt-c": "workspace::CopyPath"
     },
     "context": "Editor"
   },
