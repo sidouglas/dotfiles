@@ -32,19 +32,16 @@
     "**/out",
     "**/report"
   ],
-  "formatter": {
-    "code_actions": {
-      "source.fixAll.eslint": true,
-      "source.organizeImports": true
-    }
-  },
+  "formatter": "language_server",
   "languages": {
     "JavaScript": {
+      "formatter": "language_server",
       "code_actions_on_format": {
         "source.fixAll.eslint": true
       }
     },
     "TypeScript": {
+      "formatter": "language_server",
       "code_actions_on_format": {
         "source.fixAll.eslint": true
       }
@@ -60,7 +57,7 @@
     "auto_fold_dirs": false,
     "auto_reveal_entries": true,
     "button": true,
-    "default_width": 240,
+    "default_width": 300,
     "dock": "right",
     "entry_spacing": "comfortable",
     "file_icons": true,
@@ -95,7 +92,7 @@
     "metrics": false
   },
   "theme": {
-    "dark": "One Dark Pro Max",
+    "dark": "Ayu Dark",
     "light": "One Light",
     "mode": "system"
   },
