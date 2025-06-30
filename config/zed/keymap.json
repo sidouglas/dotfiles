@@ -26,23 +26,37 @@
   },
   {
     "bindings": {
-      "cmd-g cmd-h": "pane::SplitLeft",
-      "cmd-g cmd-l": "pane::SplitRight"
-    },
-    "context": "Workspace"
-  },
-  {
-    "bindings": {
       "space h": "workspace::ActivatePreviousPane",
       "space l": "workspace::ActivateNextPane"
     },
-    "context": "Workspace"
+    "context": "Editor && vim_mode == normal"
   },
   {
     "bindings": {
-      "space e": "project_panel::ToggleFocus"
+      "g d": "editor::GoToDefinition",
+      "space c l": "editor::ToggleComments",
+      "space e": "project_panel::ToggleFocus",
+      "space f S": "workspace::SaveAll",
+      "space f s": "workspace::Save",
+      "space q a": "pane::CloseAllItems",
+      "space q o": "pane::CloseInactiveItems",
+      "space q q": "zed::Quit",
+      "space q w": "workspace::CloseWindow",
+      "space s H": "workspace::SwapPaneLeft",
+      "space s J": "workspace::SwapPaneUp",
+      "space s K": "workspace::SwapPaneDown",
+      "space s L": "workspace::SwapPaneRight",
+      "space s h": "pane::SplitLeft",
+      "space s j": "pane::SplitDown",
+      "space s k": "pane::SplitUp",
+      "space s l": "pane::SplitRight",
+      "space space": "command_palette::Toggle",
+      "space t i": "editor::ToggleInlayHints",
+      "space t n": "workspace::NewTerminal",
+      "space t t": "terminal_panel::ToggleFocus",
+      "space w w": "workspace::ActivateNextPane"
     },
-    "context": "Workspace"
+    "context": "Editor && vim_mode == normal && (vim_operator == none || vim_operator == n) && !VimWaiting"
   },
   {
     "bindings": {
@@ -152,5 +166,50 @@
         }
       ]
     }
+  },
+  {
+    "bindings": {
+      "space m 0": [
+        "workspace::SendKeystrokes",
+        "mJ"
+      ],
+      "space m 1": [
+        "workspace::SendKeystrokes",
+        "mA"
+      ],
+      "space m 2": [
+        "workspace::SendKeystrokes",
+        "mB"
+      ],
+      "space m 3": [
+        "workspace::SendKeystrokes",
+        "mC"
+      ],
+      "space m 4": [
+        "workspace::SendKeystrokes",
+        "mD"
+      ],
+      "space m 5": [
+        "workspace::SendKeystrokes",
+        "mE"
+      ],
+      "space m 6": [
+        "workspace::SendKeystrokes",
+        "mF"
+      ],
+      "space m 7": [
+        "workspace::SendKeystrokes",
+        "mG"
+      ],
+      "space m 8": [
+        "workspace::SendKeystrokes",
+        "mH"
+      ],
+      "space m 9": [
+        "workspace::SendKeystrokes",
+        "mI"
+      ]
+    },
+    "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting"
   }
 ]

@@ -19,7 +19,6 @@
       glob: true
       create: true
       path: config/karabiner
-    ~/.git-templates: null
     ~/.fzf: null
     ~/.gitconfig: null
     ~/.gitignore_global: null

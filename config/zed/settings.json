@@ -1,7 +1,4 @@
 {
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
   "base_keymap": "VSCode",
   "buffer_font_size": 14,
   "chat_panel": {
@@ -9,6 +6,9 @@
   },
   "collaboration_panel": {
     "dock": "right"
+  },
+  "features": {
+    "edit_prediction_provider": "zed"
   },
   "file_scan_exclusions": [
     "**/.DS_Store",
@@ -72,8 +72,13 @@
     "indent_size": 2,
     "scrollbar": {
       "git_diff": true,
-      "show": "auto"
+      "show": "never"
     }
+  },
+  "relative_line_numbers": true,
+  "scrollbar": {
+    "git_diff": true,
+    "show": "never"
   },
   "tasks": {
     "test_at_cursor": {
@@ -99,7 +104,6 @@
     "quick_actions": true
   },
   "ui_font_size": 14,
-  "relative_line_numbers": true,
   "vim": {
     "automatic_mode_switching": {
       "pane_focus": "normal"
