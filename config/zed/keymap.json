@@ -117,7 +117,8 @@
       "shift->": "editor::Outdent",
       "shift-j": "editor::MoveLineDown",
       "shift-k": "editor::MoveLineUp",
-      "space c": "editor::ToggleComments"
+      "space c": "editor::ToggleComments",
+      "ctrl-a": "assistant::Assist"
     },
     "context": "vim_mode == visual"
   },
