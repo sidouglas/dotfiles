@@ -7,8 +7,10 @@
   },
   {
     "bindings": {
+      "cmd-g cmd-h": "editor::ToggleSelectedDiffHunks",
       "cmd-g cmd-j": "editor::GoToHunk",
-      "cmd-g cmd-k": "editor::GoToPreviousHunk"
+      "cmd-g cmd-k": "editor::GoToPreviousHunk",
+      "cmd-g cmd-r": "git::Restore"
     },
     "context": "Editor"
   },
@@ -20,7 +22,8 @@
   },
   {
     "bindings": {
-      "cmd-g alt-b": "git::Blame"
+      "cmd-g alt-b": "git::Blame",
+      "cmd-g cmd-o": "editor::OpenPermalinkToLine"
     },
     "context": "Editor"
   },
@@ -33,10 +36,12 @@
   },
   {
     "bindings": {
-      "g d": "editor::GoToDefinition",
       "space c l": "editor::ToggleComments",
+      "space d": "diagnostics::Deploy",
       "space e": "project_panel::ToggleFocus",
       "space f S": "workspace::SaveAll",
+      "space f a": "editor::FindAllReferences",
+      "space f n": "editor::FindNextMatch",
       "space f s": "workspace::Save",
       "space q a": "pane::CloseAllItems",
       "space q o": "pane::CloseInactiveItems",
@@ -54,7 +59,8 @@
       "space t i": "editor::ToggleInlayHints",
       "space t n": "workspace::NewTerminal",
       "space t t": "terminal_panel::ToggleFocus",
-      "space w w": "workspace::ActivateNextPane"
+      "space w w": "workspace::ActivateNextPane",
+      "space f o": "file_finder::Toggle"
     },
     "context": "Editor && vim_mode == normal && (vim_operator == none || vim_operator == n) && !VimWaiting"
   },
@@ -94,15 +100,16 @@
   },
   {
     "bindings": {
-      "g d": "editor::GoToDefinition"
+      "cmd-alt-c": "workspace::CopyPath"
     },
     "context": "Editor"
   },
   {
     "bindings": {
-      "cmd-alt-c": "workspace::CopyPath"
+      "g d": "editor::GoToDefinition",
+      "g h": "editor::Hover"
     },
-    "context": "Editor"
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu"
   },
   {
     "bindings": {
@@ -211,5 +218,18 @@
       ]
     },
     "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting"
+  },
+  {
+    "bindings": {
+      "cmd-enter": [
+        "workspace::SendKeystrokes",
+        "f2"
+      ],
+      "enter": [
+        "workspace::SendKeystrokes",
+        "space e"
+      ]
+    },
+    "context": "ProjectPanel && not_editing"
   }
 ]
