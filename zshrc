@@ -118,16 +118,16 @@ source ~/.zsh_custom
 [ -f ~/.fzf ] && source ~/.fzf
 ZSH_SHARED="$HOME/Google Drive/My Drive/shared/.zsh_shared"
 
-if [ -f $ZSH_SHARED ];
+if [ -f "$ZSH_SHARED" ];
 then
   GOOGLE_DRIVE_SHARED="$HOME/Google Drive/My Drive/shared"
-  source $ZSH_SHARED
+  source "$ZSH_SHARED"
 else
   ZSH_SHARED="$HOME/Google Drive/shared/.zsh_shared"
-  if [ -f $ZSH_SHARED ];
+  if [ -f "$ZSH_SHARED" ];
   then
     GOOGLE_DRIVE_SHARED="$HOME/Google Drive/shared"
-    source $ZSH_SHARED
+    source "$ZSH_SHARED"
   else
    echo 'Could not find zsh_shared!'
   fi
