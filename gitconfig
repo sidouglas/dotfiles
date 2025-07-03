@@ -9,60 +9,61 @@
   cmd = code --wait $MERGED
 
 [alias]
-    # taken from https://gist.github.com/mwhite/6887990
-    a = add
-    ap = add -p
-    c = commit --verbose
-    ca = commit -a --verbose
-    cam = commit -a -m
-    cm = commit -m
-    cob = checkout -b
-    d = diff
-    dc = diff --cached
-    ds = diff --stat
-    f = fetch
-    co = "!git branch | fzf | xargs git checkout"
-    fix = !HUSKY=0 LEFTHOOK=0 git wip && HUSKY=0 LEFTHOOK=0 git squash 2 --no-verify --no-gpg-sign
-    pwl = push --force-with-lease
-    o = checkout
-    ho = git push -u origin HEAD
-    hof = git push -u origin HEAD -force-with-lease #https:://youtu.be/aolI_Rz0ZqY?t=1128
-    l = log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=format-local:'%Y-%m-%d %H:%M:%S AEDT'
-    m = commit --amend --verbose
-    nuke = !sh -c 'git checkout main && git branch -df $1 && git checkout -b $1'
-    nukeall = "!f() { \
-      if git rev-parse --verify main >/dev/null 2>&1; then \
-        primary='main'; \
-      elif git rev-parse --verify master >/dev/null 2>&1; then \
-        primary='master'; \
-      else \
-        echo 'Neither main nor master branch found'; \
-        return 1; \
-      fi; \
-      git checkout $primary && \
-      git branch | grep -v \"$primary\" | xargs git branch -D; \
-    }; f"
-    p = pull
-    wip = !HUSKY=0 LEFTHOOK=0 git add --all && HUSKY=0 LEFTHOOK=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
-  	rbm = "!f() { git fetch origin; if git show-ref --verify --quiet refs/heads/main; then git rebase origin/main; else git rebase origin/master; fi; }; f"
-    rbs = "!git fetch origin staging && git rebase origin/staging"
-    rename = "!git branch -m "
-    revert = "!f() { git checkout master -- $1 && git add $1 && git commit -m \"Reverted $1 to the version in master\"; }; f"
-    soft = "!git log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=format-local:'%Y-%m-%d %H:%M:%S AEDT' | fzf --ansi --no-sort --reverse --preview 'git show --color=always {1}' | cut -d' ' -f1 | xargs -r git reset --soft"
-    s = status
-    search = "!f() { git log -p -S \"$1\" -- \"${2:-.}\"; }; f"
-    ss = "!git fetch --all && git branch -r --sort=-committerdate --format=\"%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)\" --color=always"
-    t = "!git describe --abbrev=0"
-    # list branches sorted by last modified
-    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
-    # list aliases
-    la = "!git config -l | grep alias | cut -c 7-"
-    # https://gist.github.com/hlecuanda/c9a5091938cd6a7b585d
-    squash = "!f(){ LEFTHOOK=0 HUSKY=0 git reset --soft HEAD~${1} && HUSKY=0 git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
-    tidy="!git remote prune origin && git branch --merged > /tmp/merged-branches && sed -E '/(staging|master)/d' /tmp/merged-branches > /tmp/clean-branches && nano /tmp/clean-branches && xargs git branch -d </tmp/clean-branches"
-    # purge = "!git branch --no-merged | sed -E '/(^\*|master|dev|uat)/' | xargs git branch -df"
-    #This is a useful one for me, it allows me to rebase with the tracking branch even if I have uncommitted changes. Credit goes to @cmsolomon.
-    rb = "!f() { \
+  # taken from https://gist.github.com/mwhite/6887990
+  a = add
+  ai = !git add . && git llm
+  ap = add -p
+  c = commit --verbose
+  ca = commit -a --verbose
+  cam = commit -a -m
+  cm = commit -m
+  cob = checkout -b
+  d = diff
+  dc = diff --cached
+  ds = diff --stat
+  f = fetch
+  co = "!git branch | fzf | xargs git checkout"
+  fix = !HUSKY=0 LEFTHOOK=0 git wip && HUSKY=0 LEFTHOOK=0 git squash 2 --no-verify --no-gpg-sign
+  pwl = push --force-with-lease
+  o = checkout
+  ho = git push -u origin HEAD
+  hof = git push -u origin HEAD -force-with-lease #https:://youtu.be/aolI_Rz0ZqY?t=1128
+  l = log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=format-local:'%Y-%m-%d %H:%M:%S AEDT'
+  m = commit --amend --verbose
+  nuke = !sh -c 'git checkout main && git branch -df $1 && git checkout -b $1'
+  nukeall = "!f() { \
+    if git rev-parse --verify main >/dev/null 2>&1; then \
+      primary='main'; \
+    elif git rev-parse --verify master >/dev/null 2>&1; then \
+      primary='master'; \
+    else \
+      echo 'Neither main nor master branch found'; \
+      return 1; \
+    fi; \
+    git checkout $primary && \
+    git branch | grep -v \"$primary\" | xargs git branch -D; \
+  }; f"
+  p = pull
+  wip = !HUSKY=0 LEFTHOOK=0 git add --all && HUSKY=0 LEFTHOOK=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
+  rbm = "!f() { git fetch origin; if git show-ref --verify --quiet refs/heads/main; then git rebase origin/main; else git rebase origin/master; fi; }; f"
+  rbs = "!git fetch origin staging && git rebase origin/staging"
+  rename = "!git branch -m "
+  revert = "!f() { git checkout master -- $1 && git add $1 && git commit -m \"Reverted $1 to the version in master\"; }; f"
+  soft = "!git log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=format-local:'%Y-%m-%d %H:%M:%S AEDT' | fzf --ansi --no-sort --reverse --preview 'git show --color=always {1}' | cut -d' ' -f1 | xargs -r git reset --soft"
+  s = status
+  search = "!f() { git log -p -S \"$1\" -- \"${2:-.}\"; }; f"
+  ss = "!git fetch --all && git branch -r --sort=-committerdate --format=\"%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)\" --color=always"
+  t = "!git describe --abbrev=0"
+  # list branches sorted by last modified
+  b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+  # list aliases
+  la = "!git config -l | grep alias | cut -c 7-"
+  # https://gist.github.com/hlecuanda/c9a5091938cd6a7b585d
+  squash = "!f(){ LEFTHOOK=0 HUSKY=0 git reset --soft HEAD~${1} && HUSKY=0 git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+  tidy="!git remote prune origin && git branch --merged > /tmp/merged-branches && sed -E '/(staging|master)/d' /tmp/merged-branches > /tmp/clean-branches && nano /tmp/clean-branches && xargs git branch -d </tmp/clean-branches"
+  # purge = "!git branch --no-merged | sed -E '/(^\*|master|dev|uat)/' | xargs git branch -df"
+  #This is a useful one for me, it allows me to rebase with the tracking branch even if I have uncommitted changes. Credit goes to @cmsolomon.
+  rb = "!f() { \
             echo fetching...; \
             git fetch; \
             if [ $? -eq 0 ]; then \
@@ -102,10 +103,6 @@
 	masterlog = log origin/master --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
 	fb = !git add -A && git commit -m \"PR feedback\"
 
-  ssmsg = "!f() { files=$(git diff --name-only HEAD | head -2 | tr '\n' ' '); git add -A && git commit -m \"$1${files:+ ($files)}\" --no-verify; }; f"
-  ss = "!f() { echo 'Starting snapshot polling (Ctrl+C to stop)...'; while true; do files=$(git diff --name-only HEAD; git ls-files --others --exclude-standard); if [ -n \"$files\" ]; then list=$(echo \"$files\" | head -3 | tr '\n' ' '); git add -A && git commit -m \"Auto-snapshot: $list\" --no-verify --quiet && echo \"$(date '+%H:%M:%S') - Snapshot: $list\"; else echo \"$(date '+%H:%M:%S') - No changes\"; fi; sleep 300; done; }; f"
-
-
   # Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
   dl = -c diff.external=difft log -p --ext-diff
   # Show the most recent commit with difftastic.
@@ -123,6 +120,7 @@
   specs = "!f() { for file in $(git log --since=\"2 month ago\" --author=\"$(git config user.name)\\|$(git config user.email)\" --name-only --pretty=format: | grep \"spec\\.ts$\" | sort | uniq); do echo \"$(git log -1 --date=short --format=\"%ad\" -- \"$file\") | $file\"; done | sort -r; }; f"
 	clean = clean -fd --dry-run
 	bd = !git branch | grep -v \"^\\*\" | fzf -m --header=\"Select branches to DELETE (Tab for multi-select)\" | xargs -r git branch -D
+	unstage = "!f() { git reset HEAD -- \"$@\" && echo \"Unstaged: $*\"; }; f"
 
   [core]
     mergeoptions = --no-edit
@@ -145,9 +143,9 @@
     template = /Users/simon/.stCommitMsg
   [filter "lfs"]
     clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 [rerere]
   enabled = true
 [column]
