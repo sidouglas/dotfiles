@@ -13,6 +13,8 @@ tap "homebrew/services"
 tap "krtirtho/apps"
 tap "supabase/tap"
 tap "tabbyml/tabby"
+# Convert APNG animations into animated GIF format
+brew "apng2gif"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
 # Tool for generating GNU Standards-compliant Makefiles
@@ -37,8 +39,6 @@ brew "gnutls"
 brew "harfbuzz"
 # High quality MPEG Audio Layer III (MP3) encoder
 brew "lame"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
 # Framework for layout and rendering of i18n text
@@ -49,6 +49,8 @@ brew "srt"
 brew "tesseract"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Core component of the AcoustID project (Audio fingerprinting)
 brew "chromaprint"
 # Enables you to reproduce the CircleCI environment locally
@@ -103,6 +105,8 @@ brew "libraw"
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Access large language models from the command-line
+brew "llm"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Web and API based SMTP testing tool
@@ -163,6 +167,8 @@ brew "unar"
 brew "wget"
 # Linter for YAML files
 brew "yamllint"
+# Programming language designed for robustness, optimality, and clarity
+brew "zig"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
@@ -209,7 +215,7 @@ cask "fontgoggles"
 # GIT client
 cask "fork"
 # Open-source video transcoder
-cask "handbrake"
+cask "handbrake-app"
 # Convert your caps lock key or any of your modifier keys to the hyper key
 cask "hyperkey"
 # Free and open-source media player
@@ -224,6 +230,10 @@ cask "karabiner-elements"
 cask "keyboard-maestro"
 # Trims video and audio files losslessly
 cask "losslesscut"
+# Provides updates to various Microsoft products
+cask "microsoft-auto-update"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
 # Unofficial Google Nearby Share app
 cask "neardrop"
 # App to write, plan, collaborate, and get organised
@@ -286,6 +296,7 @@ vscode "alefragnani.bookmarks"
 vscode "alexm.vscode-vitest-runner-x"
 vscode "alexpasmantier.television"
 vscode "antfu.vite"
+vscode "anthropic.claude-code"
 vscode "artizon.artizon-vscode-surround"
 vscode "astro-build.astro-vscode"
 vscode "betterplace.betterplace-vscode-vitest-runner"
@@ -338,6 +349,7 @@ vscode "rluvaton.vscode-vitest"
 vscode "rvest.vs-code-prettier-eslint"
 vscode "ryu1kn.partial-diff"
 vscode "sangonz193.vscode-typescript-code-sorter"
+vscode "saoudrizwan.claude-dev"
 vscode "sharashchandradesai.simple-scratch"
 vscode "shardulm94.trailing-spaces"
 vscode "shazbot.surroundelection"
