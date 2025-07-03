@@ -1,0 +1,87 @@
+llm_pr() {
+    local prompt="Create a pull request description using 'The WWW system' template.
+
+**Template Guidelines:**
+- **What?** - High level view of what is added/changed/removed in terms of files and flow
+- **Why? Wait but why?** - Context around reasons for changes and expected benefits (technical or end-user level)
+
+**Instructions:**
+1. Consider the overall flow and file interactions
+2. For refactoring, point out main changes vs consequences
+3. Help reviewer understand what to expect
+4. Keep each section to max 5 bullet points
+5. Keep the PR Preview Checklist verbatim as show below.
+6. Use UK English in all places.
+
+Create two markdown sections:
+
+### What
+// Brief description of what changed (max 5 bullet points, but can be less. Lists but no formatting. If you mention a component the wrap in backticks)
+
+### Why
+// Brief description of why these changes were made (max 5 bullet points, but can be less. Lists but no formatting. If you mention a component the wrap in backticks)
+
+### PR Review Checklist
+- [X] Relevant links provided?
+- [X] New tests are added or existing tests modified?
+
+Based on this git patch:"
+
+    local diff_content=""
+
+    # If argument provided, use it
+    if [[ -n "$1" ]]; then
+        diff_content=$(git diff $1 2>/dev/null)
+    else
+        # Try different approaches in order of preference
+        # 1. Try HEAD~1..HEAD (last commit)
+        diff_content=$(git diff HEAD~1..HEAD 2>/dev/null)
+        # 2. If that fails, try staged changes
+        if [[ -z "$diff_content" ]]; then
+            diff_content=$(git diff --staged 2>/dev/null)
+            echo "Using staged changes..."
+        fi
+        # 3. If that fails, try unstaged changes
+        if [[ -z "$diff_content" ]]; then
+            diff_content=$(git diff 2>/dev/null)
+            echo "Using unstaged changes..."
+        fi
+        # 4. If that fails, try against master
+        if [[ -z "$diff_content" ]]; then
+            diff_content=$(git diff master..HEAD 2>/dev/null)
+            echo "Using diff against master branch..."
+        fi
+    fi
+
+    if [[ -z "$diff_content" ]]; then
+        echo "No git diff found. Try one of these:"
+        echo "  llm_pr --staged       # for staged changes"
+        echo "  llm_pr HEAD~1         # for last commit"
+        echo "  llm_pr master..HEAD   # against master branch"
+        return 1
+    fi
+
+    echo "Generating PR description..."
+
+    # Create a temporary file with the full prompt
+    local temp_file=$(mktemp)
+    echo "$prompt" > "$temp_file"
+    echo "" >> "$temp_file"
+    echo "$diff_content" >> "$temp_file"
+
+    # Use llm with the temporary file
+    local output=$(llm -f "$temp_file")
+
+    # Clean up temp file
+    rm "$temp_file"
+
+    # Display the output
+    echo "$output"
+
+    # Copy to clipboard (macOS)
+    echo "$output" | pbcopy
+    echo ""
+    echo "✅ PR description copied to clipboard!"
+}
+
+llm_pr
