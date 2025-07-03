@@ -1,5 +1,6 @@
 {
   "agent": {
+    "play_sound_when_agent_done": true,
     "inline_assistant_model": {
       "provider": "zed.dev",
       "model": "claude-sonnet-4"
