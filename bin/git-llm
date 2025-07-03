@@ -1,0 +1,83 @@
+#!/bin/zsh
+# -----------------------------------------------------------------------------
+# the `llm` CLI util is awesome, can get it here: https://llm.datasette.io/en/stable/
+# from https://gist.github.com/Talor-A/b237a22c4f0c5f843060d8b6163d6725
+generate_commit_message() {
+    # Get last 3 commit messages
+    last_commits=$(git log -3 --pretty=format:"- %s" 2>/dev/null)
+    git diff --cached | llm "
+    Below is a diff of all staged changes, coming from the command:
+    \`\`\`
+    git diff --cached
+    \`\`\`
+    For context, here are the last 3 commit messages:
+    $last_commits
+    Please generate a concise, one-line commit message for these changes that follows a similar style to the previous commits.
+    you can include thoughts, but make sure you prefix with # as comments for the editor.
+    start your response with # Analysis:
+
+    End your response with the commit message on its own line, not prefixed with #.
+    "
+}
+
+do_git_llm_gcm() {
+    # Main script
+    temp_output=$(mktemp)
+
+    # Check if there are any staged changes
+    if [ -z "$(git diff --cached)" ]; then
+        echo "No staged changes."
+        return 1
+    fi
+
+    echo -n "\x1b[2m"
+    echo "thinking..."
+    generate_commit_message | tee "$temp_output"
+    echo -n "\x1b[0m"
+
+    # Extract the commit message (last non-comment, non-empty line)
+    commit_message=$(grep -v '^#' "$temp_output" | grep -v '^[[:space:]]*$' | tail -n 1)
+    rm "$temp_output"
+
+    # Check if we got a commit message
+    if [ -z "$commit_message" ]; then
+        echo "Failed to extract commit message from LLM output."
+        return 1
+    fi
+
+    echo "Proposed commit message: $commit_message"
+
+    # Create a temporary file for the commit message
+    temp_file=$(mktemp)
+    echo "$commit_message" > "$temp_file"
+
+    # Open the default git editor
+    if git config --get core.editor > /dev/null 2>&1; then
+        # Use git's configured editor
+        $(git config --get core.editor) "$temp_file"
+    else
+        # Fallback to default editor
+        ${VISUAL:-${EDITOR:-vi}} "$temp_file"
+    fi
+
+    # Read the edited message
+    edited_message=$(cat "$temp_file")
+    rm "$temp_file"  # Clean up
+
+    # Check if the message is empty (user aborted)
+    if [ -z "$edited_message" ]; then
+        echo "Commit cancelled."
+        return 1
+    fi
+
+    # Commit with the edited message
+    if git commit -m "$edited_message"; then
+        echo "Changes committed successfully!"
+        return 0
+    else
+        echo "Commit failed. Please check your changes and try again."
+        return 1
+    fi
+}
+
+do_git_llm_gcm
