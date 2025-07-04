@@ -1,10 +1,44 @@
-[{
+[
+    {
         "label": "Find bookmark",
         "command": "zed-bookmark",
         "use_new_terminal": true,
         "reveal_target": "dock",
         "reveal": "always",
         "hide": "on_success"
-    }]
-
-    
+    },
+    {
+       "label": "test $ZED_RELATIVE_FILE",
+       "cwd": "$ZED_WORKTREE_ROOT",
+       "command": "cd $(echo $ZED_FILE | sed -E \"s|^$ZED_WORKTREE_ROOT/([^/]+).*|$ZED_WORKTREE_ROOT/\\1|\"); bin/rspec",
+       "args": [
+         "\"$ZED_FILE\""
+       ],
+       "env": {
+         "RAILS_ENV": "test"
+       },
+       "tags": [
+         "ruby-test"
+       ],
+       "use_new_terminal": false,
+       "allow_concurrent_runs": false,
+       "reveal": "always"
+     },
+     {
+       "label": "test $ZED_CUSTOM_RUBY_TEST_NAME",
+       "cwd": "$ZED_WORKTREE_ROOT",
+       "command": "cd $(echo $ZED_FILE | sed -E \"s|^$ZED_WORKTREE_ROOT/([^/]+).*|$ZED_WORKTREE_ROOT/\\1|\"); bin/rspec",
+       "args": [
+         "\"$ZED_FILE:$ZED_ROW\""
+       ],
+       "tags": [
+         "ruby-test"
+       ],
+       "env": {
+         "RAILS_ENV": "test"
+       },
+       "use_new_terminal": false,
+       "allow_concurrent_runs": false,
+       "reveal": "always"
+     }
+]

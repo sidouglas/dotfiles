@@ -42,6 +42,7 @@
       "space f S": "workspace::SaveAll",
       "space f a": "editor::FindAllReferences",
       "space f n": "editor::FindNextMatch",
+      "space f o": "file_finder::Toggle",
       "space f s": "workspace::Save",
       "space q a": "pane::CloseAllItems",
       "space q o": "pane::CloseInactiveItems",
@@ -59,8 +60,7 @@
       "space t i": "editor::ToggleInlayHints",
       "space t n": "workspace::NewTerminal",
       "space t t": "terminal_panel::ToggleFocus",
-      "space w w": "workspace::ActivateNextPane",
-      "space f o": "file_finder::Toggle"
+      "space w w": "workspace::ActivateNextPane"
     },
     "context": "Editor && vim_mode == normal && (vim_operator == none || vim_operator == n) && !VimWaiting"
   },
@@ -117,7 +117,7 @@
       "shift->": "editor::Outdent",
       "shift-j": "editor::MoveLineDown",
       "shift-k": "editor::MoveLineUp",
-      "space c": "editor::ToggleComments",
+      "space c": "editor::ToggleComments"
     },
     "context": "vim_mode == visual"
   },
@@ -154,6 +154,16 @@
       ]
     },
     "context": "VimCount"
+  },
+  {
+    "bindings": {
+      "alt-b": [
+        "task::Spawn",
+        {
+          "task_name": "Find bookmark"
+        }
+      ]
+    }
   },
   {
     "bindings": {
@@ -233,9 +243,9 @@
     "context": "ProjectPanel && not_editing"
   },
   {
-    "use_key_equivalents": true,
     "bindings": {
       "alt-cmd-z": "workspace::ToggleZoom"
-    }
+    },
+    "use_key_equivalents": true
   }
 ]
