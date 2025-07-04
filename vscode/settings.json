@@ -31,12 +31,6 @@
     "editor.tabSize": 2
   },
   "chat.commandCenter.enabled": false,
-  "cody.autocomplete.disableInsideComments": true,
-  "cody.autocomplete.formatOnAccept": true,
-  "cody.autocomplete.languages": {
-    "*": true
-  },
-  "cody.commandCodeLenses": true,
   "diffEditor.codeLens": true,
   "diffEditor.experimental.showMoves": true,
   "diffEditor.ignoreTrimWhitespace": false,
@@ -44,7 +38,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "editor.cursorBlinking": "phase",
+  "editor.codeLens": false,
+  "editor.cursorBlinking": "solid",
   "editor.cursorStyle": "line-thin",
   "editor.find.autoFindInSelection": "multiline",
   "editor.fontFamily": "'Hack Nerd Font', 'Fira Code', Monaco, 'Courier New', monospace",
@@ -57,6 +52,7 @@
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "none",
   "editor.semanticHighlighting.enabled": false,
+  "editor.smoothScrolling": false,
   "editor.snippetSuggestions": "top",
   "editor.tabSize": 2,
   "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
@@ -74,7 +70,6 @@
   "files.autoSave": "afterDelay",
   "files.exclude": {
     "**/.DS_Store": true,
-    "**/.git": true,
     "**/.hg": true,
     "**/.next/**": true,
     "**/.svn": true,
@@ -84,12 +79,22 @@
     ".history": true
   },
   "files.insertFinalNewline": true,
+  "files.saveConflictResolution": "overwriteFileOnDisk",
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  "files.watcherExclude": {
+    "**/.git/**": true,
+    "**/dist/**": true,
+    "**/node_modules/**": true,
+    "**/coverage/**": true
+  },
+  "geminicodeassist.project": "streem-144523",
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "always",
   "gitTreeCompare.diffMode": "full",
   "gitTreeCompare.showCheckboxes": true,
+  "gitlens.ai.gitkraken.model": "gemini:gemini-2.0-flash",
+  "gitlens.ai.model": "gitkraken",
   "gitlens.heatmap.ageThreshold": 60,
   "gitlens.views.commitDetails.files.layout": "tree",
   "gitlens.views.commits.showBranchComparison": "branch",
@@ -147,11 +152,8 @@
     ".history": true
   },
   "project-scopes.scopes": {
-    "base": {
-      "included": [],
-      "excluded": []
-    },
     "Centralise": {
+      "excluded": [],
       "included": [
         "packages/shared/modals/ManageSocialIntegrations.vue",
         "packages/shared/components/integrations/SocialIntegrationRefreshIntegrations.vue",
@@ -166,20 +168,29 @@
         "packages/shared/components/user/Integrations.vue",
         "packages/shared/composables/useSocialAuth",
         "packages/shared/test/vitest/__tests__/shared/components/integrations/SocialIntegrationRefreshIntegrationList.spec.ts"
-      ],
-      "excluded": []
+      ]
+    },
+    "ExpandableFilters": {
+      "excluded": [],
+      "included": [
+        "packages/shared/components/selectors/ExpandableFilters.vue",
+        "packages/shared/test/vitest/__tests__/components/selectors/ExpandableFilters.spec.ts",
+        "packages/shared/components/selectors/expandables/SocialPlatformsExpandable.vue",
+        "packages/shared/test/vitest/__tests__/components/selectors/expandables/SocialPlatformsExpandable.spec.js"
+      ]
     },
     "InlinePlayerRefactor": {
+      "excluded": [],
       "included": [
         "packages/shared/components/players/InlinePlayer.vue",
         "packages/shared/components/players/InlinePlayerButtonBar.vue",
         "packages/shared/test/vitest/__tests__/components/players/InlinePlayer.spec.ts",
         "packages/shared/components/players/PlayerPopoutProgressBar.vue",
         "packages/shared/components/players/PlayerPopoutButtons.vue"
-      ],
-      "excluded": []
+      ]
     },
     "Instagram": {
+      "excluded": [],
       "included": [
         "packages/desktop/src/router/routes.js",
         "packages/shared/modals/ManageSocialConnections.vue",
@@ -207,18 +218,18 @@
         "packages/shared/modals/ManageSocialConnections/ManageSocialConnectionsHashtags.vue",
         "packages/shared/modals/ManageSocialConnections/ManageSocialConnectionsSelectIntegration.vue",
         "packages/shared/components/SocialMentionCardInstagramPost.vue"
-      ],
-      "excluded": []
+      ]
     },
     "MentionCardRefactor": {
+      "excluded": ["packages/shared/components/players"],
       "included": [
         "packages/shared/components/MentionCard/MentionCard.vue",
         "packages/shared/components/PrintMentionCard.vue",
         "packages/shared/components/SyndicationsPopper.vue"
-      ],
-      "excluded": ["packages/shared/components/players"]
+      ]
     },
     "SocialEngage": {
+      "excluded": [],
       "included": [
         "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageCompose.spec.ts",
         "packages/desktop/src/components/SocialEngageCompose/SocialEngageComposeForm.vue",
@@ -227,17 +238,11 @@
         "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageExpiredIntegrationDropdown.spec.ts",
         "packages/desktop/src/components/SocialEngagePostPerformance/SocialEngagePostPerformancePage.vue",
         "packages/desktop/src/components/SocialEngagePostPerformance/SocialEngagePostPerformanceFilters.vue"
-      ],
-      "excluded": []
+      ]
     },
-    "ExpandableFilters": {
-      "included": [
-        "packages/shared/components/selectors/ExpandableFilters.vue",
-        "packages/shared/test/vitest/__tests__/components/selectors/ExpandableFilters.spec.ts",
-        "packages/shared/components/selectors/expandables/SocialPlatformsExpandable.vue",
-        "packages/shared/test/vitest/__tests__/components/selectors/expandables/SocialPlatformsExpandable.spec.js"
-      ],
-      "excluded": []
+    "base": {
+      "excluded": [],
+      "included": []
     }
   },
   "quokka.automaticRestart": true,
@@ -434,7 +439,7 @@
   "vue.server.hybridMode": "typeScriptPluginOnly",
   "window.commandCenter": false,
   "workbench.activityBar.location": "top",
-  "workbench.colorTheme": "Just Black 2",
+  "workbench.colorTheme": "Black",
   "workbench.editor.labelFormat": "short",
   "workbench.layoutControl.enabled": false,
   "workbench.localHistory.maxFileEntries": 500,
@@ -443,9 +448,5 @@
   "workbench.settings.editor": "json",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
-  "zenMode.hideLineNumbers": false,
-  "geminicodeassist.project": "streem-144523",
-  "gitlens.ai.model": "gitkraken",
-  "gitlens.ai.gitkraken.model": "gemini:gemini-2.0-flash",
-  "files.saveConflictResolution": "overwriteFileOnDisk"
+  "zenMode.hideLineNumbers": false
 }
