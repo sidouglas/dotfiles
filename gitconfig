@@ -12,7 +12,7 @@
   # taken from https://gist.github.com/mwhite/6887990
   a = add
   ai = git llm
-  pr = git pr
+  prd = git prd
   ap = add -p
   c = commit --verbose
   ca = commit -a --verbose
