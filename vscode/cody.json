@@ -1,8 +1,0 @@
-{
-  "auto-commit": {
-    "prompt": "Write me a succinct git commit message for the changes made in the code: Ensure formatting is valid for a git commit message",
-    "context": {
-      "codebase": true
-    }
-  }
-}
