@@ -4,34 +4,73 @@
 
 [merge]
 	tool = deltawalker
-#   tool = vscode
+
 [mergetool "vscode"]
   cmd = code --wait $MERGED
 
 [alias]
   # taken from https://gist.github.com/mwhite/6887990
+  # Stage files.
   a = add
+  # Ask the Brew LLM assistant to provide commit message.
   ai = git llm
-  prd = git prd
+  # Interactively stage parts of files (patches).
   ap = add -p
+  # list branches sorted by last modified
+  b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+	# Interactively select and delete multiple local branches with fzf.
+	bd = !git branch | grep -v \"^\\*\" | fzf -m --header=\"Select branches to DELETE (Tab for multi-select)\" | xargs -r git branch -D
+  # Commit staged changes, opening the editor with verbose output.
   c = commit --verbose
+  # Stage all tracked, modified files and commit with verbose output.
   ca = commit -a --verbose
+  # Stage all tracked, modified files and commit with a message from the command line.
   cam = commit -a -m
+	# Show which files would be removed by 'git clean' without actually deleting them.
+	clean = clean -fd --dry-run
+  # Commit staged changes with a message from the command line.
   cm = commit -m
-  cob = checkout -b
-  d = diff
-  dc = diff --cached
-  ds = diff --stat
-  f = fetch
+  # Interactively check out a branch using fzf.
   co = "!git branch | fzf | xargs git checkout"
+  # Create and check out a new branch.
+  cob = checkout -b
+	# Check out the primary branch (main or master).
+	com = "!f() { if git show-ref --verify --quiet refs/heads/main; then git checkout main; else git checkout master; fi; }; f"
+  # Show changes between commits, commit and working tree, etc.
+  d = diff
+  # Show changes between the staging area (index) and the last commit.
+  dc = diff --cached
+  # `git diff` with difftastic.
+  dft = -c diff.external=difft diff
+  # Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
+  dl = -c diff.external=difft log -p --ext-diff
+  # Show the most recent commit with difftastic.
+  ds = -c diff.external=difft show --ext-diff
+  # Fetch changes from a remote repository.
+  f = fetch
+	# Add all changes and create a commit with the message "PR feedback".
+	fb = !git add -A && git commit -m \"PR feedback\"
+  # Create a 'wip' commit, then squash it with the previous commit, bypassing git hooks.
   fix = !HUSKY=0 LEFTHOOK=0 git wip && HUSKY=0 LEFTHOOK=0 git squash 2 --no-verify --no-gpg-sign
-  pwl = push --force-with-lease
-  o = checkout
+  # Push the current branch to origin and set it as the upstream tracking branch.
   ho = git push -u origin HEAD
-  hof = git push -u origin HEAD -force-with-lease #https:://youtu.be/aolI_Rz0ZqY?t=1128
+  # Show a formatted and colored log.
   l = log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=format-local:'%Y-%m-%d %H:%M:%S AEDT'
+  # list all aliases
+  la = "!git config -l | grep alias | cut -c 7-"
+  # Amend the last commit, opening the editor with verbose output.
   m = commit --amend --verbose
+	# Show a formatted log for the origin/master branch.
+	masterlog = log origin/master --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
+	# During a merge conflict, choose your local changes.
+	mine = checkout --ours
+  # List unique files you have edited (excluding .snap files).
+  myedits = "!f() { git log --author=\"1107946+sidouglas@users.noreply.github.com\" --name-only --pretty=format: | grep -v '\\.snap$' | sort -u; }; f"
+  # List unique files you have created.
+  myfiles = "!f() { git log --diff-filter=A --author=\"1107946+sidouglas@users.noreply.github.com\" --name-only --pretty=format: | sort -u; }; f"
+  # Force-delete a branch and recreate it from main.
   nuke = !sh -c 'git checkout main && git branch -df $1 && git checkout -b $1'
+  # Delete all local branches except for the primary branch (main or master).
   nukeall = "!f() { \
     if git rev-parse --verify main >/dev/null 2>&1; then \
       primary='main'; \
@@ -44,25 +83,27 @@
     git checkout $primary && \
     git branch | grep -v \"$primary\" | xargs git branch -D; \
   }; f"
+  # Checkout a branch or paths to restore working tree files.
+  o = checkout
+	# Undo the last commit, keeping the changes in the staging area.
+	oops = reset --soft HEAD~1
+  # Fetch from and integrate with another repository or a local branch.
   p = pull
-  wip = !HUSKY=0 LEFTHOOK=0 git add --all && HUSKY=0 LEFTHOOK=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
-  rbm = "!f() { git fetch origin; if git show-ref --verify --quiet refs/heads/main; then git rebase origin/main; else git rebase origin/master; fi; }; f"
-  rbs = "!git fetch origin staging && git rebase origin/staging"
-  rename = "!git branch -m "
-  revert = "!f() { git checkout master -- $1 && git add $1 && git commit -m \"Reverted $1 to the version in master\"; }; f"
-  soft = "!git log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=format-local:'%Y-%m-%d %H:%M:%S AEDT' | fzf --ansi --no-sort --reverse --preview 'git show --color=always {1}' | cut -d' ' -f1 | xargs -r git reset --soft"
-  s = status
-  search = "!f() { git log -p -S \"$1\" -- \"${2:-.}\"; }; f"
-  ss = "!git fetch --all && git branch -r --sort=-committerdate --format=\"%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)\" --color=always"
-  t = "!git describe --abbrev=0"
-  # list branches sorted by last modified
-  b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
-  # list aliases
-  la = "!git config -l | grep alias | cut -c 7-"
-  # https://gist.github.com/hlecuanda/c9a5091938cd6a7b585d
-  squash = "!f(){ LEFTHOOK=0 HUSKY=0 git reset --soft HEAD~${1} && HUSKY=0 git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
-  tidy="!git remote prune origin && git branch --merged > /tmp/merged-branches && sed -E '/(staging|master)/d' /tmp/merged-branches > /tmp/clean-branches && nano /tmp/clean-branches && xargs git branch -d </tmp/clean-branches"
-  # purge = "!git branch --no-merged | sed -E '/(^\*|master|dev|uat)/' | xargs git branch -df"
+  # gh github aliases
+  # View the current branch's pull request in the browser.
+  pr = !gh pr view --web
+	# Interactively select a pull request with fzf and check it out locally.
+	prco = "!PR_NUMBER=$(gh pr list --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\") && if [ -n \"$PR_NUMBER\" ]; then gh pr checkout $PR_NUMBER; else echo \"No PR selected\"; fi"
+  # NOTE: This alias is recursive. It likely should be '!gh pr diff'.
+  prd = git prd
+	# Interactively select a pull request with fzf and open it in the browser.
+	prl = !gh pr list --limit 50 | fzf --preview \"gh pr view {1}\" --preview-window up:70% | awk \"{print \\$1}\" | xargs -I{} gh pr view {} --web
+	# Interactively select one of your own pull requests with fzf and open it in the browser.
+	prme = !gh pr list --author \"@me\" --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\" | xargs -I{} gh pr view {} --web
+	# Interactively select a PR requesting your review with fzf and open it in the browser.
+	prr = !gh pr list --search \"review-requested:@me\" --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\" | xargs -I{} gh pr view {} --web
+  # Safely force-push the current branch.
+  pwl = push --force-with-lease
   #This is a useful one for me, it allows me to rebase with the tracking branch even if I have uncommitted changes. Credit goes to @cmsolomon.
   rb = "!f() { \
             echo fetching...; \
@@ -95,33 +136,36 @@
                 echo ERROR: Operation failed; \
             fi; \
         }; f"
-	mine = checkout --ours
-	theirs = checkout --theirs
-	com = "!f() { if git show-ref --verify --quiet refs/heads/main; then git checkout main; else git checkout master; fi; }; f"
-	oops = reset --soft HEAD~1
-  myfiles = "!f() { git log --diff-filter=A --author=\"1107946+sidouglas@users.noreply.github.com\" --name-only --pretty=format: | sort -u; }; f"
-  myedits = "!f() { git log --author=\"1107946+sidouglas@users.noreply.github.com\" --name-only --pretty=format: | grep -v '\\.snap$' | sort -u; }; f"
-	masterlog = log origin/master --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
-	fb = !git add -A && git commit -m \"PR feedback\"
-
-  # Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
-  dl = -c diff.external=difft log -p --ext-diff
-  # Show the most recent commit with difftastic.
-  ds = -c diff.external=difft show --ext-diff
-  # `git diff` with difftastic.
-  dft = -c diff.external=difft diff
-
-  # gh github aliases
-  pr = !gh pr view --web
-	prl = !gh pr list --limit 50 | fzf --preview \"gh pr view {1}\" --preview-window up:70% | awk \"{print \\$1}\" | xargs -I{} gh pr view {} --web
-	prme = !gh pr list --author \"@me\" --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\" | xargs -I{} gh pr view {} --web
-	prr = !gh pr list --search \"review-requested:@me\" --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\" | xargs -I{} gh pr view {} --web
-	prco = "!PR_NUMBER=$(gh pr list --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\") && if [ -n \"$PR_NUMBER\" ]; then gh pr checkout $PR_NUMBER; else echo \"No PR selected\"; fi"
-
+  # Fetch from origin and rebase the current branch onto the primary branch (main or master).
+  rbm = "!f() { git fetch origin; if git show-ref --verify --quiet refs/heads/main; then git rebase origin/main; else git rebase origin/master; fi; }; f"
+  # Fetch from origin and rebase the current branch onto the staging branch.
+  rbs = "!git fetch origin staging && git rebase origin/staging"
+  # Rename the current branch.
+  rename = "!git branch -m "
+  # Revert a file to the version in the master branch and commit the change.
+  revert = "!f() { git checkout master -- $1 && git add $1 && git commit -m \"Reverted $1 to the version in master\"; }; f"
+  # Show the working tree status.
+  s = status
+  # Search commit history for a given string in the code.
+  search = "!f() { git log -p -S \"$1\" -- \"${2:-.}\"; }; f"
+  # Interactively select a commit from the log with fzf and soft reset to it.
+  soft = "!git log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=format-local:'%Y-%m-%d %H:%M:%S AEDT' | fzf --ansi --no-sort --reverse --preview 'git show --color=always {1}' | cut -d' ' -f1 | xargs -r git reset --soft"
+  # List TypeScript spec files you have changed in the last 2 months.
   specs = "!f() { for file in $(git log --since=\"2 month ago\" --author=\"$(git config user.name)\\|$(git config user.email)\" --name-only --pretty=format: | grep \"spec\\.ts$\" | sort | uniq); do echo \"$(git log -1 --date=short --format=\"%ad\" -- \"$file\") | $file\"; done | sort -r; }; f"
-	clean = clean -fd --dry-run
-	bd = !git branch | grep -v \"^\\*\" | fzf -m --header=\"Select branches to DELETE (Tab for multi-select)\" | xargs -r git branch -D
+  # https://gist.github.com/hlecuanda/c9a5091938cd6a7b585d
+  squash = "!f(){ LEFTHOOK=0 HUSKY=0 git reset --soft HEAD~${1} && HUSKY=0 git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+  # Fetch all remotes and show a formatted list of remote branches sorted by committer date.
+  ss = "!git fetch --all && git branch -r --sort=-committerdate --format=\"%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)\" --color=always"
+  # Get the most recent tag name.
+  t = "!git describe --abbrev=0"
+	# During a merge conflict, choose the remote/other branch's changes.
+	theirs = checkout --theirs
+  # Prune origin, open a list of merged branches in nano for editing, then delete the branches in the final list.
+  tidy="!git remote prune origin && git branch --merged > /tmp/merged-branches && sed -E '/(staging|master)/d' /tmp/merged-branches > /tmp/clean-branches && nano /tmp/clean-branches && xargs git branch -d </tmp/clean-branches"
+	# Unstage a file, keeping it in the working directory.
 	unstage = "!f() { git reset HEAD -- \"$@\" && echo \"Unstaged: $*\"; }; f"
+  # Stage all files and create a 'wip' commit, bypassing git hooks and GPG signing.
+  wip = !HUSKY=0 LEFTHOOK=0 git add --all && HUSKY=0 LEFTHOOK=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
 
   [core]
     mergeoptions = --no-edit
@@ -152,7 +196,7 @@
 [column]
 	ui = auto
 
-[mergetool "sourcetree"]
+[mergetool "deltawalker"]
 	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
 	trustExitCode = true
 
@@ -171,7 +215,7 @@
     # Set difftastic as the default difftool, so we don't need to specify
     # `-t difftastic` every time.
 #     tool = difftastic
-[difftool "sourcetree"]
+[difftool "deltawalker"]
 	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
 	path = -ro
 [difftool  "deltawalker"]
