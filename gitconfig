@@ -14,6 +14,8 @@
   a = add
   # Ask the Brew LLM assistant to provide commit message.
   ai = git llm
+  # Find an alias
+  als = "!f() { if [ $# -eq 0 ]; then git config --get-regexp '^alias\\.' | sed 's/^alias\\.//' | sort; else git config --get-regexp '^alias\\.' | sed 's/^alias\\.//' | grep \"$1\"; fi; }; f"
   # Interactively stage parts of files (patches).
   ap = add -p
   # list branches sorted by last modified
@@ -203,7 +205,7 @@
 [difftool]
 	prompt = false
     # Run the difftool immediately, don't ask 'are you sure' each time.
-#     prompt = false
+    # prompt = false
 
 [pager]
     # Use a pager if the difftool output is larger than one screenful,
@@ -214,7 +216,7 @@
 	tool = deltawalker
     # Set difftastic as the default difftool, so we don't need to specify
     # `-t difftastic` every time.
-#     tool = difftastic
+    # tool = difftastic
 [difftool "deltawalker"]
 	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
 	path = -ro
