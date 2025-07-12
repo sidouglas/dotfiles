@@ -67,20 +67,24 @@ NUM=${NUM-10} # default to 10 lines
 INTERACTIVE=${INTERACTIVE-1} # default to interactive
 CHECK_EXISTENCE=${CHECK_EXISTENCE-0} # default to *not* checking existence (faster)
 
-BRANCHES=(
-  $(git reflog |
-    egrep -io "moving from ([^[:space:]]+)" |
-    awk '{ print $3 }' | # extract 3rd column
-    awk ' !x[$0]++' | # Removes duplicates.  See http://stackoverflow.com/questions/11532157
-    egrep -v '^[a-f0-9]{40}$' | # remove hash results
-    while read line; do # verify existence
-      ([[ $CHECK_EXISTENCE = '0' ]] || git rev-parse --verify "$line" &>/dev/null) && echo "$line"
-    done |
-    head -n "$NUM"
-  )
-)
+BRANCHES=()
+while IFS= read -r line; do
+  BRANCHES+=("$line")
+done < <(git reflog |
+  egrep -io "moving from ([^[:space:]]+)" |
+  awk '{ print $3 }' | # extract 3rd column
+  awk ' !x[$0]++' | # Removes duplicates.  See http://stackoverflow.com/questions/11532157
+  egrep -v '^[a-f0-9]{40}$' | # remove hash results
+  while read -r line; do # verify existence
+    ([[ $CHECK_EXISTENCE = '0' ]] || git rev-parse --verify "$line" &>/dev/null) && echo "$line"
+  done | head -n "$NUM")
 
 if [[ $INTERACTIVE = '1' ]]; then
+  if [ ${#BRANCHES[@]} -eq 0 ]; then
+    echo "No recent branches found."
+    exit 0
+  fi
+
   PS3="Choose a branch: "
 
   select d in "${BRANCHES[@]}"; do
@@ -88,7 +92,9 @@ if [[ $INTERACTIVE = '1' ]]; then
     echo ">>> Invalid Selection";
   done
 
-  git checkout "$d"
+  if [[ -n "$d" ]]; then
+    git checkout "$d"
+  fi
 else
   printf '%s\n' "${BRANCHES[@]}"
 fi
