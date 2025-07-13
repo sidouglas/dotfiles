@@ -1,18 +1,10 @@
 [
   {
-    "command": "-workbench.view.explorer",
-    "key": "shift+cmd+e"
-  },
-  {
     "command": "workbench.action.openRecent",
     "key": "shift+cmd+e"
   },
   {
     "command": "-workbench.action.openRecent",
-    "key": "cmd+e"
-  },
-  {
-    "command": "-actions.findWithSelection",
     "key": "cmd+e"
   },
   {
@@ -122,11 +114,6 @@
   {
     "command": "workbench.action.splitEditorRight",
     "key": "space s l",
-    "when": "editorTextFocus && vim.mode == 'Normal'"
-  },
-  {
-    "command": "workbench.action.showCommands",
-    "key": "space space",
     "when": "editorTextFocus && vim.mode == 'Normal'"
   },
   {

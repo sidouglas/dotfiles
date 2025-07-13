@@ -85,9 +85,9 @@
   "files.trimTrailingWhitespace": true,
   "files.watcherExclude": {
     "**/.git/**": true,
+    "**/coverage/**": true,
     "**/dist/**": true,
-    "**/node_modules/**": true,
-    "**/coverage/**": true
+    "**/node_modules/**": true
   },
   "geminicodeassist.project": "streem-144523",
   "git.enableSmartCommit": true,
@@ -294,7 +294,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.validate.enable": true,
   "update.showReleaseNotes": false,
-  "vim.easymotion": false,
+  "vim.easymotion": true,
   "vim.foldfix": true,
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
@@ -306,8 +306,54 @@
   "vim.leader": "<Space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<space>"],
-      "commands": ["whichkey.show"]
+      "after": ["<leader>", "<leader>", "w"],
+      "before": ["F", "W"],
+      "comment": "Jump to word beginnings (forward)"
+    },
+    {
+      "after": ["<leader>", "<leader>", "f"],
+      "before": ["F", "F"],
+      "comment": "Find character (then type the character you want to jump to)"
+    },
+    {
+      "after": ["<leader>", "<leader>", "b"],
+      "before": ["F", "B"],
+      "comment": "Jump to word beginnings (backward)"
+    },
+    {
+      "after": ["<leader>", "<leader>", "e"],
+      "before": ["F", "E"],
+      "comment": "Jump to word endings"
+    },
+    {
+      "after": ["<leader>", "<leader>", "j"],
+      "before": ["F", "J"],
+      "comment": "Jump to lines below current line"
+    },
+    {
+      "after": ["<leader>", "<leader>", "k"],
+      "before": ["F", "K"],
+      "comment": "Jump to lines above current line"
+    },
+    {
+      "after": ["<leader>", "<leader>", "l"],
+      "before": ["F", "L"],
+      "comment": "Jump to characters to the right"
+    },
+    {
+      "after": ["<leader>", "<leader>", "h"],
+      "before": ["F", "H"],
+      "comment": "Jump to characters to the left"
+    },
+    {
+      "after": ["<leader>", "<leader>", "t"],
+      "before": ["F", "T"],
+      "comment": "Jump to character before target (like 't' in vim)"
+    },
+    {
+      "after": ["<leader>", "<leader>", "s"],
+      "before": ["F", "S"],
+      "comment": "Jump to any character (bidirectional search - most powerful)"
     },
     {
       "before": ["<S-h>"],
