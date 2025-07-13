@@ -304,6 +304,134 @@
     }
   ],
   "vim.leader": "<Space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "after": ["<leader>", "<leader>", "w"],
+      "before": ["F", "W"],
+      "comment": "Jump to word beginnings (forward)"
+    },
+    {
+      "after": ["<leader>", "<leader>", "f"],
+      "before": ["F", "F"],
+      "comment": "Find character (then type the character you want to jump to)"
+    },
+    {
+      "after": ["<leader>", "<leader>", "b"],
+      "before": ["F", "B"],
+      "comment": "Jump to word beginnings (backward)"
+    },
+    {
+      "after": ["<leader>", "<leader>", "e"],
+      "before": ["F", "E"],
+      "comment": "Jump to word endings"
+    },
+    {
+      "after": ["<leader>", "<leader>", "j"],
+      "before": ["F", "J"],
+      "comment": "Jump to lines below current line"
+    },
+    {
+      "after": ["<leader>", "<leader>", "k"],
+      "before": ["F", "K"],
+      "comment": "Jump to lines above current line"
+    },
+    {
+      "after": ["<leader>", "<leader>", "l"],
+      "before": ["F", "L"],
+      "comment": "Jump to characters to the right"
+    },
+    {
+      "after": ["<leader>", "<leader>", "h"],
+      "before": ["F", "H"],
+      "comment": "Jump to characters to the left"
+    },
+    {
+      "after": ["<leader>", "<leader>", "t"],
+      "before": ["F", "T"],
+      "comment": "Jump to character before target (like 't' in vim)"
+    },
+    {
+      "after": ["<leader>", "<leader>", "s"],
+      "before": ["F", "S"],
+      "comment": "Jump to any character (bidirectional search - most powerful)"
+    },
+    {
+      "before": ["<S-h>"],
+      "commands": [":bprevious"]
+    },
+    {
+      "before": ["<S-l>"],
+      "commands": [":bnext"]
+    },
+    {
+      "before": ["leader", "v"],
+      "commands": [":vsplit"]
+    },
+    {
+      "before": ["leader", "b"],
+      "commands": [":split"]
+    },
+    {
+      "before": ["leader", "h"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["leader", "j"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": ["leader", "k"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["leader", "l"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+    {
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["leader", "p"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["leader", ","],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    {
+      "before": ["leader", "g"],
+      "commands": ["editor.action.showContextMenu"]
+    },
+    {
+      "before": ["g", "h"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
+    },
+    {
+      "after": ["d", "d"],
+      "before": ["<leader>", "d"]
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.view.explorer"]
+    },
+    {
+      "before": ["u"],
+      "commands": ["undo"]
+    },
+    {
+      "before": ["c-r"],
+      "commands": ["redo"]
+    }
+  ],
   "vim.sneak": true,
   "vim.sneakUseIgnorecaseAndSmartcase": true,
   "vim.startInInsertMode": false,
