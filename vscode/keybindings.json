@@ -1,18 +1,10 @@
 [
   {
-    "command": "-workbench.view.explorer",
-    "key": "shift+cmd+e"
-  },
-  {
     "command": "workbench.action.openRecent",
     "key": "shift+cmd+e"
   },
   {
     "command": "-workbench.action.openRecent",
-    "key": "cmd+e"
-  },
-  {
-    "command": "-actions.findWithSelection",
     "key": "cmd+e"
   },
   {
@@ -122,11 +114,6 @@
   {
     "command": "workbench.action.splitEditorRight",
     "key": "space s l",
-    "when": "editorTextFocus && vim.mode == 'Normal'"
-  },
-  {
-    "command": "workbench.action.showCommands",
-    "key": "space space",
     "when": "editorTextFocus && vim.mode == 'Normal'"
   },
   {
@@ -875,5 +862,41 @@
     "command": "git.revertSelectedRanges",
     "key": "alt+cmd+z",
     "when": "editorTextFocus"
+  },
+  {
+    "command": "claude-code.insertAtMentioned",
+    "key": "cmd+m cmd+i",
+    "when": "editorTextFocus"
+  },
+  {
+    "command": "-claude-code.insertAtMentioned",
+    "key": "alt+cmd+k",
+    "when": "editorTextFocus"
+  },
+  {
+    "command": "claude-code.runClaude.keyboard",
+    "key": "cmd+m cmd+c",
+    "when": "claude-code.hasClaudeInPath"
+  },
+  {
+    "command": "-claude-code.runClaude.keyboard",
+    "key": "cmd+escape",
+    "when": "claude-code.hasClaudeInPath"
+  },
+  {
+    "command": "claude-code.acceptProposedDiff",
+    "key": "cmd+m cmd+a"
+  },
+  {
+    "command": "claude-code.rejectProposedDiff",
+    "key": "cmd+m cmd+r"
+  },
+  {
+    "command": "claude-code.runQuickFix",
+    "key": "cmd+m cmd+f"
+  },
+  {
+    "command": "claude-code.runClaude",
+    "key": "cmd+m cmd+m"
   }
 ]
