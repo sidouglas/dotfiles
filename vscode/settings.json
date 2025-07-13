@@ -38,7 +38,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "editor.codeLens": false,
+  "editor.codeLens": true,
   "editor.cursorBlinking": "solid",
   "editor.cursorStyle": "line-thin",
   "editor.find.autoFindInSelection": "multiline",
@@ -63,7 +63,6 @@
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.visible": 1,
   "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1,
     "vscodevim.vim": 1
   },
   "extensions.ignoreRecommendations": true,
@@ -77,6 +76,7 @@
     "**/CVS": true,
     "**/Thumbs.db": true,
     "**/node_modules": true,
+    "**/coverage/**": true,
     ".history": true
   },
   "files.insertFinalNewline": true,
@@ -85,10 +85,11 @@
   "files.trimTrailingWhitespace": true,
   "files.watcherExclude": {
     "**/.git/**": true,
+    "**/coverage/**": true,
     "**/dist/**": true,
-    "**/node_modules/**": true,
-    "**/coverage/**": true
+    "**/node_modules/**": true
   },
+  "geminicodeassist.inlineSuggestions.enableAuto": true,
   "geminicodeassist.project": "streem-144523",
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "always",
@@ -149,6 +150,7 @@
     "**/.svn": true,
     "**/CVS": true,
     "**/Thumbs.db": true,
+    "**/coverage/**": true,
     "**/node_modules": true,
     ".history": true
   },
@@ -246,8 +248,6 @@
       "included": []
     }
   },
-  "quokka.automaticRestart": true,
-  "quokka.untrustedWorkspaceBehavior": "Always allow",
   "ruby-spec-runner.changeDirectoryToWorkspaceRoot": false,
   "ruby.rubocop.configFilePath": "~/.rbenv/shims/",
   "scm.workingSets.enabled": true,
@@ -260,7 +260,7 @@
     ".history": true,
     ".lh": true
   },
-  "search.useIgnoreFiles": false,
+  "search.useIgnoreFiles": true,
   "security.promptForLocalFileProtocolHandling": false,
   "security.workspace.trust.untrustedFiles": "open",
   "solargraph.commandPath": "/Users/simon.douglas/.rbenv/shims/solargraph",
@@ -270,7 +270,7 @@
       "fontcolor": "#ffffff"
     }
   },
-  "tailwindCSS.colorDecorators": false,
+  "tailwindCSS.colorDecorators": true,
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.experimental.classRegex": [
     "tw`([^`]*)",
@@ -294,7 +294,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.validate.enable": true,
   "update.showReleaseNotes": false,
-  "vim.easymotion": false,
+  "vim.easymotion": true,
   "vim.foldfix": true,
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
@@ -304,88 +304,6 @@
     }
   ],
   "vim.leader": "<Space>",
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<space>"],
-      "commands": ["whichkey.show"]
-    },
-    {
-      "before": ["<S-h>"],
-      "commands": [":bprevious"]
-    },
-    {
-      "before": ["<S-l>"],
-      "commands": [":bnext"]
-    },
-    {
-      "before": ["leader", "v"],
-      "commands": [":vsplit"]
-    },
-    {
-      "before": ["leader", "b"],
-      "commands": [":split"]
-    },
-    {
-      "before": ["leader", "h"],
-      "commands": ["workbench.action.focusLeftGroup"]
-    },
-    {
-      "before": ["leader", "j"],
-      "commands": ["workbench.action.focusBelowGroup"]
-    },
-    {
-      "before": ["leader", "k"],
-      "commands": ["workbench.action.focusAboveGroup"]
-    },
-    {
-      "before": ["leader", "l"],
-      "commands": ["workbench.action.focusRightGroup"]
-    },
-    {
-      "before": ["[", "d"],
-      "commands": ["editor.action.marker.prev"]
-    },
-    {
-      "before": ["]", "d"],
-      "commands": ["editor.action.marker.next"]
-    },
-    {
-      "before": ["<leader>", "f"],
-      "commands": ["editor.action.quickFix"]
-    },
-    {
-      "before": ["leader", "p"],
-      "commands": ["editor.action.formatDocument"]
-    },
-    {
-      "before": ["leader", ","],
-      "commands": ["workbench.action.navigateBack"]
-    },
-    {
-      "before": ["leader", "g"],
-      "commands": ["editor.action.showContextMenu"]
-    },
-    {
-      "before": ["g", "h"],
-      "commands": ["editor.action.showDefinitionPreviewHover"]
-    },
-    {
-      "after": ["d", "d"],
-      "before": ["<leader>", "d"]
-    },
-    {
-      "before": ["<leader>", "e"],
-      "commands": ["workbench.view.explorer"]
-    },
-    {
-      "before": ["u"],
-      "commands": ["undo"]
-    },
-    {
-      "before": ["c-r"],
-      "commands": ["redo"]
-    }
-  ],
   "vim.sneak": true,
   "vim.sneakUseIgnorecaseAndSmartcase": true,
   "vim.startInInsertMode": false,
@@ -402,36 +320,6 @@
   "vim.statusBarColors.visualblock": "#EE82EE",
   "vim.statusBarColors.visualline": "#EE82EE",
   "vim.useSystemClipboard": true,
-  "vim.visualModeKeyBindings": [
-    {
-      "before": ["<"],
-      "commands": ["editor.action.outdentLines"]
-    },
-    {
-      "before": [">"],
-      "commands": ["editor.action.indentLines"]
-    },
-    {
-      "before": ["K"],
-      "commands": ["editor.action.moveLinesUpAction"]
-    },
-    {
-      "before": ["J"],
-      "commands": ["editor.action.moveLinesDownAction"]
-    },
-    {
-      "before": ["leader", "c"],
-      "commands": ["editor.action.commentLine"]
-    },
-    {
-      "before": ["leader", "s"],
-      "commands": ["extensions.surroundSelection"]
-    },
-    {
-      "after": ["P"],
-      "before": ["p"]
-    }
-  ],
   "vscode-vitest.executableOptions": {
     "debug": true,
     "run": true,
