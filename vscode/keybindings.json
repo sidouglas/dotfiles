@@ -864,39 +864,39 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "cmd+m cmd+i",
     "command": "claude-code.insertAtMentioned",
+    "key": "cmd+m cmd+i",
     "when": "editorTextFocus"
   },
   {
-    "key": "alt+cmd+k",
     "command": "-claude-code.insertAtMentioned",
+    "key": "alt+cmd+k",
     "when": "editorTextFocus"
   },
   {
-    "key": "cmd+m cmd+c",
     "command": "claude-code.runClaude.keyboard",
+    "key": "cmd+m cmd+c",
     "when": "claude-code.hasClaudeInPath"
   },
   {
-    "key": "cmd+escape",
     "command": "-claude-code.runClaude.keyboard",
+    "key": "cmd+escape",
     "when": "claude-code.hasClaudeInPath"
   },
   {
-    "key": "cmd+m cmd+a",
-    "command": "claude-code.acceptProposedDiff"
+    "command": "claude-code.acceptProposedDiff",
+    "key": "cmd+m cmd+a"
   },
   {
-    "key": "cmd+m cmd+r",
-    "command": "claude-code.rejectProposedDiff"
+    "command": "claude-code.rejectProposedDiff",
+    "key": "cmd+m cmd+r"
   },
   {
-    "key": "cmd+m cmd+f",
-    "command": "claude-code.runQuickFix"
+    "command": "claude-code.runQuickFix",
+    "key": "cmd+m cmd+f"
   },
   {
-    "key": "cmd+m cmd+m",
-    "command": "claude-code.runClaude"
+    "command": "claude-code.runClaude",
+    "key": "cmd+m cmd+m"
   }
 ]
