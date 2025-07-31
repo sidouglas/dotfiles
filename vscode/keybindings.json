@@ -611,8 +611,8 @@
     "key": "cmd+6"
   },
   {
-    "command": "gitlens.openPullRequestOnRemote",
-    "key": "cmd+6"
+    "key": "cmd+6",
+    "command": "gitlens.openPullRequestOnRemote"
   },
   {
     "command": "-workbench.action.focusRightGroup",
@@ -875,7 +875,7 @@
   },
   {
     "command": "claude-code.runClaude.keyboard",
-    "key": "cmd+m cmd+c",
+    "key": "cmd+m cmd+r",
     "when": "claude-code.hasClaudeInPath"
   },
   {
@@ -889,7 +889,7 @@
   },
   {
     "command": "claude-code.rejectProposedDiff",
-    "key": "cmd+m cmd+r"
+    "key": "cmd+m cmd+z"
   },
   {
     "command": "claude-code.runQuickFix",
@@ -898,5 +898,17 @@
   {
     "command": "claude-code.runClaude",
     "key": "cmd+m cmd+m"
+  },
+  {
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "\\\r\n"
+    },
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+m cmd+c",
+    "command": "workbench.action.output.show.Anthropic.claude-code.Claude Code"
   }
 ]

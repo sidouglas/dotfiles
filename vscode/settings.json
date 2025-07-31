@@ -63,6 +63,7 @@
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.visible": 1,
   "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1,
     "vscodevim.vim": 1
   },
   "extensions.ignoreRecommendations": true,
@@ -76,7 +77,6 @@
     "**/CVS": true,
     "**/Thumbs.db": true,
     "**/node_modules": true,
-    "**/coverage/**": true,
     ".history": true
   },
   "files.insertFinalNewline": true,
@@ -89,7 +89,6 @@
     "**/dist/**": true,
     "**/node_modules/**": true
   },
-  "geminicodeassist.inlineSuggestions.enableAuto": true,
   "geminicodeassist.project": "streem-144523",
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "always",
@@ -140,7 +139,7 @@
   "php.suggest.basic": true,
   "phpConstructor.visibility": "public",
   "prisma.showPrismaDataPlatformNotification": false,
-  "project-scopes.activeScope": "Instagram",
+  "project-scopes.activeScope": "SocialEngage",
   "project-scopes.enabled": false,
   "project-scopes.globalExclude": {
     "**/.DS_Store": true,
@@ -150,7 +149,6 @@
     "**/.svn": true,
     "**/CVS": true,
     "**/Thumbs.db": true,
-    "**/coverage/**": true,
     "**/node_modules": true,
     ".history": true
   },
@@ -248,6 +246,8 @@
       "included": []
     }
   },
+  "quokka.automaticRestart": true,
+  "quokka.untrustedWorkspaceBehavior": "Always allow",
   "ruby-spec-runner.changeDirectoryToWorkspaceRoot": false,
   "ruby.rubocop.configFilePath": "~/.rbenv/shims/",
   "scm.workingSets.enabled": true,
@@ -448,6 +448,36 @@
   "vim.statusBarColors.visualblock": "#EE82EE",
   "vim.statusBarColors.visualline": "#EE82EE",
   "vim.useSystemClipboard": true,
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    },
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.moveLinesUpAction"]
+    },
+    {
+      "before": ["J"],
+      "commands": ["editor.action.moveLinesDownAction"]
+    },
+    {
+      "before": ["leader", "c"],
+      "commands": ["editor.action.commentLine"]
+    },
+    {
+      "before": ["leader", "s"],
+      "commands": ["extensions.surroundSelection"]
+    },
+    {
+      "after": ["P"],
+      "before": ["p"]
+    }
+  ],
   "vscode-vitest.executableOptions": {
     "debug": true,
     "run": true,
