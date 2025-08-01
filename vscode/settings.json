@@ -139,7 +139,7 @@
   "php.suggest.basic": true,
   "phpConstructor.visibility": "public",
   "prisma.showPrismaDataPlatformNotification": false,
-  "project-scopes.activeScope": "SocialEngage",
+  "project-scopes.activeScope": "TikTok",
   "project-scopes.enabled": false,
   "project-scopes.globalExclude": {
     "**/.DS_Store": true,
@@ -153,97 +153,22 @@
     ".history": true
   },
   "project-scopes.scopes": {
-    "Centralise": {
-      "excluded": [],
-      "included": [
-        "packages/shared/modals/ManageSocialIntegrations.vue",
-        "packages/shared/components/integrations/SocialIntegrationRefreshIntegrations.vue",
-        "packages/shared/components/integrations/SocialIntegrationRefreshIntegrationList.vue",
-        "packages/shared/components/integrations/SocialIntegrationRow.vue",
-        "packages/shared/components/integrations/SocialEngageAccountLimitAlert.vue",
-        "packages/shared/test/vitest/__tests__/shared/components/integrations/SocialIntegration.spec.ts",
-        "packages/shared/test/vitest/__tests__/components/integrations",
-        "packages/shared/test/vitest/factories/OrganisationSocialIntegration.ts",
-        "packages/shared/components/integrations/SocialIntegrationExistingList.vue",
-        "packages/shared/components/integrations/SocialIntegrationRowActionSheet.vue",
-        "packages/shared/components/user/Integrations.vue",
-        "packages/shared/composables/useSocialAuth",
-        "packages/shared/test/vitest/__tests__/shared/components/integrations/SocialIntegrationRefreshIntegrationList.spec.ts"
-      ]
-    },
-    "ExpandableFilters": {
-      "excluded": [],
-      "included": [
-        "packages/shared/components/selectors/ExpandableFilters.vue",
-        "packages/shared/test/vitest/__tests__/components/selectors/ExpandableFilters.spec.ts",
-        "packages/shared/components/selectors/expandables/SocialPlatformsExpandable.vue",
-        "packages/shared/test/vitest/__tests__/components/selectors/expandables/SocialPlatformsExpandable.spec.js"
-      ]
-    },
-    "InlinePlayerRefactor": {
-      "excluded": [],
-      "included": [
-        "packages/shared/components/players/InlinePlayer.vue",
-        "packages/shared/components/players/InlinePlayerButtonBar.vue",
-        "packages/shared/test/vitest/__tests__/components/players/InlinePlayer.spec.ts",
-        "packages/shared/components/players/PlayerPopoutProgressBar.vue",
-        "packages/shared/components/players/PlayerPopoutButtons.vue"
-      ]
-    },
-    "Instagram": {
-      "excluded": [],
-      "included": [
-        "packages/desktop/src/router/routes.js",
-        "packages/shared/modals/ManageSocialConnections.vue",
-        "packages/shared/resources/InstagramHandle.ts",
-        "packages/shared/resources/InstagramHandlesOrganisationSocialIntegration.ts",
-        "packages/shared/components/integrations/SocialConnectionOption.vue",
-        "packages/shared/modals/ManageSocialConnections/ManageSocialConnections.vue",
-        "packages/shared/components/integrations/ManageSocialConnections",
-        "packages/shared/test/vitest/__tests__/components/integrations/ManageSocialConnections",
-        "packages/shared/test/vitest/__tests__/modals/ManageSocialConnections",
-        "packages/shared/pages/SocialTeamInstagramPlayground/SocialTeamInstagramPlayground.vue",
-        "packages/shared/modals/ManageSocialConnections/types.ts",
-        "packages/shared/resources/InstagramHashtagsOrganisationSocialIntegration.ts",
-        "packages/shared/components/MentionCard/SocialMentionCard.vue",
-        "packages/shared/modals/ManageSocialConnections/ManageSocialConnectionsAccounts.vue",
-        "packages/shared/test/vitest/__tests__/modals/ManageSocialConnections/ManageSocialConnections.spec.ts",
-        "packages/shared/test/vitest/__tests__/modals/ManageSocialConnections/ManageSocialConnectionsAccount.spec.ts",
-        "packages/shared/test/vitest/__tests__/modals/ManageSocialConnections/ManageSocialConnectionsTemplate.spec.ts",
-        "packages/shared/test/vitest/__tests__/modals/ManageSocialConnections/useHashtagContext.spec.ts",
-        "packages/shared/test/vitest/__tests__/components/integrations/ManageSocialConnections/ManageSocialConnectionsCard.spec.ts",
-        "packages/shared/test/vitest/__tests__/components/integrations/ManageSocialConnections/ManageSocialConnectionsHashtagCard.spec.ts",
-        "packages/shared/test/vitest/__tests__/components/integrations/ManageSocialConnections/ManageSocialConnectionsHashtagsUsed.spec.ts",
-        "packages/shared/modals/ManageSocialConnections/useSocialConnectionsSearch.ts",
-        "packages/shared/modals/ManageSocialConnections/useHashtagContext.ts",
-        "packages/shared/modals/ManageSocialConnections/ManageSocialConnectionsHashtags.vue",
-        "packages/shared/modals/ManageSocialConnections/ManageSocialConnectionsSelectIntegration.vue",
-        "packages/shared/components/SocialMentionCardInstagramPost.vue"
-      ]
-    },
-    "MentionCardRefactor": {
-      "excluded": ["packages/shared/components/players"],
-      "included": [
-        "packages/shared/components/MentionCard/MentionCard.vue",
-        "packages/shared/components/PrintMentionCard.vue",
-        "packages/shared/components/SyndicationsPopper.vue"
-      ]
-    },
-    "SocialEngage": {
-      "excluded": [],
-      "included": [
-        "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageCompose.spec.ts",
-        "packages/desktop/src/components/SocialEngageCompose/SocialEngageComposeForm.vue",
-        "packages/desktop/src/components/SocialEngageCompose/SocialEngageCompose.vue",
-        "packages/shared/constants/social.ts",
-        "packages/desktop/test/vitest/__tests__/desktop/src/components/SocialEngageCompose/SocialEngageExpiredIntegrationDropdown.spec.ts",
-        "packages/desktop/src/components/SocialEngagePostPerformance/SocialEngagePostPerformancePage.vue",
-        "packages/desktop/src/components/SocialEngagePostPerformance/SocialEngagePostPerformanceFilters.vue"
-      ]
-    },
     "base": {
-      "excluded": [],
-      "included": []
+      "included": [],
+      "excluded": []
+    },
+    "TikTok": {
+      "included": [
+        "packages/shared/composables/useSocialAuth",
+        "packages/shared/components/integrations",
+        "packages/shared/components/integrations/ManageSocialConnections",
+        "packages/shared/components/Pagination",
+        "packages/shared/modals/ManageSocialConnections/ManageSocialConnectionsAccounts.vue",
+        "packages/shared/modals/ManageSocialConnections/ManageSocialConnectionsHashtags.vue",
+        "packages/shared/modals/ManageSocialConnections",
+        "packages/shared/components/SocialMentionCardInstagramPost.vue"
+      ],
+      "excluded": []
     }
   },
   "quokka.automaticRestart": true,
