@@ -86,28 +86,69 @@ alias sd='cd "$(fd --type d --exclude Applications --exclude Library --exclude M
 
 # search for code
 ss() {
-    RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case"
-    INITIAL_QUERY="${1:-}"
-    FILE_PATTERN="${2:-}"
+    local RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case"
+    local INITIAL_QUERY="${1:-}"
+    local FILE_PATTERN="${2:-}"
 
+    # If a file pattern is provided, apply it
     if [ -n "$FILE_PATTERN" ]; then
         RG_PREFIX="$RG_PREFIX -g '$FILE_PATTERN'"
     fi
 
     FZF_DEFAULT_COMMAND="$RG_PREFIX '$INITIAL_QUERY'"
-    CHOICE=$(fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+    local CHOICE
+    CHOICE=$(fzf \
+        --bind "change:reload:$RG_PREFIX {q} || true" \
         --sort \
         --multi \
         --preview 'rg --pretty --context 10 --color=always {q} $(echo {} | cut -d: -f1)' \
-        --ansi --phony --query "$INITIAL_QUERY")
+        --ansi \
+        --phony \
+        --query "$INITIAL_QUERY" \
+        --preview-window '~3'
+    )
 
-    if [ -n "$CHOICE" ]
-    then
+    if [ -n "$CHOICE" ]; then
+        local FILE=$(echo "$CHOICE" | cut -d: -f1)
+        local LINE=$(echo "$CHOICE" | cut -d: -f2)
+        code -g "$FILE:$LINE"
+    fi
+}
+
+ss_js() { ss "$1" "*.{js,jsx}" }
+ss_md() { ss "$1" "*.md" }
+ss_spec() { ss "$1" "*.spec.{ts,js}" }
+ss_ts() { ss "$1" "*.{ts,tsx}" }
+ss_vue() { ss "$1" "*.vue" }
+
+
+ss_ts() {
+    RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case -g '*.ts' -g '*.tsx'"
+    INITIAL_QUERY="${1:-}"
+
+    FZF_DEFAULT_COMMAND="$RG_PREFIX '$INITIAL_QUERY'"
+    CHOICE=$(fzf \
+        --bind "change:reload:$RG_PREFIX {q} || true" \
+        --sort \
+        --multi \
+        --preview 'rg --pretty --context 10 --color=always {q} $(echo {} | cut -d: -f1)' \
+        --ansi \
+        --phony \
+        --query "$INITIAL_QUERY" \
+        --preview-window '~3'
+    )
+
+    if [ -n "$CHOICE" ]; then
         FILE=$(echo "$CHOICE" | cut -d: -f1)
         LINE=$(echo "$CHOICE" | cut -d: -f2)
         code -g "$FILE:$LINE"
     fi
 }
+
+
+
+
+
 
 # search for files by regex with dynamic updates
 sf() {
