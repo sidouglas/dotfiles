@@ -103,11 +103,15 @@
   "gitlens.views.repositories.includeWorkingTree": true,
   "gitlens.views.repositories.showIncomingActivity": true,
   "gitlens.views.repositories.showStashes": true,
+  "i18n-ally.enabledFrameworks": ["vue"],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.localesPaths": ["packages/shared/i18n"],
+  "i18n-ally.sourceLanguage": "en-AU",
   "intellijRecentFiles.navigate": false,
   "javascript.suggest.paths": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "js/ts.implicitProjectConfig.checkJs": true,
-  "openInGitHub.defaultBranch": "main",
+  "openInGitHub.defaultBranch": "master",
   "periscope.alwaysShowRgMenuActions": true,
   "periscope.rgQueryParams": [
     {
@@ -165,8 +169,12 @@
         "packages/shared/components/Pagination",
         "packages/shared/modals/ManageSocialConnections/ManageSocialConnectionsAccounts.vue",
         "packages/shared/modals/ManageSocialConnections/ManageSocialConnectionsHashtags.vue",
-        "packages/shared/modals/ManageSocialConnections",
-        "packages/shared/components/SocialMentionCardInstagramPost.vue"
+        "packages/shared/components/SocialMentionCardInstagramPost.vue",
+        "packages/shared/components/SocialMentionCardTikTokPost.vue",
+        "packages/shared/stores/socialIntegrations",
+        "packages/shared/helpers/social.ts",
+        "packages/shared/modals/ManageSocialIntegrations.vue",
+        "packages/shared/modals/ManageSocialConnections/ManageSocialConnections.vue"
       ],
       "excluded": []
     }
@@ -420,5 +428,14 @@
   "workbench.settings.editor": "json",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
-  "zenMode.hideLineNumbers": false
+  "zenMode.hideLineNumbers": false,
+  "projectColors.workspaces": [
+    {
+      "directory": "/Users/simon.douglas/github/streem/frontend"
+    },
+    {
+      "directory": "/Users/simon.douglas/github/streem/backend"
+    }
+  ],
+  "github.copilot.nextEditSuggestions.enabled": true
 }
