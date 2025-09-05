@@ -840,11 +840,6 @@
     "when": "taskCommandsRegistered"
   },
   {
-    "command": "-workbench.panel.chat",
-    "key": "ctrl+cmd+i",
-    "when": "workbench.panel.chat.view.copilot.active"
-  },
-  {
     "command": "workbench.view.extension.gitlensInspect",
     "key": "shift+cmd+;"
   },
@@ -910,5 +905,35 @@
   {
     "key": "cmd+m cmd+c",
     "command": "workbench.action.output.show.Anthropic.claude-code.Claude Code"
+  },
+  {
+    "key": "cmd+k cmd+g",
+    "command": "cloudcode.duetAI.actionsMenu",
+    "when": "authLoggedIn && cloudcode.duetAI.documentMatch && config.geminicodeassist.enable && !geminicodeassist.suggestionActive && !inGeminiDiffView && !isInDiffEditor"
+  },
+  {
+    "key": "cmd+n cmd+c",
+    "command": "workbench.action.openQuickChat",
+    "when": "chatIsEnabled"
+  },
+  {
+    "key": "cmd+n cmd+f",
+    "command": "github.copilot.chat.fix",
+    "when": "!editorReadonly && !github.copilot.interactiveSession.disabled"
+  },
+  {
+    "key": "cmd+n cmd+e",
+    "command": "github.copilot.chat.explain.palette",
+    "when": "!editorReadonly && !github.copilot.interactiveSession.disabled"
+  },
+  {
+    "key": "cmd+n cmd+n",
+    "command": "workbench.action.chat.newChat",
+    "when": "chatIsEnabled && inChat"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "-workbench.action.chat.newChat",
+    "when": "chatIsEnabled && inChat"
   }
 ]
