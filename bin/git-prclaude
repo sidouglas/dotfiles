@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# git-pr_review - Review a PR with Claude
+# Usage: git pr_review [PR_NUMBER]
+
+set -e
+
+pr_number=""
+
+# If no arguments provided, use git prl to get the branch, then get PR number from it
+if [ $# -eq 0 ]; then
+    echo "Using git prl to select PR..."
+
+    # Use git prl literally - it will check out the branch
+    git prl
+
+    # Now get the PR number for the current branch
+    pr_number=$(gh pr view --json number --jq '.number')
+
+    if [ -z "$pr_number" ]; then
+        echo "Could not find PR for current branch"
+        exit 1
+    fi
+else
+    pr_number=$1
+fi
+
+if [ -z "$pr_number" ]; then
+    echo "No PR number specified"
+    exit 1
+fi
+
+echo "Generating PR review for #$pr_number..."
+
+# Create file on desktop
+desktop_file="$HOME/Desktop/prclaude.txt"
+
+# Generate PR review content and save to desktop
+{
+    echo "Please conduct a thorough code review of this pull request. Focus on:"
+    echo "- Code quality and best practices"
+    echo "- Potential bugs or logic errors"
+    echo "- Security vulnerabilities"
+    echo "- Performance implications"
+    echo "- Test coverage gaps"
+    echo "- Documentation needs"
+    echo ""
+    echo "Here is the PR information:"
+    echo ""
+    gh pr view "$pr_number"
+    echo ""
+    echo "=== DIFF ==="
+    echo ""
+    gh pr diff "$pr_number"
+} > "$desktop_file"
+
+# Copy the instruction to clipboard
+echo "Open and read the contents of this file and obey the commands: $desktop_file" | pbcopy
+
+echo "✅ PR review saved to: $desktop_file"
+echo "✅ Instruction copied to clipboard"
+echo "🚀 Launching Claude Desktop..."
+
+# Launch Claude Desktop (adjust app name if needed)
+claude
