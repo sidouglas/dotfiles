@@ -11,3 +11,7 @@ autoload zmv #filename manipulation tool.
 PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="$PATH:$HOME/.dotfiles/bin"
 export PATH="/usr/local/opt/mysql/bin:$PATH"
+
+export JAVA_HOME=/opt/homebrew/opt/openjdk@21
+export PATH=$JAVA_HOME/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
