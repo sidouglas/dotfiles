@@ -14,6 +14,8 @@ tap "krtirtho/apps"
 tap "roots/tap"
 tap "supabase/tap"
 tap "tabbyml/tabby"
+# Convert APNG animations into animated GIF format
+brew "apng2gif"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
 # Tool for generating GNU Standards-compliant Makefiles
@@ -64,6 +66,8 @@ brew "docker-compose"
 brew "fd"
 # Create thumbnails for your video files
 brew "ffmpegthumbnailer"
+# Firebase command-line tools
+brew "firebase-cli"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GitHub command-line tool
@@ -74,6 +78,8 @@ brew "ghostscript"
 brew "git-delta"
 # Git-powered FTP client
 brew "git-ftp"
+# Blazing fast terminal-ui for git written in rust
+brew "gitui"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Generate introspection data for GObject libraries
@@ -82,6 +88,8 @@ brew "gobject-introspection"
 brew "gpac"
 # Library access to GnuPG
 brew "gpgme"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
 # GNU Ubiquitous Intelligent Language for Extensions
 brew "guile"
 # Open-source video transcoder available for Linux, Mac, and Windows
@@ -120,6 +128,8 @@ brew "neovim"
 brew "nss"
 # Manage multiple Node.js versions
 brew "nvm"
+# Development kit for the Java programming language
+brew "openjdk@21"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # PDF rendering library (based on the xpdf-3.0 code base)
@@ -152,6 +162,8 @@ brew "topgrade"
 brew "tree"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Internet file retriever
 brew "wget"
 # Feature-rich command-line audio/video downloader
@@ -184,6 +196,8 @@ cask "bootstrap-studio"
 cask "brave-browser"
 # Open source IDE for exploring and testing APIs
 cask "bruno"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # Image, video and clipboard optimiser
 cask "clop"
 # Server and cloud storage browser
@@ -217,6 +231,8 @@ cask "google-chrome"
 cask "google-drive"
 # Open-source video transcoder
 cask "handbrake-app"
+# Keyboard shortcuts for every button on your screen
+cask "homerow"
 # Free and open-source media player
 cask "iina"
 # Vector graphics editor
@@ -225,6 +241,8 @@ cask "inkscape"
 cask "jordanbaird-ice"
 # Keyboard customiser
 cask "karabiner-elements"
+# File archiver
+cask "keka"
 # Automation software
 cask "keyboard-maestro"
 # Find shortcuts for any installed application
@@ -263,18 +281,12 @@ cask "qlmarkdown"
 cask "raycast"
 # MySQL/MariaDB database management
 cask "sequel-ace"
-# App that enables mouse-free UI interaction
-cask "shortcat"
 # Screenshot measurement and annotation tool
 cask "shottr"
 # Team communication and collaboration software
 cask "slack"
-# Graphical client for Git version control
-cask "sourcetree"
 # Music streaming service
 cask "spotify"
-# System monitor for the menu bar
-cask "stats"
 # Video game digital distribution service
 cask "steam"
 # Open-source media center
@@ -304,18 +316,22 @@ mas "Keynote", id: 409183694
 mas "mChapters", id: 563131976
 mas "Mosaic", id: 1475100873
 mas "Numbers", id: 409203825
+mas "Okta Verify", id: 490179405
 mas "Pages", id: 409201541
 mas "Peek", id: 1554235898
 mas "Qi FM", id: 1479696191
+mas "QR Capture", id: 1369524274
+mas "Texty", id: 1538996043
 mas "UTM", id: 1538878817
 mas "Xcode", id: 497799835
 vscode "ahgood.movetab"
 vscode "alefragnani.bookmarks"
-vscode "alexpasmantier.television"
 vscode "antfu.vite"
 vscode "anthropic.claude-code"
 vscode "artizon.artizon-vscode-surround"
 vscode "astro-build.astro-vscode"
+vscode "atdow.vue-jumper"
+vscode "betterplace.betterplace-vscode-vitest-runner"
 vscode "bmewburn.vscode-intelephense-client"
 vscode "bradlc.vscode-tailwindcss"
 vscode "castwide.solargraph"
@@ -334,7 +350,8 @@ vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"
 vscode "fooo.ruby-spec-runner"
 vscode "formulahendry.auto-rename-tag"
-vscode "google.geminicodeassist"
+vscode "github.copilot"
+vscode "github.copilot-chat"
 vscode "gruntfuggly.auto-snippet"
 vscode "joao-mbn.react-extract"
 vscode "joshmu.periscope"
@@ -350,22 +367,21 @@ vscode "mondersky.installation-corrupt-remover"
 vscode "mondersky.tabscolor"
 vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
+vscode "ms-python.vscode-python-envs"
 vscode "mylesmurphy.prettify-ts"
 vscode "nicholashsiang.vscode-react-snippet"
 vscode "octref.vetur"
 vscode "orsenkucher.vscode-graphql"
+vscode "outofsync42.select-compare-tabs"
 vscode "patbenatar.advanced-new-file"
 vscode "percygrunwald.vscode-intellij-recent-files"
 vscode "prisma.prisma"
-vscode "rooveterinaryinc.roo-cline"
 vscode "rvest.vs-code-prettier-eslint"
-vscode "ryu1kn.partial-diff"
 vscode "sangonz193.vscode-typescript-code-sorter"
 vscode "sharashchandradesai.simple-scratch"
 vscode "shardulm94.trailing-spaces"
 vscode "shazbot.surroundelection"
 vscode "shopify.ruby-lsp"
-vscode "sourcegraph.cody-ai"
 vscode "steoates.autoimport"
 vscode "streetsidesoftware.code-spell-checker"
 vscode "stylelint.vscode-stylelint"
@@ -373,12 +389,13 @@ vscode "suhelmakkad.shadcn-ui"
 vscode "syler.sass-indented"
 vscode "sysoev.vscode-open-in-github"
 vscode "tamasfe.even-better-toml"
+vscode "toba.vsfire"
 vscode "unifiedjs.vscode-mdx"
 vscode "vitest.explorer"
 vscode "vscodevim.vim"
-vscode "vspacecode.whichkey"
 vscode "vue.volar"
 vscode "webmania.vue-mess-detector"
 vscode "xdebug.php-debug"
 vscode "yoavbls.pretty-ts-errors"
+vscode "yzhang.markdown-all-in-one"
 vscode "zhihaocui.ts-interface-sorter"
