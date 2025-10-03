@@ -15,7 +15,7 @@
   # Ask the Brew LLM assistant to provide commit message.
   ai = git llm
   # Find an alias
-  als = "!f() { if [ $# -eq 0 ]; then git config --get-regexp '^alias\\.' | sed 's/^alias\\.//' | sort; else git config --get-regexp '^alias\\.' | sed 's/^alias\\.//' | grep \"$1\"; fi; }; f"
+  als = "!git config --get-regexp '^alias\\.' | sed 's/^alias\\.//' | fzf --preview='echo \"Command: {2..}\"' --preview-window=down:3 | cut -d' ' -f1 | xargs -r git"
   # Interactively stage parts of files (patches).
   ap = add -p
   # list branches sorted by last modified
@@ -43,6 +43,8 @@
   cm = commit -m
   # Interactively check out a branch using fzf.
   co = "!git branch | fzf | xargs git checkout"
+  # Interactively check out with FORCE a branch using fzf.
+  cof = "!git branch | fzf | xargs git checkout -f"
   # Create and check out a new branch.
   cob = checkout -b
 	# Check out the primary branch (main or master).
@@ -113,9 +115,11 @@
   prdiff = "!f() { gh pr diff | tee /dev/tty | if command -v pbcopy >/dev/null; then pbcopy; elif command -v xclip >/dev/null; then xclip -selection clipboard; elif command -v clip.exe >/dev/null; then clip.exe; else echo \"No clipboard utility found\"; return 1; fi && echo \"\" && echo \"PR diff copied to clipboard\"; }; f"
 
   # Interactively select a pull request
-  prl = "!gh pr list --json number,title,headRefName,author --template '{{range .}}{{printf \"\\033[32m#%v\\033[0m\\t%v\\t\\033[36m%v\\033[0m\\t\\033[33m%v\\033[0m\" .number .title .headRefName .author.login}}{{\"\\n\"}}{{end}}' | fzf --ansi --header=\"Select PR to checkout\" --delimiter='\\t' --with-nth=1,2,4 --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down:60%:wrap | cut -f3 | xargs -I {} git checkout {}"
+  prl = "!gh pr list --json number,title,headRefName,author --template '{{range .}}{{printf \"\\033[32m#%v\\033[0m\\t%v\\t\\033[36m%v\\033[0m\\t\\033[33m%v\\033[0m\" .number .title .headRefName .author.login}}{{\"\\n\"}}{{end}}' | fzf --ansi --header=\"Select PR to checkout\" --delimiter='\\t' --with-nth=1,2,4 --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down:60%:wrap | cut -f3 | xargs -I {} sh -c 'git fetch origin {}:{} && git checkout {}'"
+
+  prme = !gh pr list --author \"@me\" --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\" | xargs -I{} sh -c 'gh pr checkout {} && gh pr view {} --web'
+
   # Interactively select one of your own pull requests with fzf and open it in the browser.
-	prme = !gh pr list --author \"@me\" --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\" | xargs -I{} gh pr view {} --web
 	# Interactively select a PR requesting your review with fzf and open it in the browser.
 	prr = !gh pr list --search \"review-requested:@me\" --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\" | xargs -I{} gh pr view {} --web
   # Safely force-push the current branch.
@@ -207,7 +211,7 @@
     template = /Users/simon/.stCommitMsg
   [filter "lfs"]
     clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
+    smudge = git-lfs smudge -- %o
     process = git-lfs filter-process
     required = true
 [rerere]

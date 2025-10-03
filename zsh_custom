@@ -44,6 +44,7 @@ bindkey "ç" fzf-cd-widget # option + c
 alias als='alias | grep'
 alias android="scrcpy"                      #use https://github.com/Genymobile/scrcpy
 alias brave='/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser'
+alias droid='scrcpy'
 alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
 alias cp='cp -iv'                           # Preferred cp implementation
 alias d='cd ~/Desktop/'
@@ -66,6 +67,7 @@ alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable 
 alias python='/opt/homebrew/bin/python3'
 alias reload="source ~/.zshrc"              # reload:       Reload the shell (i.e. itself)
 alias rm=trash                              # rm:           Trash (move to trash)
+alias tab="wezterm cli set-tab-title $1"
 alias zed-bookmark='cd "$(git rev-parse --show-toplevel)" && git grep --line-number 📙  | fzf | sed "s/\(.*:[0-9]*\):.*/\1/" | xargs zed'
 
 setdate() {
@@ -200,6 +202,16 @@ function zh() {
   fi
 }
 
+jq_sort() {
+    local input_file="$1"
+    if [[ -z "$input_file" ]]; then
+        echo "Usage: jq_sort <input_file>"
+        return 1
+    fi
+
+    local temp_file=$(mktemp)
+    jq -S '.' "$input_file" > "$temp_file" && mv "$temp_file" "$input_file"
+}
 
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 function trash () { command mv "$@" ~/.Trash ; }
