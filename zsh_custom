@@ -44,13 +44,13 @@ bindkey "ç" fzf-cd-widget # option + c
 alias als='alias | grep'
 alias android="scrcpy"                      #use https://github.com/Genymobile/scrcpy
 alias brave='/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser'
-alias droid='scrcpy'
 alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
 alias cp='cp -iv'                           # Preferred cp implementation
 alias d='cd ~/Desktop/'
 alias dockerkill='docker kill $(docker ps -q)'
 alias dockerstop='docker ps -aq | xargs docker stop'
 alias docx2pdf='/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf --outdir . "$1"'
+alias droid='scrcpy'
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
 alias flushdns="sudo killall -HUP mDNSResponder"
 alias ftrail='<<<${(F)fpath}'
@@ -59,16 +59,15 @@ alias hosts="sudo vim /etc/hosts"
 alias less='less -FSRXc'                    # Preferred 'less' implementation
 alias ls='lsd -la'
 alias man=batman
-alias prune_node="find . -name node_modules -type d -prune -exec rm -rf '{}' +"
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias openb='open -na "Brave Browser" --args "$1"'
 alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
+alias prune_node="find . -name node_modules -type d -prune -exec rm -rf '{}' +"
 alias python='/opt/homebrew/bin/python3'
 alias reload="source ~/.zshrc"              # reload:       Reload the shell (i.e. itself)
 alias rm=trash                              # rm:           Trash (move to trash)
 alias tab="wezterm cli set-tab-title $1"
-alias zed-bookmark='cd "$(git rev-parse --show-toplevel)" && git grep --line-number 📙  | fzf | sed "s/\(.*:[0-9]*\):.*/\1/" | xargs zed'
 
 setdate() {
     if [ $# -ne 2 ]; then
@@ -84,6 +83,7 @@ alias si="ioreg -l -w 0 | grep SecureInput"
 alias spotifyfix='brew uninstall --cask spotify && brew cleanup && launchctl remove com.spotify.client.startuphelper && brew install --cask spotify'
 alias wez="code ~/.wezterm.lua"
 alias zshrc="code ~/.dotfiles/zshrc"
+
 # FZF
 alias sd='cd "$(fd --type d --exclude Applications --exclude Library --exclude Movies | fzf)"' # search for directories
 
@@ -124,7 +124,6 @@ ss_spec() { ss "$1" "*.spec.{ts,js}" }
 ss_ts() { ss "$1" "*.{ts,tsx}" }
 ss_vue() { ss "$1" "*.vue" }
 
-
 ss_ts() {
     RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case -g '*.ts' -g '*.tsx'"
     INITIAL_QUERY="${1:-}"
@@ -147,11 +146,6 @@ ss_ts() {
         code -g "$FILE:$LINE"
     fi
 }
-
-
-
-
-
 
 # search for files by regex with dynamic updates
 sf() {
@@ -301,4 +295,4 @@ git() {
     fi
 }
 
-export EDITOR="zed --wait"
+export EDITOR="code --wait"
