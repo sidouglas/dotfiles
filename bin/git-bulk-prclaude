@@ -1,0 +1,69 @@
+#!/bin/bash
+
+# git-bulk-prclaude - Generate review files for all PRs awaiting review
+# Usage: git bulk-prclaude
+
+set -e
+
+# Get the directory where this script is located
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+instructions_file="$script_dir/git-prclaude-instructions.md"
+
+# Get list of PRs awaiting review (number and branch)
+echo "Fetching PRs awaiting your review..."
+pr_data=$(gh pr list --search "review-requested:@me" --json number,headRefName --jq '.[] | "\(.number)|\(.headRefName)"')
+
+if [ -z "$pr_data" ]; then
+    echo "No PRs awaiting your review"
+    exit 0
+fi
+
+# Create consolidated file on desktop
+output_file="$HOME/Desktop/bulk-prclaude.md"
+
+# Start with a header
+{
+    echo "# Bulk PR Review"
+    echo ""
+    echo "Generated on $(date)"
+    echo ""
+} > "$output_file"
+
+# Process each PR
+while IFS='|' read -r pr_number branch; do
+    echo "Processing PR #$pr_number (branch: $branch)..."
+
+    {
+        echo "---"
+        echo ""
+        echo "# PR #$pr_number - \`$branch\`"
+        echo ""
+        echo "**Branch:** \`$branch\`"
+        echo ""
+        echo "**Checkout command:** \`git fetch --all && git checkout $branch\`"
+        echo ""
+        cat "$instructions_file"
+        echo ""
+        echo "## PR Information"
+        echo ""
+        gh pr view "$pr_number"
+        echo ""
+        echo "## Diff"
+        echo ""
+        echo "\`\`\`diff"
+        gh pr diff "$pr_number"
+        echo "\`\`\`"
+        echo ""
+        echo ""
+    } >> "$output_file"
+done <<< "$pr_data"
+
+echo ""
+echo "✅ Bulk PR review saved to: $output_file"
+echo "📋 File contains $(echo "$pr_data" | wc -l | xargs) PRs"
+echo ""
+echo "To review, open the file manually:"
+echo "  open $output_file"
+echo ""
+echo "NOTE: This command does NOT launch Claude to avoid infinite loops."
+echo "Please open Claude Desktop manually and paste the file path."

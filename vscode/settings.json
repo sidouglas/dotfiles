@@ -89,7 +89,6 @@
     "**/dist/**": true,
     "**/node_modules/**": true
   },
-  "geminicodeassist.project": "streem-144523",
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "always",
   "gitTreeCompare.diffMode": "full",
@@ -179,8 +178,6 @@
       "excluded": []
     }
   },
-  "quokka.automaticRestart": true,
-  "quokka.untrustedWorkspaceBehavior": "Always allow",
   "ruby-spec-runner.changeDirectoryToWorkspaceRoot": false,
   "ruby.rubocop.configFilePath": "~/.rbenv/shims/",
   "scm.workingSets.enabled": true,
@@ -411,12 +408,6 @@
       "before": ["p"]
     }
   ],
-  "vscode-vitest.executableOptions": {
-    "debug": true,
-    "run": true,
-    "watch": true
-  },
-  "vue.server.hybridMode": "typeScriptPluginOnly",
   "window.commandCenter": false,
   "workbench.activityBar.location": "top",
   "workbench.colorTheme": "Black",

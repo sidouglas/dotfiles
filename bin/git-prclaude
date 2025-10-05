@@ -35,15 +35,13 @@ echo "Generating PR review for #$pr_number..."
 # Create file on desktop
 desktop_file="$HOME/Desktop/prclaude.txt"
 
+# Get the directory where this script is located
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+instructions_file="$script_dir/git-prclaude-instructions.md"
+
 # Generate PR review content and save to desktop
 {
-    echo "Please conduct a thorough code review of this pull request. Focus on:"
-    echo "- Code quality and best practices"
-    echo "- Potential bugs or logic errors"
-    echo "- Security vulnerabilities"
-    echo "- Performance implications"
-    echo "- Test coverage gaps"
-    echo "- Documentation needs"
+    cat "$instructions_file"
     echo ""
     echo "Here is the PR information:"
     echo ""
