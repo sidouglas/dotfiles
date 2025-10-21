@@ -60,4 +60,4 @@ echo "✅ Instruction copied to clipboard"
 echo "🚀 Launching Claude Desktop..."
 
 # Launch Claude Desktop (adjust app name if needed)
-claude --model=haiku
+claude

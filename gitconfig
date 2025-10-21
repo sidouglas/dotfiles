@@ -159,7 +159,7 @@
   # Fetch from origin and rebase the current branch onto the primary branch (main or master).
   rbm = "!f() { git fetch origin; if git show-ref --verify --quiet refs/heads/main; then git rebase origin/main; else git rebase origin/master; fi; }; f"
 
-  rbf = "!f() { git fetch origin; if git show-ref --verify --quiet refs/heads/feature/social-tiktok; then git rebase origin/feature/social-tiktok; else git rebase origin/feature/social-tiktok; fi; }; f"
+  rbf = "!f() { git fetch origin; if git show-ref --verify --quiet refs/heads/feature/social-alt-text; then git rebase origin/feature/social-alt-text; else git rebase origin/feature/social-alt-text; fi; }; f"
 
   # Fetch from origin and rebase the current branch onto the staging branch.
   rbs = "!git fetch origin staging && git rebase origin/staging"
