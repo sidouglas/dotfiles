@@ -56,11 +56,7 @@
   "editor.snippetSuggestions": "top",
   "editor.tabSize": 2,
   "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
-  "eslint.validate": [
-    "javascript",
-    "typescript",
-    "astro"
-  ],
+  "eslint.validate": ["javascript", "typescript", "astro"],
   "explorer.autoReveal": true,
   "explorer.compactFolders": false,
   "explorer.confirmDelete": false,
@@ -103,19 +99,14 @@
   "gitlens.ai.gitkraken.model": "gemini:gemini-2.0-flash",
   "gitlens.ai.model": "gitkraken",
   "gitlens.heatmap.ageThreshold": 60,
-  "gitlens.views.commitDetails.files.layout": "tree",
   "gitlens.views.commits.showBranchComparison": "branch",
   "gitlens.views.fileHistory.files.layout": "list",
   "gitlens.views.repositories.includeWorkingTree": true,
   "gitlens.views.repositories.showIncomingActivity": true,
   "gitlens.views.repositories.showStashes": true,
-  "i18n-ally.enabledFrameworks": [
-    "vue"
-  ],
+  "i18n-ally.enabledFrameworks": ["vue"],
   "i18n-ally.keystyle": "nested",
-  "i18n-ally.localesPaths": [
-    "packages/shared/i18n"
-  ],
+  "i18n-ally.localesPaths": ["packages/shared/i18n"],
   "i18n-ally.sourceLanguage": "en-AU",
   "intellijRecentFiles.navigate": false,
   "javascript.suggest.paths": false,
@@ -153,7 +144,7 @@
   "php.suggest.basic": true,
   "phpConstructor.visibility": "public",
   "prisma.showPrismaDataPlatformNotification": false,
-  "project-scopes.activeScope": "TikTok",
+  "project-scopes.activeScope": "GA",
   "project-scopes.enabled": false,
   "project-scopes.globalExclude": {
     "**/.DS_Store": true,
@@ -167,8 +158,11 @@
     ".history": true
   },
   "project-scopes.scopes": {
+    "base": {
+      "included": [],
+      "excluded": []
+    },
     "TikTok": {
-      "excluded": [],
       "included": [
         "packages/shared/composables/useSocialAuth",
         "packages/shared/components/integrations",
@@ -182,11 +176,18 @@
         "packages/shared/helpers/social.ts",
         "packages/shared/modals/ManageSocialIntegrations.vue",
         "packages/shared/modals/ManageSocialConnections/ManageSocialConnections.vue"
-      ]
+      ],
+      "excluded": []
     },
-    "base": {
-      "excluded": [],
-      "included": []
+    "GA": {
+      "included": [
+        "packages/shared/test/vitest/__tests__/modals",
+        "packages/shared/test/vitest/__tests__/store/googleAnalytics",
+        "packages/shared/modals/GoogleAnalyticsIntegrationModal",
+        "packages/shared/i18n/en_AU.json",
+        "packages/shared/stores/googleAnalytics"
+      ],
+      "excluded": []
     }
   },
   "projectColors.workspaces": [
@@ -223,18 +224,12 @@
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.experimental.classRegex": [
     "tw`([^`]*)",
-    [
-      "classnames\\(([^)]*)\\)",
-      "'([^']*)'"
-    ]
+    ["classnames\\(([^)]*)\\)", "'([^']*)'"]
   ],
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.profiles.osx": {
     "zsh": {
-      "args": [
-        "-i",
-        "-l"
-      ],
+      "args": ["-i", "-l"],
       "path": "/bin/zsh"
     }
   },
@@ -254,304 +249,137 @@
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
     {
-      "after": [
-        "<Esc>"
-      ],
-      "before": [
-        "j",
-        "j"
-      ]
+      "after": ["<Esc>"],
+      "before": ["j", "j"]
     }
   ],
   "vim.leader": "<Space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "after": [
-        "<leader>",
-        "<leader>",
-        "w"
-      ],
-      "before": [
-        "F",
-        "W"
-      ],
+      "after": ["<leader>", "<leader>", "w"],
+      "before": ["F", "W"],
       "comment": "Jump to word beginnings (forward)"
     },
     {
-      "after": [
-        "<leader>",
-        "<leader>",
-        "f"
-      ],
-      "before": [
-        "F",
-        "F"
-      ],
+      "after": ["<leader>", "<leader>", "f"],
+      "before": ["F", "F"],
       "comment": "Find character (then type the character you want to jump to)"
     },
     {
-      "after": [
-        "<leader>",
-        "<leader>",
-        "b"
-      ],
-      "before": [
-        "F",
-        "B"
-      ],
+      "after": ["<leader>", "<leader>", "b"],
+      "before": ["F", "B"],
       "comment": "Jump to word beginnings (backward)"
     },
     {
-      "after": [
-        "<leader>",
-        "<leader>",
-        "e"
-      ],
-      "before": [
-        "F",
-        "E"
-      ],
+      "after": ["<leader>", "<leader>", "e"],
+      "before": ["F", "E"],
       "comment": "Jump to word endings"
     },
     {
-      "after": [
-        "<leader>",
-        "<leader>",
-        "j"
-      ],
-      "before": [
-        "F",
-        "J"
-      ],
+      "after": ["<leader>", "<leader>", "j"],
+      "before": ["F", "J"],
       "comment": "Jump to lines below current line"
     },
     {
-      "after": [
-        "<leader>",
-        "<leader>",
-        "k"
-      ],
-      "before": [
-        "F",
-        "K"
-      ],
+      "after": ["<leader>", "<leader>", "k"],
+      "before": ["F", "K"],
       "comment": "Jump to lines above current line"
     },
     {
-      "after": [
-        "<leader>",
-        "<leader>",
-        "l"
-      ],
-      "before": [
-        "F",
-        "L"
-      ],
+      "after": ["<leader>", "<leader>", "l"],
+      "before": ["F", "L"],
       "comment": "Jump to characters to the right"
     },
     {
-      "after": [
-        "<leader>",
-        "<leader>",
-        "h"
-      ],
-      "before": [
-        "F",
-        "H"
-      ],
+      "after": ["<leader>", "<leader>", "h"],
+      "before": ["F", "H"],
       "comment": "Jump to characters to the left"
     },
     {
-      "after": [
-        "<leader>",
-        "<leader>",
-        "t"
-      ],
-      "before": [
-        "F",
-        "T"
-      ],
+      "after": ["<leader>", "<leader>", "t"],
+      "before": ["F", "T"],
       "comment": "Jump to character before target (like 't' in vim)"
     },
     {
-      "after": [
-        "<leader>",
-        "<leader>",
-        "s"
-      ],
-      "before": [
-        "F",
-        "S"
-      ],
+      "after": ["<leader>", "<leader>", "s"],
+      "before": ["F", "S"],
       "comment": "Jump to any character (bidirectional search - most powerful)"
     },
     {
-      "before": [
-        "<S-h>"
-      ],
-      "commands": [
-        ":bprevious"
-      ]
+      "before": ["<S-h>"],
+      "commands": [":bprevious"]
     },
     {
-      "before": [
-        "<S-l>"
-      ],
-      "commands": [
-        ":bnext"
-      ]
+      "before": ["<S-l>"],
+      "commands": [":bnext"]
     },
     {
-      "before": [
-        "leader",
-        "v"
-      ],
-      "commands": [
-        ":vsplit"
-      ]
+      "before": ["leader", "v"],
+      "commands": [":vsplit"]
     },
     {
-      "before": [
-        "leader",
-        "b"
-      ],
-      "commands": [
-        ":split"
-      ]
+      "before": ["leader", "b"],
+      "commands": [":split"]
     },
     {
-      "before": [
-        "leader",
-        "h"
-      ],
-      "commands": [
-        "workbench.action.focusLeftGroup"
-      ]
+      "before": ["leader", "h"],
+      "commands": ["workbench.action.focusLeftGroup"]
     },
     {
-      "before": [
-        "leader",
-        "j"
-      ],
-      "commands": [
-        "workbench.action.focusBelowGroup"
-      ]
+      "before": ["leader", "j"],
+      "commands": ["workbench.action.focusBelowGroup"]
     },
     {
-      "before": [
-        "leader",
-        "k"
-      ],
-      "commands": [
-        "workbench.action.focusAboveGroup"
-      ]
+      "before": ["leader", "k"],
+      "commands": ["workbench.action.focusAboveGroup"]
     },
     {
-      "before": [
-        "leader",
-        "l"
-      ],
-      "commands": [
-        "workbench.action.focusRightGroup"
-      ]
+      "before": ["leader", "l"],
+      "commands": ["workbench.action.focusRightGroup"]
     },
     {
-      "before": [
-        "[",
-        "d"
-      ],
-      "commands": [
-        "editor.action.marker.prev"
-      ]
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prev"]
     },
     {
-      "before": [
-        "]",
-        "d"
-      ],
-      "commands": [
-        "editor.action.marker.next"
-      ]
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.next"]
     },
     {
-      "before": [
-        "<leader>",
-        "f"
-      ],
-      "commands": [
-        "editor.action.quickFix"
-      ]
+      "before": ["<leader>", "f"],
+      "commands": ["editor.action.quickFix"]
     },
     {
-      "before": [
-        "leader",
-        "p"
-      ],
-      "commands": [
-        "editor.action.formatDocument"
-      ]
+      "before": ["leader", "p"],
+      "commands": ["editor.action.formatDocument"]
     },
     {
-      "before": [
-        "leader",
-        ","
-      ],
-      "commands": [
-        "workbench.action.navigateBack"
-      ]
+      "before": ["leader", ","],
+      "commands": ["workbench.action.navigateBack"]
     },
     {
-      "before": [
-        "leader",
-        "g"
-      ],
-      "commands": [
-        "editor.action.showContextMenu"
-      ]
+      "before": ["leader", "g"],
+      "commands": ["editor.action.showContextMenu"]
     },
     {
-      "before": [
-        "g",
-        "h"
-      ],
-      "commands": [
-        "editor.action.showDefinitionPreviewHover"
-      ]
+      "before": ["g", "h"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
     },
     {
-      "after": [
-        "d",
-        "d"
-      ],
-      "before": [
-        "<leader>",
-        "d"
-      ]
+      "after": ["d", "d"],
+      "before": ["<leader>", "d"]
     },
     {
-      "before": [
-        "<leader>",
-        "e"
-      ],
-      "commands": [
-        "workbench.view.explorer"
-      ]
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.view.explorer"]
     },
     {
-      "before": [
-        "u"
-      ],
-      "commands": [
-        "undo"
-      ]
+      "before": ["u"],
+      "commands": ["undo"]
     },
     {
-      "before": [
-        "c-r"
-      ],
-      "commands": [
-        "redo"
-      ]
+      "before": ["c-r"],
+      "commands": ["redo"]
     }
   ],
   "vim.sneak": true,
@@ -562,10 +390,7 @@
   "vim.statusBarColors.easymotioninputmode": "#3AA8C1",
   "vim.statusBarColors.easymotionmode": "#3AA8C1",
   "vim.statusBarColors.insert": "#F2003C",
-  "vim.statusBarColors.normal": [
-    "#000",
-    "#FFF"
-  ],
+  "vim.statusBarColors.normal": ["#000", "#FFF"],
   "vim.statusBarColors.replace": "#F4C2C2",
   "vim.statusBarColors.searchinprogressmode": "#007ACC",
   "vim.statusBarColors.surroundinputmode": "#007ACC",
@@ -575,62 +400,32 @@
   "vim.useSystemClipboard": true,
   "vim.visualModeKeyBindings": [
     {
-      "before": [
-        "<"
-      ],
-      "commands": [
-        "editor.action.outdentLines"
-      ]
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
     },
     {
-      "before": [
-        ">"
-      ],
-      "commands": [
-        "editor.action.indentLines"
-      ]
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
     },
     {
-      "before": [
-        "K"
-      ],
-      "commands": [
-        "editor.action.moveLinesUpAction"
-      ]
+      "before": ["K"],
+      "commands": ["editor.action.moveLinesUpAction"]
     },
     {
-      "before": [
-        "J"
-      ],
-      "commands": [
-        "editor.action.moveLinesDownAction"
-      ]
+      "before": ["J"],
+      "commands": ["editor.action.moveLinesDownAction"]
     },
     {
-      "before": [
-        "leader",
-        "c"
-      ],
-      "commands": [
-        "editor.action.commentLine"
-      ]
+      "before": ["leader", "c"],
+      "commands": ["editor.action.commentLine"]
     },
     {
-      "before": [
-        "leader",
-        "s"
-      ],
-      "commands": [
-        "extensions.surroundSelection"
-      ]
+      "before": ["leader", "s"],
+      "commands": ["extensions.surroundSelection"]
     },
     {
-      "after": [
-        "P"
-      ],
-      "before": [
-        "p"
-      ]
+      "after": ["P"],
+      "before": ["p"]
     }
   ],
   "window.commandCenter": false,
@@ -644,5 +439,37 @@
   "workbench.settings.editor": "json",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
-  "zenMode.hideLineNumbers": false
+  "zenMode.hideLineNumbers": false,
+  "chat.tools.terminal.autoApprove": {
+    "find": true,
+    "\"": true,
+    "}": true,
+    "while": true,
+    "do": true,
+    "/,/^": true,
+    "\\s*}\\s*": true,
+    "*\\s*$\"": true,
+    "then": true,
+    "npm run test": true,
+    "npm run tsc:ci": true,
+    "npm test": true,
+    "/^npm run lint:fix -- packages/shared/stores/googleAnalytics/googleAnalytics\\.ts$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^npm run \\| grep lint$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
+  },
+  "chat.instructionsFilesLocations": {
+    ".claude/CLAUDE.md": true
+  },
+  "chat.mcp.gallery.enabled": true,
+  "chat.renderRelatedFiles": true,
+  "chat.tools.global.autoApprove": true,
+  "chat.tools.terminal.autoReplyToPrompts": true,
+  "inlineChat.enableV2": true,
+  "massRenamer.deleteEmptyFolders": true,
+  "git.blame.editorDecoration.enabled": true
 }

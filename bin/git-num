@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Get current branch and PR number
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+pr_number=$(gh pr view --json number -q '.number' 2>/dev/null)
+
+if [ -n "$pr_number" ]; then
+    echo "$pr_number" | pbcopy
+    echo "$pr_number"
+else
+    echo "No associated GitHub PR found for branch '$current_branch'" >&2
+    exit 1
+fi
+

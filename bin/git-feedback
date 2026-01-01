@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Get PR number from argument or current branch
+if [ -z "$1" ]; then
+  PR_NUMBER=$(git num 2>/dev/null)
+
+  if [ $? -ne 0 ] || [ -z "$PR_NUMBER" ]; then
+    echo "Usage: git pr-feedback <PR-number> [output-file]"
+    echo "Example: git pr-feedback 17421"
+    echo "Example: git pr-feedback 17421 ~/Desktop/custom-feedback.md"
+    echo ""
+    echo "Error: No PR number provided and couldn't find PR for current branch"
+    exit 1
+  fi
+
+  echo "Using current branch's PR #$PR_NUMBER"
+else
+  PR_NUMBER=$1
+fi
+
+OUTPUT_FILE=${2:-~/Desktop/feedback.md}
+
+echo "Fetching feedback for PR #$PR_NUMBER..."
+
+gh api repos/streemau/frontend/pulls/$PR_NUMBER/comments \
+  --jq '.[] | "## \(.path) (Line \(.line))\n**Author:** \(.user.login)\n\n\(.body)\n\n---\n"' \
+  > "$OUTPUT_FILE"
+
+echo "Feedback saved to: $OUTPUT_FILE"
+
+# Copy message to clipboard
+echo "we have received feedback on this branch and must make changes: $OUTPUT_FILE" | pbcopy
+
+echo "✓ Message copied to clipboard!"

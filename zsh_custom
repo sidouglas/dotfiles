@@ -42,10 +42,11 @@ alias .6='cd ../../../../../../'            # Go back 6 directory levels
 bindkey "ç" fzf-cd-widget # option + c
 
 alias als='alias | grep'
+alias xx="exit; exit"                             # xx:           Exit shell
 alias android="scrcpy"                      #use https://github.com/Genymobile/scrcpy
 alias brave='/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser'
 alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
-alias cp='cp -iv'                           # Preferred cp implementation
+alias cp='cp -v'                           # Preferred cp implementation
 alias d='cd ~/Desktop/'
 alias dockerkill='docker kill $(docker ps -q)'
 alias dockerstop='docker ps -aq | xargs docker stop'
