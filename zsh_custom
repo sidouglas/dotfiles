@@ -40,6 +40,7 @@ alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
 
 bindkey "ç" fzf-cd-widget # option + c
+bindkey " " magic-space
 
 alias als='alias | grep'
 alias xx="exit; exit"                             # xx:           Exit shell
@@ -244,12 +245,32 @@ function hist_remove() {
 
     echo "Lines containing '$search_string' have been removed from ~/.zsh_history"
 }
+
+# Clear screen but keep current command buffer
+function clear-screen-and-scrollback() {
+  echoti civis >"$TTY"
+  printf '%b' '\e[H\e[2J\e[3J' >"$TTY"
+  echoti cnorm >"$TTY"
+  zle redisplay
+}
+
+zle -N clear-screen-and-scrollback
+
+bindkey '^Xl' clear-screen-and-scrollback
+bindkey '^Xc' copy-buffer-to-clipboard
+
+# Auto-use correct Node version with nvm
+chpwd() {
+  if [[ -f .nvmrc ]]; then
+    nvm use
+  fi
+}
+
 # Brew
 alias brew_outdated="brew outdated --cask --greedy"
 alias brew_permissions="sudo chown -R $(whoami) $(brew --prefix)/*"
 alias brew_upgrade_casks='for cask in $(brew outdated --cask --greedy); do brew upgrade --cask "$cask"; done'
 alias brewdump="mkdir -p $HOMEBREW_DIR && cd $HOMEBREW_DIR && brew bundle dump --force --describe && bat Brewfile"
-alias mysql="/opt/homebrew/opt/mysql@8.4/bin/mysql"
 
 # AnkiConnect
 alias anki_rm='function _anki_delete() { curl -X POST localhost:8765 -d "{\"action\": \"deleteNotes\", \"version\": 6, \"params\": {\"notes\": [$1]}}"; }; _anki_delete'
@@ -264,30 +285,6 @@ alias anki_tgfe='function _anki_create() {
 }; _anki_create'
 
 
-function cody_tgfe() {
-    # Extract clean URL path
-    clean_url=$(echo "$1" | sed -E 's/https:\/\/www.greatfrontend.com(.+)\?.*/\1/')
-
-    # Fetch and extract content
-    page_content=$(curl -s "$1" | pup 'article[aria-labelledby="question-title"] div.prose text{}')
-    header=$(curl -s "$1" | pup 'header text{}')
-
-    # Get title using Cody with focused content
-    title=$(cody chat -m "Analyze this content and return only the question title: $header. \n \n No introductions, no conclusions. Only the question title" | head -n 1)
-
-    # Get summary with HTML formatting
-    back_content=$(cody chat -m "Create a summary of these key technical points. Format as HTML unordered list (<ul><li>). No markdown, no introductions or conclusions. Only interpret the supplied content. This is the supplied content here in its entirety: $page_content" | tr '\n' ' ')
-
-    # Create Anki card using our improved anki_tgfe function
-    anki_tgfe "$title" "$back_content" "$clean_url"
-
-    # Show preview
-    echo "Created card:"
-    echo "Title: $title"
-    echo "Content: $back_content"
-    echo "URL: $clean_url"
-}
-
 git() {
     if [[ "$*" =~ (push.*-f|push.*--force|-f.*push|--force.*push) ]]; then
         echo "No! Use --force-with-lease instead (git pwl)"
@@ -295,5 +292,15 @@ git() {
         command git "$@"
     fi
 }
+
+# -------------------------------------------
+# Hotkey Insertions - Text Snippets
+# -------------------------------------------
+# Insert git commit template (Ctrl+X, G, C)
+# \C-b moves cursor back one position
+bindkey -s '^Xgc' 'git commit -m ""\C-b'
+bindkey -s '^Xgp' 'git push origin '
+bindkey -s '^Xgs' 'git status\n'
+bindkey -s '^Xgl' 'git log --oneline -n 10\n'
 
 export EDITOR="code --wait"
