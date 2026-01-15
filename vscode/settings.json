@@ -144,7 +144,7 @@
   "php.suggest.basic": true,
   "phpConstructor.visibility": "public",
   "prisma.showPrismaDataPlatformNotification": false,
-  "project-scopes.activeScope": "GA",
+  "project-scopes.activeScope": "TikTok",
   "project-scopes.enabled": false,
   "project-scopes.globalExclude": {
     "**/.DS_Store": true,
