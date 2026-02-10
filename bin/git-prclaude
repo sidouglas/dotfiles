@@ -1,32 +1,30 @@
 #!/bin/bash
 
-# git-pr_review - Review a PR with Claude
-# Usage: git pr_review [PR_NUMBER]
+# git-pr_claude - Review a PR with Claude
+# Usage: git pr_claude [PR_NUMBER]
 
 set -e
 
 pr_number=""
 
-# If no arguments provided, use git prl to get the branch, then get PR number from it
+# If no arguments provided, try to get PR number from current branch
 if [ $# -eq 0 ]; then
-    echo "Using git prl to select PR..."
-
-    # Use git prl literally - it will check out the branch
-    git prl
-
-    # Now get the PR number for the current branch
-    pr_number=$(gh pr view --json number --jq '.number')
+    echo "Getting PR for current branch..."
+    pr_number=$(gh pr view --json number --jq '.number' 2>/dev/null)
 
     if [ -z "$pr_number" ]; then
-        echo "Could not find PR for current branch"
-        exit 1
+        echo "No PR found for current branch, using git prl to select one..."
+        git prl
+        pr_number=$(gh pr view --json number --jq '.number')
+    else
+        echo "Already on PR branch #$pr_number"
     fi
 else
     pr_number=$1
 fi
 
 if [ -z "$pr_number" ]; then
-    echo "No PR number specified"
+    echo "No PR number specified or found"
     exit 1
 fi
 

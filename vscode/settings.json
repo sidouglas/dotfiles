@@ -1,34 +1,34 @@
 {
   "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode"
+    "editor.defaultFormatter": "astro-build.astro-vscode",
   },
   "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
+    "editor.defaultFormatter": "vscode.html-language-features",
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "vscode.json-language-features",
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[php]": {
-    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
   },
   "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
   "chat.commandCenter.enabled": false,
   "diffEditor.codeLens": true,
@@ -36,7 +36,7 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.accessibilitySupport": "off",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
   },
   "editor.codeLens": true,
   "editor.cursorBlinking": "solid",
@@ -64,7 +64,7 @@
   "explorer.openEditors.visible": 1,
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1,
-    "vscodevim.vim": 1
+    "vscodevim.vim": 1,
   },
   "extensions.ignoreRecommendations": true,
   "files.autoSave": "afterDelay",
@@ -77,7 +77,7 @@
     "**/CVS": true,
     "**/Thumbs.db": true,
     "**/node_modules": true,
-    ".history": true
+    ".history": true,
   },
   "files.insertFinalNewline": true,
   "files.saveConflictResolution": "overwriteFileOnDisk",
@@ -87,7 +87,7 @@
     "**/.git/**": true,
     "**/coverage/**": true,
     "**/dist/**": true,
-    "**/node_modules/**": true
+    "**/node_modules/**": true,
   },
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "always",
@@ -117,24 +117,24 @@
   "periscope.rgQueryParams": [
     {
       "param": "-g '**/*$1*/**' -g '!**/node_modules/**'",
-      "regex": "^(.+) -m ([\\w-_]+)$"
+      "regex": "^(.+) -m ([\\w-_]+)$",
     },
     {
       "param": "-g '**/*$1*/**/*.$2'",
-      "regex": "^(.+) -m ([\\w-_]+) ([\\w]+)$"
+      "regex": "^(.+) -m ([\\w-_]+) ([\\w]+)$",
     },
     {
       "param": "-g '$1'",
-      "regex": "^(.+) -g (.+)$"
+      "regex": "^(.+) -g (.+)$",
     },
     {
       "param": "-t $1",
-      "regex": "^(.+) -t ?(\\w+)$"
+      "regex": "^(.+) -t ?(\\w+)$",
     },
     {
       "param": "-g '*.$1'",
-      "regex": "^(.+) \\*\\.(\\w+)$"
-    }
+      "regex": "^(.+) \\*\\.(\\w+)$",
+    },
   ],
   "php-cs-fixer.autoFixByBracket": true,
   "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
@@ -155,12 +155,12 @@
     "**/CVS": true,
     "**/Thumbs.db": true,
     "**/node_modules": true,
-    ".history": true
+    ".history": true,
   },
   "project-scopes.scopes": {
     "base": {
       "included": [],
-      "excluded": []
+      "excluded": [],
     },
     "TikTok": {
       "included": [
@@ -175,9 +175,9 @@
         "packages/shared/stores/socialIntegrations",
         "packages/shared/helpers/social.ts",
         "packages/shared/modals/ManageSocialIntegrations.vue",
-        "packages/shared/modals/ManageSocialConnections/ManageSocialConnections.vue"
+        "packages/shared/modals/ManageSocialConnections/ManageSocialConnections.vue",
       ],
-      "excluded": []
+      "excluded": [],
     },
     "GA": {
       "included": [
@@ -185,18 +185,18 @@
         "packages/shared/test/vitest/__tests__/store/googleAnalytics",
         "packages/shared/modals/GoogleAnalyticsIntegrationModal",
         "packages/shared/i18n/en_AU.json",
-        "packages/shared/stores/googleAnalytics"
+        "packages/shared/stores/googleAnalytics",
       ],
-      "excluded": []
-    }
+      "excluded": [],
+    },
   },
   "projectColors.workspaces": [
     {
-      "directory": "/Users/simon.douglas/github/streem/frontend"
+      "directory": "/Users/simon.douglas/github/streem/frontend",
     },
     {
-      "directory": "/Users/simon.douglas/github/streem/backend"
-    }
+      "directory": "/Users/simon.douglas/github/streem/backend",
+    },
   ],
   "ruby-spec-runner.changeDirectoryToWorkspaceRoot": false,
   "ruby.rubocop.configFilePath": "~/.rbenv/shims/",
@@ -208,7 +208,7 @@
     "**/coverage/**": true,
     "**/node_modules": true,
     ".history": true,
-    ".lh": true
+    ".lh": true,
   },
   "search.useIgnoreFiles": true,
   "security.promptForLocalFileProtocolHandling": false,
@@ -217,28 +217,28 @@
   "tabsColor.byDirectory": {
     "SocialEngageCompose": {
       "backgroundcolor": "#fe7e3a",
-      "fontcolor": "#ffffff"
-    }
+      "fontcolor": "#ffffff",
+    },
   },
   "tailwindCSS.colorDecorators": true,
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.experimental.classRegex": [
     "tw`([^`]*)",
-    ["classnames\\(([^)]*)\\)", "'([^']*)'"]
+    ["classnames\\(([^)]*)\\)", "'([^']*)'"],
   ],
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.profiles.osx": {
     "zsh": {
       "args": ["-i", "-l"],
-      "path": "/bin/zsh"
-    }
+      "path": "/bin/zsh",
+    },
   },
   "tsInterfaceSorter.emptyLineBetweenProperties": false,
   "tsInterfaceSorter.sortByCapitalLetterFirst": false,
   "tsInterfaceSorter.sortByRequiredElementFirst": false,
   "tsInterfaceSorter.sortTypes": true,
   "typescript.preferences.autoImportFileExcludePatterns": [
-    "node_modules/@radix-ui"
+    "node_modules/@radix-ui",
   ],
   "typescript.suggest.paths": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -250,137 +250,137 @@
   "vim.insertModeKeyBindings": [
     {
       "after": ["<Esc>"],
-      "before": ["j", "j"]
-    }
+      "before": ["j", "j"],
+    },
   ],
   "vim.leader": "<Space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "after": ["<leader>", "<leader>", "w"],
       "before": ["F", "W"],
-      "comment": "Jump to word beginnings (forward)"
+      "comment": "Jump to word beginnings (forward)",
     },
     {
       "after": ["<leader>", "<leader>", "f"],
       "before": ["F", "F"],
-      "comment": "Find character (then type the character you want to jump to)"
+      "comment": "Find character (then type the character you want to jump to)",
     },
     {
       "after": ["<leader>", "<leader>", "b"],
       "before": ["F", "B"],
-      "comment": "Jump to word beginnings (backward)"
+      "comment": "Jump to word beginnings (backward)",
     },
     {
       "after": ["<leader>", "<leader>", "e"],
       "before": ["F", "E"],
-      "comment": "Jump to word endings"
+      "comment": "Jump to word endings",
     },
     {
       "after": ["<leader>", "<leader>", "j"],
       "before": ["F", "J"],
-      "comment": "Jump to lines below current line"
+      "comment": "Jump to lines below current line",
     },
     {
       "after": ["<leader>", "<leader>", "k"],
       "before": ["F", "K"],
-      "comment": "Jump to lines above current line"
+      "comment": "Jump to lines above current line",
     },
     {
       "after": ["<leader>", "<leader>", "l"],
       "before": ["F", "L"],
-      "comment": "Jump to characters to the right"
+      "comment": "Jump to characters to the right",
     },
     {
       "after": ["<leader>", "<leader>", "h"],
       "before": ["F", "H"],
-      "comment": "Jump to characters to the left"
+      "comment": "Jump to characters to the left",
     },
     {
       "after": ["<leader>", "<leader>", "t"],
       "before": ["F", "T"],
-      "comment": "Jump to character before target (like 't' in vim)"
+      "comment": "Jump to character before target (like 't' in vim)",
     },
     {
       "after": ["<leader>", "<leader>", "s"],
       "before": ["F", "S"],
-      "comment": "Jump to any character (bidirectional search - most powerful)"
+      "comment": "Jump to any character (bidirectional search - most powerful)",
     },
     {
       "before": ["<S-h>"],
-      "commands": [":bprevious"]
+      "commands": [":bprevious"],
     },
     {
       "before": ["<S-l>"],
-      "commands": [":bnext"]
+      "commands": [":bnext"],
     },
     {
       "before": ["leader", "v"],
-      "commands": [":vsplit"]
+      "commands": [":vsplit"],
     },
     {
       "before": ["leader", "b"],
-      "commands": [":split"]
+      "commands": [":split"],
     },
     {
       "before": ["leader", "h"],
-      "commands": ["workbench.action.focusLeftGroup"]
+      "commands": ["workbench.action.focusLeftGroup"],
     },
     {
       "before": ["leader", "j"],
-      "commands": ["workbench.action.focusBelowGroup"]
+      "commands": ["workbench.action.focusBelowGroup"],
     },
     {
       "before": ["leader", "k"],
-      "commands": ["workbench.action.focusAboveGroup"]
+      "commands": ["workbench.action.focusAboveGroup"],
     },
     {
       "before": ["leader", "l"],
-      "commands": ["workbench.action.focusRightGroup"]
+      "commands": ["workbench.action.focusRightGroup"],
     },
     {
       "before": ["[", "d"],
-      "commands": ["editor.action.marker.prev"]
+      "commands": ["editor.action.marker.prev"],
     },
     {
       "before": ["]", "d"],
-      "commands": ["editor.action.marker.next"]
+      "commands": ["editor.action.marker.next"],
     },
     {
       "before": ["<leader>", "f"],
-      "commands": ["editor.action.quickFix"]
+      "commands": ["editor.action.quickFix"],
     },
     {
       "before": ["leader", "p"],
-      "commands": ["editor.action.formatDocument"]
+      "commands": ["editor.action.formatDocument"],
     },
     {
       "before": ["leader", ","],
-      "commands": ["workbench.action.navigateBack"]
+      "commands": ["workbench.action.navigateBack"],
     },
     {
       "before": ["leader", "g"],
-      "commands": ["editor.action.showContextMenu"]
+      "commands": ["editor.action.showContextMenu"],
     },
     {
       "before": ["g", "h"],
-      "commands": ["editor.action.showDefinitionPreviewHover"]
+      "commands": ["editor.action.showDefinitionPreviewHover"],
     },
     {
       "after": ["d", "d"],
-      "before": ["<leader>", "d"]
+      "before": ["<leader>", "d"],
     },
     {
       "before": ["<leader>", "e"],
-      "commands": ["workbench.view.explorer"]
+      "commands": ["workbench.view.explorer"],
     },
     {
       "before": ["u"],
-      "commands": ["undo"]
+      "commands": ["undo"],
     },
     {
       "before": ["c-r"],
-      "commands": ["redo"]
-    }
+      "commands": ["redo"],
+    },
   ],
   "vim.sneak": true,
   "vim.sneakUseIgnorecaseAndSmartcase": true,
@@ -401,32 +401,32 @@
   "vim.visualModeKeyBindings": [
     {
       "before": ["<"],
-      "commands": ["editor.action.outdentLines"]
+      "commands": ["editor.action.outdentLines"],
     },
     {
       "before": [">"],
-      "commands": ["editor.action.indentLines"]
+      "commands": ["editor.action.indentLines"],
     },
     {
       "before": ["K"],
-      "commands": ["editor.action.moveLinesUpAction"]
+      "commands": ["editor.action.moveLinesUpAction"],
     },
     {
       "before": ["J"],
-      "commands": ["editor.action.moveLinesDownAction"]
+      "commands": ["editor.action.moveLinesDownAction"],
     },
     {
       "before": ["leader", "c"],
-      "commands": ["editor.action.commentLine"]
+      "commands": ["editor.action.commentLine"],
     },
     {
       "before": ["leader", "s"],
-      "commands": ["extensions.surroundSelection"]
+      "commands": ["extensions.surroundSelection"],
     },
     {
       "after": ["P"],
-      "before": ["p"]
-    }
+      "before": ["p"],
+    },
   ],
   "window.commandCenter": false,
   "workbench.activityBar.location": "top",
@@ -455,21 +455,25 @@
     "npm test": true,
     "/^npm run lint:fix -- packages/shared/stores/googleAnalytics/googleAnalytics\\.ts$/": {
       "approve": true,
-      "matchCommandLine": true
+      "matchCommandLine": true,
     },
     "/^npm run \\| grep lint$/": {
       "approve": true,
-      "matchCommandLine": true
-    }
+      "matchCommandLine": true,
+    },
   },
   "chat.instructionsFilesLocations": {
-    ".claude/CLAUDE.md": true
+    ".claude/CLAUDE.md": true,
   },
   "chat.mcp.gallery.enabled": true,
-  "chat.renderRelatedFiles": true,
   "chat.tools.global.autoApprove": true,
   "chat.tools.terminal.autoReplyToPrompts": true,
   "inlineChat.enableV2": true,
   "massRenamer.deleteEmptyFolders": true,
-  "git.blame.editorDecoration.enabled": true
+  "git.blame.editorDecoration.enabled": true,
+  "vitest.nodeEnv": {
+    "NODE_ENV": "test",
+    "PATH": "/Users/simon/.nvm/versions/node/v22.14.0/bin:${env:PATH}",
+  },
+  "vitest.nodeExecutable": "~/.nvm/versions/node/v22.14.0/bin/node",
 }

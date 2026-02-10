@@ -23,7 +23,8 @@ OUTPUT_FILE=${2:-~/Desktop/feedback.md}
 echo "Fetching feedback for PR #$PR_NUMBER..."
 
 gh api repos/streemau/frontend/pulls/$PR_NUMBER/comments \
-  --jq '.[] | "## \(.path) (Line \(.line))\n**Author:** \(.user.login)\n\n\(.body)\n\n---\n"' \
+  --paginate \
+  --jq 'reverse | .[] | "## \(.path) (Line \(.line))\n**Author:** \(.user.login)\n\n\(.body)\n\n---\n"' \
   > "$OUTPUT_FILE"
 
 echo "Feedback saved to: $OUTPUT_FILE"
