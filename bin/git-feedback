@@ -20,9 +20,17 @@ fi
 
 OUTPUT_FILE=${2:-~/Desktop/feedback.md}
 
-echo "Fetching feedback for PR #$PR_NUMBER..."
+# Infer repo owner/name from git remote
+REPO=$(gh repo view --json nameWithOwner --jq '.nameWithOwner' 2>/dev/null)
+if [ -z "$REPO" ]; then
+  echo "Error: Could not determine repository from current directory."
+  echo "Make sure you're inside a git repository with a GitHub remote."
+  exit 1
+fi
 
-gh api repos/streemau/frontend/pulls/$PR_NUMBER/comments \
+echo "Fetching feedback for $REPO PR #$PR_NUMBER..."
+
+gh api repos/$REPO/pulls/$PR_NUMBER/comments \
   --paginate \
   --jq 'reverse | .[] | "## \(.path) (Line \(.line))\n**Author:** \(.user.login)\n\n\(.body)\n\n---\n"' \
   > "$OUTPUT_FILE"
