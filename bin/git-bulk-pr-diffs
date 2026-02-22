@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# Function to process a single PR
+process_pr() {
+    local PR_NUMBER="$1"
+    local OUTPUT_DIR="$2"
+
+    echo "Processing PR #$PR_NUMBER..."
+
+    # Get PR description
+    if ! gh pr view "$PR_NUMBER" --json body --jq '.body' > "$OUTPUT_DIR/prs/pr_${PR_NUMBER}_description.md" 2>/dev/null; then
+        echo "  Warning: Could not retrieve description for PR #$PR_NUMBER"
+    fi
+
+    # Get PR diff
+    if ! gh pr diff "$PR_NUMBER" > "$OUTPUT_DIR/pr_${PR_NUMBER}_diff.patch" 2>/dev/null; then
+        echo "  Warning: Could not retrieve diff for PR #$PR_NUMBER"
+    fi
+
+    echo "  Saved PR #$PR_NUMBER data"
+}
+
+# Check if input is provided
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <PR_NUMBER1> [PR_NUMBER2 PR_NUMBER3 ...] or $0 <path_to_pr_numbers_file>"
+    exit 1
+fi
+
+# Create output directory with timestamp
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+OUTPUT_DIR="$HOME/Desktop/pr_data_$TIMESTAMP"
+mkdir -p "$OUTPUT_DIR"
+
+echo "Saving PR data to: $OUTPUT_DIR"
+
+# Check if first argument is a file
+if [ -f "$1" ]; then
+    # Process file with PR numbers
+    PR_NUMBERS_FILE="$1"
+
+    # Read each PR number from file
+    while IFS= read -r PR_NUMBER || [[ -n "$PR_NUMBER" ]]; do
+        # Skip empty lines
+        if [[ -z "$PR_NUMBER" ]]; then
+            continue
+        fi
+
+        process_pr "$PR_NUMBER" "$OUTPUT_DIR"
+    done < "$PR_NUMBERS_FILE"
+else
+    # Process all arguments as PR numbers
+    for PR_NUMBER in "$@"; do
+        process_pr "$PR_NUMBER" "$OUTPUT_DIR"
+    done
+fi
+
+echo "All PR data saved to $OUTPUT_DIR"

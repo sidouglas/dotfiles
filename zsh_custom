@@ -43,10 +43,10 @@ bindkey "ç" fzf-cd-widget # option + c
 bindkey " " magic-space
 
 alias als='alias | grep'
-alias xx="exit; exit"                             # xx:           Exit shell
 alias android="scrcpy"                      #use https://github.com/Genymobile/scrcpy
 alias brave='/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser'
 alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
+alias copilot='copilot --allow-all-tools'
 alias cp='cp -v'                           # Preferred cp implementation
 alias d='cd ~/Desktop/'
 alias dockerkill='docker kill $(docker ps -q)'
@@ -70,6 +70,7 @@ alias python='/opt/homebrew/bin/python3'
 alias reload="source ~/.zshrc"              # reload:       Reload the shell (i.e. itself)
 alias rm=trash                              # rm:           Trash (move to trash)
 alias tab="wezterm cli set-tab-title $1"
+alias xx="exit; exit"                             # xx:           Exit shell
 
 setdate() {
     if [ $# -ne 2 ]; then

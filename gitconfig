@@ -37,10 +37,45 @@
   ca = commit -a --verbose
   # Stage all tracked, modified files and commit with a message from the command line.
   cam = commit -a -m
+  # Create a new branch from the current branch, commit staged changes, push to origin, and return to the original branch. Usage: `git cms "commit message" new-branch-name [base-branch]`
 	# Show which files would be removed by 'git clean' without actually deleting them.
 	clean = clean -fd --dry-run
   # Commit staged changes with a message from the command line.
   cm = commit -m
+  cms = "!f() { \
+      msg=\"$1\"; \
+      new=\"$2\"; \
+      base=\"${3:-master}\"; \
+      [ -z \"$new\" ] && echo \"ERROR: NAME YOUR OFFSPRING.\" && return 1; \
+      orig=$(git symbolic-ref --short HEAD); \
+      echo \"--- THE RAPTURE BEGINS ---\"; \
+      git stash push -u -m \"cms-temp\" 2>/dev/null || true; \
+      if git show-ref --verify --quiet refs/heads/\"$new\"; then \
+          echo \"Branch $new exists - syncing with $base\"; \
+          git checkout \"$new\" -q && git merge --ff-only \"$base\" 2>/dev/null || git reset --hard \"$base\"; \
+      else \
+          git checkout \"$base\" -q && git checkout -b \"$new\" -q; \
+      fi; \
+      git stash apply --index 2>/dev/null || true; \
+      git add -u; \
+      git commit -m \"$msg\"; \
+      git push --force-with-lease -u origin \"$new\"; \
+      echo \"Attempting to create PR...\"; \
+      if ! gh pr create --base \"$base\" --head \"$new\" --title \"$msg\" --body \"\" --fill; then \
+          echo \"PR creation failed - checking if PR already exists...\"; \
+          existing_pr=$(gh pr list --head \"$new\" --json url --jq '.[0].url'); \
+          if [ -n \"$existing_pr\" ]; then \
+              echo \"PR already exists: $existing_pr\"; \
+          else \
+              echo \"ERROR: Failed to create PR and no existing PR found\"; \
+              return 1; \
+          fi; \
+      fi; \
+      git checkout \"$orig\" -q; \
+      git stash pop --index --quiet 2>/dev/null || true; \
+      echo \"--- CHILD BORN: $new | RETURNED TO: $orig ---\"; \
+  }; f"
+
   # Interactively check out a branch using fzf.
   co = "!git branch | fzf | xargs git checkout"
   # Interactively check out with FORCE a branch using fzf.
@@ -202,6 +237,24 @@
 	unstage = "!f() { git reset HEAD -- \"$@\" && echo \"Unstaged: $*\"; }; f"
   # Stage all files and create a 'wip' commit, bypassing git hooks and GPG signing.
   wip = !HUSKY=0 LEFTHOOK=0 git add --all && HUSKY=0 LEFTHOOK=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
+	squash-all = "!f(){ git reset --soft $(git merge-base master $(git branch --show-current)) && git commit -am \"${1}\";};f"
+  # Usage git sync-squashed feature/social-alt-text feature/squashed-social-alt-text
+  sync-squashed = "!f() { \
+      if [ -z \"$1\" ] || [ -z \"$2\" ]; then \
+          echo \"Usage: git sync-squashed <source-branch> <target-branch>\"; \
+          echo \"Example: git sync-squashed feature/social-alt-text feature/squashed-social-alt-text\"; \
+          return 1; \
+      fi; \
+      source_branch=${1}; \
+      target_branch=${2}; \
+      git fetch origin master && \
+      git checkout $target_branch && \
+      git reset --hard origin/master && \
+      git merge --squash $source_branch && \
+      git commit -m \"Squashed version of $source_branch\"; \
+  }; f"
+
+
 
   [core]
     mergeoptions = --no-edit
