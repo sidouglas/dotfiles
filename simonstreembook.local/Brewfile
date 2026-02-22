@@ -31,14 +31,16 @@ brew "glib"
 brew "pixman"
 # Vector graphics library with cross-device output support
 brew "cairo"
+# High quality MPEG Audio Layer III (MP3) encoder
+brew "lame"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
 # Validating, recursive, caching DNS resolver
 brew "unbound"
 # GNU Transport Layer Security (TLS) Library
 brew "gnutls"
 # OpenType text shaping engine
 brew "harfbuzz"
-# High quality MPEG Audio Layer III (MP3) encoder
-brew "lame"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
 # Framework for layout and rendering of i18n text
@@ -47,8 +49,6 @@ brew "pango"
 brew "srt"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
 # Core component of the AcoustID project (Audio fingerprinting)
 brew "chromaprint"
 # Enables you to reproduce the CircleCI environment locally
@@ -105,14 +105,12 @@ brew "handbrake", link: false
 brew "htop"
 # ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 brew "libheif"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
-# Library for reading RAW files from digital photo cameras
-brew "libraw"
-# Tools and libraries to manipulate images in many formats
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Library for reading RAW files from digital photo cameras
+brew "libraw"
 # Access large language models from the command-line
 brew "llm"
 # Clone of ls with colorful output, file type icons, and more
@@ -153,6 +151,10 @@ brew "pnpm"
 brew "postgresql@14"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
+# Install various Ruby versions and implementations
+brew "ruby-build"
 # Ruby version manager
 brew "rbenv"
 # Search tool like grep and The Silver Searcher
@@ -189,8 +191,6 @@ brew "zsh"
 brew "dopplerhq/cli/doppler"
 # Supabase CLI
 brew "supabase/tap/supabase"
-# Tabby: AI Coding Assistant
-brew "tabbyml/tabby/tabby"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Enable Windows-like alt-tab
@@ -203,8 +203,6 @@ cask "android-studio"
 cask "appcleaner"
 # Manage team projects and tasks
 cask "asana"
-# Compare files and folders
-cask "beyond-compare"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Open source IDE for exploring and testing APIs
@@ -215,6 +213,8 @@ cask "caffeine"
 cask "claude-code"
 # Image, video and clipboard optimiser
 cask "clop"
+# Brings the power of Copilot coding agent directly to your terminal
+cask "copilot-cli"
 # Tool to compare and synchronise files and folders
 cask "deltawalker"
 # Drivers for DisplayLink docks, adapters and monitors
@@ -248,12 +248,14 @@ cask "keyboard-maestro"
 cask "losslesscut"
 # Provides updates to various Microsoft products
 cask "microsoft-auto-update"
+# Multi-platform web browser
+cask "microsoft-edge"
 # Email client
 cask "microsoft-outlook"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
 # Unofficial Google Nearby Share app
-cask "neardrop"
+cask "grishka/grishka/neardrop"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Calendar for professionals and teams
@@ -336,7 +338,6 @@ vscode "esbenp.prettier-vscode"
 vscode "evertjunior.mass-renamer"
 vscode "fooo.ruby-spec-runner"
 vscode "formulahendry.auto-rename-tag"
-vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "gruntfuggly.auto-snippet"
 vscode "joao-mbn.react-extract"
