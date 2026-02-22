@@ -261,11 +261,14 @@ bindkey '^Xl' clear-screen-and-scrollback
 bindkey '^Xc' copy-buffer-to-clipboard
 
 # Auto-use correct Node version with nvm
-chpwd() {
+autoload -U add-zsh-hook
+load-nvmrc() {
   if [[ -f .nvmrc ]]; then
     nvm use
   fi
 }
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc  # This line runs it immediately when shell starts
 
 # Brew
 alias brew_outdated="brew outdated --cask --greedy"
