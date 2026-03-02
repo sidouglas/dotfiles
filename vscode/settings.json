@@ -477,4 +477,9 @@
     "PATH": "/Users/simon/.nvm/versions/node/v22.14.0/bin:${env:PATH}",
   },
   "vitest.nodeExecutable": "~/.nvm/versions/node/v22.14.0/bin/node",
+  "chat.mcp.serverSampling": {
+    "Global in Code: asana": {
+      "allowedModels": ["copilot/gpt-5.3-codex"],
+    },
+  },
 }
