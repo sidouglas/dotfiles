@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Try to get the current PR number from Git branch
+get_current_pr() {
+    # GitHub CLI method (preferred)
+    if gh pr view --json number --jq '.number' 2>/dev/null; then
+        return 0
+    fi
+    # Fallback: Try to parse PR from branch name (e.g., "pr/123" or "user/pr-123")
+    local branch=$(git branch --show-current)
+    if [[ "$branch" =~ (pr|pull)[/-]([0-9]+) ]]; then
+        echo "${BASH_REMATCH[2]}"
+        return 0
+    fi
+    return 1
+}
+
+# Main logic
+lgtm() {
+    local pr_number="$1"
+
+    # If no PR provided, try to auto-detect
+    if [ -z "$pr_number" ]; then
+        pr_number=$(get_current_pr)
+        if [ -z "$pr_number" ]; then
+            echo "Error: No PR number provided and none could be auto-detected." >&2
+            echo "Usage: git lgtm [PR_NUMBER]" >&2
+            return 1
+        fi
+        echo "Auto-detected PR #$pr_number"
+    fi
+
+    # Approve the PR
+    gh pr review "$pr_number" --approve --body "LGTM"
+}
+
+lgtm "$@"
