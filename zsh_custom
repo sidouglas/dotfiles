@@ -47,6 +47,7 @@ alias android="scrcpy"                      #use https://github.com/Genymobile/s
 alias brave='/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser'
 alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
 alias copilot='copilot --allow-all-tools'
+alias mcp_chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --user-data-dir="/tmp/chrome_dev_profile"'
 alias cp='cp -v'                           # Preferred cp implementation
 alias d='cd ~/Desktop/'
 alias dockerkill='docker kill $(docker ps -q)'
@@ -58,6 +59,7 @@ alias flushdns="sudo killall -HUP mDNSResponder"
 alias ftrail='<<<${(F)fpath}'
 alias gr="git recentco"
 alias hosts="sudo vim /etc/hosts"
+alias keyboardmaestro='/Applications/Keyboard\ Maestro.app/Contents/MacOS/keyboardmaestro'
 alias less='less -FSRXc'                    # Preferred 'less' implementation
 alias ls='lsd -la'
 alias man=batman

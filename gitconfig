@@ -253,8 +253,7 @@
       git merge --squash $source_branch && \
       git commit -m \"Squashed version of $source_branch\"; \
   }; f"
-
-
+	fcommits = "!f() {\n    base=${1:-master}\n    git log --pretty=format:\"- %s\" --grep=\"feature:\" $(git merge-base HEAD $base)..HEAD | pbcopy\n    echo \"Feature commits copied to clipboard!\"\n}; f"
 
   [core]
     mergeoptions = --no-edit
@@ -316,4 +315,4 @@
 [init]
 	templatedir = /Users/simon/.git-templates
 [rebase]
-	defaultBranch = feature/oauth-implementation
+	defaultBranch = feature/social-scheduled-reports

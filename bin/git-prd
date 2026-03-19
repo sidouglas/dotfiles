@@ -31,7 +31,17 @@ Based on this git patch:"
 
     # If argument provided, use it
     if [[ -n "$1" ]]; then
-        diff_content=$(git diff $1 2>/dev/null)
+        # If arg looks like a range (contains ..), use git diff; otherwise use git show
+        if [[ "$1" == *..* ]]; then
+            diff_content=$(git diff "$1" 2>/dev/null)
+        else
+            if ! git rev-parse --verify "$1" > /dev/null 2>&1; then
+                echo "Error: '$1' is not a valid git ref."
+                echo "Note: HEAD^2 only exists for merge commits. Did you mean HEAD~2 or HEAD^?"
+                return 1
+            fi
+            diff_content=$(git show "$1" 2>/dev/null)
+        fi
     else
         # Try different approaches in order of preference
         # 1. Try HEAD~1..HEAD (last commit)
@@ -84,4 +94,4 @@ Based on this git patch:"
     echo "✅ PR description copied to clipboard!"
 }
 
-llm_pr
+llm_pr "$@"
