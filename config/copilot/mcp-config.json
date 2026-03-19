@@ -1,0 +1,46 @@
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "tools": [
+        "*"
+      ],
+      "type": "local",
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ],
+      "source": "user",
+      "sourcePath": "/Users/simon.douglas/.copilot/mcp-config.json"
+    },
+    "figma": {
+      "tools": [
+        "*"
+      ],
+      "type": "local",
+      "command": "npx",
+      "args": [
+        "-y",
+        "figma-mcp"
+      ],
+      "env": {
+        "FIGMA_ACCESS_TOKEN": "$FIGMA_ACCESS_TOKEN",
+        "FIGMA_API_KEY": "$FIGMA_API_KEY"
+      },
+      "source": "user",
+      "sourcePath": "/Users/simon.douglas/.copilot/mcp-config.json"
+    },
+    "semaphore": {
+      "tools": [
+        "*"
+      ],
+      "type": "http",
+      "url": "https://mcp.semaphoreci.com/mcp",
+      "headers": {
+        "Authorization": "Bearer $SEMAPHORE_API_TOKEN"
+      },
+      "source": "user",
+      "sourcePath": "/Users/simon.douglas/.copilot/mcp-config.json"
+    }
+  }
+}

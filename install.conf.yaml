@@ -20,6 +20,7 @@
       create: true
       path: config/karabiner
     ~/.config/opencode/opencode.json: config/opencode/opencode.json
+    ~/.copilot/mcp-config.json: config/copilot/mcp-config.json
     ~/.fzf: null
     ~/.gitconfig: null
     ~/.gitignore_global: null
