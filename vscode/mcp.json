@@ -1,38 +1,42 @@
 {
-	"servers": {
-		"asana": {
-			"type": "stdio",
-			"command": "npx",
-			"args": [
-				"-y",
-				"mcp-remote@latest",
-				"https://mcp.asana.com/v2/mcp",
-				"3334",
-				"--static-oauth-client-info",
-				"{\"client_id\": \"${input:asana-client-id}\", \"client_secret\": \"${input:asana-client-secret}\"}",
-				"--resource",
-				"https://mcp.asana.com/v2"
-			]
-		},
-		"com.figma.mcp/mcp": {
-			"type": "http",
-			"url": "https://mcp.figma.com/mcp",
-			"gallery": "https://registry.modelcontextprotocol.io",
-			"version": "1.0.3"
-		}
-	},
-	"inputs": [
-		{
-			"type": "promptString",
-			"id": "asana-client-id",
-			"description": "Enter your Asana MCP App Client ID",
-			"password": false
-		},
-		{
-			"type": "promptString",
-			"id": "asana-client-secret",
-			"description": "Enter your Asana MCP App Client Secret",
-			"password": true
-		}
-	]
+  "servers": {
+    "asana": {
+      "command": "npx",
+      "args": ["-y", "@roychri/mcp-server-asana"],
+      "env": {
+        "ASANA_ACCESS_TOKEN": "${input:asana-client-secret}",
+      },
+    },
+    "com.figma.mcp/mcp": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp",
+      "gallery": "https://registry.modelcontextprotocol.io",
+      "version": "1.0.3",
+    },
+    "io.github.ChromeDevTools/chrome-devtools-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "--registry",
+        "https://registry.npmjs.org",
+        "chrome-devtools-mcp@0.20.2",
+      ],
+      "gallery": "https://registry.modelcontextprotocol.io",
+      "version": "0.20.2",
+    },
+  },
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "asana-client-id",
+      "description": "Enter your Asana MCP App Client ID",
+      "password": false,
+    },
+    {
+      "type": "promptString",
+      "id": "asana-client-secret",
+      "description": "Enter your Asana MCP App Client Secret",
+      "password": true,
+    },
+  ],
 }

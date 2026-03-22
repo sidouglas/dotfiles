@@ -1,0 +1,31 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": "allow",
+  "mcp": {
+    "chrome-devtools": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ]
+    },
+    "figma": {
+      "type": "remote",
+      "url": "https://mcp.figma.com/mcp",
+      "oauth": {
+        "clientId": "${FIGMA_CLIENT_ID}",
+        "clientSecret": "${FIGMA_CLIENT_SECRET}"
+      }
+    },
+    "semaphore": {
+      "type": "remote",
+      "url": "https://mcp.semaphoreci.com/mcp",
+      "enabled": true,
+      "oauth": false,
+      "headers": {
+        "Authorization": "Bearer {env:SEMAPHORE_API_TOKEN}"
+      }
+    }
+  }
+}
