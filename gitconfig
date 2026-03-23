@@ -313,6 +313,6 @@
 [mergetool  "deltawalker"]
 	cmd = '/Applications/DeltaWalker.app/Contents/Eclipse/Contents/Resources/git-merge' "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 [init]
-	templateDir = /Users/simon/.git-templates/git-secrets
+	templateDir = ~/.git-templates/git-secrets
 [rebase]
 	defaultBranch = feature/social-scheduled-reports
