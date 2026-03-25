@@ -26,7 +26,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. A report built for a rule with specific platforms selected only contains content matching those platforms (filtered via `enabled_media_types`)
   4. A rule with no platforms selected produces no social content in the generated report
   5. Resource specs for read and write pass; service spec for the `enabled_media_types` path passes with platform-specific selection
-**Plans**: TBD
+**Plans:** 1 plan
+
+Plans:
+- [ ] 01-01-PLAN.md — Add selected_social_content attribute to resource, add resource read/write specs and service platform-filtering specs
 
 ## Progress
 
@@ -35,4 +38,4 @@ Phases execute in numeric order: 1
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Wire selected_social_content | 0/TBD | Not started | - |
+| 1. Wire selected_social_content | 0/1 | Not started | - |
