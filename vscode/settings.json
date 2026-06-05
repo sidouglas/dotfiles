@@ -143,7 +143,7 @@
   "php.suggest.basic": true,
   "phpConstructor.visibility": "public",
   "prisma.showPrismaDataPlatformNotification": false,
-  "project-scopes.activeScope": "TikTok",
+  "project-scopes.activeScope": "base",
   "project-scopes.enabled": false,
   "project-scopes.globalExclude": {
     "**/.DS_Store": true,
@@ -198,6 +198,9 @@
     },
     {
       "directory": "/Users/simon.douglas/github/streem/frontend-pr",
+    },
+    {
+      "directory": "/Users/simon.douglas/github/streem/frontend-feature",
     },
   ],
   "ruby-spec-runner.changeDirectoryToWorkspaceRoot": false,
@@ -443,6 +446,9 @@
   "workbench.settings.editor": "json",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
+  "workbench.colorCustomizations": {
+    "quickInput.background": "#00000080",
+  },
   "zenMode.hideLineNumbers": false,
   "chat.tools.terminal.autoApprove": {
     "find": true,
@@ -474,7 +480,7 @@
   "chat.tools.terminal.autoReplyToPrompts": true,
   "inlineChat.enableV2": true,
   "massRenamer.deleteEmptyFolders": true,
-  "git.blame.editorDecoration.enabled": true,
+  "git.blame.editorDecoration.enabled": false,
   "vitest.nodeEnv": {
     "NODE_ENV": "test",
     "PATH": "/Users/simon/.nvm/versions/node/v22.14.0/bin:${env:PATH}",
@@ -485,4 +491,5 @@
       "allowedModels": ["copilot/gpt-5.3-codex"],
     },
   },
+  "workbench.browser.enableChatTools": true,
 }

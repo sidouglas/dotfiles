@@ -1,10 +1,21 @@
 {
   "servers": {
     "asana": {
+      "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@roychri/mcp-server-asana"],
+      "args": [
+        "-y",
+        "mcp-remote@latest",
+        "https://mcp.asana.com/v2/mcp",
+        "3334",
+        "--static-oauth-client-info",
+        "{\"client_id\": \"${env:ASANA_MCP_CLIENT_ID}\", \"client_secret\": \"${env:ASANA_MCP_CLIENT_SECRET}\"}",
+        "--resource",
+        "https://mcp.asana.com/v2",
+      ],
       "env": {
-        "ASANA_ACCESS_TOKEN": "${input:asana-client-secret}",
+        "ASANA_MCP_CLIENT_ID": "${env:ASANA_MCP_CLIENT_ID}",
+        "ASANA_MCP_CLIENT_SECRET": "${env:ASANA_MCP_CLIENT_SECRET}",
       },
     },
     "com.figma.mcp/mcp": {
@@ -25,18 +36,4 @@
       "version": "0.20.2",
     },
   },
-  "inputs": [
-    {
-      "type": "promptString",
-      "id": "asana-client-id",
-      "description": "Enter your Asana MCP App Client ID",
-      "password": false,
-    },
-    {
-      "type": "promptString",
-      "id": "asana-client-secret",
-      "description": "Enter your Asana MCP App Client Secret",
-      "password": true,
-    },
-  ],
 }
