@@ -1,0 +1,69 @@
+#!/bin/bash
+
+# GitHub PR to Markdown Script for streemau repos
+# Usage: git md <PR_NUMBER> [REPO_CODE]
+# REPO_CODE: fe = frontend (default), be = backend
+
+set -euo pipefail
+
+if [ $# -lt 1 ]; then
+    echo "Usage: git md <PR_NUMBER> [REPO_CODE]"
+    echo "  REPO_CODE: fe = frontend (default), be = backend"
+    echo "Example: git md 21378"
+    echo "Example: git md 21378 be"
+    exit 1
+fi
+
+PR_NUMBER=$1
+REPO_CODE="${2:-fe}"
+
+case "$REPO_CODE" in
+    fe)
+        REPO="streemau/frontend"
+        ;;
+    be)
+        REPO="streemau/backend"
+        ;;
+    *)
+        echo "Error: Unknown repo code '$REPO_CODE'"
+        echo "Valid codes: fe (frontend), be (backend)"
+        exit 1
+        ;;
+esac
+
+OUTPUT_FILE="${PR_NUMBER}.md"
+
+echo "Fetching PR #${PR_NUMBER} from ${REPO}..."
+
+# Get PR metadata
+TITLE=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json title --jq '.title')
+BODY=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json body --jq '.body')
+AUTHOR=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json author --jq '.author.login')
+CREATED_AT=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json createdAt --jq '.createdAt')
+UPDATED_AT=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json updatedAt --jq '.updatedAt')
+URL=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json url --jq '.url')
+
+echo "Fetching diff..."
+DIFF=$(gh pr diff "$PR_NUMBER" --repo "$REPO")
+
+echo "Creating ${OUTPUT_FILE}..."
+cat > "$OUTPUT_FILE" <<EOF
+# PR ${PR_NUMBER}: ${TITLE}
+
+**Author**: @${AUTHOR}
+**Created**: ${CREATED_AT}
+**Last Updated**: ${UPDATED_AT}
+**URL**: ${URL}
+
+## Description
+
+${BODY}
+
+## Diff
+
+\`\`\`diff
+${DIFF}
+\`\`\`
+EOF
+
+echo "Successfully created ${OUTPUT_FILE}"

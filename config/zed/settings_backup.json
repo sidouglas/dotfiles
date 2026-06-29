@@ -1,4 +1,7 @@
 {
+  "git_panel": {
+    "dock": "left"
+  },
   "prettier": {
     "allowed": true
   },
@@ -15,12 +18,15 @@
     }
   },
   "agent": {
-    "play_sound_when_agent_done": true,
+    "dock": "right",
+    "tool_permissions": {
+      "default": "allow"
+    },
+    "play_sound_when_agent_done": "always",
     "inline_assistant_model": {
       "provider": "zed.dev",
       "model": "claude-sonnet-4"
     },
-    "always_allow_tool_actions": true,
     "default_model": {
       "model": "claude-sonnet-4",
       "provider": "zed.dev"
@@ -37,8 +43,7 @@
     "dock": "right"
   },
   "features": {
-    "copilot": true,
-    "edit_prediction_provider": "zed"
+    "copilot": true
   },
   "edit_predictions": {
     "provider": "copilot"
@@ -66,14 +71,7 @@
     "**/report"
   ],
   "format_on_save": "on",
-  "formatter": [
-      {
-        "code_actions": {
-          "source.fixAll.eslint": true
-        }
-      },
-      "prettier"
-    ],
+  "formatter": [{ "code_action": "source.fixAll.eslint" }, "prettier"],
   "indent_guides": {
     "coloring": "indent_aware",
     "enabled": true
@@ -118,7 +116,7 @@
       "show": "never"
     }
   },
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "scrollbar": {
     "git_diff": true,
     "show": "never"

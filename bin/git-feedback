@@ -18,7 +18,7 @@ else
   PR_NUMBER=$1
 fi
 
-OUTPUT_FILE=${2:-~/Desktop/feedback.md}
+OUTPUT_FILE=${2:-~/Desktop/feedback-$PR_NUMBER.md}
 
 # Infer repo owner/name from git remote
 REPO=$(gh repo view --json nameWithOwner --jq '.nameWithOwner' 2>/dev/null)

@@ -1,0 +1,57 @@
+#!/bin/bash
+
+git_specs() {
+    local base_branch="${1:-master}"
+
+    # Find merge base so we diff only what this branch changed
+    local merge_base
+    merge_base=$(git merge-base HEAD "origin/$base_branch" 2>/dev/null \
+        || git merge-base HEAD "$base_branch" 2>/dev/null)
+
+    if [[ -z "$merge_base" ]]; then
+        echo "Error: could not find merge base against '$base_branch'." >&2
+        return 1
+    fi
+
+    # Collect changed spec files (Added, Modified, Renamed)
+    local spec_files
+    spec_files=$(git diff --name-only --diff-filter=AMR "$merge_base"..HEAD \
+        | grep -E '\.spec\.' )
+
+    if [[ -z "$spec_files" ]]; then
+        echo "No spec files changed compared to $base_branch."
+        return 0
+    fi
+
+    echo "Running specs changed since $base_branch:"
+    echo "$spec_files" | while IFS= read -r file; do
+        echo "  $file"
+    done
+    echo ""
+
+    # Run each spec file from the repo root in parallel
+    local repo_root
+    repo_root=$(git rev-parse --show-toplevel)
+
+    local pids=()
+    local files=()
+
+    while IFS= read -r file; do
+        npm t "$repo_root/$file" &
+        pids+=($!)
+        files+=("$file")
+    done <<< "$spec_files"
+
+    # Wait for all and collect exit codes
+    local exit_code=0
+    for i in "${!pids[@]}"; do
+        if ! wait "${pids[$i]}"; then
+            echo "FAILED: ${files[$i]}" >&2
+            exit_code=1
+        fi
+    done
+
+    return $exit_code
+}
+
+git_specs "$@"

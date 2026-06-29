@@ -202,6 +202,9 @@
     {
       "directory": "/Users/simon.douglas/github/streem/frontend-feature",
     },
+    {
+      "directory": "/Users/simon.douglas/github/streem/backstop",
+    },
   ],
   "ruby-spec-runner.changeDirectoryToWorkspaceRoot": false,
   "ruby.rubocop.configFilePath": "~/.rbenv/shims/",

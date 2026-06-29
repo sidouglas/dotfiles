@@ -8,6 +8,9 @@ export DOTFILES="$HOME/.dotfiles"
 export HOMEBREW_DIR="$DOTFILES/$HOSTNAME"
 export HOMEBREW_BUNDLE_FILE="$HOMEBREW_DIR/Brewfile"
 
+LAUNCH_EDITOR="/opt/homebrew/bin/code"
+EDITOR="/usr/bin/vim"
+
 # Adjust History Variables & Options
 
 [[ -z $HISTFILE ]] && HISTFILE="$HOME/.zsh_history"
@@ -43,6 +46,7 @@ bindkey "ç" fzf-cd-widget # option + c
 bindkey " " magic-space
 
 alias als='alias | grep'
+alias av='agentsview serve --port 9090'
 alias android="scrcpy"                      #use https://github.com/Genymobile/scrcpy
 alias brave='/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser'
 alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
@@ -308,5 +312,3 @@ bindkey -s '^Xgc' 'git commit -m ""\C-b'
 bindkey -s '^Xgp' 'git push origin '
 bindkey -s '^Xgs' 'git status\n'
 bindkey -s '^Xgl' 'git log --oneline -n 10\n'
-
-export EDITOR="code --wait"

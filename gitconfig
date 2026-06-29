@@ -107,7 +107,6 @@
   # Show a formatted and colored log.
   l = log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=format-local:'%Y-%m-%d %H:%M:%S AEDT'
   # list all aliases
-  la = "!git config -l | grep alias | cut -c 7-"
   # Copy the full SHA-1 hash of the most recent commit to the clipboard and print it.
 	last = "!f() { SHA=$(git rev-parse HEAD); echo \"$SHA\" | pbcopy; echo \"$SHA\"; }; f"
   # Amend the last commit, opening the editor with verbose output.
@@ -253,11 +252,10 @@
       git merge --squash $source_branch && \
       git commit -m \"Squashed version of $source_branch\"; \
   }; f"
-	fcommits = "!f() {\n    base=${1:-master}\n    git log --pretty=format:\"- %s\" --grep=\"feature:\" $(git merge-base HEAD $base)..HEAD | pbcopy\n    echo \"Feature commits copied to clipboard!\"\n}; f"
+	fcommits = "!f() {\n    base=${1:-master}\n    git log --pretty=format:\"- %s\" $(git merge-base HEAD origin/$base)..HEAD | pbcopy\n    echo \"Feature commits copied to clipboard!\"\n}; f"
 
   [core]
     mergeoptions = --no-edit
-    editor = vi
     excludesfile = /Users/simon.douglas/.gitignore_global
     pager = delta
   [push]
