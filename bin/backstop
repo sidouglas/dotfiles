@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# backstop: open ~/github/streem/backstop in a wezterm tab with a 3-pane layout
+# (half left, two quarters stacked right).
+
+set -euo pipefail
+
+project="$HOME/github/streem/backstop"
+title="🟠 BACKSTOP"
+
+command -v wezterm >/dev/null || { echo "wezterm not on PATH" >&2; exit 1; }
+
+[[ -d "$project" ]] || { echo "project path does not exist: $project" >&2; exit 1; }
+
+cwd="$project"
+
+left=$(wezterm cli spawn --cwd "$cwd")
+tab_id=$(wezterm cli list | awk -v p="$left" '$3==p {print $2; exit}')
+
+[[ -n "$tab_id" ]] || { echo "could not resolve tab id for pane $left" >&2; exit 1; }
+
+wezterm cli set-tab-title --tab-id "$tab_id" "$title"
+
+right_top=$(wezterm cli split-pane --pane-id "$left" --cwd "$cwd" --right --percent 50)
+wezterm cli split-pane --pane-id "$right_top" --cwd "$cwd" --bottom --percent 50 >/dev/null
+
+wezterm cli activate-tab --tab-id "$tab_id"
