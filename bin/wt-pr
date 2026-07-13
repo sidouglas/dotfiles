@@ -36,16 +36,15 @@ cd "$project"
 
 git rev-parse --git-dir >/dev/null 2>&1 || { echo "$project is not a git repo" >&2; exit 1; }
 
-if [[ -n "$(git status --porcelain)" ]]; then
-  echo "$project is dirty — commit or stash before running $(basename "$0")" >&2
-  exit 1
-fi
-
 pr_branch=$(gh pr view "$pr" --json headRefName -q .headRefName)
 [[ -n "$pr_branch" ]] || { echo "could not resolve branch for PR #$pr" >&2; exit 1; }
 
 current_branch=$(git branch --show-current)
 if [[ "$current_branch" != "$pr_branch" ]]; then
+  if [[ -n "$(git status --porcelain)" ]]; then
+    echo "$project is dirty — commit or stash before running $(basename "$0")" >&2
+    exit 1
+  fi
   gh pr checkout "$pr"
 fi
 

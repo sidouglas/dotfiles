@@ -64,6 +64,6 @@ gh api graphql \
 echo "Feedback saved to: $OUTPUT_FILE"
 
 # Copy message to clipboard
-echo "we have received feedback on this branch and must make changes: $OUTPUT_FILE. After committing each fix, reply to the corresponding reviewer comment with the format \`Fixed in <HASH> - <short description>\` using: gh api repos/$REPO/pulls/$PR_NUMBER/comments -f body=\"Fixed in <HASH> - <description>\" -F in_reply_to=<COMMENT_ID>" | pbcopy
+echo "we have received feedback on this branch and must make changes: $OUTPUT_FILE. After committing each fix, reply to the corresponding reviewer comment with the format \`Fixed in <HASH> - <short description>\` using: gh api repos/$REPO/pulls/$PR_NUMBER/comments -f body=\"Fixed in <HASH> - <description>\" -F in_reply_to=<COMMENT_ID>. Each fix is 1 commit. All fixes are pushed when the entire task is done." | pbcopy
 
 echo "✓ Message copied to clipboard!"

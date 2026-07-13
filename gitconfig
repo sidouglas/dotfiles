@@ -258,6 +258,7 @@
     mergeoptions = --no-edit
     excludesfile = /Users/simon.douglas/.gitignore_global
     pager = delta
+	editor = vim
   [push]
     useForceIfIncludes = true
   [delta]
