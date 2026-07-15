@@ -1,7 +1,9 @@
 echo 'zsh_custom loaded';
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Set Variables
+# ══════════════════════════════════════════════════════════
+# Environment
+# ══════════════════════════════════════════════════════════
 HOSTNAME=$(hostname)
 export NULLCMD=bat
 export DOTFILES="$HOME/.dotfiles"
@@ -9,22 +11,25 @@ export HOMEBREW_DIR="$DOTFILES/$HOSTNAME"
 export HOMEBREW_BUNDLE_FILE="$HOMEBREW_DIR/Brewfile"
 
 LAUNCH_EDITOR="/opt/homebrew/bin/code"
-EDITOR="/usr/bin/vim"
+export EDITOR="/usr/bin/vim"   # fallback; .zsh_shared also exports vim (loaded after this)
 
-# Adjust History Variables & Options
-
+# ══════════════════════════════════════════════════════════
+# History
+# ══════════════════════════════════════════════════════════
 [[ -z $HISTFILE ]] && HISTFILE="$HOME/.zsh_history"
-HISTSIZE=5000 # Session Memory Limit
-SAVEHIST=4000 # File Memory Limit
+HISTSIZE=5000   # session memory limit
+SAVEHIST=4000   # file memory limit
 
-setopt HIST_SAVE_NO_DUPS # Do not write a duplicate event to the history file.
+setopt HIST_SAVE_NO_DUPS      # do not write a duplicate event to the history file
 setopt histNoStore
 setopt extendedHistory
 setopt histIgnoreAllDups
-unsetopt appendHistory # explicit and unnecessary
 setopt incAppendHistoryTime
+unsetopt appendHistory
 
-# VI Mode ( https://github.com/softmoth/zsh-vim-mode?tab=readme-ov-file )
+# ══════════════════════════════════════════════════════════
+# VI mode cursors — https://github.com/softmoth/zsh-vim-mode
+# ══════════════════════════════════════════════════════════
 MODE_CURSOR_VIINS="#00ff00 blinking bar"
 MODE_CURSOR_REPLACE="$MODE_CURSOR_VIINS #ff0000"
 MODE_CURSOR_VICMD="green block"
@@ -32,8 +37,38 @@ MODE_CURSOR_SEARCH="#ff00ff steady underline"
 MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady bar"
 MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #00ffff"
 
-# Create Aliases
-alias ~="cd ~"                              # ~:            Go Home
+# ══════════════════════════════════════════════════════════
+# Keybindings
+# ══════════════════════════════════════════════════════════
+bindkey "ç" fzf-cd-widget   # option + c
+bindkey " " magic-space
+
+# Clear screen + scrollback but keep the current command buffer (^X l)
+function clear-screen-and-scrollback() {
+  echoti civis >"$TTY"
+  printf '%b' '\e[H\e[2J\e[3J' >"$TTY"
+  echoti cnorm >"$TTY"
+  zle redisplay
+}
+zle -N clear-screen-and-scrollback
+bindkey '^Xl' clear-screen-and-scrollback
+bindkey '^Xc' copy-buffer-to-clipboard
+
+# Open current command line buffer in $VISUAL/$EDITOR (^X ^E)
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
+# Text snippets — \C-b moves cursor back one position
+bindkey -s '^Xgc' 'git commit -m ""\C-b'
+bindkey -s '^Xgp' 'git push origin '
+bindkey -s '^Xgs' 'git status\n'
+bindkey -s '^Xgl' 'git log --oneline -n 10\n'
+
+# ══════════════════════════════════════════════════════════
+# Navigation
+# ══════════════════════════════════════════════════════════
+alias ~="cd ~"                              # Go home
 alias ..='cd ../'                           # Go back 1 directory level
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ...='cd ../../'                       # Go back 2 directory levels
@@ -41,62 +76,59 @@ alias .3='cd ../../../'                     # Go back 3 directory levels
 alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
+alias d='cd ~/Desktop/'
 
-bindkey "ç" fzf-cd-widget # option + c
-bindkey " " magic-space
+cd() { builtin cd "$@"; ls; }               # always list directory contents on cd
 
+# ══════════════════════════════════════════════════════════
+# Aliases
+# ══════════════════════════════════════════════════════════
 alias als='alias | grep'
 alias av='agentsview serve --port 9090'
-alias android="scrcpy"                      #use https://github.com/Genymobile/scrcpy
+alias android="scrcpy"                      # https://github.com/Genymobile/scrcpy
+alias droid='scrcpy'
 alias brave='/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser'
-alias cic='set completion-ignore-case On'   # cic:   Make tab-completion case-insensitive
-alias copilot='copilot --allow-all-tools'
+alias openb='open -na "Brave Browser" --args'
 alias mcp_chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --user-data-dir="/tmp/chrome_dev_profile"'
-alias cp='cp -v'                           # Preferred cp implementation
-alias d='cd ~/Desktop/'
+alias keyboardmaestro='/Applications/Keyboard\ Maestro.app/Contents/MacOS/keyboardmaestro'
+alias bundle='nocorrect bundle'
+alias cic='set completion-ignore-case On'   # make tab-completion case-insensitive
+alias copilot='copilot --allow-all-tools'
+alias cp='cp -v'                            # preferred cp
+alias mv='mv -iv'                           # preferred mv
+alias mkdir='mkdir -pv'                     # preferred mkdir
+alias rm=trash                              # move to trash instead of deleting
+alias less='less -FSRXc'                    # preferred less
+alias ls='lsd -la'
+alias man=batman
+alias python='/opt/homebrew/bin/python3'
 alias dockerkill='docker kill $(docker ps -q)'
 alias dockerstop='docker ps -aq | xargs docker stop'
-alias docx2pdf='/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf --outdir . "$1"'
-alias droid='scrcpy'
-alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
+alias docx2pdf='/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf --outdir .'
+alias fix_stty='stty sane'                  # restore terminal settings when screwed up
 alias flushdns="sudo killall -HUP mDNSResponder"
 alias ftrail='<<<${(F)fpath}'
 alias gr="git recentco"
 alias hosts="sudo vim /etc/hosts"
-alias keyboardmaestro='/Applications/Keyboard\ Maestro.app/Contents/MacOS/keyboardmaestro'
-alias less='less -FSRXc'                    # Preferred 'less' implementation
-alias ls='lsd -la'
-alias man=batman
-alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
-alias mv='mv -iv'                           # Preferred 'mv' implementation
-alias openb='open -na "Brave Browser" --args "$1"'
-alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
+alias path='echo -e ${PATH//:/\\n}'         # echo all executable paths
 alias prune_node="find . -name node_modules -type d -prune -exec rm -rf '{}' +"
-alias python='/opt/homebrew/bin/python3'
-alias reload="source ~/.zshrc"              # reload:       Reload the shell (i.e. itself)
-alias rm=trash                              # rm:           Trash (move to trash)
-alias tab="wezterm cli set-tab-title $1"
-alias xx="exit; exit"                             # xx:           Exit shell
-
-setdate() {
-    if [ $# -ne 2 ]; then
-        echo "Usage: setdate \"MM/DD/YYYY HH:MM:SS\" \"filename\""
-        echo "Example: setdate \"05/26/2026 00:00:00\" \"myfile.pdf\""
-        return 1
-    fi
-    SetFile -d "$1" "$2"
-}
-
-alias show_options='shopt'                  # Show_options: display bash options settings
+alias reload="source ~/.zshrc"              # reload the shell
+alias show_options='shopt'                  # display shell option settings
 alias si="ioreg -l -w 0 | grep SecureInput"
 alias spotifyfix='brew uninstall --cask spotify && brew cleanup && launchctl remove com.spotify.client.startuphelper && brew install --cask spotify'
+alias tab="wezterm cli set-tab-title"
 alias wez="code ~/.wezterm.lua"
 alias zshrc="code ~/.dotfiles/zshrc"
+alias xx="exit; exit"                       # exit shell
+alias lh='fc -RI; echo "loaded and showing..."; history;'  # load history into shell
 
-# FZF
-alias sd='cd "$(fd --type d --exclude Applications --exclude Library --exclude Movies | fzf)"' # search for directories
+# ══════════════════════════════════════════════════════════
+# FZF search
+# ══════════════════════════════════════════════════════════
+# search for directories
+alias sd='cd "$(fd --type d --exclude Applications --exclude Library --exclude Movies | fzf)"'
 
-# search for code
+# search code contents, open the pick in VS Code at the matched line
 ss() {
     local RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case"
     local INITIAL_QUERY="${1:-}"
@@ -133,30 +165,7 @@ ss_spec() { ss "$1" "*.spec.{ts,js}" }
 ss_ts() { ss "$1" "*.{ts,tsx}" }
 ss_vue() { ss "$1" "*.vue" }
 
-ss_ts() {
-    RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case -g '*.ts' -g '*.tsx'"
-    INITIAL_QUERY="${1:-}"
-
-    FZF_DEFAULT_COMMAND="$RG_PREFIX '$INITIAL_QUERY'"
-    CHOICE=$(fzf \
-        --bind "change:reload:$RG_PREFIX {q} || true" \
-        --sort \
-        --multi \
-        --preview 'rg --pretty --context 10 --color=always {q} $(echo {} | cut -d: -f1)' \
-        --ansi \
-        --phony \
-        --query "$INITIAL_QUERY" \
-        --preview-window '~3'
-    )
-
-    if [ -n "$CHOICE" ]; then
-        FILE=$(echo "$CHOICE" | cut -d: -f1)
-        LINE=$(echo "$CHOICE" | cut -d: -f2)
-        code -g "$FILE:$LINE"
-    fi
-}
-
-# search for files by regex with dynamic updates
+# search for files by regex with dynamic updates, open the pick
 sf() {
     local INITIAL_PATTERN="${1:-}"
 
@@ -171,102 +180,20 @@ sf() {
     fi
 }
 
-alias bundle='nocorrect bundle'
-
-# Laravel
-alias sail="./vendor/bin/sail"
-alias sailrebuild="sail build --no-cache"
-alias samfs="sail artisan migrate:fresh --seed"
-alias sart="sail artisan"
-alias sartc="sail artisan cache:clear"
-
-cd() { builtin cd "$@"; ls; }               # Always list directory contents upon 'cd'
-# Define the function
-
-function oo() {
-  if [ -z "$1" ]; then
-    open .
-  else
-    open "$1"
-  fi
-}
-
-# Load history into shell (shareHistory alternative)
-alias lh='fc -RI; echo "loaded and showing..."; history;'
-
-# Write Handy Functions
-function zh() {
-  if [[ "$1" == "-"* && "$1" != "" ]]; then
-    pattern="${1#-}"
-    grep -v "$pattern" ~/.zsh_history > ~/.zsh_history.tmp && mv ~/.zsh_history.tmp ~/.zsh_history
-    echo "Removed entries containing '$pattern' from ~/.zsh_history"
-  else
-    command vim ~/.zsh_history
-  fi
-}
-
-jq_sort() {
-    local input_file="$1"
-    if [[ -z "$input_file" ]]; then
-        echo "Usage: jq_sort <input_file>"
-        return 1
+# ══════════════════════════════════════════════════════════
+# Git
+# ══════════════════════════════════════════════════════════
+git() {
+    if [[ "$*" =~ (push.*-f|push.*--force|-f.*push|--force.*push) ]]; then
+        echo "No! Use --force-with-lease instead (git pwl)"
+    else
+        command git "$@"
     fi
-
-    local temp_file=$(mktemp)
-    jq -S '.' "$input_file" > "$temp_file" && mv "$temp_file" "$input_file"
 }
 
-function mkcd() { mkdir -p "$@" && cd "$_"; }
-function trash () { command mv "$@" ~/.Trash ; }
-
-# MOV files
-function ffmov () { ffmpeg -i "$1" -vcodec h264 -acodec aac "${2:-output.mp4}" }
-function ffmov_no_audio () { ffmpeg -i "$1" -vcodec h264 -an "${2:-output-no-audio.mp4}"}
-function ffwebm () { ffmpeg -i "$1" -movflags faststart -profile:v high -level 4.2 "${2:-output.mp4}" }
-function m4amp3 () { ffmpeg -i "$1" -codec:v copy -codec:a libmp3lame -q:a 2 "${2:-output.mp3}" }
-
-function killname() {  if [ "$1" = "" ]; then
-     echo "Nothing to do"
-  else
-    ps -ej | grep "$1"
-    ps -ej | grep "$1" | awk '{print $2}' | xargs kill -s SIGINT
-  fi
-}
-
-function kp (){ kill -9 $(lsof -i:"$1" -t); }
-function hist_remove() {
-    local search_string="$1"
-    if [[ -z "$search_string" ]]; then
-        echo "Please provide a search string."
-        return 1
-    fi
-
-    # Create a temporary file
-    local temp_file=$(mktemp)
-
-    # Filter out lines containing the search string
-    grep -v "$search_string" ~/.zsh_history > "$temp_file"
-
-    # Replace the original file with the filtered content
-    mv "$temp_file" ~/.zsh_history
-
-    echo "Lines containing '$search_string' have been removed from ~/.zsh_history"
-}
-
-# Clear screen but keep current command buffer
-function clear-screen-and-scrollback() {
-  echoti civis >"$TTY"
-  printf '%b' '\e[H\e[2J\e[3J' >"$TTY"
-  echoti cnorm >"$TTY"
-  zle redisplay
-}
-
-zle -N clear-screen-and-scrollback
-
-bindkey '^Xl' clear-screen-and-scrollback
-bindkey '^Xc' copy-buffer-to-clipboard
-
-# Auto-use correct Node version with nvm
+# ══════════════════════════════════════════════════════════
+# Node / nvm — auto-use correct version on cd
+# ══════════════════════════════════════════════════════════
 autoload -U add-zsh-hook
 load-nvmrc() {
   if [[ -f .nvmrc ]]; then
@@ -274,15 +201,28 @@ load-nvmrc() {
   fi
 }
 add-zsh-hook chpwd load-nvmrc
-load-nvmrc  # This line runs it immediately when shell starts
+load-nvmrc  # run immediately on shell start
 
+# ══════════════════════════════════════════════════════════
 # Brew
+# ══════════════════════════════════════════════════════════
 alias brew_outdated="brew outdated --cask --greedy"
 alias brew_permissions="sudo chown -R $(whoami) $(brew --prefix)/*"
 alias brew_upgrade_casks='for cask in $(brew outdated --cask --greedy); do brew upgrade --cask "$cask"; done'
 alias brewdump="mkdir -p $HOMEBREW_DIR && cd $HOMEBREW_DIR && brew bundle dump --force --describe && bat Brewfile"
 
-# AnkiConnect
+# ══════════════════════════════════════════════════════════
+# Laravel / Sail
+# ══════════════════════════════════════════════════════════
+alias sail="./vendor/bin/sail"
+alias sailrebuild="sail build --no-cache"
+alias samfs="sail artisan migrate:fresh --seed"
+alias sart="sail artisan"
+alias sartc="sail artisan cache:clear"
+
+# ══════════════════════════════════════════════════════════
+# Anki (AnkiConnect)
+# ══════════════════════════════════════════════════════════
 alias anki_rm='function _anki_delete() { curl -X POST localhost:8765 -d "{\"action\": \"deleteNotes\", \"version\": 6, \"params\": {\"notes\": [$1]}}"; }; _anki_delete'
 
 # anki_tgfe "Your Title" "Your Back Content" "https://your-url.com"
@@ -294,21 +234,94 @@ alias anki_tgfe='function _anki_create() {
   curl -X POST localhost:8765 -d "{\"action\": \"addNote\", \"version\": 6, \"params\": {\"note\": {\"deckName\": \"The Great Frontend\", \"modelName\": \"Basic\", \"fields\": {\"Front\": \"${front}\", \"Back\": \"${back}\", \"url\": \"${url}\"}, \"options\": {\"cardType\": \"tgfe\"}}}}"
 }; _anki_create'
 
+# ══════════════════════════════════════════════════════════
+# Media (ffmpeg)
+# ══════════════════════════════════════════════════════════
+function ffmov () { ffmpeg -i "$1" -vcodec h264 -acodec aac "${2:-output.mp4}" }
+function ffmov_no_audio () { ffmpeg -i "$1" -vcodec h264 -an "${2:-output-no-audio.mp4}"}
+function ffwebm () { ffmpeg -i "$1" -movflags faststart -profile:v high -level 4.2 "${2:-output.mp4}" }
+function m4amp3 () { ffmpeg -i "$1" -codec:v copy -codec:a libmp3lame -q:a 2 "${2:-output.mp3}" }
 
-git() {
-    if [[ "$*" =~ (push.*-f|push.*--force|-f.*push|--force.*push) ]]; then
-        echo "No! Use --force-with-lease instead (git pwl)"
-    else
-        command git "$@"
-    fi
+# ══════════════════════════════════════════════════════════
+# Utility functions
+# ══════════════════════════════════════════════════════════
+function mkcd() { mkdir -p "$@" && cd "$_"; }
+function trash () { command mv "$@" ~/.Trash ; }
+
+# open file/dir (or cwd if no arg)
+function oo() {
+  if [ -z "$1" ]; then
+    open .
+  else
+    open "$1"
+  fi
 }
 
-# -------------------------------------------
-# Hotkey Insertions - Text Snippets
-# -------------------------------------------
-# Insert git commit template (Ctrl+X, G, C)
-# \C-b moves cursor back one position
-bindkey -s '^Xgc' 'git commit -m ""\C-b'
-bindkey -s '^Xgp' 'git push origin '
-bindkey -s '^Xgs' 'git status\n'
-bindkey -s '^Xgl' 'git log --oneline -n 10\n'
+# set a file's creation date — setdate "MM/DD/YYYY HH:MM:SS" "filename"
+setdate() {
+    if [ $# -ne 2 ]; then
+        echo "Usage: setdate \"MM/DD/YYYY HH:MM:SS\" \"filename\""
+        echo "Example: setdate \"05/26/2026 00:00:00\" \"myfile.pdf\""
+        return 1
+    fi
+    SetFile -d "$1" "$2"
+}
+
+# sort a JSON file in place by key
+jq_sort() {
+    local input_file="$1"
+    if [[ -z "$input_file" ]]; then
+        echo "Usage: jq_sort <input_file>"
+        return 1
+    fi
+
+    local temp_file=$(mktemp)
+    jq -S '.' "$input_file" > "$temp_file" && mv "$temp_file" "$input_file"
+}
+
+# generate a QR code PNG — qr "https://example.com" [out.png]
+qr() {
+    if [[ -z "$1" ]]; then
+        echo "usage: qr <text> [output.png]"
+        return 1
+    fi
+    qrencode -o "${2:-code.png}" "$1" -s 8
+}
+
+# kill every process whose name matches the argument
+function killname() {
+  if [ "$1" = "" ]; then
+     echo "Nothing to do"
+  else
+    ps -ej | grep "$1"
+    ps -ej | grep "$1" | awk '{print $2}' | xargs kill -s SIGINT
+  fi
+}
+
+# kill whatever is listening on a port — kp 3000
+function kp (){ kill -9 $(lsof -i:"$1" -t); }
+
+# edit ~/.zsh_history in vim, or `zh -pattern` to strip matching lines
+function zh() {
+  if [[ "$1" == "-"* && "$1" != "" ]]; then
+    pattern="${1#-}"
+    grep -v "$pattern" ~/.zsh_history > ~/.zsh_history.tmp && mv ~/.zsh_history.tmp ~/.zsh_history
+    echo "Removed entries containing '$pattern' from ~/.zsh_history"
+  else
+    command vim ~/.zsh_history
+  fi
+}
+
+# remove all history lines containing a string
+function hist_remove() {
+    local search_string="$1"
+    if [[ -z "$search_string" ]]; then
+        echo "Please provide a search string."
+        return 1
+    fi
+
+    local temp_file=$(mktemp)
+    grep -v "$search_string" ~/.zsh_history > "$temp_file"
+    mv "$temp_file" ~/.zsh_history
+    echo "Lines containing '$search_string' have been removed from ~/.zsh_history"
+}
