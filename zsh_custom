@@ -85,6 +85,7 @@ cd() { builtin cd "$@"; ls; }               # always list directory contents on 
 # ══════════════════════════════════════════════════════════
 # als <pattern> — find matching aliases AND functions (case-insensitive).
 # No args lists everything. See a function's body with:  functions <name>
+unalias als 2>/dev/null   # als used to be an alias; drop it so reload can redefine it as a function
 als() {
   emulate -L zsh
   local q="$*"
