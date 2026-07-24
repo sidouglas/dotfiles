@@ -83,16 +83,40 @@ cd() { builtin cd "$@"; ls; }               # always list directory contents on 
 # ══════════════════════════════════════════════════════════
 # Aliases
 # ══════════════════════════════════════════════════════════
-# als <pattern> — find matching aliases AND functions (case-insensitive).
-# No args lists everything. See a function's body with:  functions <name>
+# als [query] — fuzzy-browse aliases AND functions in fzf, with a preview
+# pane showing each one's definition/body.
+#   enter  → put the selected name on the command line (run/edit it)
+#   ctrl-y → copy the name to the clipboard
+# Falls back to a plain grep listing when fzf isn't installed.
 unalias als 2>/dev/null   # als used to be an alias; drop it so reload can redefine it as a function
 als() {
   emulate -L zsh
-  local q="$*"
-  print -P "%F{cyan}── aliases ──%f"
-  alias | grep -i -- "$q"
-  print -P "%F{cyan}── functions ──%f"
-  print -l -- ${(ko)functions} | grep -v '^_' | grep -i -- "$q"
+  if (( ! $+commands[fzf] )); then           # no fzf → plain grep listing
+    local q="$*"
+    print -P "%F{cyan}── aliases ──%f";   alias | grep -i -- "$q"
+    print -P "%F{cyan}── functions ──%f"; print -l -- ${(ko)functions} | grep -v '^_' | grep -i -- "$q"
+    return
+  fi
+  local tmp; tmp="$(mktemp -d)" || return
+  local -a lines; local n i=0
+  for n in ${(ko)aliases}; do               # each alias → preview file $tmp/$i
+    (( ++i )); alias -- "$n" > "$tmp/$i"
+    lines+=( "$i"$'\t'"alias"$'\t'"$n" )
+  done
+  for n in ${(ko)functions}; do             # each function (skip _completions)
+    [[ $n == _* ]] && continue
+    (( ++i )); functions -- "$n" > "$tmp/$i"
+    lines+=( "$i"$'\t'"func "$'\t'"$n" )
+  done
+  local out
+  out=$(print -l -- $lines | fzf \
+    --delimiter=$'\t' --with-nth=2,3 --nth=2,3 --query="$*" \
+    --height=90% --reverse --border --prompt='als> ' \
+    --preview="cat -- $tmp/{1}" --preview-window='right,60%,wrap' \
+    --header='enter: put name on command line   ctrl-y: copy name' \
+    --bind="ctrl-y:execute-silent(printf %s {3} | pbcopy)")
+  command rm -rf "$tmp"                            # command rm: bypass the trash-mv alias
+  [[ -n $out ]] && print -z -- "${out##*$'\t'}"   # push chosen name onto the command line
 }
 alias av='agentsview serve --port 9090'
 alias android="scrcpy"                      # https://github.com/Genymobile/scrcpy
