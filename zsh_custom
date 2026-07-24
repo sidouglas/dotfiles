@@ -83,7 +83,16 @@ cd() { builtin cd "$@"; ls; }               # always list directory contents on 
 # ══════════════════════════════════════════════════════════
 # Aliases
 # ══════════════════════════════════════════════════════════
-alias als='alias | grep'
+# als <pattern> — find matching aliases AND functions (case-insensitive).
+# No args lists everything. See a function's body with:  functions <name>
+als() {
+  emulate -L zsh
+  local q="$*"
+  print -P "%F{cyan}── aliases ──%f"
+  alias | grep -i -- "$q"
+  print -P "%F{cyan}── functions ──%f"
+  print -l -- ${(ko)functions} | grep -v '^_' | grep -i -- "$q"
+}
 alias av='agentsview serve --port 9090'
 alias android="scrcpy"                      # https://github.com/Genymobile/scrcpy
 alias droid='scrcpy'
