@@ -90,7 +90,7 @@ alias droid='scrcpy'
 alias brave='/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser'
 alias openb='open -na "Brave Browser" --args'
 alias mcp_chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --user-data-dir="/tmp/chrome_dev_profile"'
-alias keyboardmaestro='/Applications/Keyboard\ Maestro.app/Contents/MacOS/keyboardmaestro'
+alias maestro='/Applications/Keyboard\ Maestro.app/Contents/MacOS/keyboardmaestro'
 alias bundle='nocorrect bundle'
 alias cic='set completion-ignore-case On'   # make tab-completion case-insensitive
 alias copilot='copilot --allow-all-tools'
@@ -325,3 +325,63 @@ function hist_remove() {
     mv "$temp_file" ~/.zsh_history
     echo "Lines containing '$search_string' have been removed from ~/.zsh_history"
 }
+
+# ══════════════════════════════════════════════════════════
+# YouTube / yt-dlp
+# ══════════════════════════════════════════════════════════
+# Default download location for the helpers below
+export YTDL_DIR="$HOME/Downloads"
+
+# Bare passthrough — best merged quality, sensible defaults
+alias yt='yt-dlp -o "$YTDL_DIR/%(title)s.%(ext)s"'
+# Update / housekeeping (installed via brew, so upgrade through brew)
+alias ytup='brew upgrade yt-dlp'
+alias ytv='yt-dlp --version'
+# List available formats for a URL
+alias ytf='yt-dlp -F'
+
+# Best-quality video + audio muxed into an mp4
+function ytmp4() {
+  yt-dlp -f 'bv*+ba/b' --merge-output-format mp4 \
+    -o "$YTDL_DIR/%(title)s.%(ext)s" "$@"
+}
+
+# Audio only → mp3, best quality, with metadata + embedded cover art
+# -f ba overrides the global config's video format so no video is fetched
+function ytmp3() {
+  yt-dlp -f 'ba/bestaudio/best' -x --audio-format mp3 --audio-quality 0 \
+    --embed-metadata --embed-thumbnail \
+    -o "$YTDL_DIR/%(title)s.%(ext)s" "$@"
+}
+
+# Best audio in its ORIGINAL codec (opus/m4a) — no re-encoding, no quality loss
+function ytaudio() {
+  yt-dlp -f 'ba/bestaudio/best' -x --audio-quality 0 \
+    --embed-metadata --embed-thumbnail \
+    -o "$YTDL_DIR/%(title)s.%(ext)s" "$@"
+}
+
+# Full-fat: best mp4 with subs, chapters, metadata and thumbnail embedded
+function ytfull() {
+  yt-dlp -f 'bv*+ba/b' --merge-output-format mp4 \
+    --embed-subs --embed-metadata --embed-thumbnail --embed-chapters \
+    --sub-langs "en.*" \
+    -o "$YTDL_DIR/%(title)s.%(ext)s" "$@"
+}
+
+# Download a whole playlist into its own folder, numbered
+function ytpl() {
+  yt-dlp -f 'bv*+ba/b' --merge-output-format mp4 \
+    -o "$YTDL_DIR/%(playlist_title)s/%(playlist_index)02d - %(title)s.%(ext)s" "$@"
+}
+
+# Playlist as mp3 audio into its own folder
+function ytplmp3() {
+  yt-dlp -f 'ba/bestaudio/best' -x --audio-format mp3 --audio-quality 0 \
+    --embed-metadata --embed-thumbnail \
+    -o "$YTDL_DIR/%(playlist_title)s/%(playlist_index)02d - %(title)s.%(ext)s" "$@"
+}
+
+# Cap resolution, e.g.  yt1080 <url>  /  yt720 <url>
+function yt1080() { yt-dlp -f 'bv*[height<=1080]+ba/b[height<=1080]' --merge-output-format mp4 -o "$YTDL_DIR/%(title)s.%(ext)s" "$@" }
+function yt720()  { yt-dlp -f 'bv*[height<=720]+ba/b[height<=720]'   --merge-output-format mp4 -o "$YTDL_DIR/%(title)s.%(ext)s" "$@" }

@@ -1,0 +1,34 @@
+# ~/.config/yt-dlp/config
+# Global defaults for yt-dlp. Explicit flags on the command line (and in the
+# yt*/ytmp* shell functions) override anything set here.
+
+# --- Output ---------------------------------------------------------------
+# Default download location + filename template
+-o ~/Downloads/%(title)s.%(ext)s
+# Keep filenames filesystem-safe / cross-platform
+--restrict-filenames
+# Don't clobber existing downloads
+--no-overwrites
+
+# --- Quality --------------------------------------------------------------
+# Best video + best audio, fall back to best single file
+-f bv*+ba/b
+# Prefer mp4 container when merging
+--merge-output-format mp4
+
+# --- Niceties -------------------------------------------------------------
+# Embed metadata, chapters and cover/thumbnail where the format allows
+--embed-metadata
+--embed-chapters
+--embed-thumbnail
+# Save any subtitles alongside (English variants), don't fail if none exist
+--sub-langs en.*
+--embed-subs
+
+# --- Reliability ----------------------------------------------------------
+# Retry more aggressively on flaky connections; resume partial downloads
+--retries 10
+--fragment-retries 10
+--continue
+# Skip a video that errors instead of aborting a whole batch/playlist
+--ignore-errors
