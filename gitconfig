@@ -143,6 +143,30 @@
   # gh github aliases
   # View the current branch's pull request in the browser.
   pr = !gh pr view --web
+  # Pick a deploy-preview link for the current branch's PR (fzf menu) and open it.
+  preview = "!f() { \
+      n=$(gh pr view --json number --jq .number); \
+      if [ -z \"$n\" ]; then echo 'No PR for current branch'; return 1; fi; \
+      url=$(printf '%s\\t%s\\n' \
+        'Desktop  · streem.com.au'  \"https://deploy-preview-$n.desktop.previews.streem.com.au/\" \
+        'Admin    · streem.com.au'  \"https://deploy-preview-$n.admin.previews.streem.com.au/\" \
+        'Mobile   · streem.com.au'  \"https://deploy-preview-$n.mobile.previews.streem.com.au/\" \
+        'Share    · streem.com.au'  \"https://deploy-preview-$n--share-streem-au.netlify.app/\" \
+        'Storybook'                 \"https://deploy-preview-$n--storybook-streem-au.netlify.app/\" \
+        'Desktop  · cision.one'     \"https://deploy-preview-$n.desktop.previews.cision.one/\" \
+        'Mobile   · cision.one'     \"https://deploy-preview-$n.mobile.previews.cision.one/\" \
+        'Share    · cision.one'     \"https://deploy-preview-$n--share-cision-one.netlify.app/\" \
+        | fzf --delimiter='\\t' --with-nth=1 --header=\"PR #$n — open preview\" --preview 'printf %s {2}' --preview-window=down:2:wrap \
+        | cut -f2); \
+      [ -n \"$url\" ] && { open \"$url\" 2>/dev/null || xdg-open \"$url\" 2>/dev/null || start \"$url\"; }; \
+    }; f"
+  # Open the Storybook deploy-preview for the current branch's PR.
+  story = "!f() { \
+      n=$(gh pr view --json number --jq .number); \
+      if [ -z \"$n\" ]; then echo 'No PR for current branch'; return 1; fi; \
+      url=\"https://deploy-preview-$n--storybook-streem-au.netlify.app/\"; \
+      open \"$url\" 2>/dev/null || xdg-open \"$url\" 2>/dev/null || start \"$url\"; \
+    }; f"
 	# Interactively select a pull request with fzf and check it out locally.
 	prco = "!PR_NUMBER=$(gh pr list --limit 50 | fzf --preview \"gh pr view {1}\" | awk \"{print \\$1}\") && if [ -n \"$PR_NUMBER\" ]; then gh pr checkout $PR_NUMBER; else echo \"No PR selected\"; fi"
   # NOTE: This alias is recursive. It likely should be '!gh pr diff'.

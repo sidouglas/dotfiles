@@ -118,7 +118,7 @@ als() {
   command rm -rf "$tmp"                            # command rm: bypass the trash-mv alias
   [[ -n $out ]] && print -z -- "${out##*$'\t'}"   # push chosen name onto the command line
 }
-alias av='agentsview serve --port 9090'
+alias av='tab "🕵🏻‍♂️ AGENTS" && agentsview serve --port 9090'
 alias android="scrcpy"                      # https://github.com/Genymobile/scrcpy
 alias droid='scrcpy'
 alias brave='/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser'

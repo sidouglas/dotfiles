@@ -163,3 +163,9 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Re-assert rbenv shims ahead of Homebrew.
+# `brew shellenv` (in ~/.zsh_custom) prepends /opt/homebrew/bin, which otherwise
+# shadows rbenv's shims and makes `ruby` resolve to Homebrew's ruby instead of
+# the .ruby-version-selected rbenv version. Running rbenv init last fixes that.
+eval "$(rbenv init - zsh)"

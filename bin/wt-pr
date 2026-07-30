@@ -1,20 +1,36 @@
 #!/usr/bin/env bash
 # wt-pr: create a wezterm tab with a 3-pane layout (half left, two quarters stacked right),
-# titled with a colour emoji and a PR number.
+# titled with a colour emoji and an optional PR number and/or label.
 #
-# Usage: wt-pr <green|yellow|red|blue|purple> <pr-number>
+# Usage: wt-pr <green|yellow|red|blue|purple> [pr-number] [label]
+#   wt-pr yellow              -> 🟡 <current-branch>
+#   wt-pr yellow 12345        -> 🟡 12345           (checks out PR 12345)
+#   wt-pr yellow "foo bar"    -> 🟡 foo bar         (current branch)
+#   wt-pr yellow 12345 "foo bar" -> 🟡 12345: foo bar (checks out PR 12345)
 
 set -euo pipefail
 
 usage() {
-  echo "usage: $(basename "$0") <green|yellow|red|blue|purple> <pr-number>" >&2
+  echo "usage: $(basename "$0") <green|yellow|red|blue|purple> [pr-number] [label]" >&2
   exit 2
 }
 
-[[ $# -eq 2 ]] || usage
+[[ $# -ge 1 && $# -le 3 ]] || usage
 
 color="$1"
-pr="$2"
+shift
+
+pr=""
+label=""
+if [[ $# -ge 1 && "$1" =~ ^[0-9]+$ ]]; then
+  pr="$1"
+  shift
+fi
+if [[ $# -ge 1 ]]; then
+  label="$1"
+  shift
+fi
+[[ $# -eq 0 ]] || usage
 
 case "$color" in
   green)  emoji="🟢"; project="$HOME/github/streem/frontend" ;;
@@ -25,10 +41,8 @@ case "$color" in
   *) usage ;;
 esac
 
-[[ "$pr" =~ ^[0-9]+$ ]] || usage
-
 command -v wezterm >/dev/null || { echo "wezterm not on PATH" >&2; exit 1; }
-command -v gh       >/dev/null || { echo "gh not on PATH" >&2; exit 1; }
+[[ -n "$pr" ]] && { command -v gh >/dev/null || { echo "gh not on PATH" >&2; exit 1; }; }
 
 [[ -d "$project" ]] || { echo "project path does not exist: $project" >&2; exit 1; }
 
@@ -36,19 +50,33 @@ cd "$project"
 
 git rev-parse --git-dir >/dev/null 2>&1 || { echo "$project is not a git repo" >&2; exit 1; }
 
-pr_branch=$(gh pr view "$pr" --json headRefName -q .headRefName)
-[[ -n "$pr_branch" ]] || { echo "could not resolve branch for PR #$pr" >&2; exit 1; }
+if [[ -n "$pr" ]]; then
+  pr_branch=$(gh pr view "$pr" --json headRefName -q .headRefName)
+  [[ -n "$pr_branch" ]] || { echo "could not resolve branch for PR #$pr" >&2; exit 1; }
 
-current_branch=$(git branch --show-current)
-if [[ "$current_branch" != "$pr_branch" ]]; then
-  if [[ -n "$(git status --porcelain)" ]]; then
-    echo "$project is dirty — commit or stash before running $(basename "$0")" >&2
-    exit 1
+  current_branch=$(git branch --show-current)
+  if [[ "$current_branch" != "$pr_branch" ]]; then
+    if [[ -n "$(git status --porcelain)" ]]; then
+      echo "$project is dirty — commit or stash before running $(basename "$0")" >&2
+      exit 1
+    fi
+    gh pr checkout "$pr"
   fi
-  gh pr checkout "$pr"
-fi
 
-title="${emoji} ${pr}"
+  if [[ -n "$label" ]]; then
+    title="${emoji} ${pr}: ${label}"
+  else
+    title="${emoji} ${pr}"
+  fi
+else
+  if [[ -n "$label" ]]; then
+    title="${emoji} ${label}"
+  else
+    current_branch=$(git branch --show-current)
+    [[ -n "$current_branch" ]] || { echo "$project is in detached HEAD — check out a branch first" >&2; exit 1; }
+    title="${emoji} ${current_branch}"
+  fi
+fi
 
 cwd="$project"
 
