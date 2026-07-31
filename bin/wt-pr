@@ -10,6 +10,9 @@
 
 set -euo pipefail
 
+# pane we were launched from — closed at the end once the new tab is up
+orig_pane="${WEZTERM_PANE:-}"
+
 usage() {
   echo "usage: $(basename "$0") <green|yellow|red|blue|purple> [pr-number] [label]" >&2
   exit 2
@@ -91,3 +94,8 @@ right_top=$(wezterm cli split-pane --pane-id "$left" --cwd "$cwd" --right --perc
 wezterm cli split-pane --pane-id "$right_top" --cwd "$cwd" --bottom --percent 50 >/dev/null
 
 wezterm cli activate-tab --tab-id "$tab_id"
+
+# close the tab we were launched from — it's no longer needed
+if [[ -n "$orig_pane" && "$orig_pane" != "$left" ]]; then
+  wezterm cli kill-pane --pane-id "$orig_pane" >/dev/null 2>&1 || true
+fi
