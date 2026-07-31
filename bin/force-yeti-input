@@ -1,0 +1,18 @@
+#!/bin/bash
+# Keep the default audio INPUT pinned to the Yeti Nano.
+# Only acts when the Yeti Nano is connected AND is not already the input,
+# so it never fights you when the Yeti is unplugged, and never touches output.
+
+PREFERRED="Yeti Nano"
+SAS="/opt/homebrew/bin/SwitchAudioSource"
+
+[ -x "$SAS" ] || exit 0
+
+# Is the preferred device currently available as an input?
+"$SAS" -a -t input | grep -qx "$PREFERRED" || exit 0
+
+# Already selected? Nothing to do.
+current="$("$SAS" -c -t input)"
+[ "$current" = "$PREFERRED" ] && exit 0
+
+"$SAS" -s "$PREFERRED" -t input >/dev/null 2>&1

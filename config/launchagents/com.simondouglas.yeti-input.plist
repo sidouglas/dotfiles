@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.simondouglas.yeti-input</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/simon.douglas/.dotfiles/bin/force-yeti-input</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StartInterval</key>
+    <integer>3</integer>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/simon.douglas/Library/Logs/yeti-input.log</string>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+</dict>
+</plist>
