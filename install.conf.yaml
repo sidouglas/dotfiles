@@ -63,6 +63,10 @@
     - ~/downloads
     - ~/.vim/undo-history
 - shell:
+    # First: setup_homebrew.zsh resolves its Brewfile from $(hostname), so the
+    # name has to be settled before it runs or it forks a directory for whatever
+    # the name happened to be.
+    - ./setup_hostname.zsh
     - ./setup_homebrew.zsh
     - ./setup_zsh.zsh
     - ./setup_node.zsh
