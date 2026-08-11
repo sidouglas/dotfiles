@@ -48,7 +48,9 @@ defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false        
 defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false      # For VS Code Insider
 defaults write com.vscodium ApplePressAndHoldEnabled -bool false                      # For VS Codium
 defaults write com.microsoft.VSCodeExploration ApplePressAndHoldEnabled -bool false   # For VS Codium Exploration users
-defaults delete -g ApplePressAndHoldEnabled                                           # If necessary, reset global default
+# If necessary, reset global default. Errors with "Domain not found" when the
+# key was never set, which is the normal case on a fresh machine.
+defaults delete -g ApplePressAndHoldEnabled 2>/dev/null || true
 
 # Keyboard Maestro notifications
 defaults write com.stairways.keyboardmaestro.engine "Notification-Information" -bool YES
