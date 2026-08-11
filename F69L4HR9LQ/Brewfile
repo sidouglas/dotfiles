@@ -188,17 +188,16 @@ cask "timemachineeditor"
 cask "visual-studio-code"
 # Video communication and virtual meeting platform
 cask "zoom"
-mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
 mas "ColorSlurp", id: 1287239339
 mas "GarageBand", id: 682658836
 mas "ImageDiff", id: 1602522152
 mas "iMovie", id: 408981434
 mas "Invisor", id: 442947586
-mas "Keynote", id: 409183694
+mas "Keynote", id: 361285480
 mas "mChapters", id: 563131976
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
+mas "Numbers", id: 361304891
+mas "Pages", id: 361309726
 mas "Peek", id: 1554235898
 mas "The Unarchiver", id: 425424353
 mas "UTM", id: 1538878817
