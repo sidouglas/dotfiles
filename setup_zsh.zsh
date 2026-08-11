@@ -32,6 +32,17 @@ echo "\n<<< Starting ZSH Setup >>>\n"
 #fi
 
 # https://ohmyz.sh/#install
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# --keep-zshrc matters: without it the installer replaces the ~/.zshrc symlink
+# that dotbot just created with its own copy.
+if [[ -d "${ZSH:-$HOME/.oh-my-zsh}" ]]; then
+  echo "oh-my-zsh already installed, skipping"
+else
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+fi
 
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+ZSH_PLUGINS="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins"
+if [[ -d "$ZSH_PLUGINS/zsh-autosuggestions" ]]; then
+  echo "zsh-autosuggestions already cloned, skipping"
+else
+  git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_PLUGINS/zsh-autosuggestions"
+fi

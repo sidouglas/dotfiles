@@ -1,9 +1,11 @@
 ---
 - defaults:
-    stdout: true
-    stderr: true
     link:
       relink: true
+    shell:
+      stdin: true
+      stdout: true
+      stderr: true
 - clean:
     - "~"
 - link:
