@@ -297,13 +297,11 @@ cask "wezterm"
 cask "wispr-flow"
 # Multiplayer code editor
 cask "zed"
-mas "Aircall", id: 1511741985
 mas "AnyExif", id: 1621435983
 mas "Bitwarden", id: 1352778147
 mas "ColorFolder", id: 1450345160
 mas "Display Maid", id: 450063525
 mas "Focast", id: 1479696191
-mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
 mas "Keynote", id: 361285480
 mas "Numbers", id: 361304891

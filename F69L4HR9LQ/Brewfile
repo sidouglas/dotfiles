@@ -190,7 +190,6 @@ cask "visual-studio-code"
 cask "zoom"
 mas "Bitwarden", id: 1352778147
 mas "ColorSlurp", id: 1287239339
-mas "GarageBand", id: 682658836
 mas "ImageDiff", id: 1602522152
 mas "iMovie", id: 408981434
 mas "Invisor", id: 442947586
