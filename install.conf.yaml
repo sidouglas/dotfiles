@@ -8,7 +8,11 @@
       stderr: true
 - clean:
     - "~"
-- link:
+# Linked twice, on purpose. This first pass has to run before the shell steps:
+# they invoke `exists`, which is defined in zshenv, and zsh only picks that up
+# once ~/.zshenv is a link. Without it setup_node.zsh silently skips node and
+# setup_homebrew.zsh re-runs the Homebrew installer.
+- link: &links
     ~/.bash_profile: null
     ~/.bashrc: null
     ~/.wezterm.lua: null
@@ -42,7 +46,12 @@
     ~/.zprofile: null
     ~/.zsh_custom: null
     ~/.zshenv: null
-    ~/.zshrc: null
+    # force, not relink: oh-my-zsh (and installers like it) replace this link
+    # with a regular file, which relink won't touch. force lets the second link
+    # pass below take it back. Anything you want to keep belongs in the repo's
+    # zshrc -- a file left at ~/.zshrc is deleted without prompting.
+    ~/.zshrc:
+      force: true
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/Library/Application Support/Code/User/keybindings.json:
       vscode/keybindings.json
@@ -59,3 +68,9 @@
     - ./setup_node.zsh
     - ./setup_macos.zsh
     - ./setup_disable_spotlight.zsh
+
+# Second pass, same map by anchor. Third-party installers run from the shell
+# steps above can displace links dotbot already made -- oh-my-zsh did exactly
+# that to ~/.zshrc. Re-linking last means the repo wins, so a run always ends
+# with the links dotbot intended rather than whatever an installer left behind.
+- link: *links
