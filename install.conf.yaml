@@ -21,11 +21,15 @@
       glob: true
       create: true
       path: config/karabiner
-    ~/.config/opencode/opencode.json: config/opencode/opencode.json
+    ~/.config/opencode/opencode.json:
+      create: true
+      path: config/opencode/opencode.json
     ~/.config/yt-dlp/config:
       create: true
       path: config/yt-dlp/config
-    ~/.copilot/mcp-config.json: config/copilot/mcp-config.json
+    ~/.copilot/mcp-config.json:
+      create: true
+      path: config/copilot/mcp-config.json
     ~/.fzf: null
     ~/.gitconfig: null
     ~/.gitignore_global: null
