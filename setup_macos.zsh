@@ -29,7 +29,12 @@ defaults write com.apple.dock orientation -string "left";
 
 # System Preferences > Accessibility > Pointer Control > Mouse & Trackpad > Trackpad Options > Enable Dragging > Three Finger Drag (NOTE: The GUI doesn't update)
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
+
+# System Settings > Trackpad > Scroll & Zoom > Natural scrolling.
+# false = inverted/traditional: content goes the opposite way to your fingers.
+# This key is global, so it flips scrolling for any mouse too. Takes effect on
+# next login, not from `killall Dock`.
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # Third-Party Software
 
