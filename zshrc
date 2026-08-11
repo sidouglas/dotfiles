@@ -93,7 +93,7 @@ bundler
 git
 macos
 rails
-zsh-rbenv
+rbenv
 zsh-autosuggestions
 zsh-vim-mode
 )
