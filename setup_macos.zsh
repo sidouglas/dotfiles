@@ -44,6 +44,12 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # next login, not from `killall Dock`.
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
+# System Settings > Keyboard > Input Sources > Edit > Use smart quotes and dashes.
+# One checkbox in the GUI, two keys underneath. Off means straight quotes and
+# plain hyphens, which is what you want anywhere near code.
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
 # Third-Party Software
 
 # From https://gist.github.com/devnoname120/4767a0aa18879217170fd0c68809fc24
