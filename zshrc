@@ -93,7 +93,7 @@ bundler
 git
 macos
 rails
-zsh-rbenv
+rbenv
 zsh-autosuggestions
 zsh-vim-mode
 )
@@ -131,21 +131,38 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh_custom
 
 [ -f ~/.fzf ] && source ~/.fzf
-ZSH_SHARED="$HOME/Google Drive/My Drive/shared/.zsh_shared"
+# Where Google Drive lands depends on which client is installed:
+#
+#   Drive for Desktop  ~/Library/CloudStorage/GoogleDrive-<account>/My Drive
+#   Backup & Sync      ~/Google Drive            (older machines)
+#
+# The account is in the path, so it differs per machine -- hence the glob.
+# Resolving it here means no hand-made ~/Google Drive symlink is required.
+# (N) is a zsh nullglob qualifier: no match expands to nothing instead of erroring.
+typeset -a _gdrive_candidates
+_gdrive_candidates=(
+  "$HOME"/Library/CloudStorage/GoogleDrive-*/"My Drive"(N)
+  "$HOME/Google Drive/My Drive"
+  "$HOME/Google Drive"
+)
 
-if [ -f "$ZSH_SHARED" ];
-then
-  GOOGLE_DRIVE_SHARED="$HOME/Google Drive/My Drive/shared"
-  source "$ZSH_SHARED"
-else
-  ZSH_SHARED="$HOME/Google Drive/shared/.zsh_shared"
-  if [ -f "$ZSH_SHARED" ];
-  then
-    GOOGLE_DRIVE_SHARED="$HOME/Google Drive/shared"
-    source "$ZSH_SHARED"
-  else
-   echo 'Could not find zsh_shared!'
+export GOOGLE_DRIVE=""
+for _candidate in $_gdrive_candidates; do
+  if [[ -d "$_candidate" ]]; then
+    export GOOGLE_DRIVE="$_candidate"
+    break
   fi
+done
+unset _gdrive_candidates _candidate
+
+if [[ -n "$GOOGLE_DRIVE" && -f "$GOOGLE_DRIVE/shared/.zsh_shared" ]]; then
+  GOOGLE_DRIVE_SHARED="$GOOGLE_DRIVE/shared"
+  ZSH_SHARED="$GOOGLE_DRIVE_SHARED/.zsh_shared"
+  source "$ZSH_SHARED"
+elif [[ -n "$GOOGLE_DRIVE" ]]; then
+  echo "Found Google Drive at $GOOGLE_DRIVE but no shared/.zsh_shared in it"
+else
+  echo 'Could not find Google Drive!'
 fi
 
 # The next line updates PATH for the Google Cloud SDK.

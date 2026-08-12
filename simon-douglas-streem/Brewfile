@@ -1,6 +1,6 @@
 tap "aljohri/-"
 tap "anomalyco/tap"
-tap "aws/tap"
+tap "aws/tap", trusted: { formulae: ["copilot-cli"] }
 tap "bbc/audiowaveform", "https://github.com/bbc/homebrew-audiowaveform.git"
 tap "dopplerhq/doppler", "https://github.com/DopplerHQ/homebrew-doppler.git"
 tap "dotenv-linter/tap"
@@ -8,8 +8,6 @@ tap "eugenmayer/dockersync"
 tap "getantibody/tap"
 tap "grishka/grishka"
 tap "heroku/brew"
-tap "homebrew/bundle"
-tap "homebrew/services"
 tap "krtirtho/apps"
 tap "supabase/tap"
 tap "tabbyml/tabby"
@@ -35,20 +33,6 @@ brew "cairo"
 brew "lame"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
-# GNU Transport Layer Security (TLS) Library
-brew "gnutls"
-# OpenType text shaping engine
-brew "harfbuzz"
-# Subtitle renderer for the ASS/SSA subtitle format
-brew "libass"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
-# Framework for layout and rendering of i18n text
-brew "pango"
-# Secure Reliable Transport
-brew "srt"
-# OCR (Optical Character Recognition) engine
-brew "tesseract"
 # Core component of the AcoustID project (Audio fingerprinting)
 brew "chromaprint"
 # Statistics utility to count lines of code
@@ -91,6 +75,8 @@ brew "git-filter-repo"
 brew "git-ftp"
 # Prevents you from committing sensitive information to a git repo
 brew "git-secrets"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
@@ -103,6 +89,10 @@ brew "gpac"
 brew "gpgme"
 # GNU Ubiquitous Intelligent Language for Extensions
 brew "guile"
+# OpenType text shaping engine
+brew "harfbuzz"
+# Subtitle renderer for the ASS/SSA subtitle format
+brew "libass"
 # Open-source video transcoder available for Linux, Mac, and Windows
 brew "handbrake"
 # Agent multiplexer that lives in your terminal
@@ -139,6 +129,8 @@ brew "nvm"
 brew "openldap"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Framework for layout and rendering of i18n text
+brew "pango"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Search PDFs for strings matching a regular expression
@@ -159,18 +151,20 @@ brew "ruby-build"
 brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# CLI proxy to minimize LLM token consumption
-brew "rtk"
 # Display and control your Android device
 brew "scrcpy"
 # SOund eXchange: universal sound sample translator
 brew "sox"
+# Secure Reliable Transport
+brew "srt"
 # Easiest, most secure way to use WireGuard and 2FA
 brew "tailscale"
 # Tool Command Language
 brew "tcl-tk"
 # Modernized, complete, self-contained TeX/LaTeX engine
 brew "tectonic"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
 # Programmatically correct mistyped console commands
 brew "thefuck"
 # Upgrade all the things
@@ -179,6 +173,8 @@ brew "topgrade"
 brew "tree"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # Internet file retriever
@@ -232,6 +228,8 @@ cask "font-open-sans"
 cask "font-symbols-only-nerd-font"
 # GIT client
 cask "fork"
+# Client for the Google Drive storage service
+cask "google-drive"
 # Open-source video transcoder
 cask "handbrake-app"
 # Keyboard shortcuts for every button on your screen
@@ -254,7 +252,8 @@ cask "microsoft-edge"
 cask "microsoft-outlook"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
-cask "neardrop"
+# Unofficial Google Nearby Share app
+cask "grishka/grishka/neardrop", trusted: true
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Calendar for professionals and teams
@@ -299,27 +298,23 @@ cask "wezterm"
 cask "wispr-flow"
 # Multiplayer code editor
 cask "zed"
-mas "Aircall", id: 1511741985
 mas "AnyExif", id: 1621435983
-mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
 mas "ColorFolder", id: 1450345160
 mas "Display Maid", id: 450063525
 mas "Focast", id: 1479696191
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
 mas "Keynote", id: 361285480
 mas "Numbers", id: 361304891
-mas "Numbers", id: 409203825
 mas "Okta Verify", id: 490179405
 mas "Pages", id: 361309726
-mas "Pages", id: 409201541
 mas "Peek", id: 1554235898
 mas "Read.md", id: 6760943472
 mas "Xcode", id: 497799835
 vscode "ahgood.movetab"
 vscode "alefragnani.bookmarks"
+vscode "antfu.browse-lite"
 vscode "antfu.vite"
 vscode "anthropic.claude-code"
 vscode "artizon.artizon-vscode-surround"
@@ -350,7 +345,6 @@ vscode "joshmu.periscope"
 vscode "kamil-now.kamil-now-black-theme"
 vscode "kisstkondoros.vscode-codemetrics"
 vscode "koichisasada.vscode-rdbg"
-vscode "lennardv.project-colors"
 vscode "letmaik.git-tree-compare"
 vscode "lokalise.i18n-ally"
 vscode "meermustan.replaceconditionally"
@@ -399,8 +393,7 @@ go "claudio.click/cmd/claudio"
 uv "claude-swap"
 npm "@google/gemini-cli"
 npm "@quasar/cli"
-npm "@streemau/eslint-config-streem"
 npm "chokidar"
-npm "corepack"
 npm "frontend"
 npm "plop"
+npm "yarn"

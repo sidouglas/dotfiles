@@ -29,7 +29,12 @@ defaults write com.apple.dock orientation -string "left";
 
 # System Preferences > Accessibility > Pointer Control > Mouse & Trackpad > Trackpad Options > Enable Dragging > Three Finger Drag (NOTE: The GUI doesn't update)
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
+
+# System Settings > Trackpad > Scroll & Zoom > Natural scrolling.
+# false = inverted/traditional: content goes the opposite way to your fingers.
+# This key is global, so it flips scrolling for any mouse too. Takes effect on
+# next login, not from `killall Dock`.
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # Third-Party Software
 
@@ -48,7 +53,9 @@ defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false        
 defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false      # For VS Code Insider
 defaults write com.vscodium ApplePressAndHoldEnabled -bool false                      # For VS Codium
 defaults write com.microsoft.VSCodeExploration ApplePressAndHoldEnabled -bool false   # For VS Codium Exploration users
-defaults delete -g ApplePressAndHoldEnabled                                           # If necessary, reset global default
+# If necessary, reset global default. Errors with "Domain not found" when the
+# key was never set, which is the normal case on a fresh machine.
+defaults delete -g ApplePressAndHoldEnabled 2>/dev/null || true
 
 # Keyboard Maestro notifications
 defaults write com.stairways.keyboardmaestro.engine "Notification-Information" -bool YES

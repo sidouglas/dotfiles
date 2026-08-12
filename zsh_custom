@@ -17,8 +17,8 @@ export EDITOR="/usr/bin/vim"   # fallback; .zsh_shared also exports vim (loaded 
 # History
 # ══════════════════════════════════════════════════════════
 [[ -z $HISTFILE ]] && HISTFILE="$HOME/.zsh_history"
-HISTSIZE=5000   # session memory limit
-SAVEHIST=4000   # file memory limit
+# HISTSIZE/SAVEHIST deliberately live in zshrc (200000/500000). This file is
+# sourced from the end of zshrc, so setting them here silently overrode it.
 
 setopt HIST_SAVE_NO_DUPS      # do not write a duplicate event to the history file
 setopt histNoStore

@@ -37,9 +37,9 @@ fi
 
 case "$color" in
   green)  emoji="🟢"; project="$HOME/github/streem/frontend" ;;
-  blue)   emoji="🔵"; project="$HOME/github/streem/frontend-master" ;;
-  yellow) emoji="🟡"; project="$HOME/github/streem/frontend-feature" ;;
-  purple) emoji="🟣"; project="$HOME/github/streem/frontend-pr" ;;
+  blue)   emoji="🔵"; project="$HOME/github/streem/frontend-blue" ;;
+  yellow) emoji="🟡"; project="$HOME/github/streem/frontend-yellow" ;;
+  purple) emoji="🟣"; project="$HOME/github/streem/frontend-purple" ;;
   red)    emoji="🔴"; project="$HOME/github/streem/backend/api" ;;
   *) usage ;;
 esac

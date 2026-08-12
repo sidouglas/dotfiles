@@ -1,0 +1,11 @@
+# git-secrets exceptions for this repo.
+#
+# gitconfig stores the secrets.patterns definitions themselves, and the
+# private-key pattern matches its own definition line. Without this, every
+# commit to this repo is blocked by a pattern matching its own source.
+#
+# git-secrets matches these regexes against its "file:line:content" output,
+# so they are anchored to gitconfig and to the config keys only. A real key
+# pasted anywhere else in this repo is still caught.
+^gitconfig:[0-9]+:[[:space:]]*patterns =
+^gitconfig:[0-9]+:[[:space:]]*allowed =

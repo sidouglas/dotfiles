@@ -7,11 +7,6 @@ tap "eugenmayer/dockersync"
 tap "federico-terzi/espanso"
 tap "getantibody/tap"
 tap "heroku/brew"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-tap "homebrew/core"
-tap "homebrew/services"
 tap "shivammathur/php"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
@@ -65,6 +60,8 @@ brew "libavif"
 brew "gd"
 # Git-powered FTP client
 brew "git-ftp"
+# Prevents you from committing secrets and credentials into git repositories
+brew "git-secrets"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Generate introspection data for GObject libraries
@@ -187,14 +184,13 @@ cask "stats"
 cask "timemachineeditor"
 # Open-source code editor
 cask "visual-studio-code"
-mas "Base64Anywhere", id: 640841706
 mas "Bitwarden", id: 1352778147
 mas "com.jbapps.MangoMacos", id: 1549961729
 mas "FileBot", id: 905384638
 mas "Invisor", id: 442947586
-mas "Keynote", id: 409183694
+mas "Keynote", id: 361285480
 mas "mChapters", id: 563131976
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
+mas "Numbers", id: 361304891
+mas "Pages", id: 361309726
 mas "The Unarchiver", id: 425424353
 mas "Xcode", id: 497799835
