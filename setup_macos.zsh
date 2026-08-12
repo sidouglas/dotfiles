@@ -50,6 +50,29 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
+# System Settings > Keyboard > Keyboard Shortcuts > Screenshots.
+# Unticks all five, freeing Cmd-Shift-3/4/5 for a third-party capture tool.
+# IDs: 28/29 whole screen to file/clipboard, 30/31 selected area to
+# file/clipboard, 184 the screenshot-and-recording palette.
+# -dict-add replaces the whole entry, so the stored key binding is dropped along
+# with the enabled flag. Re-ticking one in the GUI reassigns the default key, so
+# nothing is lost permanently.
+for _shortcut in 28 29 30 31 184; do
+  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add "$_shortcut" \
+    '<dict><key>enabled</key><false/></dict>'
+done
+unset _shortcut
+
+# Screenshot capture behaviour. The shortcuts above are off, but these still
+# apply to `screencapture`, Preview > Take Screenshot, and any tool shelling out
+# to the system capture.
+defaults write com.apple.screencapture show-thumbnail -bool false   # no floating preview
+defaults write com.apple.screencapture disable-shadow -bool true    # no window drop shadow
+defaults write com.apple.screencapture include-date -bool false     # plain "Screenshot.png"
+defaults write com.apple.screencapture type -string "png"
+mkdir -p "$HOME/Desktop/Screenshots"
+defaults write com.apple.screencapture location -string "$HOME/Desktop/Screenshots"
+
 # Third-Party Software
 
 # From https://gist.github.com/devnoname120/4767a0aa18879217170fd0c68809fc24
@@ -84,5 +107,9 @@ defaults write com.apple.Terminal SecureKeyboardEntry -bool false
 # Finish macOS Setup
 killall Finder
 killall Dock
+killall SystemUIServer                                              # picks up com.apple.screencapture
+# Reloads the keyboard shortcut table so the screenshot hotkeys go away without
+# a logout. Private framework, so tolerate it being missing.
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u 2>/dev/null || true
 echo "\n<<< macOS Setup Complete.
     A logout or restart might be necessary. >>>\n"
