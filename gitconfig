@@ -352,3 +352,5 @@
 	patterns = AIza[0-9A-Za-z_-]{35}
 	allowed = AKIAIOSFODNN7EXAMPLE
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+[url "git@github.com:"]
+	insteadOf = https://github.com/
