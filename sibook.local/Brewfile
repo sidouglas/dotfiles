@@ -60,6 +60,8 @@ brew "libavif"
 brew "gd"
 # Git-powered FTP client
 brew "git-ftp"
+# Prevents you from committing secrets and credentials into git repositories
+brew "git-secrets"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Generate introspection data for GObject libraries
