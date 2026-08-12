@@ -30,6 +30,14 @@ defaults write com.apple.dock orientation -string "left";
 # System Preferences > Accessibility > Pointer Control > Mouse & Trackpad > Trackpad Options > Enable Dragging > Three Finger Drag (NOTE: The GUI doesn't update)
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
+# System Settings > Trackpad > Point & Click > Tap to click (single-finger tap).
+# Built-in trackpad, Bluetooth trackpad, and the global key the login window and
+# other processes read. tapBehavior lives in the per-host domain.
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
 # System Settings > Trackpad > Scroll & Zoom > Natural scrolling.
 # false = inverted/traditional: content goes the opposite way to your fingers.
 # This key is global, so it flips scrolling for any mouse too. Takes effect on
