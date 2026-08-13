@@ -275,6 +275,7 @@ _tabtitle_hook() {
 add-zsh-hook precmd _tabtitle_hook
 
 alias retab='tab-title --force'   # rename even if the tab has a hand-set title
+alias prefix='tab-prefix'         # label the tab after the dot: prefix "VPAT 292"
 
 # ══════════════════════════════════════════════════════════
 # Brew
