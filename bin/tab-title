@@ -1,0 +1,139 @@
+#!/usr/bin/env bash
+# tab-title: name the current wezterm tab after the streem slot we're standing in --
+# the slot's colour dot, then the PR number for the checked-out branch, or the branch
+# name itself when it has no open PR.
+#
+#   🟢 19315      branch feat/autocomplete-isfocused-slot-prop, which has PR 19315
+#   🟢 feat/foo   no PR open for the branch
+#   🟢            detached HEAD, nothing useful to add
+#
+# A title chosen by hand is left alone: only an empty title, a bare dot, or a title
+# this script wrote itself is replaced. So `🟢 FOOBAR 19315` survives a cd, while a
+# lone `🟢` gets filled in. --force overrides that and renames regardless.
+#
+# Usage: tab-title [--force] [dir]
+#   dir defaults to $PWD; outside a slot repo the script does nothing.
+
+set -euo pipefail
+
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=streem-slots.sh
+. "$here/streem-slots.sh"
+
+usage() {
+  echo "usage: $(basename "$0") [--force] [dir]" >&2
+  exit 2
+}
+
+force=0
+dir=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -f|--force) force=1 ;;
+    -h|--help) usage ;;
+    -*) usage ;;
+    *)
+      if [ -n "$dir" ]; then usage; fi
+      dir="$1"
+      ;;
+  esac
+  shift
+done
+
+if [ -z "${WEZTERM_PANE:-}" ]; then
+  if [ "$force" = 1 ]; then
+    echo "tab-title: not inside wezterm (no \$WEZTERM_PANE)" >&2
+    exit 1
+  fi
+  exit 0
+fi
+
+if [ -z "$dir" ]; then dir="$PWD"; fi
+resolved="$(cd "$dir" 2>/dev/null && pwd -P)" || exit 0
+
+slot="$(streem_slot_by_path "$resolved")" || exit 0
+IFS='|' read -r colour dot root cwd <<<"$slot"
+
+# Look up the open PR for a branch. gh takes the better part of a second, and this
+# runs off every cd, so answers are cached: a PR number won't change under a branch,
+# but a miss is worth rechecking soon in case a PR was opened in the meantime.
+pr_for_branch() {
+  local root="$1" branch="$2"
+  local cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/tab-title"
+  local key file now stamp cached age pr=""
+
+  key="$(printf '%s@%s' "$root" "$branch" | tr -c 'A-Za-z0-9._@-' '_')"
+  file="$cache_dir/$key"
+  now="$(date +%s)"
+
+  if [ -f "$file" ]; then
+    stamp=""
+    cached=""
+    IFS=' ' read -r stamp cached < "$file" || true
+    age=$(( now - ${stamp:-0} ))
+    if [ -n "$cached" ] && [ "$age" -lt 86400 ]; then
+      printf '%s' "$cached"
+      return 0
+    fi
+    if [ -z "$cached" ] && [ "$age" -lt 60 ]; then
+      return 0
+    fi
+  fi
+
+  if command -v gh >/dev/null 2>&1; then
+    pr="$(cd "$root" && gh pr list --head "$branch" --state open --limit 1 \
+      --json number --jq '.[0].number // empty' 2>/dev/null)" || pr=""
+  fi
+
+  mkdir -p "$cache_dir"
+  printf '%s %s\n' "$now" "$pr" > "$file"
+  printf '%s' "$pr"
+}
+
+branch="$(git -C "$root" symbolic-ref --quiet --short HEAD)" || branch=""
+
+title="$(wezterm cli list --format json |
+  jq -r --arg p "$WEZTERM_PANE" '.[] | select((.pane_id|tostring) == $p) | .tab_title' |
+  head -n 1)"
+
+claim=0
+if [ "$force" = 1 ] || [ -z "$title" ]; then
+  claim=1
+else
+  # Ours if it starts with a slot dot and what follows is a PR number, a branch that
+  # exists in that slot's repo, or nothing at all. The dot may belong to a different
+  # slot than we're in now -- a tab that was cd'd across slots is still ours to rename.
+  prev="$(streem_slot_by_dot "$title")" || prev=""
+  if [ -n "$prev" ]; then
+    IFS='|' read -r prev_colour prev_dot prev_root prev_cwd <<<"$prev"
+    rest="${title#"$prev_dot"}"
+    while [ "${rest# }" != "$rest" ]; do rest="${rest# }"; done
+    while [ "${rest% }" != "$rest" ]; do rest="${rest% }"; done
+    case "$rest" in
+      "") claim=1 ;;
+      *[!0-9]*)
+        if git -C "$prev_root" show-ref --verify --quiet "refs/heads/$rest"; then
+          claim=1
+        fi
+        ;;
+      *) claim=1 ;;
+    esac
+  fi
+fi
+
+if [ "$claim" != 1 ]; then exit 0; fi
+
+if [ -n "$branch" ]; then
+  pr="$(pr_for_branch "$root" "$branch")"
+  if [ -n "$pr" ]; then
+    new="$dot $pr"
+  else
+    new="$dot $branch"
+  fi
+else
+  new="$dot"
+fi
+
+if [ "$new" = "$title" ]; then exit 0; fi
+
+wezterm cli set-tab-title --pane-id "$WEZTERM_PANE" "$new"

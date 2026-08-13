@@ -10,11 +10,15 @@
 
 set -euo pipefail
 
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=streem-slots.sh
+. "$here/streem-slots.sh"
+
 # pane we were launched from — closed at the end once the new tab is up
 orig_pane="${WEZTERM_PANE:-}"
 
 usage() {
-  echo "usage: $(basename "$0") <green|yellow|red|blue|purple> [pr-number] [label]" >&2
+  echo "usage: $(basename "$0") <$(streem_slot_colours)> [pr-number] [label]" >&2
   exit 2
 }
 
@@ -35,14 +39,8 @@ if [[ $# -ge 1 ]]; then
 fi
 [[ $# -eq 0 ]] || usage
 
-case "$color" in
-  green)  emoji="🟢"; project="$HOME/github/streem/frontend" ;;
-  blue)   emoji="🔵"; project="$HOME/github/streem/frontend-blue" ;;
-  yellow) emoji="🟡"; project="$HOME/github/streem/frontend-yellow" ;;
-  purple) emoji="🟣"; project="$HOME/github/streem/frontend-purple" ;;
-  red)    emoji="🔴"; project="$HOME/github/streem/backend/api" ;;
-  *) usage ;;
-esac
+slot="$(streem_slot_by_colour "$color")" || usage
+IFS='|' read -r slot_colour emoji slot_root project <<<"$slot"
 
 command -v wezterm >/dev/null || { echo "wezterm not on PATH" >&2; exit 1; }
 [[ -n "$pr" ]] && { command -v gh >/dev/null || { echo "gh not on PATH" >&2; exit 1; }; }

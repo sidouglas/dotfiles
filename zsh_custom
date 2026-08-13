@@ -238,6 +238,45 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc  # run immediately on shell start
 
 # ══════════════════════════════════════════════════════════
+# wezterm tab titles — a colour dot per streem slot
+# ══════════════════════════════════════════════════════════
+# Titles the tab "🟢 19315" (the branch's PR) or "🟢 feat/foo" (no PR) whenever the
+# shell is sitting in one of the slot repos. bin/tab-title does the work and won't
+# touch a title that was set by hand; this hook only decides when it's worth a look,
+# and runs it in the background because the PR lookup can take a second.
+source "$HOME/.dotfiles/bin/streem-slots.sh"
+
+typeset -g _tabtitle_last=''
+_tabtitle_hook() {
+  [[ -n $WEZTERM_PANE ]] || return 0
+
+  local entry slot_root root=''
+  for entry in "${STREEM_SLOTS[@]}"; do
+    slot_root=${${(s:|:)entry}[3]}
+    if [[ $PWD == "$slot_root" || $PWD == "$slot_root"/* ]]; then
+      root=$slot_root
+      break
+    fi
+  done
+  if [[ -z $root ]]; then
+    _tabtitle_last=''
+    return 0
+  fi
+
+  # Runs on every prompt, so the change check has to be free: .git/HEAD names the
+  # branch, and reading it beats forking git just to learn nothing moved.
+  local head=''
+  [[ -r $root/.git/HEAD ]] && read -r head < $root/.git/HEAD
+  [[ "$root:$head" == "$_tabtitle_last" ]] && return 0
+  _tabtitle_last="$root:$head"
+
+  tab-title "$root" >/dev/null 2>&1 &!
+}
+add-zsh-hook precmd _tabtitle_hook
+
+alias retab='tab-title --force'   # rename even if the tab has a hand-set title
+
+# ══════════════════════════════════════════════════════════
 # Brew
 # ══════════════════════════════════════════════════════════
 alias brew_outdated="brew outdated --cask --greedy"
