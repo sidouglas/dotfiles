@@ -23,8 +23,13 @@ set -e
 #   </dict>
 # </dict>
 
+# The Delete is a separate, tolerated call: on a fresh machine the key doesn't
+# exist yet, PlistBuddy exits 1, and `set -e` above would kill the script before
+# key 65 was ever handled.
 /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.symbolichotkeys.plist \
-  -c "Delete :AppleSymbolicHotKeys:64" \
+  -c "Delete :AppleSymbolicHotKeys:64" 2>/dev/null || true
+
+/usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.symbolichotkeys.plist \
   -c "Add :AppleSymbolicHotKeys:64:enabled bool false" \
   -c "Add :AppleSymbolicHotKeys:64:value:parameters array" \
   -c "Add :AppleSymbolicHotKeys:64:value:parameters: integer 65535" \
@@ -52,7 +57,9 @@ set -e
 # </dict>
 
 /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.symbolichotkeys.plist \
-  -c "Delete :AppleSymbolicHotKeys:65" \
+  -c "Delete :AppleSymbolicHotKeys:65" 2>/dev/null || true
+
+/usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.symbolichotkeys.plist \
   -c "Add :AppleSymbolicHotKeys:65:enabled bool false" \
   -c "Add :AppleSymbolicHotKeys:65:value:parameters array" \
   -c "Add :AppleSymbolicHotKeys:65:value:parameters: integer 65535" \

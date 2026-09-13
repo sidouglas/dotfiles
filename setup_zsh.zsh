@@ -40,9 +40,20 @@ else
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 fi
 
+# Anything in zshrc's plugins=() that doesn't ship with oh-my-zsh has to be
+# cloned here, or zsh prints "[oh-my-zsh] plugin '...' not found" on every
+# shell start and the plugin silently does nothing. Keep this in step with
+# the plugins=() list in zshrc.
+typeset -A ZSH_PLUGIN_REPOS=(
+  zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions
+  zsh-vim-mode        https://github.com/softmoth/zsh-vim-mode
+)
+
 ZSH_PLUGINS="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins"
-if [[ -d "$ZSH_PLUGINS/zsh-autosuggestions" ]]; then
-  echo "zsh-autosuggestions already cloned, skipping"
-else
-  git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_PLUGINS/zsh-autosuggestions"
-fi
+for name url in ${(kv)ZSH_PLUGIN_REPOS}; do
+  if [[ -d "$ZSH_PLUGINS/$name" ]]; then
+    echo "$name already cloned, skipping"
+  else
+    git clone "$url" "$ZSH_PLUGINS/$name"
+  fi
+done

@@ -72,4 +72,49 @@ fi
 export HOMEBREW_BUNDLE_FILE
 echo "Using Brewfile: $HOMEBREW_BUNDLE_FILE"
 
-brew bundle --verbose
+# `mas` can only install apps already in this Apple ID's purchase history;
+# anything else fails with "No downloads initiated for ADAM ID ...". That
+# failure takes `brew bundle`'s exit code down with it, which takes `./install`
+# down with it. So bundle everything except the `mas` lines, then walk those
+# separately and let the duds warn instead of killing the run.
+bundle_no_mas=$(mktemp -t Brewfile)
+grep -v '^[[:space:]]*mas[[:space:]]' "$HOMEBREW_BUNDLE_FILE" > "$bundle_no_mas"
+HOMEBREW_BUNDLE_FILE="$bundle_no_mas" brew bundle --verbose
+bundle_status=$?
+rm -f "$bundle_no_mas"
+
+mas_entries=(${(f)"$(grep '^[[:space:]]*mas[[:space:]]' "$HOMEBREW_BUNDLE_FILE")"})
+
+if (( ${#mas_entries} )); then
+  if ! exists mas; then
+    echo "mas isn't installed; skipping ${#mas_entries} App Store app(s)."
+  else
+    echo "\n<<< App Store apps >>>\n"
+    installed=(${(f)"$(mas list | awk '{print $1}')"})
+    failed=()
+
+    for entry in $mas_entries; do
+      name=${${entry#*\"}%\"*}
+      id=${entry##*id:[[:space:]]}
+
+      if (( ${installed[(I)$id]} )); then
+        echo "$name ($id) is already installed, skipping"
+        continue
+      fi
+
+      echo "Installing $name ($id)"
+      mas install "$id" || failed+=("$name ($id)")
+    done
+
+    if (( ${#failed} )); then
+      echo "\nThese App Store apps did not install:"
+      printf '  %s\n' $failed
+      echo "Most likely they are not in this Apple ID's purchase history."
+      echo "Open the App Store, hit Get on each one once, then re-run this script."
+    fi
+  fi
+fi
+
+# App Store misses are advisory, but a genuine bundle failure should still stop
+# the install.
+exit $bundle_status

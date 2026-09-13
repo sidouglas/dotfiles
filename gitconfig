@@ -92,8 +92,8 @@
   dft = -c diff.external=difft diff
   # Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
   dl = -c diff.external=difft log -p --ext-diff
-  # Discard all local changes.
-	discard = !git clean -fd --exclude=\".*\" && git checkout -- . \":!.*\"
+  # Discard all local changes, including untracked files and dirs. Ignored files (.env, node_modules) are kept.
+	discard = !git clean -fd && git checkout -- .
   # Show the most recent commit with difftastic.
   ds = -c diff.external=difft show --ext-diff
   # Fetch changes from a remote repository.
@@ -235,7 +235,7 @@
   # Fetch from origin and rebase the current branch onto the staging branch.
   rbs = "!git fetch origin staging && git rebase origin/staging"
   # Rename the current branch.
-  rename = "!git branch -m "
+	rename = town rename
   # Revert a file to the version in the master branch and commit the change.
   revert = "!f() { git checkout master -- $1 && git add $1 && git commit -m \"Reverted $1 to the version in master\"; }; f"
   # Show the working tree status.
@@ -260,7 +260,9 @@
 	unstage = "!f() { git reset HEAD -- \"$@\" && echo \"Unstaged: $*\"; }; f"
   # Stage all files and create a 'wip' commit, bypassing git hooks and GPG signing.
   wip = !HUSKY=0 LEFTHOOK=0 git add --all && HUSKY=0 LEFTHOOK=0 git commit -n -m 'wip' --no-verify --no-gpg-sign
-	squash-all = "!f(){ git reset --soft $(git merge-base master $(git branch --show-current)) && git commit -am \"${1}\";};f"
+  # Squash every commit on this branch into one. With a message: git squash-all "msg".
+  # Without one, opens the editor pre-filled with the subjects of the commits being squashed.
+	squash-all = "!f(){ export LEFTHOOK=0 HUSKY=0; base=$(git merge-base master \"$(git branch --show-current)\") || { echo 'squash-all: no merge-base with master' >&2; return 1; }; git reset --soft \"$base\" || return 1; if [ -n \"$1\" ]; then git commit -am \"$1\" --no-verify; else git log --reverse --format='%s' \"$base\"..ORIG_HEAD > \"$(git rev-parse --git-dir)/SQUASH_MSG\" && git commit -a --no-verify; fi;};f"
   # Usage git sync-squashed feature/social-alt-text feature/squashed-social-alt-text
   sync-squashed = "!f() { \
       if [ -z \"$1\" ] || [ -z \"$2\" ]; then \
@@ -277,6 +279,23 @@
       git commit -m \"Squashed version of $source_branch\"; \
   }; f"
 	fcommits = "!f() {\n    base=${1:-master}\n    git log --pretty=format:\"- %s\" $(git merge-base HEAD origin/$base)..HEAD | pbcopy\n    echo \"Feature commits copied to clipboard!\"\n}; f"
+	append = town append
+	compress = town compress
+	continue = town continue
+	contribute = town contribute
+	delete = town delete
+	diff-parent = town diff-parent
+	down = town down
+	hack = town hack
+	observe = town observe
+	park = town park
+	prepend = town prepend
+	propose = town propose
+	repo = town repo
+	set-parent = town set-parent
+	ship = town ship
+	sync = town sync
+	up = town up
 
   [core]
     mergeoptions = --no-edit
@@ -339,3 +358,18 @@
 	templateDir = ~/.git-templates/git-secrets
 [rebase]
 	defaultBranch = feature/social-scheduled-reports
+[secrets]
+	providers = git secrets --aws-provider
+	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
+	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
+	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
+	patterns = ghp_[A-Za-z0-9]{36}
+	patterns = github_pat_[A-Za-z0-9_]{60,}
+	patterns = gh[opsu]_[A-Za-z0-9]{36}
+	patterns = xox[baprs]-[A-Za-z0-9-]{10,}
+	patterns = -----BEGIN [A-Z ]*PRIVATE KEY-----
+	patterns = AIza[0-9A-Za-z_-]{35}
+	allowed = AKIAIOSFODNN7EXAMPLE
+	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+[url "git@github.com:"]
+	insteadOf = https://github.com/

@@ -8,8 +8,6 @@ tap "eugenmayer/dockersync"
 tap "getantibody/tap"
 tap "grishka/grishka"
 tap "heroku/brew"
-tap "homebrew/bundle"
-tap "homebrew/services"
 tap "krtirtho/apps"
 tap "roots/tap"
 tap "supabase/tap"
@@ -347,17 +345,14 @@ mas "ColorFolder", id: 1450345160
 mas "CompareMerge2", id: 1459748650
 mas "Exif Editor", id: 1621435983
 mas "Focast", id: 1479696191
-mas "GarageBand", id: 682658836
-mas "Human Japanese Lite", id: 910679636
 mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
+mas "Keynote", id: 361285480
 mas "Kingdom Rush Frontiers+", id: 1579364157
 mas "mChapters", id: 563131976
 mas "Mini Motorways", id: 1456188526
-mas "Mosaic", id: 1475100873
-mas "Numbers", id: 409203825
+mas "Numbers", id: 361304891
 mas "Okta Verify", id: 490179405
-mas "Pages", id: 409201541
+mas "Pages", id: 361309726
 mas "Peek", id: 1554235898
 mas "QR Capture", id: 1369524274
 mas "Read.md", id: 6760943472

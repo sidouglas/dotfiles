@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+# tab-prefix: insert text into the current wezterm tab title, after the streem slot
+# dot but ahead of whatever the title already says -- so the colour stays leftmost
+# and readable while the tab picks up a label for what you're actually doing.
+#
+#   🟢 19378   tab-prefix "VPAT 292"   →  🟢 VPAT 292 19378
+#   🟢         tab-prefix "VPAT 292"   →  🟢 VPAT 292
+#   19378      tab-prefix "VPAT 292"   →  VPAT 292 19378      (no dot: plain prefix)
+#
+# The result reads as a hand-set title to bin/tab-title, so it survives cd-ing around
+# the slot instead of being overwritten on the next prompt. `retab` throws it away and
+# restores the plain dot-and-PR title.
+#
+# Usage: tab-prefix <text>...
+#   All arguments are joined with spaces, so quoting is optional.
+
+set -euo pipefail
+
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=streem-slots.sh
+. "$here/streem-slots.sh"
+
+# trim <string> -> the string without leading or trailing spaces
+trim() {
+  local s="$1"
+  while [ "${s# }" != "$s" ]; do s="${s# }"; done
+  while [ "${s% }" != "$s" ]; do s="${s% }"; done
+  printf '%s' "$s"
+}
+
+text="$(trim "$*")"
+if [ -z "$text" ]; then
+  echo "usage: $(basename "$0") <text>..." >&2
+  exit 2
+fi
+
+if [ -z "${WEZTERM_PANE:-}" ]; then
+  echo "tab-prefix: not inside wezterm (no \$WEZTERM_PANE)" >&2
+  exit 1
+fi
+
+title="$(wezterm cli list --format json |
+  jq -r --arg p "$WEZTERM_PANE" '.[] | select((.pane_id|tostring) == $p) | .tab_title' |
+  head -n 1)"
+
+# Split the title into the leading dot (if any) and the rest. The dot need not be the
+# slot we're standing in -- a tab cd'd across slots still shows the dot it was named
+# with, and that one is the one to keep in front.
+dot=""
+rest="$title"
+if slot="$(streem_slot_by_dot "$title")"; then
+  IFS='|' read -r _colour dot _root _cwd <<<"$slot"
+  rest="${title#"$dot"}"
+fi
+rest="$(trim "$rest")"
+
+# Re-running with a prefix that's already there would just stutter it, so don't.
+case "$rest" in
+  "$text"|"$text "*) exit 0 ;;
+esac
+
+new="$(trim "${dot:+$dot }$text${rest:+ $rest}")"
+[ "$new" = "$title" ] && exit 0
+
+wezterm cli set-tab-title --pane-id "$WEZTERM_PANE" "$new"
