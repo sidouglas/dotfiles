@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+# git-pr-number: print the number of the open GitHub PR for the checked-out branch.
+#
+# gh takes the better part of a second and the callers here run off every prompt, so
+# answers are cached: a PR number won't change under a branch, but a miss is worth
+# rechecking soon in case a PR was opened in the meantime.
+#
+# Usage: git-pr-number [--cached] [dir]
+#   dir       defaults to $PWD
+#   --cached  never call gh. Exit 0 with the cached answer -- which may be empty,
+#             meaning "no open PR" -- or exit 1 when nothing is cached and a real
+#             lookup is needed. Lets a prompt hook stay instant: print what's known
+#             now, warm the cache in the background for the next prompt.
+#
+# Exit 0 with no output also covers "not a git repo" and "detached HEAD": there is
+# nothing to look up, so a --cached caller has no reason to retry.
+
+set -euo pipefail
+
+usage() {
+  echo "usage: $(basename "$0") [--cached] [dir]" >&2
+  exit 2
+}
+
+cached_only=0
+dir=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -c|--cached) cached_only=1 ;;
+    -h|--help) usage ;;
+    -*) usage ;;
+    *)
+      if [ -n "$dir" ]; then usage; fi
+      dir="$1"
+      ;;
+  esac
+  shift
+done
+
+if [ -z "$dir" ]; then dir="$PWD"; fi
+
+root="$(git -C "$dir" rev-parse --show-toplevel 2>/dev/null)" || exit 0
+[ -n "$root" ] || exit 0
+branch="$(git -C "$root" symbolic-ref --quiet --short HEAD)" || exit 0
+[ -n "$branch" ] || exit 0
+
+cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/git-pr-number"
+key="$(printf '%s@%s' "$root" "$branch" | tr -c 'A-Za-z0-9._@-' '_')"
+file="$cache_dir/$key"
+now="$(date +%s)"
+
+if [ -f "$file" ]; then
+  stamp=""
+  cached=""
+  IFS=' ' read -r stamp cached < "$file" || true
+  age=$(( now - ${stamp:-0} ))
+  if [ -n "$cached" ] && [ "$age" -lt 86400 ]; then
+    printf '%s\n' "$cached"
+    exit 0
+  fi
+  if [ -z "$cached" ] && [ "$age" -lt 60 ]; then
+    exit 0
+  fi
+fi
+
+if [ "$cached_only" = 1 ]; then exit 1; fi
+
+pr=""
+if command -v gh >/dev/null 2>&1; then
+  pr="$(cd "$root" && gh pr list --head "$branch" --state open --limit 1 \
+    --json number --jq '.[0].number // empty' 2>/dev/null)" || pr=""
+fi
+
+mkdir -p "$cache_dir"
+printf '%s %s\n' "$now" "$pr" > "$file"
+
+if [ -n "$pr" ]; then printf '%s\n' "$pr"; fi
+exit 0

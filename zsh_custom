@@ -237,6 +237,16 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc  # run immediately on shell start
 
+# sb [port] — run Storybook. With a port, free it first (kp) and serve there.
+sb() {
+  if [[ -n "$1" ]]; then
+    kp "$1" 2>/dev/null   # no-op if nothing is listening
+    npm run storybook -- -p "$1"
+  else
+    npm run storybook
+  fi
+}
+
 # ══════════════════════════════════════════════════════════
 # wezterm tab titles — a colour dot per streem slot
 # ══════════════════════════════════════════════════════════
@@ -274,8 +284,64 @@ _tabtitle_hook() {
 }
 add-zsh-hook precmd _tabtitle_hook
 
-alias retab='tab-title --force'   # rename even if the tab has a hand-set title
+alias retab='wt-tab'              # back to the default title, discarding a hand-set one
 alias prefix='tab-prefix'         # label the tab after the dot: prefix "VPAT 292"
+
+# ══════════════════════════════════════════════════════════
+# Prompt — the branch's PR number, next to the branch name
+# ══════════════════════════════════════════════════════════
+# robbyrussell shows  frontend git:(bugfix/vpat-292-search-modal-reflow)
+# this makes it       frontend git:19378 (bugfix/vpat-292-search-modal-reflow)
+#
+# The theme builds that bracket from ZSH_THEME_GIT_PROMPT_PREFIX, so rewriting the
+# prefix each prompt is enough -- no forking of the theme. bin/git-pr-number only
+# reads its cache here; a miss warms it in the background, so the prompt never waits
+# on gh and the number turns up a prompt later.
+typeset -g _git_pr_last='' _git_pr_num='' _git_pr_known=0
+_git_pr_prompt() {
+  # Runs on every prompt, so the "did anything move?" check has to be free: walk up
+  # for .git and read HEAD, both of which stay inside the shell. Only a new repo, a
+  # new branch, or a still-unanswered lookup is worth a fork.
+  local dir=$PWD gitdir='' head='' line=''
+  while [[ -n $dir ]]; do
+    [[ -e $dir/.git ]] && { gitdir=$dir/.git; break }
+    [[ $dir == / ]] && break
+    dir=${dir:h}
+  done
+
+  if [[ -n $gitdir ]]; then
+    # A worktree or submodule has a .git file pointing at the real directory.
+    if [[ -f $gitdir ]]; then
+      read -r line < $gitdir
+      line=${line#gitdir: }
+      [[ $line == /* ]] && gitdir=$line || gitdir=$dir/$line
+    fi
+    [[ -r $gitdir/HEAD ]] && read -r head < $gitdir/HEAD
+  fi
+
+  if [[ "$gitdir:$head" != "$_git_pr_last" || $_git_pr_known == 0 ]]; then
+    _git_pr_last="$gitdir:$head"
+    _git_pr_num=''
+    _git_pr_known=1
+    if [[ -n $gitdir ]] && ! _git_pr_num=$(git-pr-number --cached 2>/dev/null); then
+      # Nothing cached, or the cached answer went stale. Ask gh out of band, and
+      # look again next prompt.
+      _git_pr_num=''
+      _git_pr_known=0
+      git-pr-number >/dev/null 2>&1 &!
+    fi
+  fi
+
+  if [[ -n $_git_pr_num ]]; then
+    ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:%{$fg[magenta]%}${_git_pr_num}%{$fg_bold[blue]%} (%{$fg[red]%}"
+  else
+    ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
+  fi
+}
+# Not add-zsh-hook: oh-my-zsh computes the git prompt in a subshell forked from its
+# own precmd hook, which inherits the prefix as it stands at fork time. Appending
+# would leave the prompt a step behind, so go in front of it instead.
+precmd_functions=(_git_pr_prompt ${precmd_functions:#_git_pr_prompt})
 
 # ══════════════════════════════════════════════════════════
 # Brew

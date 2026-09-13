@@ -54,42 +54,6 @@ resolved="$(cd "$dir" 2>/dev/null && pwd -P)" || exit 0
 slot="$(streem_slot_by_path "$resolved")" || exit 0
 IFS='|' read -r colour dot root cwd <<<"$slot"
 
-# Look up the open PR for a branch. gh takes the better part of a second, and this
-# runs off every cd, so answers are cached: a PR number won't change under a branch,
-# but a miss is worth rechecking soon in case a PR was opened in the meantime.
-pr_for_branch() {
-  local root="$1" branch="$2"
-  local cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/tab-title"
-  local key file now stamp cached age pr=""
-
-  key="$(printf '%s@%s' "$root" "$branch" | tr -c 'A-Za-z0-9._@-' '_')"
-  file="$cache_dir/$key"
-  now="$(date +%s)"
-
-  if [ -f "$file" ]; then
-    stamp=""
-    cached=""
-    IFS=' ' read -r stamp cached < "$file" || true
-    age=$(( now - ${stamp:-0} ))
-    if [ -n "$cached" ] && [ "$age" -lt 86400 ]; then
-      printf '%s' "$cached"
-      return 0
-    fi
-    if [ -z "$cached" ] && [ "$age" -lt 60 ]; then
-      return 0
-    fi
-  fi
-
-  if command -v gh >/dev/null 2>&1; then
-    pr="$(cd "$root" && gh pr list --head "$branch" --state open --limit 1 \
-      --json number --jq '.[0].number // empty' 2>/dev/null)" || pr=""
-  fi
-
-  mkdir -p "$cache_dir"
-  printf '%s %s\n' "$now" "$pr" > "$file"
-  printf '%s' "$pr"
-}
-
 branch="$(git -C "$root" symbolic-ref --quiet --short HEAD)" || branch=""
 
 title="$(wezterm cli list --format json |
@@ -124,7 +88,8 @@ fi
 if [ "$claim" != 1 ]; then exit 0; fi
 
 if [ -n "$branch" ]; then
-  pr="$(pr_for_branch "$root" "$branch")"
+  # Cached, so the same lookup the prompt does costs nothing here (and vice versa).
+  pr="$("$here/git-pr-number" "$root")"
   if [ -n "$pr" ]; then
     new="$dot $pr"
   else

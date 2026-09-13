@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# wt-tab: put the current wezterm tab title back to the default -- the streem slot's
+# colour dot followed by the PR number for the checked-out branch, or the branch name
+# when there's no open PR. Any hand-set title, and any label added by `prefix`, is
+# thrown away.
+#
+#   🟢 VPAT 292 19378   wt-tab  →  🟢 19378
+#   VPAT 292            wt-tab  →  🟢 19378
+#   anything            wt-tab  →  (cleared, outside a slot: wezterm names the tab)
+#
+# Outside a slot repo there is no title of ours to restore, so the tab is handed back
+# to wezterm, which titles it after the running program again.
+#
+# Usage: wt-tab [dir]
+#   dir defaults to $PWD.
+
+set -euo pipefail
+
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=streem-slots.sh
+. "$here/streem-slots.sh"
+
+usage() {
+  echo "usage: $(basename "$0") [dir]" >&2
+  exit 2
+}
+
+dir=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -h|--help) usage ;;
+    -*) usage ;;
+    *)
+      if [ -n "$dir" ]; then usage; fi
+      dir="$1"
+      ;;
+  esac
+  shift
+done
+
+if [ -z "${WEZTERM_PANE:-}" ]; then
+  echo "wt-tab: not inside wezterm (no \$WEZTERM_PANE)" >&2
+  exit 1
+fi
+
+if [ -z "$dir" ]; then dir="$PWD"; fi
+resolved="$(cd "$dir" 2>/dev/null && pwd -P)" || {
+  echo "wt-tab: no such directory: $dir" >&2
+  exit 1
+}
+
+# In a slot, the default is whatever tab-title would have picked; --force is what
+# makes it override the hand-set title we're here to discard.
+if streem_slot_by_path "$resolved" >/dev/null; then
+  exec "$here/tab-title" --force "$resolved"
+fi
+
+# An empty title takes the tab off manual naming, back to wezterm's own.
+wezterm cli set-tab-title --pane-id "$WEZTERM_PANE" ""

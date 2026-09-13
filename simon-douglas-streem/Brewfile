@@ -105,6 +105,8 @@ brew "libheif"
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Fast and powerful Git hooks manager for any type of projects
+brew "lefthook"
 # Library for reading RAW files from digital photo cameras
 brew "libraw"
 # Access large language models from the command-line
@@ -228,6 +230,8 @@ cask "font-open-sans"
 cask "font-symbols-only-nerd-font"
 # GIT client
 cask "fork"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli"
 # Client for the Google Drive storage service
 cask "google-drive"
 # Open-source video transcoder
