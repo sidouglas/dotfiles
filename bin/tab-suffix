@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# tab-suffix: append text to the end of the current wezterm tab title, leaving the
+# streem slot dot and whatever the title already says untouched -- the mirror of
+# bin/tab-prefix, for a label that reads better after the PR number than before it.
+#
+#   🟢 19378   tab-suffix "rebasing"   →  🟢 19378 rebasing
+#   🟢         tab-suffix "rebasing"   →  🟢 rebasing
+#   19378      tab-suffix "rebasing"   →  19378 rebasing      (no dot: plain suffix)
+#              tab-suffix "rebasing"   →  rebasing            (empty title)
+#
+# Re-running with a suffix that's already on the end is a no-op, so it's safe to call
+# from a hook or repeat by hand without the title stuttering.
+#
+# The result reads as a hand-set title to bin/tab-title, so it survives cd-ing around
+# the slot instead of being overwritten on the next prompt. `retab` throws it away and
+# restores the plain dot-and-PR title.
+#
+# Usage: tab-suffix <text>...
+#   All arguments are joined with spaces, so quoting is optional.
+
+set -euo pipefail
+
+# trim <string> -> the string without leading or trailing spaces
+trim() {
+  local s="$1"
+  while [ "${s# }" != "$s" ]; do s="${s# }"; done
+  while [ "${s% }" != "$s" ]; do s="${s% }"; done
+  printf '%s' "$s"
+}
+
+text="$(trim "$*")"
+if [ -z "$text" ]; then
+  echo "usage: $(basename "$0") <text>..." >&2
+  exit 2
+fi
+
+if [ -z "${WEZTERM_PANE:-}" ]; then
+  echo "tab-suffix: not inside wezterm (no \$WEZTERM_PANE)" >&2
+  exit 1
+fi
+
+title="$(wezterm cli list --format json |
+  jq -r --arg p "$WEZTERM_PANE" '.[] | select((.pane_id|tostring) == $p) | .tab_title' |
+  head -n 1)"
+title="$(trim "$title")"
+
+# Nothing to split here: appending doesn't care where the dot is, only that the text
+# isn't already on the end.
+case "$title" in
+  "$text"|*" $text") exit 0 ;;
+esac
+
+new="$(trim "${title:+$title }$text")"
+[ "$new" = "$title" ] && exit 0
+
+wezterm cli set-tab-title --pane-id "$WEZTERM_PANE" "$new"

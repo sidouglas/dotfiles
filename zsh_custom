@@ -286,6 +286,8 @@ add-zsh-hook precmd _tabtitle_hook
 
 alias retab='wt-tab'              # back to the default title, discarding a hand-set one
 alias prefix='tab-prefix'         # label the tab after the dot: prefix "VPAT 292"
+                                  # bare `prefix` just puts the slot's dot back in front
+alias suffix='tab-suffix'         # label the tab on the end instead: suffix "rebasing"
 
 # ══════════════════════════════════════════════════════════
 # Prompt — the branch's PR number, next to the branch name

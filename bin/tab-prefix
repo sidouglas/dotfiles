@@ -7,12 +7,21 @@
 #   🟢         tab-prefix "VPAT 292"   →  🟢 VPAT 292
 #   19378      tab-prefix "VPAT 292"   →  VPAT 292 19378      (no dot: plain prefix)
 #
+# With no arguments the prefix is the dot of the slot we're standing in, so a tab that
+# lost its colour (or was named by hand elsewhere) gets it back without disturbing the
+# rest of the title:
+#
+#   VPAT 292   tab-prefix    →  🟢 VPAT 292        (run from the green slot)
+#   19378      tab-prefix    →  🟣 19378           (run from the purple slot)
+#   🟢 19378   tab-prefix    →  unchanged          (already dotted)
+#
 # The result reads as a hand-set title to bin/tab-title, so it survives cd-ing around
 # the slot instead of being overwritten on the next prompt. `retab` throws it away and
 # restores the plain dot-and-PR title.
 #
-# Usage: tab-prefix <text>...
+# Usage: tab-prefix [text...]
 #   All arguments are joined with spaces, so quoting is optional.
+#   With none, the slot's dot is the prefix.
 
 set -euo pipefail
 
@@ -29,10 +38,6 @@ trim() {
 }
 
 text="$(trim "$*")"
-if [ -z "$text" ]; then
-  echo "usage: $(basename "$0") <text>..." >&2
-  exit 2
-fi
 
 if [ -z "${WEZTERM_PANE:-}" ]; then
   echo "tab-prefix: not inside wezterm (no \$WEZTERM_PANE)" >&2
@@ -53,6 +58,19 @@ if slot="$(streem_slot_by_dot "$title")"; then
   rest="${title#"$dot"}"
 fi
 rest="$(trim "$rest")"
+
+# No text given: the thing to put in front is the slot's own dot. A title that already
+# carries one is left alone -- including a dot from another slot, which is the same
+# "the dot it was named with wins" rule the split above follows.
+if [ -z "$text" ]; then
+  if [ -n "$dot" ]; then exit 0; fi
+  if slot="$(streem_slot_by_path "$(pwd -P)")"; then
+    IFS='|' read -r _colour text _root _cwd <<<"$slot"
+  else
+    echo "tab-prefix: not in a streem slot, so there's no dot to use -- pass the text to prefix" >&2
+    exit 2
+  fi
+fi
 
 # Re-running with a prefix that's already there would just stutter it, so don't.
 case "$rest" in
