@@ -40,5 +40,13 @@
        "use_new_terminal": false,
        "allow_concurrent_runs": false,
        "reveal": "always"
+     },
+     {
+       "label": "Test at cursor",
+       "cwd": "$ZED_WORKTREE_ROOT",
+       "command": "npm test -- --testNamePattern",
+       "args": [
+         "\"$ZED_SELECTED_TEXT\""
+       ]
      }
 ]
