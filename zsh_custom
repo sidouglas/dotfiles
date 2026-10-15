@@ -156,6 +156,23 @@ alias zshrc="code ~/.dotfiles/zshrc"
 alias xx="exit; exit"                       # exit shell
 alias lh='fc -RI; echo "loaded and showing..."; history;'  # load history into shell
 
+# delete history entries by the numbers `lh` shows, e.g. `lhdl 590` or `lhdl 590 612`
+lhdl() {
+  (( $# )) || { echo "usage: lhdl <num> [num...]"; return 1; }
+  local n cmd
+  local -a pats
+  for n in "$@"; do
+    cmd=${history[$n]}
+    [[ -n $cmd ]] || { echo "no history entry $n"; return 1; }
+    echo "deleting $n: $cmd"
+    pats+=("${(b)cmd}")
+  done
+  cp "$HISTFILE" "$HISTFILE.bak"
+  # rewrite the file without the matching entries, then reload it into this shell
+  LC_ALL=C HISTORY_IGNORE="(${(j:|:)pats})" fc -W
+  fc -p "$HISTFILE" "$HISTSIZE" "$SAVEHIST"
+}
+
 # ══════════════════════════════════════════════════════════
 # FZF search
 # ══════════════════════════════════════════════════════════
