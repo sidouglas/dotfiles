@@ -15,6 +15,31 @@ get_current_pr() {
     return 1
 }
 
+# Succeed if $me is a reviewer on the PR: requested directly, a member of a
+# requested team, or has already reviewed (GitHub drops the request once you do)
+is_reviewer() {
+    local pr_number="$1" me="$2"
+    local pr_json
+    pr_json=$(gh pr view "$pr_number" --json reviewRequests,latestReviews,url) || return 1
+
+    if jq -e --arg me "$me" '
+        any(.reviewRequests[]; .__typename == "User" and .login == $me)
+        or any(.latestReviews[]; .author.login == $me)
+    ' <<<"$pr_json" >/dev/null; then
+        return 0
+    fi
+
+    # Team requests: check membership in each requested team
+    local org slug
+    org=$(jq -r '.url | split("/")[3]' <<<"$pr_json")
+    for slug in $(jq -r '.reviewRequests[] | select(.__typename == "Team") | .slug' <<<"$pr_json"); do
+        if gh api "orgs/$org/teams/$slug/memberships/$me" --jq '.state' 2>/dev/null | grep -qx active; then
+            return 0
+        fi
+    done
+    return 1
+}
+
 # Main logic
 lgtm() {
     local pr_number="$1"
@@ -28,6 +53,20 @@ lgtm() {
             return 1
         fi
         echo "Auto-detected PR #$pr_number"
+    fi
+
+    local me author
+    me=$(gh api user --jq '.login') || return 1
+    author=$(gh pr view "$pr_number" --json author --jq '.author.login') || return 1
+
+    if [ "$author" = "$me" ]; then
+        echo "Error: PR #$pr_number is your own; you can't approve it." >&2
+        return 1
+    fi
+
+    if ! is_reviewer "$pr_number" "$me"; then
+        echo "Error: You ($me) are not a reviewer on PR #$pr_number; not approving." >&2
+        return 1
     fi
 
     # Approve the PR

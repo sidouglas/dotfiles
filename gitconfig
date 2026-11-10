@@ -21,7 +21,7 @@
   # list branches sorted by last modified
   b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
   # copy branch name
-  bcopy = !git rev-parse --abbrev-ref HEAD | pbcopy
+  bcopy = !git rev-parse --abbrev-ref HEAD | pbcopyhttps://localhost:8080/outreach/search/outlet/10483385/journalists
 	# Interactively select and delete multiple local branches with fzf.
 	bd = !git branch | grep -v \"^\\*\" | fzf -m --header=\"Select branches to DELETE (Tab for multi-select)\" | xargs -r git branch -D
   # git branches me - find your branches that are in git and checkout
@@ -82,8 +82,8 @@
   cof = "!git branch | fzf | xargs git checkout -f"
   # Create and check out a new branch.
   cob = checkout -b
-	# Check out the primary branch (main or master).
-	com = "!f() { if git show-ref --verify --quiet refs/heads/main; then git checkout main; else git checkout master; fi; }; f"
+	# Check out the primary branch (main or master), pull, npm install, then discard package.json/lock changes.
+	com = "!f() { if git show-ref --verify --quiet refs/heads/main; then b=main; else b=master; fi; git checkout \"$b\" && git pull && npm i && git checkout -- package.json package-lock.json; }; f"
   # Show changes between commits, commit and working tree, etc.
   d = diff
   # Show changes between the staging area (index) and the last commit.

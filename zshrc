@@ -1,4 +1,8 @@
 echo ".zshrc loaded"
+
+# Clear session markers leaked from a parent Claude Code session; an inherited marker stops transcripts saving.
+unset CLAUDECODE CLAUDE_CODE_CHILD_SESSION CLAUDE_CODE_SESSION_ID CLAUDE_PID
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
