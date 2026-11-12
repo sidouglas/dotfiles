@@ -30,6 +30,15 @@
       "source": "user",
       "sourcePath": "/Users/simon.douglas/.copilot/mcp-config.json"
     },
+    "rollbar": {
+      "type": "local",
+      "command": "npx",
+      "args": ["-y", "@rollbar/mcp-server@latest"],
+      "env": {
+        "ROLLBAR_ACCESS_TOKEN": "<project read/write access token>"
+      },
+      "tools": ["*"]
+    },
     "semaphore": {
       "tools": [
         "*"

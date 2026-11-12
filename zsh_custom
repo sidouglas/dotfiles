@@ -460,6 +460,16 @@ function killname() {
 # kill whatever is listening on a port — kp 3000
 function kp (){ kill -9 $(lsof -i:"$1" -t); }
 
+# Trigger a Copilot review via Sam's box: `sam 5678` (frontend) or `sam backend/5678`
+function sam() {
+  [[ -z "$1" ]] && { echo "usage: sam [repo/]<pr>" >&2; return 1; }
+  local target="$1"
+  [[ "$target" != */* ]] && target="frontend/$target"
+  curl --fail-with-body -X POST \
+    "https://samuels-macbook-pro.tail4ebbe.ts.net/copilot/$target" \
+    -H 'X-Copilot-Review: 1'
+}
+
 # edit ~/.zsh_history in vim, or `zh -pattern` to strip matching lines
 function zh() {
   if [[ "$1" == "-"* && "$1" != "" ]]; then
