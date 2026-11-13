@@ -461,9 +461,16 @@ function killname() {
 function kp (){ kill -9 $(lsof -i:"$1" -t); }
 
 # Trigger a Copilot review via Sam's box: `sam 5678` (frontend) or `sam backend/5678`
+# With no argument, uses the PR for the current branch in the cwd's repo
 function sam() {
-  [[ -z "$1" ]] && { echo "usage: sam [repo/]<pr>" >&2; return 1; }
   local target="$1"
+  if [[ -z "$target" ]]; then
+    local url
+    url=$(gh pr view --json url -q .url 2>/dev/null) || { echo "usage: sam [repo/]<pr>  (no PR found for current branch)" >&2; return 1; }
+    # https://github.com/<org>/<repo>/pull/<n> → <repo>/<n>
+    target="${${url%/pull/*}##*/}/${url##*/}"
+    echo "sam: $target"
+  fi
   [[ "$target" != */* ]] && target="frontend/$target"
   curl --fail-with-body -X POST \
     "https://samuels-macbook-pro.tail4ebbe.ts.net/copilot/$target" \
