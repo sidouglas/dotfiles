@@ -221,7 +221,18 @@
             fi; \
         }; f"
   # Fetch from origin and rebase the current branch onto the primary branch (main or master).
-  rbm = "!f() { git fetch origin; if git show-ref --verify --quiet refs/heads/main; then git rebase origin/main; else git rebase origin/master; fi; }; f"
+  # If the branch's PR already has comments or reviews, merge instead so review threads aren't orphaned.
+  rbm = "!f() { \
+      git fetch origin; \
+      if git show-ref --verify --quiet refs/heads/main; then base=origin/main; else base=origin/master; fi; \
+      n=$(gh pr view --json comments,reviews --jq '(.comments | length) + (.reviews | length)' 2>/dev/null); \
+      if [ \"${n:-0}\" -gt 0 ]; then \
+          echo \"PR has $n comment(s)/review(s) - merging $base instead of rebasing\"; \
+          git merge --no-edit \"$base\"; \
+      else \
+          git rebase \"$base\"; \
+      fi; \
+    }; f"
 
   rbf = "!f() { \
         BRANCH=$(git config --get rebase.defaultBranch); \
