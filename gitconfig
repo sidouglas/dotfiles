@@ -221,13 +221,16 @@
             fi; \
         }; f"
   # Fetch from origin and rebase the current branch onto the primary branch (main or master).
-  # If the branch's PR already has comments or reviews, merge instead so review threads aren't orphaned.
+  # If the branch's PR has inline review comments, merge instead so those threads aren't orphaned.
+  # (Conversation comments and review summaries - e.g. Netlify/Copilot bots - don't count; a rebase doesn't affect them.)
   rbm = "!f() { \
       git fetch origin; \
       if git show-ref --verify --quiet refs/heads/main; then base=origin/main; else base=origin/master; fi; \
-      n=$(gh pr view --json comments,reviews --jq '(.comments | length) + (.reviews | length)' 2>/dev/null); \
+      pr=$(gh pr view --json number --jq .number 2>/dev/null); \
+      n=0; \
+      if [ -n \"$pr\" ]; then n=$(gh api --paginate \"repos/{owner}/{repo}/pulls/$pr/comments\" --jq '.[].id' 2>/dev/null | wc -l | tr -d ' '); fi; \
       if [ \"${n:-0}\" -gt 0 ]; then \
-          echo \"PR has $n comment(s)/review(s) - merging $base instead of rebasing\"; \
+          echo \"PR #$pr has $n inline review comment(s) - merging $base instead of rebasing\"; \
           git merge --no-edit \"$base\"; \
       else \
           git rebase \"$base\"; \
