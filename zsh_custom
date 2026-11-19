@@ -561,3 +561,15 @@ function ytplmp3() {
 # Cap resolution, e.g.  yt1080 <url>  /  yt720 <url>
 function yt1080() { yt-dlp -f 'bv*[height<=1080]+ba/b[height<=1080]' --merge-output-format mp4 -o "$YTDL_DIR/%(title)s.%(ext)s" "$@" }
 function yt720()  { yt-dlp -f 'bv*[height<=720]+ba/b[height<=720]'   --merge-output-format mp4 -o "$YTDL_DIR/%(title)s.%(ext)s" "$@" }
+
+# vt <spec-file> [vitest args] — watch a single vitest file from its own workspace
+# (finds the nearest vitest.config.* above the file, so aliases/setup files resolve)
+vt() {
+  local file="${1:A}" dir
+  [[ -f "$file" ]] || { echo "vt: no such file: $1" >&2; return 1; }
+  shift
+  dir="${file:h}"
+  while [[ "$dir" != "/" && -z ${~:-"$dir"/vitest.config.*(N)} ]]; do dir="${dir:h}"; done
+  [[ "$dir" == "/" ]] && { echo "vt: no vitest.config found above $file" >&2; return 1; }
+  (builtin cd "$dir" && NODE_ENV=test npx vitest --watch --reporter=default "$file" "$@")
+}
