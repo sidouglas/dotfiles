@@ -66,7 +66,6 @@
     "vscodevim.vim": 1,
   },
   "extensions.ignoreRecommendations": true,
-  "files.autoSave": "afterDelay",
   "files.exclude": {
     "**/.DS_Store": true,
     "**/.git": true,
@@ -498,4 +497,5 @@
     },
   },
   "workbench.browser.enableChatTools": true,
+  "files.autoSave": "afterDelay",
 }
