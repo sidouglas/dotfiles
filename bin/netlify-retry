@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+# netlify-retry: re-run the Netlify deploy previews for a PR.
+#
+# The `ignore` command in netlify.toml cancels a preview when the PR's last commit
+# didn't touch that app ("Canceled build due to no content change"). A retry, the
+# same as the "Retry deploy" button in the Netlify UI, builds without running the
+# ignore check, so the preview comes up anyway.
+#
+# Usage: netlify-retry [--all] [PR_NUMBER]
+#   PR_NUMBER  defaults to the PR for the current branch
+#   --all      retry every preview, not just the cancelled ones
+#
+# Auth: $NETLIFY_AUTH_TOKEN, falling back to the token saved by `netlify login`.
+
+set -euo pipefail
+
+usage() {
+  echo "usage: netlify-retry [--all] [PR_NUMBER]" >&2
+  exit 2
+}
+
+all=0
+pr=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -a|--all) all=1 ;;
+    -h|--help) usage ;;
+    -*) usage ;;
+    *)
+      if [ -n "$pr" ]; then usage; fi
+      pr="$1"
+      ;;
+  esac
+  shift
+done
+
+token="${NETLIFY_AUTH_TOKEN:-}"
+if [ -z "$token" ]; then
+  config="$HOME/Library/Preferences/netlify/config.json"
+  [ -f "$config" ] || config="${XDG_CONFIG_HOME:-$HOME/.config}/netlify/config.json"
+  [ -f "$config" ] && token="$(jq -r '.users[.userId].auth.token // empty' "$config")"
+fi
+if [ -z "$token" ]; then
+  echo "Error: no Netlify token. Run 'netlify login' or set NETLIFY_AUTH_TOKEN." >&2
+  exit 1
+fi
+
+if [ -z "$pr" ]; then
+  pr="$(gh pr view --json number --jq '.number' 2>/dev/null)" || true
+  if [ -z "$pr" ]; then
+    echo "Error: No PR number provided and none could be auto-detected." >&2
+    usage
+  fi
+  echo "Auto-detected PR #$pr"
+fi
+
+read -r repo sha < <(gh pr view "$pr" --json url,headRefOid \
+  --jq '"\(.url | split("/")[3:5] | join("/")) \(.headRefOid)"')
+
+# Statuses come newest first, so the first one per site is its current state. Pending
+# and cancelled statuses link to app.netlify.com/projects/<site>/deploys/<id>; a ready
+# one links to the preview itself, deploy-preview-<pr>--<site>.netlify.app.
+previews="$(gh api "repos/$repo/commits/$sha/statuses" --paginate \
+  --jq '.[] | select(.context == "deploy/netlify") | [.target_url, .description] | @tsv' \
+  | awk -F'\t' '{
+      site = $1
+      if (!sub(/.*\/projects\//, "", site)) sub(/^https?:\/\/[^-]*-[^-]*-[0-9]+--/, "", site)
+      sub(/[\/.].*/, "", site)
+      if (!seen[site]++) print site "\t" $1 "\t" $2
+    }')"
+
+if [ -z "$previews" ]; then
+  echo "No Netlify deploy previews found for PR #$pr (${sha:0:8})." >&2
+  exit 1
+fi
+
+retried=0
+while IFS=$'\t' read -r site url desc; do
+  deploy_id="${url##*/deploys/}"
+
+  if [ "$all" = 0 ] && ! grep -qi 'cancel' <<<"$desc"; then
+    printf '  skip   %-24s %s\n' "$site" "$desc"
+    continue
+  fi
+  if [ "$deploy_id" = "$url" ]; then
+    # Only the preview URL is known; nothing to retry without the deploy id.
+    printf '  skip   %-24s %s (no deploy id)\n' "$site" "$desc"
+    continue
+  fi
+
+  code="$(curl -sS -o /dev/null -w '%{http_code}' -X POST \
+    -H "Authorization: Bearer $token" \
+    "https://api.netlify.com/api/v1/deploys/$deploy_id/retry")"
+  if [[ "$code" == 2* ]]; then
+    printf '  retry  %-24s https://deploy-preview-%s--%s.netlify.app\n' "$site" "$pr" "$site"
+    retried=$((retried + 1))
+  else
+    printf '  FAIL   %-24s HTTP %s\n' "$site" "$code" >&2
+  fi
+done <<<"$previews"
+
+echo "Retried $retried preview(s) for PR #$pr."
