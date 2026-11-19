@@ -236,6 +236,13 @@
           git rebase \"$base\"; \
       fi; \
     }; f"
+  # Pick a local branch with fzf (most recent first) and merge it into the current branch.
+  mb = "!f() { \
+      cur=$(git branch --show-current); \
+      b=$(git branch --sort=-committerdate --format='%(refname:short)' | grep -vx \"$cur\" \
+        | fzf --header=\"Merge into $cur\" --preview 'git log --oneline --color -20 {}'); \
+      [ -n \"$b\" ] && git merge --no-edit \"$b\"; \
+    }; f"
 
   rbf = "!f() { \
         BRANCH=$(git config --get rebase.defaultBranch); \
